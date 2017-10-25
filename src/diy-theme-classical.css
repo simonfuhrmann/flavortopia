@@ -1,0 +1,29 @@
+/*
+ * Classical theme for the DIY Website.
+ * https://polymerthemes.com/classical/
+ */
+:root {
+  --primary-color: #3f3838;
+  --primary-background: #ececec;
+  --secondary-color: #594f4f;
+  --secondary-background: #e4e7e7;
+  --primary-button-color: white;
+  --primary-button-background: #424b4b;
+  --secondary-button-color: white;
+  --secondary-button-background: #3b8183;
+  --info-button-color: white;
+  --info-button-background: #4db6ac;
+  --success-button-color: white;
+  --success-button-background: #7cb342;
+  --warning-button-color: var(--primary-color);
+  --warning-button-background: #f2d65e;
+  --error-button-color: white;
+  --error-button-background: #e26f4b;
+
+  --toolbar-color: white;
+  --toolbar-background: #424b4b;
+  --toolbar-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 3px 3px rgba(0, 0, 0, 0.1);
+
+  --drawer-background: var(--secondary-background);
+  --drawer-active-background: #d4d7d7;
+}

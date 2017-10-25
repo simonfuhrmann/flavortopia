@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <!-- Polyfill for browsers that do not support web components. -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <!-- Redux global state management library. -->
+    <script src="node_modules/redux/dist/redux.js"></script>
+    <!-- Custom styling for elements and website icon. -->
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Redux bindings for Polymer. -->
+    <link rel="import" href="bower_components/polymer-redux/polymer-redux.html">
+    <!-- DIY components. -->
+    <link rel="import" href="src/diy-app.html">
+  </head>
+  <body>
+    <diy-app></diy-app>
+  </body>
+</html>

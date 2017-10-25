@@ -1,0 +1,115 @@
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="diy-content.html">
+<link rel="import" href="diy-drawer-layout.html">
+<link rel="import" href="diy-theme.html">
+<!-- <link rel="import" href="src/redux-store.html"> -->
+
+<dom-module id="diy-app">
+  <!-- <link rel="stylesheet" type="css" href="diy-app.css"> -->
+  <link rel="import" type="css" href="diy-app.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <!-- Application routes. -->
+    <app-location use-hash-as-path route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}" 
+        pattern="/:page" 
+        data="{{routeData}}" 
+        tail="{{routeTail}}">
+    </app-route>
+
+    <!-- Detection of the active route. -->
+    <app-route route="{{route}}" pattern="/allrecipes" active="{{routeAllRecipesActive}}"></app-route>
+    <app-route route="{{route}}" pattern="/allflavors" active="{{routeAllFlavorsActive}}"></app-route>
+    <app-route route="{{route}}" pattern="/inventory" active="{{routeInventoryActive}}"></app-route>
+    <app-route route="{{route}}" pattern="/recipes" active="{{routeRecipesActive}}"></app-route>
+    <app-route route="{{route}}" pattern="/favorites" active="{{routeFavoritesActive}}"></app-route>
+
+    <!-- Application toolbar. -->
+    <app-toolbar>
+      <paper-icon-button icon="icons:menu" on-tap="toggleDrawer_"></paper-icon-button>
+      <div main-title>Flavortopia</div>
+    </app-toolbar>
+
+    <diy-drawer-layout id="drawerLayout">
+      <app-drawer slot="drawer" opened>
+        <!-- Database -->
+        <div class="menu-header layout horizontal center">
+          <iron-icon slot="item-icon" icon="icons:cloud"></iron-icon>
+          <span>Database</span>
+        </div>
+
+        <a href="#/allrecipes">
+          <paper-icon-item highlight$="[[routeAllRecipesActive]]">
+            <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
+            <paper-item-body>
+              <div primary>Recipes</div>
+              <div secondary>See what others mixed</div>
+            </paper-item-body>
+          </paper-icon-item>
+        </a>
+        <a href="#/allflavors">
+          <paper-icon-item highlight$="[[routeAllFlavorsActive]]">
+            <iron-icon slot="item-icon" icon="icons:opacity"></iron-icon>
+            <paper-item-body>
+              <div primary>Flavors</div>
+              <div secondary>Explore and get inspired</div>
+            </paper-item-body>
+          </paper-icon-item>
+        </a>
+
+        <!-- User's stuff -->
+        <div class="menu-header layout horizontal center">
+          <iron-icon slot="item-icon" icon="icons:face"></iron-icon>
+          <span>Your Stuff</span>
+        </div>
+        <a href="#/inventory">
+          <paper-icon-item highlight$="[[routeInventoryActive]]">
+            <iron-icon slot="item-icon" icon="icons:work"></iron-icon>
+            <paper-item-body>
+              <div primary>Inventory</div>
+              <div secondary>All your flavors</div>
+            </paper-item-body>
+          </paper-icon-item>
+        </a>
+        <a href="#/recipes">
+          <paper-icon-item highlight$="[[routeRecipesActive]]">
+            <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
+            <paper-item-body>
+              <div primary>Receips</div>
+              <div secondary>Your own creations</div>
+            </paper-item-body>
+          </paper-icon-item>
+        </a>
+        <a href="#/favorites">
+          <paper-icon-item highlight$="[[routeFavoritesActive]]">
+            <iron-icon slot="item-icon" icon="icons:favorite"></iron-icon>
+            <paper-item-body>
+              <div primary>Favorites</div>
+              <div secondary>Recipes you liked</div>
+            </paper-item-body>
+          </paper-icon-item>
+        </a>
+      </app-drawer>
+
+      <main>
+        <diy-content route="[[routeData]]" route-tail="[[routeTail]]"></diy-content>
+      </main>
+    </diy-drawer-layout>
+
+  </template>
+  <script type="text/javascript" src="diy-app.js"></script>
+</dom-module>

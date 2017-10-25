@@ -1,0 +1,9 @@
+body,
+html {
+  background-color: #ececec;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  /*font-family: 'Ledger', serif;*/
+  font-size: 12pt;
+  margin: 0;
+  padding: 0;
+}

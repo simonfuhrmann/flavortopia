@@ -1,0 +1,55 @@
+app-toolbar {
+  background-color: var(--toolbar-background);
+  color: var(--toolbar-color);
+  box-shadow: var(--toolbar-shadow);
+  z-index: 2;
+}
+
+diy-drawer-layout {
+  --app-drawer-width: 220px;
+  z-index: 1;
+}
+
+app-drawer {
+  margin-top: 64px;
+  border-right: 1px solid var(--drawer-active-background);
+  --app-drawer-content-container: {
+    background-color: var(--drawer-background);
+  }
+}
+
+app-drawer a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+paper-icon-item {
+  --paper-item-icon-width: 40px;
+  border-bottom: 1px solid var(--drawer-active-background);
+}
+
+paper-icon-item [primary] {
+  line-height: 1.2em;
+}
+
+paper-icon-item [secondary] {
+  line-height: 1.2em;
+  font-size: 0.8em;
+}
+
+paper-icon-item[highlight] {
+  background-color: var(--drawer-active-background);
+}
+
+div.menu-header {
+  background-color: var(--secondary-button-background);
+  color: var(--secondary-button-color);
+  /* box-shadow: var(--toolbar-shadow); */
+  font-weight: bold;
+  margin: 16px 0;
+  padding: 16px;
+}
+
+div.menu-header iron-icon {
+  padding-right: 16px;
+}
