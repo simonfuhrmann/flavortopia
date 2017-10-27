@@ -1,50 +1,26 @@
-class DiyApp extends Polymer.Element {
+class DiyApp extends DiyMixinRouter(Polymer.Element) {
   static get is() {
-    return "diy-app";
+    return 'diy-app';
   }
 
   static get properties() {
     return {
-      route: {
-        type: Object,
-        observer: 'onRouteChanged',
-      },
+      route: Object,
       routeData: {
         type: Object,
         observer: 'onRouteDataChanged',
       },
-      routeTail: {
-        type: Object,
-        observer: 'onRouteTailChanged',
-      },
-      routeAllRecipesActive: Boolean,
-      routeAllFlavorsActive: Boolean,
-      routeInventoryActive: Boolean,
-      routeRecipesActive: Boolean,
-      routeFavoritesActive: Boolean,
+      routeTail: Object,
     };
   }
 
-  toggleDrawer_() {
-    // TODO: Slide open when in narrow mode.
-    if (this.$.drawerLayout.getAttribute("force-narrow")) {
-      this.$.drawerLayout.removeAttribute("force-narrow");
-    } else {
-      this.$.drawerLayout.setAttribute("force-narrow", true);
-    }
+  changeRoute(url) {
+    window.history.pushState({}, null, url);
+    window.dispatchEvent(new CustomEvent('location-changed'));
   }
 
-  onRouteChanged(newValue) {
-    console.log('Route changed to ', newValue);
-  }
-  onRouteDataChanged(newValue) {
-    console.log('Route data changed to ', newValue);
-  }
-  onRouteTailChanged(newValue) {
-    console.log('Route tail changed to ', newValue);
-  }
-  onRouteRecipesActive(value) {
-    console.log('Recipes active: ' + value);
+  goHome_() {
+    this.changeRoute('/#/');
   }
 }
 

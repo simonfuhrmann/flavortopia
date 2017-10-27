@@ -1,10 +1,23 @@
-class DiyContent extends Polymer.Element {
+class DiyContent extends DiyMixinRouter(Polymer.Element) {
   static get is() {
-    return "diy-content";
+    return 'diy-content';
   }
 
-  openDialog_() {
-    this.$.dialog.open();
+  static get properties() {
+    return {
+      routeData: {
+        type: Object,
+        observer: 'onRouteDataChanged',
+      },
+      routeTail: {
+        type: Object,
+        observer: 'onRouteTailChanged',
+      },
+    }
+  }
+
+  onRouteTailChanged(tail) {
+    console.log('tail changed: ', tail)
   }
 }
 

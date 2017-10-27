@@ -12,9 +12,9 @@ diy-drawer-layout {
 
 app-drawer {
   margin-top: 64px;
-  border-right: 1px solid var(--drawer-active-background);
+  box-shadow: var(--shadow-elevation-2dp_-_box-shadow);
   --app-drawer-content-container: {
-    background-color: var(--drawer-background);
+    background-color: white;
   }
 }
 

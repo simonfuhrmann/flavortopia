@@ -10,10 +10,10 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
+<link rel="import" href="mixin-router.html">
 <link rel="import" href="diy-content.html">
 <link rel="import" href="diy-drawer-layout.html">
 <link rel="import" href="diy-theme.html">
-<!-- <link rel="import" href="src/redux-store.html"> -->
 
 <dom-module id="diy-app">
   <!-- <link rel="stylesheet" type="css" href="diy-app.css"> -->
@@ -31,19 +31,13 @@
         tail="{{routeTail}}">
     </app-route>
 
-    <!-- Detection of the active route. -->
-    <app-route route="{{route}}" pattern="/allrecipes" active="{{routeAllRecipesActive}}"></app-route>
-    <app-route route="{{route}}" pattern="/allflavors" active="{{routeAllFlavorsActive}}"></app-route>
-    <app-route route="{{route}}" pattern="/inventory" active="{{routeInventoryActive}}"></app-route>
-    <app-route route="{{route}}" pattern="/recipes" active="{{routeRecipesActive}}"></app-route>
-    <app-route route="{{route}}" pattern="/favorites" active="{{routeFavoritesActive}}"></app-route>
-
     <!-- Application toolbar. -->
     <app-toolbar>
-      <paper-icon-button icon="icons:menu" on-tap="toggleDrawer_"></paper-icon-button>
+      <paper-icon-button icon="icons:home" on-tap="goHome_"></paper-icon-button>
       <div main-title>Flavortopia</div>
     </app-toolbar>
 
+    <!-- Application menu. -->
     <diy-drawer-layout id="drawerLayout">
       <app-drawer slot="drawer" opened>
         <!-- Database -->
@@ -51,7 +45,6 @@
           <iron-icon slot="item-icon" icon="icons:cloud"></iron-icon>
           <span>Database</span>
         </div>
-
         <a href="#/allrecipes">
           <paper-icon-item highlight$="[[routeAllRecipesActive]]">
             <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
@@ -105,8 +98,9 @@
         </a>
       </app-drawer>
 
+      <!-- Main content. -->
       <main>
-        <diy-content route="[[routeData]]" route-tail="[[routeTail]]"></diy-content>
+        <diy-content route-data="[[routeData]]" route-tail="[[routeTail]]"></diy-content>
       </main>
     </diy-drawer-layout>
 

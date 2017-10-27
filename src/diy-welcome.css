@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 690px;
+  margin: 24px auto;
+}
+
+paper-card {
+  padding: 0 24px;
+}
