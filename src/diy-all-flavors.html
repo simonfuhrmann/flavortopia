@@ -1,9 +1,13 @@
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="mixin-firebase.html">
 
 <dom-module id="diy-all-flavors">
   <link rel="import" type="css" href="diy-all-flavors.css">
   <template>
-    DIY all flavors
+    <paper-button raised on-tap="onLoadDataTap_">Load Data</paper-button>
+    <paper-button raised on-tap="onLogStoreTap_">Log Store</paper-button>
   </template>
   <script type="text/javascript" src="diy-all-flavors.js"></script>
 </dom-module>

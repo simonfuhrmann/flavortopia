@@ -6,10 +6,7 @@ class DiyApp extends DiyMixinRouter(Polymer.Element) {
   static get properties() {
     return {
       route: Object,
-      routeData: {
-        type: Object,
-        observer: 'onRouteDataChanged',
-      },
+      routeData: Object,
       routeTail: Object,
     };
   }

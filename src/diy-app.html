@@ -25,9 +25,9 @@
     <!-- Application routes. -->
     <app-location use-hash-as-path route="{{route}}"></app-location>
     <app-route
-        route="{{route}}" 
-        pattern="/:page" 
-        data="{{routeData}}" 
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
         tail="{{routeTail}}">
     </app-route>
 
@@ -100,7 +100,11 @@
 
       <!-- Main content. -->
       <main>
-        <diy-content route-data="[[routeData]]" route-tail="[[routeTail]]"></diy-content>
+        <diy-content
+            route="[[route]]"
+            route-data="[[routeData]]"
+            route-tail="[[routeTail]]">
+        </diy-content>
       </main>
     </diy-drawer-layout>
 

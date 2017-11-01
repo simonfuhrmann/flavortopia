@@ -1,31 +1,25 @@
 const initialState = {
-  flavors: [
-    {
-      flavorId: "cap-lime",
-      flavorName: "Lime",
-      vendorShort: "CAP",
-      hasImage: false
-    },
-  ],
-  vendors: [
-    {
-      vendorShort: 'CAP',
-      vendorName: 'Cappella',
-      hasImage: false,
-    },
-  ]
+  flavors: {},
+  vendors: {},
 };
 
-const reducer = function(state = initialState, action) {
+function reducerInitFlavors(state, action) {
+  return Object.assign({}, state, { flavors: action.data });
+}
+
+function reducerInitVendors(state, action) {
+  return Object.assign({}, state, { vendors: action.data });
+}
+
+const reduxReducer = function(state = initialState, action) {
   switch (action.type) {
-    case 'ADD_TEST':
-      state = reducerAddTest(state, action);
-      break;
+    case 'INIT_FLAVORS':
+      return reducerInitFlavors(state, action);
+    case 'INIT_VENDORS':
+      return reducerInitVendors(state, action);
   }
   return state;
 }
 
-const store = Redux.createStore(reducer);
-const ReduxMixin = PolymerRedux(store);
-
-console.log(store.getState());
+const reduxStore = Redux.createStore(reduxReducer);
+const ReduxMixin = PolymerRedux(reduxStore);
