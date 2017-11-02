@@ -1,526 +1,522 @@
 {
   "cap-apple-pie": {
     "name": "Apple Pie",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-apple-pie-v2": {
     "name": "Apple Pie v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-apricot": {
     "name": "Apricot",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-banana": {
     "name": "Banana",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-banana-split": {
     "name": "Banana Split",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-bavarian-cream": {
     "name": "Bavarian Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-blackberry": {
     "name": "Blackberry",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-blue-raspberry-cotton-candy": {
     "name": "Blue Raspberry Cotton Candy",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-blueberry-cinnamon-crumble": {
     "name": "Blueberry Cinnamon Crumble",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-blueberry": {
     "name": "Blueberry",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-blueberry-jam": {
     "name": "Blueberry Jam",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-blueberry-pomegranate-with-stevia-13ml": {
-    "name": "Blueberry Pomegranate with Stevia 13ml",
-    "vendor": "CAP"
+  "cap-blueberry-pomegranate-with-stevia": {
+    "name": "Blueberry Pomegranate with Stevia",
+    "vendor": "cap"
   },
   "cap-bold-burley-tobacco": {
     "name": "Bold Burley Tobacco",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-boston-cream-pie-v2": {
     "name": "Boston Cream Pie v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-bubble-gum": {
     "name": "Bubble Gum",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-butter-cream": {
     "name": "Butter Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cake-batter": {
     "name": "Cake Batter",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cake-batter-v2": {
     "name": "Cake Batter v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cantaloupe": {
     "name": "Cantaloupe",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cappuccino-v2": {
     "name": "Cappuccino v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-caramel": {
     "name": "Caramel",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-caramel-v2": {
     "name": "Caramel v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cereal-27": {
     "name": "Cereal 27",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-chai-tea": {
     "name": "Chai Tea",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cherry-cola-rf": {
     "name": "Cherry Cola Rf",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-chocolate-fudge-brownie-v2": {
     "name": "Chocolate Fudge Brownie v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-chocolate-glazed-doughnut": {
     "name": "Chocolate Glazed Doughnut",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-churro": {
     "name": "Churro",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cinnamon-danish-swirl": {
     "name": "Cinnamon Danish Swirl",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cinnamon-danish-swirl-v2": {
     "name": "Cinnamon Danish Swirl v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-coconut": {
     "name": "Coconut",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-cola-flavor-type-concentrate-13ml": {
-    "name": "Cola Flavor Type Concentrate 13ml",
-    "vendor": "CAP"
+  "cap-cola": {
+    "name": "Cola",
+    "vendor": "cap"
   },
-  "cap-concord-grape-with-stevia-13ml": {
-    "name": "Concord Grape with Stevia 13ml",
-    "vendor": "CAP"
+  "cap-concord-grape-with-stevia": {
+    "name": "Concord Grape with Stevia",
+    "vendor": "cap"
   },
   "cap-cool-mint": {
     "name": "Cool Mint",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cranberry": {
     "name": "Cranberry",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-creamy-yogurt": {
     "name": "Creamy Yogurt",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cucumber": {
     "name": "Cucumber",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-cup-a-joe": {
     "name": "Cup a Joe",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-double-apple": {
     "name": "Double Apple",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-double-chocolate-v2": {
     "name": "Double Chocolate v2",
-    "vendor": "CAP"
-  },
-  "cap-double-chocolate-v2-flavor-concentrate-4oz": {
-    "name": "Double Chocolate v2 Flavor Concentrate 4oz",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-double-watermelon": {
     "name": "Double Watermelon",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-dragon-fruit": {
     "name": "Dragon Fruit",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-energy-drink-rf": {
     "name": "Energy Drink Rf",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-espresso": {
     "name": "Espresso",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-french-vanilla": {
     "name": "French Vanilla",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-french-vanilla-v2": {
     "name": "French Vanilla v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-fuji-apple": {
     "name": "Fuji Apple",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-funnel-cake": {
     "name": "Funnel Cake",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-gingerbread": {
     "name": "GingerBread",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-glazed-doughnut": {
     "name": "Glazed Doughnut",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-golden-butter": {
     "name": "Golden Butter",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-golden-pineapple": {
     "name": "Golden Pineapple",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-graham-cracker": {
     "name": "Graham Cracker",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-graham-cracker-v2": {
     "name": "Graham Cracker v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-grape": {
     "name": "Grape",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-grapefruit": {
     "name": "Grapefruit",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-greek-yogurt": {
     "name": "Greek Yogurt",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-green-apple": {
     "name": "Green Apple",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-grenadine": {
     "name": "Grenadine",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-harvest-berry": {
     "name": "Harvest Berry",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-hazelnut-v2": {
     "name": "Hazelnut v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-hibiscus": {
     "name": "Hibiscus",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-honey": {
     "name": "Honey",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-honeydew-melon": {
     "name": "Honeydew Melon",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-horchata": {
     "name": "Horchata",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-hot-cocoa": {
     "name": "Hot Cocoa",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-irish-cream": {
     "name": "Irish Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-italian-lemon-sicily": {
     "name": "Italian Lemon Sicily",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-jelly-candy": {
     "name": "Jelly Candy",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-juicy-lemon": {
     "name": "Juicy Lemon",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-juicy-orange": {
     "name": "Juicy Orange",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-juicy-peach": {
     "name": "Juicy Peach",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-kiwi": {
     "name": "Kiwi",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-kiwi-strawberry-with-stevia-13ml": {
-    "name": "Kiwi Strawberry with Stevia 13ml",
-    "vendor": "CAP"
+  "cap-kiwi-strawberry-with-stevia": {
+    "name": "Kiwi Strawberry with Stevia",
+    "vendor": "cap"
   },
   "cap-lemon-lime": {
     "name": "Lemon Lime",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-lemon-meringue-pie": {
     "name": "Lemon Meringue Pie",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-lemon-meringue-pie-v2": {
     "name": "Lemon Meringue Pie v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-lime": {
     "name": "Lime",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-maple-(pancake)-syrup": {
+  "cap-maple-pancake-syrup": {
     "name": "Maple (Pancake) Syrup",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-marshmallow": {
     "name": "Marshmallow",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-menthol": {
     "name": "Menthol",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-new-york-cheesecake": {
     "name": "New York Cheesecake",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-new-york-cheesecake-v2": {
     "name": "New York Cheesecake v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-orange-creamsicle": {
     "name": "Orange Creamsicle",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-orange-mango-with-stevia-13ml": {
-    "name": "Orange Mango with Stevia 13ml",
-    "vendor": "CAP"
+  "cap-orange-mango-with-stevia": {
+    "name": "Orange Mango with Stevia",
+    "vendor": "cap"
   },
   "cap-original-blend-tobacco": {
     "name": "Original Blend Tobacco",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-passion-fruit": {
     "name": "Passion Fruit",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-peach-with-stevia-13ml": {
-    "name": "Peach with Stevia 13ml",
-    "vendor": "CAP"
+  "cap-peach-with-stevia": {
+    "name": "Peach with Stevia",
+    "vendor": "cap"
   },
   "cap-peaches-and-cream": {
     "name": "Peaches and Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-peaches-and-cream-v2": {
     "name": "Peaches and Cream v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-peanut-butter": {
     "name": "Peanut Butter",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-peanut-butter-v2": {
     "name": "Peanut Butter v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-pear-with-stevia-13ml": {
-    "name": "Pear with Stevia 13ml",
-    "vendor": "CAP"
+  "cap-pear-with-stevia": {
+    "name": "Pear with Stevia",
+    "vendor": "cap"
   },
   "cap-peppermint": {
     "name": "Peppermint",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-pina-colada": {
     "name": "Pina Colada",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-pina-colada-v2": {
     "name": "Pina Colada v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-pink-lemonade": {
     "name": "Pink Lemonade",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-pomegranate-v2": {
     "name": "Pomegranate v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-popcorn-v2": {
     "name": "Popcorn v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-pralines-&-cream": {
     "name": "Pralines & Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-pumpkin-pie-(spice)": {
+  "cap-pumpkin-pie-spice": {
     "name": "Pumpkin Pie (Spice)",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-raspberry": {
     "name": "Raspberry",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-raspberry-v2": {
     "name": "Raspberry v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-root-beer": {
     "name": "Root Beer",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-simply-vanilla": {
     "name": "Simply Vanilla",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-smokey-tobacco": {
     "name": "Smokey Tobacco",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-spearmint": {
     "name": "Spearmint",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-strawberries-and-cream": {
     "name": "Strawberries and Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-strawberry-taffy": {
     "name": "Strawberry Taffy",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sugar-cookie": {
     "name": "Sugar Cookie",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sugar-cookie-v2": {
     "name": "Sugar Cookie v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sweet-cream": {
     "name": "Sweet Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sweet-guava": {
     "name": "Sweet Guava",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sweet-lychee": {
     "name": "Sweet Lychee",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sweet-mango": {
     "name": "Sweet Mango",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sweet-strawberry": {
     "name": "Sweet Strawberry",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sweet-strawberry-rf": {
     "name": "Sweet Strawberry Rf",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sweet-tangerine": {
     "name": "Sweet Tangerine",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-sweet-watermelon": {
     "name": "Sweet Watermelon",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-toasted-almond": {
     "name": "Toasted Almond",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-vanilla-bean-ice-cream": {
     "name": "Vanilla Bean Ice Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-vanilla-cupcake": {
     "name": "Vanilla Cupcake",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-vanilla-cupcake-v2": {
     "name": "Vanilla Cupcake v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-vanilla-custard": {
     "name": "Vanilla Custard",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-vanilla-custard-v2": {
     "name": "Vanilla Custard v2",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-vanilla-whipped-cream": {
     "name": "Vanilla Whipped Cream",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-waffle": {
     "name": "Waffle",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
-  "cap-wild-cherry-with-stevia-13ml": {
-    "name": "Wild Cherry with Stevia 13ml",
-    "vendor": "CAP"
+  "cap-wild-cherry-with-stevia": {
+    "name": "Wild Cherry with Stevia",
+    "vendor": "cap"
   },
   "cap-yellow-cake": {
     "name": "Yellow Cake",
-    "vendor": "CAP"
+    "vendor": "cap"
   },
   "cap-yellow-peach": {
     "name": "Yellow Peach",
-    "vendor": "CAP"
+    "vendor": "cap"
   }
 }
