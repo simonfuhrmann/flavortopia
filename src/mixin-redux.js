@@ -22,4 +22,4 @@ const reduxReducer = function(state = initialState, action) {
 }
 
 const reduxStore = Redux.createStore(reduxReducer);
-const ReduxMixin = PolymerRedux(reduxStore);
+const DiyMixinRedux = PolymerRedux(reduxStore);

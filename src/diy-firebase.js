@@ -1,6 +1,10 @@
 let database = undefined;
 
-DiyMixinFirebase = (superClass) => class extends ReduxMixin(superClass) {
+class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
+  static get is() {
+    return 'diy-firebase';
+  }
+
   static get actions() {
     return {
       initFlavors(data) {
@@ -11,6 +15,7 @@ DiyMixinFirebase = (superClass) => class extends ReduxMixin(superClass) {
       },
     };
   }
+
   firebaseInit() {
     if (database) {
       return;
@@ -44,4 +49,6 @@ DiyMixinFirebase = (superClass) => class extends ReduxMixin(superClass) {
       vendorsRef.off();
     }.bind(this));
   }
-};
+}
+
+customElements.define(DiyFirebase.is, DiyFirebase);
