@@ -4,9 +4,10 @@
  */
 :root {
   --primary-color: #3f3838;
-  --primary-background: #ececec;
+  --primary-background-color: #f9fafb;
   --secondary-color: #594f4f;
-  --secondary-background: #e4e7e7;
+  --secondary-background-color: #eceff1;
+
   --primary-button-color: white;
   --primary-button-background: #424b4b;
   --secondary-button-color: white;
@@ -26,4 +27,24 @@
 
   --drawer-background: var(--secondary-background);
   --drawer-active-background: #d4d7d7;
+}
+
+/* Styled input with white background, padding and fixes for the underline. */
+paper-input.styled {
+  --paper-input-border-color: #ddd;
+  --paper-input-container-color: var(--paper-input-border-color);
+  --paper-input-container-focus-color: var(--secondary-button-background);
+  --paper-input-container-input: {
+    background-color: white;
+    border: 1px solid var(--paper-input-border-color);
+    border-bottom: none;
+    padding: 2px 4px;
+  };
+  --paper-input-container-underline: {
+    margin-right: -10px;  /* padding + border. */
+    height: 0;
+  };
+  --paper-input-container-underline-focus: {
+    margin-right: -10px;  /* padding + border. */
+  };
 }

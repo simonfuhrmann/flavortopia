@@ -14,7 +14,7 @@ app-drawer {
   margin-top: 64px;
   box-shadow: var(--shadow-elevation-2dp_-_box-shadow);
   --app-drawer-content-container: {
-    background-color: white;
+    background-color: var(--primary-background-color);
   }
 }
 
@@ -44,7 +44,6 @@ paper-icon-item[highlight] {
 div.menu-header {
   background-color: var(--secondary-button-background);
   color: var(--secondary-button-color);
-  /* box-shadow: var(--toolbar-shadow); */
   font-weight: bold;
   margin: 16px 0;
   padding: 16px;
