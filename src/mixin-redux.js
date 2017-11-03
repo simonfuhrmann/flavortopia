@@ -1,7 +1,30 @@
 const initialState = {
+  appRoute: {
+    welcomeActive: false,
+    allFlavorsActive: false,
+    allRecipesActive: false,
+    inventoryActive: false,
+    recipesActive: false,
+    flavorsActive: false,
+  },
   flavors: {},
   vendors: {},
 };
+
+function reducerUpdateRoute(state, action) {
+  if (!action.route) return state;
+  const path = action.route.path || '';
+  let newRoute = {
+    allFlavorsActive: (path == '/allflavors'),
+    allRecipesActive: (path == '/allrecipes'),
+    inventoryActive: (path == '/inventory'),
+    recipesActive: (path == '/recipes'),
+    flavorsActive: (path == '/favorites'),
+  };
+  // Activate the welcome page if no other route is active.
+  newRoute.welcomeActive = Object.keys(newRoute).every(key => !newRoute[key]);
+  return Object.assign({}, state, { appRoute: newRoute });
+}
 
 function reducerInitFlavors(state, action) {
   return Object.assign({}, state, { flavors: action.data });
@@ -17,6 +40,8 @@ const reduxReducer = function(state = initialState, action) {
       return reducerInitFlavors(state, action);
     case 'INIT_VENDORS':
       return reducerInitVendors(state, action);
+    case 'UPDATE_ROUTE':
+      return reducerUpdateRoute(state, action);
   }
   return state;
 }

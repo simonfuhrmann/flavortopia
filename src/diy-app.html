@@ -1,5 +1,4 @@
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
@@ -24,12 +23,6 @@
 
     <!-- Application routes. -->
     <app-location use-hash-as-path route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{routeTail}}">
-    </app-route>
 
     <!-- Application toolbar. -->
     <app-toolbar>
@@ -100,11 +93,7 @@
 
       <!-- Main content. -->
       <main>
-        <diy-content
-            route="[[route]]"
-            route-data="[[routeData]]"
-            route-tail="[[routeTail]]">
-        </diy-content>
+        <diy-content><diy-content>
       </main>
     </diy-drawer-layout>
 
