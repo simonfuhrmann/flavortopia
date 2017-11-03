@@ -4,7 +4,12 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
   }
 
   static get properties() {
-
+    return {
+      flavors: {
+        type: Object,
+        statePath: 'flavors',
+      },
+    };
   }
 
   onLoadDataTap_() {
@@ -14,6 +19,10 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
 
   onLogStoreTap_() {
     console.log(this.getState());
+  }
+
+  toFlavorsArray_(flavors) {
+    return Object.keys(flavors);
   }
 }
 

@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="diy-firebase.html">
+<link rel="import" href="diy-flavor.html">
 <link rel="import" href="mixin-redux.html">
 
 <dom-module id="diy-all-flavors">
@@ -10,6 +11,10 @@
     <diy-firebase id="firebase"></diy-firebase>
     <paper-button raised on-tap="onLoadDataTap_">Load Data</paper-button>
     <paper-button raised on-tap="onLogStoreTap_">Log Store</paper-button>
+
+    <template is="dom-repeat" items="[[toFlavorsArray_(flavors)]]">
+      <diy-flavor identifier="[[item]]"></diy-flavor>
+    </template>
   </template>
   <script type="text/javascript" src="diy-all-flavors.js"></script>
 </dom-module>
