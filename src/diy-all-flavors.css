@@ -1,3 +1,7 @@
 :host {
   display: block;
 }
+
+diy-flavor {
+  margin: 8px;
+}

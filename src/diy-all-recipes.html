@@ -1,9 +1,16 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 
 <dom-module id="diy-all-recipes">
   <link rel="import" type="css" href="diy-all-recipes.css">
   <template>
-    DIY All Recipes
+
+    <paper-button raised on-tap="openDialog_">Test Dialog</paper-button>
+    <paper-dialog id="dialog" with-backdrop>
+      <p>Test Dialog</p>
+    </paper-dialog>
+
   </template>
   <script type="text/javascript" src="diy-all-recipes.js"></script>
 </dom-module>
