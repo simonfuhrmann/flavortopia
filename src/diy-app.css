@@ -1,4 +1,9 @@
 app-toolbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+
   background-color: var(--toolbar-background);
   color: var(--toolbar-color);
   box-shadow: var(--toolbar-shadow);
@@ -6,8 +11,9 @@ app-toolbar {
 }
 
 diy-drawer-layout {
-  --app-drawer-width: 220px;
+  margin-top: 64px;
   z-index: 1;
+  --app-drawer-width: 220px;
 }
 
 app-drawer {
