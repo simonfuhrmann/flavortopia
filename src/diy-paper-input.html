@@ -1,0 +1,18 @@
+<dom-module id="diy-paper-input">
+  <link rel="import" type="css" href="diy-paper-input.css">
+  <template>
+    <div
+        id="label"
+        focused$="[[focused]]"
+        hidden="[[!hasLabel_()]]">
+      [[label]]
+    </div>
+    <div id="container">
+      <iron-input id="input" bind-value="{{value}}">
+        <input id="nativeInput" type="[[type]]" value="{{value::input}}">
+      </iron-input>
+    </div>
+    <div id="underline" focused$="[[focused]]"></div>
+  </template>
+  <script type="text/javascript" src="diy-paper-input.js"></script>
+</dom-module>

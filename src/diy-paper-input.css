@@ -1,0 +1,55 @@
+:host {
+  margin: 2px 0;
+  @apply --layout-vertical;
+}
+
+#label {
+  color: var(--secondary-text-color);
+  @apply --paper-font-caption;
+}
+
+#label[focused] {
+  color: var(--paper-input-focus-color, blue);
+}
+
+#container {
+  background-color: var(--paper-input-background-color, white);;
+  border: 1px solid var(--paper-input-border-color, #ddd);
+  padding: 0px 4px;
+}
+
+#input {
+  @apply --layout-vertical;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: transparent;
+  @apply --paper-font-subhead;
+}
+
+#underline {
+  height: 2px;
+  margin-top: -1px;
+  background: transparent;
+
+  transform-origin: center center;
+  transform: scale3d(0,1,1);
+  @apply --paper-transition-easing;
+}
+
+#underline[focused] {
+  border-top: 2px solid var(--paper-input-focus-color, blue);
+  height: 0;
+
+  transition: transform 0.25s;
+  transform: none;
+}
+
+[hidden] {
+  display: none !important;
+}
