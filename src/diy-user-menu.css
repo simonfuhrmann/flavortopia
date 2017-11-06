@@ -1,0 +1,12 @@
+:host {
+  display: inline-block;
+  font-size: 12pt;
+}
+
+paper-button > iron-icon {
+  margin-right: 8px;
+}
+
+[hidden] {
+  display: none !important;
+}

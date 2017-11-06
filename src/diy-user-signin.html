@@ -1,0 +1,121 @@
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="mixin-redux.html">
+<link rel="import" href="diy-theme.html">
+<link rel="import" href="diy-paper-input.html">
+<link rel="import" href="diy-firebase.html">
+
+<dom-module id="diy-user-signin">
+  <link rel="import" type="css" href="diy-user-signin.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <diy-firebase id="firebase"></diy-firebase>
+
+    <paper-card class="bottom-margin">
+      <h2>Third Party Sign-In</h2>
+      <div class="layout horizontal center-justified spaced">
+
+        <paper-button raised class="auth-provider" on-tap="signinFacebook_">
+          <img src="images/auth_service_facebook.svg">
+          <span>Sign-in with</span>
+          <span>Facebook</span>
+        </paper-button>
+
+        <paper-button raised class="auth-provider" on-tap="signinGoogle_">
+          <img src="images/auth_service_google.svg">
+          <span>Sign-in with</span>
+          <span>Google</span>
+        </paper-button>
+
+        <paper-button raised class="auth-provider" on-tap="signinGithub_">
+          <img src="images/auth_service_github.svg">
+          <span>Sign-in with</span>
+          <span>Github</span>
+        </paper-button>
+
+        <paper-button raised class="auth-provider" on-tap="signinTwitter_">
+          <img src="images/auth_service_twitter.svg">
+          <span>Sign-in with</span>
+          <span>Twitter</span>
+        </paper-button>
+
+      </div>
+    </paper-card>
+
+    <paper-card class="layout horizontal">
+      <div class="flex layout vertical right-separator">
+        <h2>E-Mail Sign-In</h2>
+        <diy-paper-input
+            id="signinEmailInput"
+            always-float-label
+            label="E-Mail">
+        </diy-paper-input>
+        <diy-paper-input
+            id="signinPasswordInput"
+            always-float-label
+            label="Password"
+            type="password">
+        </diy-paper-input>
+
+        <div class="flex"></div>
+        <div class="layout horizontal end-justified">
+          <paper-button
+              id="signinButton"
+              on-tap="userSigninTap_">
+            Sign in
+          </paper-button>
+        </div>
+      </div>
+
+      <div class="flex layout vertical">
+        <h2>Email Sign-up</h2>
+        <diy-paper-input
+            id="signupEmailInput"
+            always-float-label
+            label="E-Mail">
+        </diy-paper-input>
+        <diy-paper-input
+            id="signupPasswordInput"
+            always-float-label
+            label="Password"
+            type="password">
+        </diy-paper-input>
+        <diy-paper-input
+            id="signupPasswordRepeatInput"
+            always-float-label
+            label="Password (repeat)"
+            type="password">
+        </diy-paper-input>
+
+        <div class="flex"></div>
+        <div class="layout horizontal end-justified">
+          <paper-button
+              id="signupButton"
+              on-tap="userSignupTap_">
+            Sign up
+          </paper-button>
+        </div>
+      </div>
+    </paper-card>
+
+    <paper-dialog with-backdrop id="errorDialog">
+      <div class="dialog-title">
+        <iron-icon icon="icons:error"></iron-icon>
+        <h2>Sign-in error</h2>
+      </div>
+      <div class="content">
+        [[errorMessage]]
+      </div>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Close</paper-button>
+      </div>
+    </paper-dialog>
+
+  </template>
+  <script type="text/javascript" src="diy-user-signin.js"></script>
+</dom-module>

@@ -2,6 +2,7 @@
 
 <link rel="import" href="mixin-router.html">
 <link rel="import" href="diy-welcome.html">
+<link rel="import" href="diy-user-signin.html">
 <link rel="import" href="diy-all-flavors.html">
 <link rel="import" href="diy-all-recipes.html">
 
@@ -9,6 +10,7 @@
   <link rel="import" type="css" href="diy-content.css">
   <template>
     <diy-welcome hidden="[[!routeWelcomeActive]]"></diy-welcome>
+    <diy-user-signin hidden="[[!routeUserSigninActive]]"></diy-user-signin>
     <diy-all-flavors hidden="[[!routeAllFlavorsActive]]"></diy-all-flavors>
     <diy-all-recipes hidden="[[!routeAllRecipesActive]]"></diy-all-recipes>
   </template>

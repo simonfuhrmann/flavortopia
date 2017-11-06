@@ -1,0 +1,71 @@
+paper-card {
+  display: block;
+  padding: 16px;
+  max-width: 690px;
+  margin: 0 auto;
+}
+
+paper-card h2 {
+  margin-top: 0;
+}
+
+paper-button {
+  margin: 16px 0 0 0;
+}
+
+.bottom-margin {
+  margin-bottom: 16px;
+}
+
+.right-separator {
+  margin-right: 16px;
+  border-right: 1px solid #ccc;
+  padding-right: 16px;
+}
+
+.auth-provider {
+  margin: 0;
+  background-color: white;
+  text-transform: none;
+  width: 100px;
+
+  @apply --layout-vertical;
+  @apply --layout-center;
+}
+
+.auth-provider img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
+}
+
+.auth-provider span {
+  font-size: 0.8em;
+}
+
+.spaced > :not(:last-child) {
+  margin-right: 16px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* Dialog styles */
+paper-dialog h2 {
+  max-width: 500px;
+  margin: 0;
+}
+paper-dialog .dialog-title {
+  padding: 16px;
+  margin: 0;
+  background-color: var(--error-button-background);
+  color: var(--error-button-color);
+
+  @apply --layout-horizontal;
+  @apply --layout-center;
+}
+paper-dialog .dialog-title iron-icon {
+  margin-right: 16px;
+}

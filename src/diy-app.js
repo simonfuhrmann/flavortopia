@@ -10,15 +10,6 @@ class DiyApp extends DiyMixinRouter(Polymer.Element) {
       routeTail: Object,
     };
   }
-
-  changeRoute(url) {
-    window.history.pushState({}, null, url);
-    window.dispatchEvent(new CustomEvent('location-changed'));
-  }
-
-  goHome_() {
-    this.changeRoute('/#/');
-  }
 }
 
 customElements.define(DiyApp.is, DiyApp);

@@ -1,6 +1,7 @@
 const initialState = {
   appRoute: {
     welcomeActive: false,
+    userSigninActive: false,
     allFlavorsActive: false,
     allRecipesActive: false,
     inventoryActive: false,
@@ -9,6 +10,9 @@ const initialState = {
   },
   flavors: {},
   vendors: {},
+  userAuth: {
+    signedIn: false,
+  },
 };
 
 function reducerUpdateRoute(state, action) {
@@ -20,6 +24,7 @@ function reducerUpdateRoute(state, action) {
     inventoryActive: (path == '/inventory'),
     recipesActive: (path == '/recipes'),
     flavorsActive: (path == '/favorites'),
+    userSigninActive: (path == '/signin'),
   };
   // Activate the welcome page if no other route is active.
   newRoute.welcomeActive = Object.keys(newRoute).every(key => !newRoute[key]);
@@ -34,6 +39,14 @@ function reducerInitVendors(state, action) {
   return Object.assign({}, state, { vendors: action.data });
 }
 
+function reducerUserSignin(state, action) {
+  return Object.assign({}, state, {
+    userAuth: {
+      signedIn: action.data.signedIn,
+    },
+  });
+}
+
 const reduxReducer = function(state = initialState, action) {
   switch (action.type) {
     case 'INIT_FLAVORS':
@@ -42,6 +55,8 @@ const reduxReducer = function(state = initialState, action) {
       return reducerInitVendors(state, action);
     case 'UPDATE_ROUTE':
       return reducerUpdateRoute(state, action);
+    case 'USER_SIGNIN':
+      return reducerUserSignin(state, action);
   }
   return state;
 }

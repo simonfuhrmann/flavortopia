@@ -13,8 +13,7 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
   }
 
   onLoadDataTap_() {
-    this.$.firebase.firebaseInit();
-    this.$.firebase.firebaseTest();
+    this.$.firebase.loadFlavorsAndVendors();
   }
 
   onLogStoreTap_() {

@@ -25,26 +25,10 @@
   --toolbar-background: #424b4b;
   --toolbar-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 3px 3px rgba(0, 0, 0, 0.1);
 
+  --paper-input-focus-color: var(--secondary-button-background);
+  --paper-input-border-color: #ddd;
+  --paper-input-background-color: white;
+
   --drawer-background: var(--secondary-background);
   --drawer-active-background: #d4d7d7;
-}
-
-/* Styled input with white background, padding and fixes for the underline. */
-paper-input.styled {
-  --paper-input-border-color: #ddd;
-  --paper-input-container-color: var(--paper-input-border-color);
-  --paper-input-container-focus-color: var(--secondary-button-background);
-  --paper-input-container-input: {
-    background-color: white;
-    border: 1px solid var(--paper-input-border-color);
-    border-bottom: none;
-    padding: 2px 4px;
-  };
-  --paper-input-container-underline: {
-    margin-right: -10px;  /* padding + border. */
-    height: 0;
-  };
-  --paper-input-container-underline-focus: {
-    margin-right: -10px;  /* padding + border. */
-  };
 }

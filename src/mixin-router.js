@@ -37,6 +37,10 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
         type: Boolean,
         statePath: 'appRoute.flavorsActive',
       },
+      routeUserSigninActive: {
+        type: Boolean,
+        statePath: 'appRoute.userSigninActive',
+      }
     };
   }
 
@@ -48,7 +52,21 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
     };
   }
 
+  goHome() {
+    this.changeRoute('/#/');
+  }
+
+  goSignin() {
+    this.changeRoute('/#/signin');
+  }
+
+  changeRoute(url) {
+    window.history.pushState({}, null, url);
+    window.dispatchEvent(new CustomEvent('location-changed'));
+  }
+
   onRouteChanged_(route) {
     this.dispatch('updateRoute', route);
   }
+
 };

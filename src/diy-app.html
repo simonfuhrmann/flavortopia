@@ -11,6 +11,7 @@
 
 <link rel="import" href="mixin-router.html">
 <link rel="import" href="diy-content.html">
+<link rel="import" href="diy-user-menu.html">
 <link rel="import" href="diy-drawer-layout.html">
 <link rel="import" href="diy-theme.html">
 
@@ -26,8 +27,9 @@
 
     <!-- Application toolbar. -->
     <app-toolbar>
-      <paper-icon-button icon="icons:home" on-tap="goHome_"></paper-icon-button>
+      <paper-icon-button icon="icons:home" on-tap="goHome"></paper-icon-button>
       <div main-title>Flavortopia</div>
+      <diy-user-menu></diy-user-menu>
     </app-toolbar>
 
     <!-- Application menu. -->
@@ -67,7 +69,7 @@
             <iron-icon slot="item-icon" icon="icons:work"></iron-icon>
             <paper-item-body>
               <div primary>Inventory</div>
-              <div secondary>All your flavors</div>
+              <div secondary>Flavors you possess</div>
             </paper-item-body>
           </paper-icon-item>
         </a>
@@ -85,7 +87,7 @@
             <iron-icon slot="item-icon" icon="icons:favorite"></iron-icon>
             <paper-item-body>
               <div primary>Favorites</div>
-              <div secondary>Recipes you liked</div>
+              <div secondary>Recipes to remember</div>
             </paper-item-body>
           </paper-icon-item>
         </a>

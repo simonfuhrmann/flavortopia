@@ -1,4 +1,4 @@
-let database = undefined;
+let firebaseGlobal = undefined;
 
 class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
   static get is() {
@@ -13,11 +13,14 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
       initVendors(data) {
         return { type: 'INIT_VENDORS', data: data };
       },
+      userSignin(data) {
+        return { type: 'USER_SIGNIN', data: data };
+      }
     };
   }
 
-  firebaseInit() {
-    if (database) {
+  initialize() {
+    if (firebaseGlobal) {
       return;
     }
 
@@ -30,24 +33,71 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
     };
     firebase.initializeApp(config);
 
-    // Initialize database module.
-    database = firebase.database();
+    // Initialize Firebase database and auth module.
+    firebaseGlobal = {
+      database: firebase.database(),
+      auth: firebase.auth(),
+    };
   }
 
-  firebaseTest() {
+  authSetupStateHandler() {
+    this.initialize();
+    firebaseGlobal.auth.onAuthStateChanged(firebaseUser => {
+      console.log("auth state changed: ", firebaseUser);
+      this.authStateChanged_(firebaseUser);
+    });
+  }
+
+  authSigninEmailPassword(email, pass) {
+    this.initialize();
+    console.log("Trying sign-in: " + email)
+    return firebaseGlobal.auth.signInWithEmailAndPassword(email, pass);
+  }
+
+  authSignupEmailPassword(email, pass) {
+    this.initialize();
+    console.log("Trying sign-up: " + email)
+    return firebaseGlobal.auth.createUserWithEmailAndPassword(email, pass);
+  }
+
+  authSignOut() {
+    this.initialize();
+    firebaseGlobal.auth.signOut();
+    this.authStateChanged_(undefined);
+  }
+
+  // TODO: error handling
+  loadFlavorsAndVendors() {
+    this.initialize();
     // Load all flavors and update redux store.
-    const flavorsRef = database.ref('flavors/');
+    const flavorsRef = firebaseGlobal.database.ref('flavors/');
     flavorsRef.on('value', function(snapshot) {
       this.dispatch('initFlavors', snapshot.val());
       flavorsRef.off();
     }.bind(this));
 
     // Load all vendors and update redux store.
-    const vendorsRef = database.ref('vendors/');
+    const vendorsRef = firebaseGlobal.database.ref('vendors/');
     vendorsRef.on('value', function(snapshot) {
       this.dispatch('initVendors', snapshot.val());
       vendorsRef.off();
     }.bind(this));
+  }
+
+  authStateChanged_(firebaseUser) {
+    if (firebaseUser) {
+      // User is authenticated.
+      this.dispatch('userSignin', {
+        signedIn: true,
+        firebaseUser: firebaseUser,
+      });
+    } else {
+      // User is not authenticated.
+      this.dispatch('userSignin', {
+        signedIn: false,
+        firebaseUser: undefined,
+      });
+    }
   }
 }
 
