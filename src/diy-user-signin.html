@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
@@ -102,6 +103,13 @@
         </div>
       </div>
     </paper-card>
+
+    <paper-dialog id="waitingForTokenDialog" modal>
+      <div class="layout horizontal center">
+        <paper-spinner-lite active></paper-spinner-lite>
+        <span>Waiting for authentication...</span>
+      </div>
+    </paper-dialog>
 
     <paper-dialog with-backdrop id="errorDialog">
       <div class="dialog-title">

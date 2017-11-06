@@ -47,14 +47,24 @@ paper-button {
   margin-right: 16px;
 }
 
+#waitingForTokenDialog {
+  padding: 16px;
+}
+
+#waitingForTokenDialog span {
+  margin-left: 16px;
+}
+
 [hidden] {
   display: none !important;
 }
 
-
 /* Dialog styles */
-paper-dialog h2 {
+/* TODO Move to separate element. */
+paper-dialog {
   max-width: 500px;
+}
+paper-dialog h2 {
   margin: 0;
 }
 paper-dialog .dialog-title {

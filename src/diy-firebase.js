@@ -43,21 +43,28 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
   authSetupStateHandler() {
     this.initialize();
     firebaseGlobal.auth.onAuthStateChanged(firebaseUser => {
-      console.log("auth state changed: ", firebaseUser);
       this.authStateChanged_(firebaseUser);
     });
   }
 
   authSigninEmailPassword(email, pass) {
     this.initialize();
-    console.log("Trying sign-in: " + email)
     return firebaseGlobal.auth.signInWithEmailAndPassword(email, pass);
   }
 
   authSignupEmailPassword(email, pass) {
     this.initialize();
-    console.log("Trying sign-up: " + email)
     return firebaseGlobal.auth.createUserWithEmailAndPassword(email, pass);
+  }
+
+  authSigninWithProvider(provider) {
+    this.initialize();
+    return firebaseGlobal.auth.signInWithRedirect(provider);
+  }
+
+  authGetRedirectResult() {
+    this.initialize();
+    return firebaseGlobal.auth.getRedirectResult();
   }
 
   authSignOut() {

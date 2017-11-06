@@ -23,6 +23,25 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     setTimeout(() => {
       this.$.signinEmailInput.focus();
     }, 0);
+
+    // Read authentication redirect result. The promise resolves immediately
+    // with a null user if no authentication request has been made. The promise
+    // resolves with a real user if a authentication redirect happened, in which
+    // case we want to redirect the user to the welcome page. In case of errors,
+    // just let the user know.
+    this.$.waitingForTokenDialog.open();
+    this.$.firebase.authGetRedirectResult()
+        .then(data => {
+          this.$.waitingForTokenDialog.close();
+          if (data.user) {
+            this.goHome();
+          }
+        })
+        .catch(error => {
+          this.$.waitingForTokenDialog.close();
+          this.set('errorMessage', error.message);
+          this.$.errorDialog.open();
+        });
   }
 
   userSigninTap_() {
@@ -87,6 +106,33 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
           this.goHome();
           return data;
         });
+  }
+
+  signinGoogle_() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    // TODO: Remove promise handling if redirect is used.
+    // TODO: Or use popup, keep promise handling, remove dialog.
+    this.$.firebase.authSigninWithProvider(provider)
+        .catch(error => {
+          this.set('errorMessage', error.message);
+          this.$.errorDialog.open();
+          throw error;
+        })
+        .then(data => {
+          this.goHome();
+          return data;
+        });
+      }
+
+  signinFacebook_() {
+  }
+
+  signinGithub_() {
+  }
+
+  signinTwitter_() {
   }
 }
 
