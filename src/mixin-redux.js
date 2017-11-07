@@ -1,6 +1,10 @@
 const initialState = {
   appRoute: {
     path: '/',
+    pageWelcomeActive: false,
+    pageFlavorsActive: false,
+    pageRecipesActive: false,
+    pageSigninActive: false,
   },
   flavors: {},
   vendors: {},
@@ -11,8 +15,22 @@ const initialState = {
 
 function reducerUpdateRoute(state, action) {
   if (!action.route) return state;
-  const path = action.route.path || '';
-  let newRoute = { path: path };
+  let newRoute = Object.assign({}, initialState.appRoute);
+  newRoute.path = action.route.path || '/';
+  switch (newRoute.path) {
+    case '/flavors':
+      newRoute.pageFlavorsActive = true;
+      break;
+    case '/recipes':
+      newRoute.pageRecipesActive = true;
+      break;
+    case '/signin':
+      newRoute.pageSigninActive = true;
+      break;
+    default:
+      newRoute.pageWelcomeActive = true;
+      break;
+  }
   return Object.assign({}, state, { appRoute: newRoute });
 }
 

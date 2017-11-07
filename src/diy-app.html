@@ -41,7 +41,7 @@
           <span>Database</span>
         </div>
         <a href="#/recipes">
-          <paper-icon-item highlight$="[[recipesActive_(path)]]">
+          <paper-icon-item highlight$="[[pageRecipesActive]]">
             <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
             <paper-item-body>
               <div primary>Recipes</div>
@@ -50,7 +50,7 @@
           </paper-icon-item>
         </a>
         <a href="#/flavors">
-          <paper-icon-item highlight$="[[flavorsActive_(path)]]">
+          <paper-icon-item highlight$="[[pageFlavorsActive]]">
             <iron-icon slot="item-icon" icon="icons:opacity"></iron-icon>
             <paper-item-body>
               <div primary>Flavors</div>
@@ -65,7 +65,7 @@
           <span>Your Stuff</span>
         </div>
         <a href="#/user/inventory">
-          <paper-icon-item highlight$="[[routeInventoryActive]]">
+          <paper-icon-item highlight$="[[pageUserInventoryActive]]">
             <iron-icon slot="item-icon" icon="icons:work"></iron-icon>
             <paper-item-body>
               <div primary>Inventory</div>
@@ -74,7 +74,7 @@
           </paper-icon-item>
         </a>
         <a href="#/user/recipes">
-          <paper-icon-item highlight$="[[routeRecipesActive]]">
+          <paper-icon-item highlight$="[[pageUserRecipesActive]]">
             <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
             <paper-item-body>
               <div primary>Receips</div>
@@ -83,7 +83,7 @@
           </paper-icon-item>
         </a>
         <a href="#/user/favorites">
-          <paper-icon-item highlight$="[[routeFavoritesActive]]">
+          <paper-icon-item highlight$="[[pageUserFavoritesActive]]">
             <iron-icon slot="item-icon" icon="icons:favorite"></iron-icon>
             <paper-item-body>
               <div primary>Favorites</div>

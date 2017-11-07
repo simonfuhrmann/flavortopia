@@ -11,15 +11,22 @@
   <link rel="import" type="css" href="diy-content.css">
   <template>
 
-    <iron-pages
-        attr-for-selected="name"
-        fallback-selection="/"
-        selected="[[path]]">
-      <diy-welcome name="/"></diy-welcome>
-      <diy-user-signin name="/signin"></diy-user-signin>
-      <diy-all-flavors name="/flavors"></diy-all-flavors>
-      <diy-all-recipes name="/recipes"></diy-all-recipes>
-    </iron-pages>
+    <template is="dom-if" if="[[pageWelcomeActive]]">
+      <diy-welcome></diy-welcome>
+    </template>
+
+    <template is="dom-if" if="[[pageRecipesActive]]">
+      <diy-all-recipes></diy-all-recipes>
+    </template>
+
+    <template is="dom-if" if="[[pageFlavorsActive]]">
+      <diy-all-flavors></diy-all-flavors>
+    </template>
+
+    <!-- Restamp to destroy element when if-condition becomes false. -->
+    <template is="dom-if" if="[[pageSigninActive]]" restamp>
+      <diy-user-signin></diy-user-signin>
+    </template>
 
   </template>
   <script type="text/javascript" src="diy-content.js"></script>

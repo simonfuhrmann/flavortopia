@@ -9,15 +9,33 @@
 DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
   static get properties() {
     return {
+      // The app route as provided by <app-location>. On change, update the
+      // route in the global Redux state.
       route: {
         type: Object,
         observer: 'onRouteChanged_',
       },
+      // The route path as computed by the global Redux state.
       path: {
         type: String,
-        value: '/',
         statePath: 'appRoute.path',
-      }
+      },
+      pageWelcomeActive: {
+        type: Boolean,
+        statePath: 'appRoute.pageWelcomeActive',
+      },
+      pageRecipesActive: {
+        type: Boolean,
+        statePath: 'appRoute.pageRecipesActive',
+      },
+      pageFlavorsActive: {
+        type: Boolean,
+        statePath: 'appRoute.pageFlavorsActive',
+      },
+      pageSigninActive: {
+        type: Boolean,
+        statePath: 'appRoute.pageSigninActive',
+      },
     };
   }
 
