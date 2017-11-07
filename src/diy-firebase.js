@@ -13,9 +13,6 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
       initVendors(data) {
         return { type: 'INIT_VENDORS', data: data };
       },
-      userSignin(data) {
-        return { type: 'USER_SIGNIN', data: data };
-      }
     };
   }
 
@@ -40,11 +37,9 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
     };
   }
 
-  authSetupStateHandler() {
+  authSetupStateHandler(handler) {
     this.initialize();
-    firebaseGlobal.auth.onAuthStateChanged(firebaseUser => {
-      this.authStateChanged_(firebaseUser);
-    });
+    firebaseGlobal.auth.onAuthStateChanged(handler);
   }
 
   authSigninEmailPassword(email, pass) {
@@ -70,7 +65,6 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
   authSignOut() {
     this.initialize();
     firebaseGlobal.auth.signOut();
-    this.authStateChanged_(undefined);
   }
 
   // TODO: error handling
@@ -89,22 +83,6 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
       this.dispatch('initVendors', snapshot.val());
       vendorsRef.off();
     }.bind(this));
-  }
-
-  authStateChanged_(firebaseUser) {
-    if (firebaseUser) {
-      // User is authenticated.
-      this.dispatch('userSignin', {
-        signedIn: true,
-        firebaseUser: firebaseUser,
-      });
-    } else {
-      // User is not authenticated.
-      this.dispatch('userSignin', {
-        signedIn: false,
-        firebaseUser: undefined,
-      });
-    }
   }
 }
 

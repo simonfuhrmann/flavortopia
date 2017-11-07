@@ -26,9 +26,9 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
 
     // Read authentication redirect result. The promise resolves immediately
     // with a null user if no authentication request has been made. The promise
-    // resolves with a real user if a authentication redirect happened, in which
-    // case we want to redirect the user to the welcome page. In case of errors,
-    // just let the user know.
+    // resolves with a real user if an authentication redirect happened, in
+    // which case we want to redirect the user to the welcome page. In case of
+    // errors, just let the user know.
     this.$.waitingForTokenDialog.open();
     this.$.firebase.authGetRedirectResult()
         .then(data => {
@@ -53,6 +53,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
       this.$.errorDialog.open();
       return;
     }
+
     // Authenticate credentials using Firebase.
     this.$.signupButton.disabled = true;
     this.$.signinButton.disabled = true;
@@ -88,6 +89,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
       this.$.errorDialog.open();
       return;
     }
+
     // Authenticate credentials using Firebase.
     this.$.signupButton.disabled = true;
     this.$.signinButton.disabled = true;
@@ -112,19 +114,8 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
-    // TODO: Remove promise handling if redirect is used.
-    // TODO: Or use popup, keep promise handling, remove dialog.
-    this.$.firebase.authSigninWithProvider(provider)
-        .catch(error => {
-          this.set('errorMessage', error.message);
-          this.$.errorDialog.open();
-          throw error;
-        })
-        .then(data => {
-          this.goHome();
-          return data;
-        });
-      }
+    this.$.firebase.authSigninWithProvider(provider);
+  }
 
   signinFacebook_() {
   }

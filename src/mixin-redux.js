@@ -10,6 +10,7 @@ const initialState = {
   vendors: {},
   userAuth: {
     signedIn: false,
+    firebaseUser: undefined,
   },
 };
 
@@ -46,6 +47,7 @@ function reducerUserSignin(state, action) {
   return Object.assign({}, state, {
     userAuth: {
       signedIn: action.data.signedIn,
+      firebaseUser: action.data.firebaseUser,
     },
   });
 }
