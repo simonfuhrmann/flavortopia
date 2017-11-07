@@ -13,33 +13,10 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
         type: Object,
         observer: 'onRouteChanged_',
       },
-      routeWelcomeActive: {
-        type: Boolean,
-        statePath: 'appRoute.welcomeActive',
-      },
-      routeAllFlavorsActive: {
-        type: Boolean,
-        statePath: 'appRoute.allFlavorsActive',
-      },
-      routeAllRecipesActive: {
-        type: Boolean,
-        statePath: 'appRoute.allRecipesActive',
-      },
-      routeInventoryActive: {
-        type: Boolean,
-        statePath: 'appRoute.inventoryActive',
-      },
-      routeRecipesActive: {
-        type: Boolean,
-        statePath: 'appRoute.recipesActive',
-      },
-      routeFavoritesActive: {
-        type: Boolean,
-        statePath: 'appRoute.flavorsActive',
-      },
-      routeUserSigninActive: {
-        type: Boolean,
-        statePath: 'appRoute.userSigninActive',
+      path: {
+        type: String,
+        value: '/',
+        statePath: 'appRoute.path',
       }
     };
   }
@@ -68,5 +45,4 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
   onRouteChanged_(route) {
     this.dispatch('updateRoute', route);
   }
-
 };

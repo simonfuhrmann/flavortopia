@@ -1,3 +1,4 @@
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="mixin-router.html">
@@ -10,12 +11,16 @@
   <link rel="import" type="css" href="diy-content.css">
   <template>
 
-    <!-- TODO Use iron-pages here? -->
+    <iron-pages
+        attr-for-selected="name"
+        fallback-selection="/"
+        selected="[[path]]">
+      <diy-welcome name="/"></diy-welcome>
+      <diy-user-signin name="/signin"></diy-user-signin>
+      <diy-all-flavors name="/flavors"></diy-all-flavors>
+      <diy-all-recipes name="/recipes"></diy-all-recipes>
+    </iron-pages>
 
-    <diy-welcome hidden="[[!routeWelcomeActive]]"></diy-welcome>
-    <diy-user-signin hidden="[[!routeUserSigninActive]]"></diy-user-signin>
-    <diy-all-flavors hidden="[[!routeAllFlavorsActive]]"></diy-all-flavors>
-    <diy-all-recipes hidden="[[!routeAllRecipesActive]]"></diy-all-recipes>
   </template>
   <script type="text/javascript" src="diy-content.js"></script>
 </dom-module>

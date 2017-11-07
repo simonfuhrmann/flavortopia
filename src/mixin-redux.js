@@ -1,12 +1,6 @@
 const initialState = {
   appRoute: {
-    welcomeActive: false,
-    userSigninActive: false,
-    allFlavorsActive: false,
-    allRecipesActive: false,
-    inventoryActive: false,
-    recipesActive: false,
-    flavorsActive: false,
+    path: '/',
   },
   flavors: {},
   vendors: {},
@@ -18,16 +12,7 @@ const initialState = {
 function reducerUpdateRoute(state, action) {
   if (!action.route) return state;
   const path = action.route.path || '';
-  let newRoute = {
-    allFlavorsActive: (path == '/allflavors'),
-    allRecipesActive: (path == '/allrecipes'),
-    inventoryActive: (path == '/inventory'),
-    recipesActive: (path == '/recipes'),
-    flavorsActive: (path == '/favorites'),
-    userSigninActive: (path == '/signin'),
-  };
-  // Activate the welcome page if no other route is active.
-  newRoute.welcomeActive = Object.keys(newRoute).every(key => !newRoute[key]);
+  let newRoute = { path: path };
   return Object.assign({}, state, { appRoute: newRoute });
 }
 

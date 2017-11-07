@@ -14,6 +14,7 @@
     "app-route": "PolymerElements/app-route#^2.0.3",
     "paper-card": "PolymerElements/paper-card#^2.0.0",
     "paper-input": "PolymerElements/paper-input#^2.0.3",
-    "paper-spinner": "PolymerElements/paper-spinner#^2.0.0"
+    "paper-spinner": "PolymerElements/paper-spinner#^2.0.0",
+    "iron-pages": "PolymerElements/iron-pages#^2.0.0"
   }
 }
