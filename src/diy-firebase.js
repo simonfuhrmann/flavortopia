@@ -52,6 +52,16 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
     return firebaseGlobal.auth.createUserWithEmailAndPassword(email, pass);
   }
 
+  authSendPasswordResetEmail(email) {
+    this.initialize();
+    return firebaseGlobal.auth.sendPasswordResetEmail(email);
+  }
+
+  authConfirmPasswordReset(code, pass) {
+    this.initialize();
+    return firebaseGlobal.auth.confirmPasswordReset(code, pass);
+  }
+
   authSigninWithProvider(provider) {
     this.initialize();
     return firebaseGlobal.auth.signInWithRedirect(provider);

@@ -15,26 +15,9 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
         type: Object,
         observer: 'onRouteChanged_',
       },
-      // The route path as computed by the global Redux state.
-      path: {
-        type: String,
-        statePath: 'appRoute.path',
-      },
-      pageWelcomeActive: {
-        type: Boolean,
-        statePath: 'appRoute.pageWelcomeActive',
-      },
-      pageRecipesActive: {
-        type: Boolean,
-        statePath: 'appRoute.pageRecipesActive',
-      },
-      pageFlavorsActive: {
-        type: Boolean,
-        statePath: 'appRoute.pageFlavorsActive',
-      },
-      pageSigninActive: {
-        type: Boolean,
-        statePath: 'appRoute.pageSigninActive',
+      activeRoute: {
+        type: Object,
+        statePath: 'appRoute',
       },
     };
   }
@@ -51,8 +34,12 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
     this.changeRoute('/#/');
   }
 
-  goSignin() {
-    this.changeRoute('/#/signin');
+  goUserSignin() {
+    this.changeRoute('/#/user/signin');
+  }
+
+  goUserAction(mode) {
+    this.changeRoute('/#/user/action?mode=' + mode);
   }
 
   changeRoute(url) {

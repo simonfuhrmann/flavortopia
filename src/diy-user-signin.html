@@ -1,3 +1,4 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
@@ -5,6 +6,7 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="mixin-redux.html">
+<link rel="import" href="mixin-router.html">
 <link rel="import" href="diy-theme.html">
 <link rel="import" href="diy-paper-input.html">
 <link rel="import" href="diy-firebase.html">
@@ -64,10 +66,12 @@
         </diy-paper-input>
 
         <div class="flex"></div>
-        <div class="layout horizontal end-justified">
-          <paper-button
-              id="signinButton"
-              on-tap="userSigninTap_">
+        <div class="layout horizontal">
+          <paper-button on-tap="resetPasswordTap_">
+            Reset Password
+          </paper-button>
+          <div class="flex"></div>
+          <paper-button id="signinButton" on-tap="userSigninTap_">
             Sign in
           </paper-button>
         </div>
@@ -92,12 +96,8 @@
             label="Password (repeat)"
             type="password">
         </diy-paper-input>
-
-        <div class="flex"></div>
         <div class="layout horizontal end-justified">
-          <paper-button
-              id="signupButton"
-              on-tap="userSignupTap_">
+          <paper-button id="signupButton" on-tap="userSignupTap_">
             Sign up
           </paper-button>
         </div>
@@ -111,7 +111,7 @@
       </div>
     </paper-dialog>
 
-    <paper-dialog with-backdrop id="errorDialog">
+    <paper-dialog with-backdrop id="errorDialog" class="error-dialog">
       <div class="dialog-title">
         <iron-icon icon="icons:error"></iron-icon>
         <h2>Sign-in error</h2>

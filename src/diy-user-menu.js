@@ -28,7 +28,7 @@ class DiyUserMenu extends DiyMixinRedux(DiyMixinRouter(Polymer.Element)) {
   }
 
   onSigninTap_() {
-    this.goSignin();
+    this.goUserSignin();
   }
 
   onSignoutTap_() {

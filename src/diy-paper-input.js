@@ -5,7 +5,10 @@ class DiyPaperInput extends Polymer.Element {
 
   static get properties() {
     return {
-      value: String,
+      value: {
+        type: String,
+        notify: true,
+      },
       label: String,
       type: String,
       focused: {

@@ -32,3 +32,25 @@
   --drawer-background: var(--secondary-background);
   --drawer-active-background: #d4d7d7;
 }
+
+/* Dialog styles. */
+
+paper-dialog h2 {
+  margin: 0;
+}
+
+paper-dialog .dialog-title {
+  padding: 24px;
+  margin: 0;
+  @apply --layout-horizontal;
+  @apply --layout-center;
+}
+
+paper-dialog.error-dialog .dialog-title {
+  background-color: var(--error-button-background);
+  color: var(--error-button-color);
+}
+
+paper-dialog .dialog-title iron-icon {
+  margin-right: 16px;
+}

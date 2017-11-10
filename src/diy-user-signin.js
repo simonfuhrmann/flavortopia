@@ -5,6 +5,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
 
   static get properties() {
     return {
+      passwordResetEmail: String,
       errorMessage: String,
     };
   }
@@ -85,7 +86,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
       return;
     }
     if (pass1 != pass2) {
-      this.set('errorMessage', 'The passwords to not match.');
+      this.set('errorMessage', 'The passwords do not match.');
       this.$.errorDialog.open();
       return;
     }
@@ -94,20 +95,24 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     this.$.signupButton.disabled = true;
     this.$.signinButton.disabled = true;
     this.$.firebase.authSignupEmailPassword(email, pass1)
-        .catch(error => {
-          this.$.signupButton.disabled = false;
-          this.$.signinButton.disabled = false;
-          this.set('errorMessage', error.message);
-          this.$.errorDialog.open();
-          throw error;
-        })
         .then(data => {
           // If sign-up was successful, return to home.
           this.$.signupButton.disabled = false;
           this.$.signinButton.disabled = false;
           this.goHome();
           return data;
+        })
+        .catch(error => {
+          this.$.signupButton.disabled = false;
+          this.$.signinButton.disabled = false;
+          this.set('errorMessage', error.message);
+          this.$.errorDialog.open();
+          throw error;
         });
+  }
+
+  resetPasswordTap_() {
+    this.goUserAction('lostPassword');
   }
 
   signinGoogle_() {

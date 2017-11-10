@@ -1,3 +1,4 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
@@ -6,7 +7,6 @@
 <link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
 <link rel="import" href="../bower_components/paper-item/paper-item-body.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="mixin-router.html">
@@ -41,7 +41,7 @@
           <span>Database</span>
         </div>
         <a href="#/recipes">
-          <paper-icon-item highlight$="[[pageRecipesActive]]">
+          <paper-icon-item highlight$="[[activeRoute.isRecipesActive]]">
             <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
             <paper-item-body>
               <div primary>Recipes</div>
@@ -50,7 +50,7 @@
           </paper-icon-item>
         </a>
         <a href="#/flavors">
-          <paper-icon-item highlight$="[[pageFlavorsActive]]">
+          <paper-icon-item highlight$="[[activeRoute.isFlavorsActive]]">
             <iron-icon slot="item-icon" icon="icons:opacity"></iron-icon>
             <paper-item-body>
               <div primary>Flavors</div>
@@ -65,7 +65,7 @@
           <span>Your Stuff</span>
         </div>
         <a href="#/user/inventory">
-          <paper-icon-item highlight$="[[pageUserInventoryActive]]">
+          <paper-icon-item highlight$="[[activeRoute.isUserInventoryActive]]">
             <iron-icon slot="item-icon" icon="icons:work"></iron-icon>
             <paper-item-body>
               <div primary>Inventory</div>
@@ -74,7 +74,7 @@
           </paper-icon-item>
         </a>
         <a href="#/user/recipes">
-          <paper-icon-item highlight$="[[pageUserRecipesActive]]">
+          <paper-icon-item highlight$="[[activeRoute.isUserRecipesActive]]">
             <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
             <paper-item-body>
               <div primary>Receips</div>
@@ -83,7 +83,7 @@
           </paper-icon-item>
         </a>
         <a href="#/user/favorites">
-          <paper-icon-item highlight$="[[pageUserFavoritesActive]]">
+          <paper-icon-item highlight$="[[activeRoute.isUserFavoritesActive]]">
             <iron-icon slot="item-icon" icon="icons:favorite"></iron-icon>
             <paper-item-body>
               <div primary>Favorites</div>

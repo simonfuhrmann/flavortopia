@@ -1,9 +1,10 @@
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 
 <link rel="import" href="mixin-router.html">
 <link rel="import" href="diy-welcome.html">
 <link rel="import" href="diy-user-signin.html">
+<link rel="import" href="diy-user-action.html">
 <link rel="import" href="diy-all-flavors.html">
 <link rel="import" href="diy-all-recipes.html">
 
@@ -11,21 +12,24 @@
   <link rel="import" type="css" href="diy-content.css">
   <template>
 
-    <template is="dom-if" if="[[pageWelcomeActive]]">
+    <template is="dom-if" if="[[activeRoute.isWelcomeActive]]">
       <diy-welcome></diy-welcome>
     </template>
 
-    <template is="dom-if" if="[[pageRecipesActive]]">
+    <template is="dom-if" if="[[activeRoute.isRecipesActive]]">
       <diy-all-recipes></diy-all-recipes>
     </template>
 
-    <template is="dom-if" if="[[pageFlavorsActive]]">
+    <template is="dom-if" if="[[activeRoute.isFlavorsActive]]">
       <diy-all-flavors></diy-all-flavors>
     </template>
 
-    <!-- Restamp to destroy element when if-condition becomes false. -->
-    <template is="dom-if" if="[[pageSigninActive]]" restamp>
+    <template is="dom-if" if="[[activeRoute.isUserSigninActive]]" restamp>
       <diy-user-signin></diy-user-signin>
+    </template>
+
+    <template is="dom-if" if="[[activeRoute.isUserActionActive]]" restamp>
+      <diy-user-action></diy-user-action>
     </template>
 
   </template>

@@ -1,0 +1,195 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="mixin-router.html">
+<link rel="import" href="diy-firebase.html">
+<link rel="import" href="diy-theme.html">
+<link rel="import" href="diy-paper-input.html">
+
+<dom-module id="diy-user-action">
+  <link rel="import" type="css" href="diy-user-action.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <diy-firebase id="firebase"></diy-firebase>
+
+    <!-- Interface to send an email with a password reset code. -->
+    <paper-card id="lostPasswordCard" hidden>
+      <h2>Reset Password</h2>
+      <p>
+        Please enter the e-mail address of the login for which you want
+        to reset the password. You will be receiving an email from Firebase
+        with a confirmation code to reset your password.
+      </p>
+      <diy-paper-input
+          id="passwordResetEmailInput"
+          label="E-Mail Address">
+      </diy-paper-input>
+      <div class="layout horizontal end-justified">
+        <paper-button raised
+            id="passwordResetSendEmailButton"
+            on-tap="passwordResetSendEmailTap_">
+          Send Code
+        </paper-button>
+      </div>
+    </paper-card>
+
+    <!-- Notification that a reset email has been sent. -->
+    <paper-card id="resetCodeSentCard" hidden>
+      <h2>Reset Code Sent</h2>
+      <p>
+        The password reset code has been sent to the provided email address.
+        Please confirm the password reset by clicking on the link in the email,
+        or enter the reset code manually.
+      </p>
+      <div class="layout horizontal end-justified">
+        <paper-button raised
+            id="passwordResetEnterCodeButton"
+            on-tap="passwordResetEnterCodeTap_">
+          Enter Code
+        </paper-button>
+      </div>
+    </paper-card>
+
+    <!-- Interface to enter reset code and new password. -->
+    <paper-card id="resetPasswordCard" hidden>
+      <h2>Enter Reset Code and New Password</h2>
+      <p>
+        Please enter the reset code and the new password for the account.
+      </p>
+      <diy-paper-input
+          id="passwordResetCodeInput"
+          label="Password Reset Code"
+          value="[[query.oobCode]]">
+      </diy-paper-input>
+      <diy-paper-input
+          id="passwordResetPasswordInput"
+          type="password"
+          label="New Password">
+      </diy-paper-input>
+      <diy-paper-input
+          id="passwordResetPasswordInputRepeat"
+          type="password"
+          label="New Password (repeat)">
+      </diy-paper-input>
+      <div class="layout horizontal end-justified">
+        <paper-button raised
+            id="passwordResetSubmitCodeButton"
+            on-tap="passwordResetSubmitCodeTap_">
+          Change Password
+        </paper-button>
+      </div>
+    </paper-card>
+
+    <!-- Notification that the password reset is complete. -->
+    <paper-card id="resetCompleteCard" hidden>
+      <h2>Password Rest Complete</h2>
+      <p>
+        The password reset was successful.
+        Please sign in using your email and your shiny new password.
+      </p>
+      <div class="layout horizontal end-justified">
+        <paper-button raised
+            id="passwordResetSigninButton"
+            on-tap="passwordResetSigninTap_">
+          Sign In
+        </paper-button>
+      </div>
+    </paper-card>
+
+    <!-- Generic error dialog. -->
+    <paper-dialog id="errorDialog" class="error-dialog" modal>
+      <div class="dialog-title">
+        <iron-icon icon="icons:error"></iron-icon>
+        <h2>[[errorDialogTitle]]</h2>
+      </div>
+      <div class="content">
+        <p>[[errorDialogMessage]]</p>
+      </div>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Close</paper-button>
+      </div>
+    </paper-dialog>
+
+  </template>
+  <script type="text/javascript" src="diy-user-action.js"></script>
+</dom-module>
+
+
+
+
+<!--
+
+    <paper-dialog id="resetPasswordDialog" modal>
+      <div class="dialog-title">
+        <iron-icon icon="icons:lock"></iron-icon>
+        <h2>Reset Password</h2>
+      </div>
+      <div class="content">
+
+      </div>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button
+            disabled="[[!passwordResetEmail]]"
+            on-tap="resetPasswordConfirmTap_">
+          Reset Password
+        </paper-button>
+      </div>
+    </paper-dialog>
+
+    <paper-dialog id="resetPasswordCodeDialog" modal>
+      <div class="dialog-title">
+        <iron-icon icon="icons:lock"></iron-icon>
+        <h2>Verify Password Reset</h2>
+      </div>
+      <div class="content">
+        <p>
+          An e-mail with a reset code has been sent to the provided address.
+          Please enter the reset code here:
+        </p>
+        <diy-paper-input
+            id="passwordResetCodeInput"
+            label="Password Reset Code">
+        </diy-paper-input>
+        <p>
+          Enter a new password for the account.
+        </p>
+        <diy-paper-input
+            id="passwordResetNewPassword"
+            type="password"
+            label="New Password">
+        </diy-paper-input>
+        <diy-paper-input
+            id="passwordResetNewPasswordRepeat"
+            type="password"
+            label="New Password (repeat)">
+        </diy-paper-input>
+      </div>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button on-tap="resetPasswordCodeTap_">
+          Confirm
+        </paper-button>
+      </div>
+    </paper-dialog>
+
+    <paper-dialog id="resetPasswordCompleteDialog" with-backdrop>
+      <div class="dialog-title">
+        <iron-icon icon="icons:done"></iron-icon>
+        <h2>Password Reset Successful</h2>
+      </div>
+      <div class="content">
+        <p>
+          An e-mail with a reset code has been sent to [[passwordResetEmail]].
+          Please enter the reset code here.
+        </p>
+      </div>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Close</paper-button>
+      </div>
+    </paper-dialog>
+
+-->

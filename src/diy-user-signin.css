@@ -58,24 +58,3 @@ paper-button {
 [hidden] {
   display: none !important;
 }
-
-/* Dialog styles */
-/* TODO Move to separate element. */
-paper-dialog {
-  max-width: 500px;
-}
-paper-dialog h2 {
-  margin: 0;
-}
-paper-dialog .dialog-title {
-  padding: 16px;
-  margin: 0;
-  background-color: var(--error-button-background);
-  color: var(--error-button-color);
-
-  @apply --layout-horizontal;
-  @apply --layout-center;
-}
-paper-dialog .dialog-title iron-icon {
-  margin-right: 16px;
-}

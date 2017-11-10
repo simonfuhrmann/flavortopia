@@ -1,0 +1,27 @@
+paper-card {
+  display: block;
+  padding: 16px;
+  max-width: 690px;
+  margin: 0 auto;
+}
+
+paper-card h2 {
+  margin-top: 0;
+}
+
+paper-dialog {
+  width: 400px;
+}
+
+#passwordResetSendEmailButton,
+#passwordResetEnterCodeButton,
+#passwordResetSubmitCodeButton,
+#passwordResetSigninButton {
+  margin: 8px 0 0 0;
+  background-color: var(--primary-button-background);
+  color: var(--primary-button-color);
+}
+
+[hidden] {
+  display: none !important;
+}
