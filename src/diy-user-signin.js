@@ -6,7 +6,6 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
   static get properties() {
     return {
       passwordResetEmail: String,
-      errorMessage: String,
     };
   }
 
@@ -40,8 +39,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
         })
         .catch(error => {
           this.$.waitingForTokenDialog.close();
-          this.set('errorMessage', error.message);
-          this.$.errorDialog.open();
+          this.$.errorDialog.openError('Sign-in error', error.message);
         });
   }
 
@@ -50,8 +48,8 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     const email = this.$.signinEmailInput.value;
     const pass = this.$.signinPasswordInput.value;
     if (!email || !pass) {
-      this.set('errorMessage', 'E-Mail and/or password is invalid.');
-      this.$.errorDialog.open();
+      this.$.errorDialog.openError(
+          'Sign-in error', 'E-Mail and/or password is invalid.');
       return;
     }
 
@@ -62,8 +60,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
         .catch(error => {
           this.$.signupButton.disabled = false;
           this.$.signinButton.disabled = false;
-          this.set('errorMessage', error.message);
-          this.$.errorDialog.open();
+          this.$.errorDialog.openError('Sign-in error', error.message);
           throw error;
         })
         .then(data => {
@@ -81,13 +78,13 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     const pass1 = this.$.signupPasswordInput.value;
     const pass2 = this.$.signupPasswordRepeatInput.value;
     if (!email || !pass1 || !pass2) {
-      this.set('errorMessage', 'E-Mail and/or password is invalid.');
-      this.$.errorDialog.open();
+      this.$.errorDialog.openError(
+          'Sign-in error', 'E-Mail and/or password is invalid.');
       return;
     }
     if (pass1 != pass2) {
-      this.set('errorMessage', 'The passwords do not match.');
-      this.$.errorDialog.open();
+      this.$.errorDialog.openError(
+          'Sign-in error', 'The passwords do not match.');
       return;
     }
 
@@ -105,8 +102,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
         .catch(error => {
           this.$.signupButton.disabled = false;
           this.$.signinButton.disabled = false;
-          this.set('errorMessage', error.message);
-          this.$.errorDialog.open();
+          this.$.errorDialog.openError('Sign-in error', error.message);
           throw error;
         });
   }

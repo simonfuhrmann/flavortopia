@@ -49,7 +49,7 @@ class DiyUserAction extends DiyMixinRouter(Polymer.Element) {
     this.$.passwordResetSendEmailButton.disabled = true;
     const email = this.$.passwordResetEmailInput.value;
     if (!email) {
-      this.showErrorDialog_(
+      this.$.errorDialog.openError(
           'Invalid Email Address',
           'Please provide a valid email address.');
       return;
@@ -58,7 +58,7 @@ class DiyUserAction extends DiyMixinRouter(Polymer.Element) {
     this.$.firebase.authSendPasswordResetEmail(email)
         .catch((error) => {
           this.$.passwordResetSendEmailButton.disabled = false;
-          this.showErrorDialog_('Error Sending Code', error.message);
+          this.$.errorDialog.openError('Error Sending Code', error.message);
           throw error;
         })
         .then((data) => {
@@ -77,11 +77,15 @@ class DiyUserAction extends DiyMixinRouter(Polymer.Element) {
     const pass1 = this.$.passwordResetPasswordInput.value;
     const pass2 = this.$.passwordResetPasswordInputRepeat.value;
     if (pass1 != pass2) {
-      this.showErrorDialog_('Password Error', 'The passwords do not match.');
+      this.$.errorDialog.openError(
+          'Password Error',
+          'The passwords do not match.');
       return;
     }
     if (!pass1) {
-      this.showErrorDialog_('Password Error', 'Please enter a valid password.');
+      this.$.errorDialog.openError(
+          'Password Error',
+          'Please enter a valid password.');
       return;
     }
 
@@ -93,19 +97,13 @@ class DiyUserAction extends DiyMixinRouter(Polymer.Element) {
         })
         .catch((error) => {
           this.$.passwordResetSubmitCodeButton.disabled = false;
-          this.showErrorDialog_('Password Reset Error', error.message);
+          this.$.errorDialog.openError('Password Reset Error', error.message);
           throw error;
         });
   }
 
   passwordResetSigninTap_() {
     this.goUserSignin();
-  }
-
-  showErrorDialog_(title, message) {
-    this.set('errorDialogTitle', title);
-    this.set('errorDialogMessage', message);
-    this.$.errorDialog.open();
   }
 
   focusInput_(element) {

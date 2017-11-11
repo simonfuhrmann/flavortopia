@@ -10,6 +10,7 @@
 <link rel="import" href="diy-theme.html">
 <link rel="import" href="diy-paper-input.html">
 <link rel="import" href="diy-firebase.html">
+<link rel="import" href="diy-dialog.html">
 
 <dom-module id="diy-user-signin">
   <link rel="import" type="css" href="diy-user-signin.css">
@@ -23,25 +24,25 @@
       <h2>Third Party Sign-In</h2>
       <div class="layout horizontal center-justified spaced">
 
-        <paper-button raised class="auth-provider" on-tap="signinFacebook_">
-          <img src="images/auth_service_facebook.svg">
-          <span>Sign-in with</span>
-          <span>Facebook</span>
-        </paper-button>
-
         <paper-button raised class="auth-provider" on-tap="signinGoogle_">
           <img src="images/auth_service_google.svg">
           <span>Sign-in with</span>
           <span>Google</span>
         </paper-button>
 
-        <paper-button raised class="auth-provider" on-tap="signinGithub_">
+        <paper-button disabled class="auth-provider" on-tap="signinFacebook_">
+          <img src="images/auth_service_facebook.svg">
+          <span>Sign-in with</span>
+          <span>Facebook</span>
+        </paper-button>
+
+        <paper-button disabled class="auth-provider" on-tap="signinGithub_">
           <img src="images/auth_service_github.svg">
           <span>Sign-in with</span>
           <span>Github</span>
         </paper-button>
 
-        <paper-button raised class="auth-provider" on-tap="signinTwitter_">
+        <paper-button disabled class="auth-provider" on-tap="signinTwitter_">
           <img src="images/auth_service_twitter.svg">
           <span>Sign-in with</span>
           <span>Twitter</span>
@@ -111,18 +112,8 @@
       </div>
     </paper-dialog>
 
-    <paper-dialog with-backdrop id="errorDialog" class="error-dialog">
-      <div class="dialog-title">
-        <iron-icon icon="icons:error"></iron-icon>
-        <h2>Sign-in error</h2>
-      </div>
-      <div class="content">
-        [[errorMessage]]
-      </div>
-      <div class="buttons">
-        <paper-button dialog-dismiss>Close</paper-button>
-      </div>
-    </paper-dialog>
+    <!-- Generic error dialog. -->
+    <diy-dialog id="errorDialog"></diy-dialog>
 
   </template>
   <script type="text/javascript" src="diy-user-signin.js"></script>

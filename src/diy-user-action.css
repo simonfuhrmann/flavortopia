@@ -9,10 +9,6 @@ paper-card h2 {
   margin-top: 0;
 }
 
-paper-dialog {
-  width: 400px;
-}
-
 #passwordResetSendEmailButton,
 #passwordResetEnterCodeButton,
 #passwordResetSubmitCodeButton,

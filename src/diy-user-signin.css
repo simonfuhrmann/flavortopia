@@ -39,6 +39,10 @@ paper-button {
   margin-bottom: 8px;
 }
 
+.auth-provider[disabled] img {
+  opacity: 0.5;
+}
+
 .auth-provider span {
   font-size: 0.8em;
 }
