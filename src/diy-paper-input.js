@@ -9,8 +9,18 @@ class DiyPaperInput extends Polymer.Element {
         type: String,
         notify: true,
       },
-      label: String,
-      type: String,
+      label: {
+        type: String,
+        value: '',
+      },
+      error: {
+        type: String,
+        value: '',
+      },
+      type: {
+        type: String,
+        value: 'text',
+      },
       focused: {
         type: Boolean,
         value: false,
@@ -40,8 +50,16 @@ class DiyPaperInput extends Polymer.Element {
     this.$.nativeInput.focus();
   }
 
-  hasLabel_() {
-    return this.label.length > 0;
+  setError(errorMessage) {
+    this.set('error', errorMessage);
+  }
+
+  hasLabel_(label) {
+    return !!label;
+  }
+
+  hasError_(error) {
+    return !!error;
   }
 
   onFocus_() {

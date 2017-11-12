@@ -12,8 +12,13 @@
   color: var(--paper-input-focus-color, blue);
 }
 
+#error {
+  color: var(--paper-input-error-color, red);
+  @apply --paper-font-caption;
+}
+
 #container {
-  background-color: var(--paper-input-background-color, white);;
+  background-color: var(--paper-input-background-color, white);
   border: 1px solid var(--paper-input-border-color, #ddd);
   padding: 0px 4px;
 }
@@ -42,7 +47,7 @@ input {
   border-top: 2px solid var(--paper-input-focus-color, blue);
   height: 0;
   opacity: 1.0;
-  transition: transform 0.5s;
+  transition-duration: 0.5s;
   transition-property: opacity;
 }
 

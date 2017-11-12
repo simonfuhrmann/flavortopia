@@ -28,6 +28,7 @@
   --paper-input-focus-color: var(--secondary-button-background);
   --paper-input-border-color: #ddd;
   --paper-input-background-color: white;
+  --paper-input-error-color: var(--error-button-background);
 
   --drawer-background: var(--secondary-background);
   --drawer-active-background: #d4d7d7;
@@ -49,6 +50,11 @@ paper-dialog .dialog-title {
 paper-dialog.error-dialog .dialog-title {
   background-color: var(--error-button-background);
   color: var(--error-button-color);
+}
+
+paper-dialog.info-dialog .dialog-title {
+  background-color: var(--info-button-background);
+  color: var(--info-button-color);
 }
 
 paper-dialog .dialog-title iron-icon {
