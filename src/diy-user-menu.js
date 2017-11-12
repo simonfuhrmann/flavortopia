@@ -52,6 +52,7 @@ class DiyUserMenu extends DiyMixinRedux(DiyMixinRouter(Polymer.Element)) {
     // display name if not already done.
     if (firebaseUser) {
       this.loadUserDetails_();
+      this.goHome();
     }
   }
 

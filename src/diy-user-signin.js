@@ -33,11 +33,6 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     this.$.firebase.authGetRedirectResult()
         .then(data => {
           this.$.waitingForTokenDialog.close();
-          // FIXME: getRedirectResult can be called multiple times, returning
-          // the same user. Thus a second login attempt will return home. :(
-          if (data.user) {
-            this.goHome();
-          }
         })
         .catch(error => {
           this.$.waitingForTokenDialog.close();
