@@ -1,0 +1,66 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="diy-main-menu">
+  <link rel="import" type="css" href="diy-main-menu.css">
+  <template>
+
+    <!-- Database -->
+    <div class="menu-header layout horizontal center">
+      <iron-icon slot="item-icon" icon="icons:cloud"></iron-icon>
+      <span>Database</span>
+    </div>
+    <a href="#/recipes">
+      <paper-icon-item highlight$="[[activeRoute.isRecipesActive]]">
+        <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
+        <paper-item-body>
+          <div primary>Recipes</div>
+          <div secondary>See what others mixed</div>
+        </paper-item-body>
+      </paper-icon-item>
+    </a>
+    <a href="#/flavors">
+      <paper-icon-item highlight$="[[activeRoute.isFlavorsActive]]">
+        <iron-icon slot="item-icon" icon="icons:opacity"></iron-icon>
+        <paper-item-body>
+          <div primary>Flavors</div>
+          <div secondary>Explore and get inspired</div>
+        </paper-item-body>
+      </paper-icon-item>
+    </a>
+
+    <!-- User's stuff -->
+    <div class="menu-header layout horizontal center">
+      <iron-icon slot="item-icon" icon="icons:face"></iron-icon>
+      <span>Your Stuff</span>
+    </div>
+    <a href="#/user/inventory">
+      <paper-icon-item highlight$="[[activeRoute.isUserInventoryActive]]">
+        <iron-icon slot="item-icon" icon="icons:work"></iron-icon>
+        <paper-item-body>
+          <div primary>Inventory</div>
+          <div secondary>Flavors you possess</div>
+        </paper-item-body>
+      </paper-icon-item>
+    </a>
+    <a href="#/user/recipes">
+      <paper-icon-item highlight$="[[activeRoute.isUserRecipesActive]]">
+        <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
+        <paper-item-body>
+          <div primary>Receips</div>
+          <div secondary>Your own creations</div>
+        </paper-item-body>
+      </paper-icon-item>
+    </a>
+    <a href="#/user/favorites">
+      <paper-icon-item highlight$="[[activeRoute.isUserFavoritesActive]]">
+        <iron-icon slot="item-icon" icon="icons:favorite"></iron-icon>
+        <paper-item-body>
+          <div primary>Favorites</div>
+          <div secondary>Recipes to remember</div>
+        </paper-item-body>
+      </paper-icon-item>
+    </a>
+
+  </template>
+  <script type="text/javascript" src="diy-main-menu.js"></script>
+</dom-module>
