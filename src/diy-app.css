@@ -24,37 +24,6 @@ app-drawer {
   }
 }
 
-app-drawer a {
-  text-decoration: none;
-  color: var(--primary-color);
-}
-
-paper-icon-item {
-  --paper-item-icon-width: 40px;
-  border-bottom: 1px solid var(--drawer-active-background);
-}
-
-paper-icon-item [primary] {
-  line-height: 1.2em;
-}
-
-paper-icon-item [secondary] {
-  line-height: 1.2em;
-  font-size: 0.8em;
-}
-
-paper-icon-item[highlight] {
-  background-color: var(--drawer-active-background);
-}
-
-div.menu-header {
-  background-color: var(--secondary-button-background);
-  color: var(--secondary-button-color);
-  font-weight: bold;
-  margin: 16px 0;
-  padding: 16px;
-}
-
-div.menu-header iron-icon {
-  padding-right: 16px;
+paper-dialog {
+  width: 400px;
 }

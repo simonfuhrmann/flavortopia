@@ -1,8 +1,8 @@
 const initialState = {
   appRoute: {
-    path: '/',  // The route path, e.g., /flavors.
-    query: {},  // The route query parameters, e.g., { foo: "bar" }.
-    fragment: '',  // The route fragment (part after the '#' in the URL).
+    path: '/',  // The URL path, e.g., /flavors.
+    query: {},  // The URL query parameters, e.g., { foo: "bar" }.
+    fragment: '',  // The URL fragment (part after the '#' in the URL).
     isWelcomeActive: false,
     isFlavorsActive: false,
     isRecipesActive: false,
@@ -11,9 +11,16 @@ const initialState = {
   },
   flavors: {},
   vendors: {},
-  userAuth: {
-    signedIn: false,
-    firebaseUser: undefined,
+  user: {
+    auth: {
+      signedIn: false,
+      verified: false,
+      firebaseUser: undefined,
+    },
+    details: {
+      name: undefined,  // The public user display name.
+      email: undefined,  // The private user email.
+    },
   },
 };
 
@@ -73,12 +80,22 @@ function reducerInitVendors(state, action) {
 }
 
 function reducerUserSignin(state, action) {
-  return Object.assign({}, state, {
-    userAuth: {
-      signedIn: action.data.signedIn,
-      firebaseUser: action.data.firebaseUser,
-    },
-  });
+  const newState = Object.assign({}, state);
+  newState.user.auth = {
+    signedIn: action.data.signedIn,
+    verified: action.data.verified,
+    firebaseUser: action.data.firebaseUser,
+  };
+  return newState;
+}
+
+function reducerUserDetails(state, action) {
+  const newState = Object.assign({}, state);
+  newState.user.details = {
+    name: action.data.name,
+    email: action.data.email,
+  };
+  return newState;
 }
 
 const reduxReducer = function(state = initialState, action) {
@@ -91,6 +108,8 @@ const reduxReducer = function(state = initialState, action) {
       return reducerUpdateRoute(state, action);
     case 'USER_SIGNIN':
       return reducerUserSignin(state, action);
+    case 'USER_DETAILS':
+      return reducerUserDetails(state, action);
   }
   return state;
 }

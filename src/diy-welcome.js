@@ -7,7 +7,7 @@ class DiyWelcome extends DiyMixinRedux(Polymer.Element) {
       welcomeMessage: String,
       userAuth: {
         type: Object,
-        statePath: 'userAuth',
+        statePath: 'user.auth',
         observer: 'onUserAuthChanged_',
       },
     };

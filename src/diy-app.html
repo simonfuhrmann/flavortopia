@@ -10,10 +10,12 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="mixin-router.html">
+<link rel="import" href="diy-firebase.html">
 <link rel="import" href="diy-content.html">
 <link rel="import" href="diy-user-menu.html">
 <link rel="import" href="diy-drawer-layout.html">
 <link rel="import" href="diy-theme.html">
+<link rel="import" href="diy-main-menu.html">
 
 <dom-module id="diy-app">
   <!-- <link rel="stylesheet" type="css" href="diy-app.css"> -->
@@ -25,6 +27,9 @@
     <!-- Application routes. -->
     <app-location use-hash-as-path route="{{route}}"></app-location>
 
+    <!-- Access to the firebase system. -->
+    <diy-firebase id="firebase"></diy-firebase>
+
     <!-- Application toolbar. -->
     <app-toolbar>
       <paper-icon-button icon="icons:home" on-tap="goHome"></paper-icon-button>
@@ -32,65 +37,10 @@
       <diy-user-menu></diy-user-menu>
     </app-toolbar>
 
-    <!-- Application menu. -->
-    <diy-drawer-layout id="drawerLayout">
+    <diy-drawer-layout>
+      <!-- Application menu. -->
       <app-drawer slot="drawer" opened>
-        <!-- Database -->
-        <div class="menu-header layout horizontal center">
-          <iron-icon slot="item-icon" icon="icons:cloud"></iron-icon>
-          <span>Database</span>
-        </div>
-        <a href="#/recipes">
-          <paper-icon-item highlight$="[[activeRoute.isRecipesActive]]">
-            <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
-            <paper-item-body>
-              <div primary>Recipes</div>
-              <div secondary>See what others mixed</div>
-            </paper-item-body>
-          </paper-icon-item>
-        </a>
-        <a href="#/flavors">
-          <paper-icon-item highlight$="[[activeRoute.isFlavorsActive]]">
-            <iron-icon slot="item-icon" icon="icons:opacity"></iron-icon>
-            <paper-item-body>
-              <div primary>Flavors</div>
-              <div secondary>Explore and get inspired</div>
-            </paper-item-body>
-          </paper-icon-item>
-        </a>
-
-        <!-- User's stuff -->
-        <div class="menu-header layout horizontal center">
-          <iron-icon slot="item-icon" icon="icons:face"></iron-icon>
-          <span>Your Stuff</span>
-        </div>
-        <a href="#/user/inventory">
-          <paper-icon-item highlight$="[[activeRoute.isUserInventoryActive]]">
-            <iron-icon slot="item-icon" icon="icons:work"></iron-icon>
-            <paper-item-body>
-              <div primary>Inventory</div>
-              <div secondary>Flavors you possess</div>
-            </paper-item-body>
-          </paper-icon-item>
-        </a>
-        <a href="#/user/recipes">
-          <paper-icon-item highlight$="[[activeRoute.isUserRecipesActive]]">
-            <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
-            <paper-item-body>
-              <div primary>Receips</div>
-              <div secondary>Your own creations</div>
-            </paper-item-body>
-          </paper-icon-item>
-        </a>
-        <a href="#/user/favorites">
-          <paper-icon-item highlight$="[[activeRoute.isUserFavoritesActive]]">
-            <iron-icon slot="item-icon" icon="icons:favorite"></iron-icon>
-            <paper-item-body>
-              <div primary>Favorites</div>
-              <div secondary>Recipes to remember</div>
-            </paper-item-body>
-          </paper-icon-item>
-        </a>
+        <diy-main-menu></diy-main-menu>
       </app-drawer>
 
       <!-- Main content. -->
@@ -98,6 +48,30 @@
         <diy-content></diy-content>
       </main>
     </diy-drawer-layout>
+
+    <!-- Dialog to force the user to enter a display name. -->
+    <paper-dialog id="enterDisplayNameDialog" class="info-dialog" modal>
+      <div class="dialog-title">
+        <iron-icon icon="icons:account-circle"></iron-icon>
+        <h2>Enter your display name</h2>
+      </div>
+      <div class="content">
+        <p>
+          Flavortopia takes your privacy serious. As such, your email address
+          and real name that may be associated with your sign-in credientials is
+          never displayed to other users. You choose the name other users will
+          see.
+          <!-- You can change your display name at any time in your profile. -->
+        </p>
+        <diy-paper-input
+            label="Display Name"
+            id="displayNameInput">
+        </diy-paper-input>
+      </div>
+      <div class="buttons">
+        <paper-button on-tap="onSetDisplayNameTap_">Set Name</paper-button>
+      </div>
+    </paper-dialog>
 
   </template>
   <script type="text/javascript" src="diy-app.js"></script>

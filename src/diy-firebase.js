@@ -77,6 +77,18 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
     firebaseGlobal.auth.signOut();
   }
 
+  loadUserDetails(uid) {
+    this.initialize();
+    const userRef = firebaseGlobal.database.ref('users/' + uid);
+    return userRef.once('value');
+  }
+
+  writeUserDetails(uid, email, name) {
+    this.initialize();
+    const userRef = firebaseGlobal.database.ref('users/' + uid);
+    return userRef.set({ name, email });
+  }
+
   // TODO: error handling
   loadFlavorsAndVendors() {
     this.initialize();
