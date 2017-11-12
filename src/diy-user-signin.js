@@ -64,7 +64,6 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
           // If sign-up was successful, return to home.
           this.$.signupButton.disabled = false;
           this.$.signinButton.disabled = false;
-          this.goHome();
           return data;
         });
   }
@@ -93,7 +92,6 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
           // If sign-up was successful, return to home.
           this.$.signupButton.disabled = false;
           this.$.signinButton.disabled = false;
-          this.goHome();
           return data;
         })
         .catch(error => {
