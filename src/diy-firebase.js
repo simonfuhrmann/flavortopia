@@ -85,8 +85,12 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
 
   writeUserDetails(uid, email, name) {
     this.initialize();
+    const userRecord = {
+      private: { email },
+      public: { name },
+    };
     const userRef = firebaseGlobal.database.ref('users/' + uid);
-    return userRef.set({ name, email });
+    return userRef.set(userRecord);
   }
 
   // TODO: error handling

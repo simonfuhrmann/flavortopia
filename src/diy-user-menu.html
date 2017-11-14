@@ -3,13 +3,15 @@
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
-<link rel="import" href="diy-firebase.html">
 <link rel="import" href="mixin-redux.html">
 <link rel="import" href="mixin-router.html">
+<link rel="import" href="diy-firebase.html">
 
 <dom-module id="diy-user-menu">
   <link rel="import" type="css" href="diy-user-menu.css">
   <template>
+
+    <!-- Access to the firebase system. -->
     <diy-firebase id="firebase"></diy-firebase>
 
     <paper-button on-tap="onSigninTap_" hidden="[[userSignedIn]]">

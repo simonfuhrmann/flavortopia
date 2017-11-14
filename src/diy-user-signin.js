@@ -22,7 +22,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     // Focus Email input by default. Needs to be in a timeout.
     setTimeout(() => {
       this.$.signinEmailInput.focus();
-    }, 0);
+    }, 250);
 
     // Read authentication redirect result. The promise resolves immediately
     // with a null user if no authentication request has been made. The promise
@@ -114,12 +114,18 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
   }
 
   signinFacebook_() {
+    this.$.errorDialog.openError(
+      'Not implemented', 'Facebook auth provider is not yet supported.');
   }
 
   signinGithub_() {
+    this.$.errorDialog.openError(
+      'Not implemented', 'Github auth provider is not yet supported.');
   }
 
   signinTwitter_() {
+    this.$.errorDialog.openError(
+      'Not implemented', 'Twitter auth provider is not yet supported.');
   }
 }
 

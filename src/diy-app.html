@@ -10,9 +10,9 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="mixin-router.html">
-<link rel="import" href="diy-firebase.html">
 <link rel="import" href="diy-content.html">
 <link rel="import" href="diy-user-menu.html">
+<link rel="import" href="diy-user-auth.html">
 <link rel="import" href="diy-drawer-layout.html">
 <link rel="import" href="diy-theme.html">
 <link rel="import" href="diy-main-menu.html">
@@ -27,8 +27,8 @@
     <!-- Application routes. -->
     <app-location use-hash-as-path route="{{route}}"></app-location>
 
-    <!-- Access to the firebase system. -->
-    <diy-firebase id="firebase"></diy-firebase>
+    <!-- User authentication state handler. -->
+    <diy-user-auth></diy-user-auth>
 
     <!-- Application toolbar. -->
     <app-toolbar>
@@ -48,30 +48,6 @@
         <diy-content></diy-content>
       </main>
     </diy-drawer-layout>
-
-    <!-- Dialog to force the user to enter a display name. -->
-    <paper-dialog id="enterDisplayNameDialog" class="info-dialog" modal>
-      <div class="dialog-title">
-        <iron-icon icon="icons:account-circle"></iron-icon>
-        <h2>Enter your display name</h2>
-      </div>
-      <div class="content">
-        <p>
-          Flavortopia takes your privacy serious. As such, your email address
-          and real name that may be associated with your sign-in credientials is
-          never displayed to other users. You choose the name other users will
-          see.
-          <!-- You can change your display name at any time in your profile. -->
-        </p>
-        <diy-paper-input
-            label="Display Name"
-            id="displayNameInput">
-        </diy-paper-input>
-      </div>
-      <div class="buttons">
-        <paper-button on-tap="onSetDisplayNameTap_">Set Name</paper-button>
-      </div>
-    </paper-dialog>
 
   </template>
   <script type="text/javascript" src="diy-app.js"></script>
