@@ -33,6 +33,12 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     this.$.firebase.authGetRedirectResult()
         .then(data => {
           this.$.waitingForTokenDialog.close();
+          // Even after sign-out, getRedirectResult() resolves the promise
+          // although the user has not signed in. Check if there is a current
+          // user before redirecting.
+          if (this.$.firebase.authGetCurrentUser()) {
+            this.goHome();
+          }
         })
         .catch(error => {
           this.$.waitingForTokenDialog.close();

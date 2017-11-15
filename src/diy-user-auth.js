@@ -42,7 +42,6 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
     // Request additional user data after login.
     if (firebaseUser) {
       this.loadUserDetails_();
-      this.goHome();
     }
   }
 
