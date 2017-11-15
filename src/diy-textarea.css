@@ -4,38 +4,21 @@
   @apply --layout-vertical;
 }
 
-#label {
-  color: var(--secondary-text-color);
-  @apply --paper-font-caption;
-}
-
-#label[focused] {
-  color: var(--input-focus-color, blue);
-}
-
-#error {
-  color: var(--input-error-color, red);
-  @apply --paper-font-caption;
-}
-
 #container {
   background-color: var(--input-background-color, white);
   border: 1px solid var(--input-border-color, #ddd);
   padding: 0px 4px;
 }
 
-#input {
-  @apply --layout-vertical;
-}
-
-input {
+textarea {
   padding: 0;
   margin: 0;
   border: none;
   box-shadow: none;
   outline: none;
   background: transparent;
-  text-align: inherit;
+  width: 100%;
+  resize: vertical;
   @apply --paper-font-subhead;
 }
 

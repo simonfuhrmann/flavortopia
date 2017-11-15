@@ -1,0 +1,12 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="diy-textarea">
+  <link rel="import" type="css" href="diy-textarea.css">
+  <template>
+    <div id="container">
+      <textarea id="nativeInput" value="{{value::input}}"></textarea>
+    </div>
+    <div id="underline" focused$="[[focused]]"></div>
+  </template>
+  <script type="text/javascript" src="diy-textarea.js"></script>
+</dom-module>
