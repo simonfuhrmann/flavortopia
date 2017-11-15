@@ -9,17 +9,17 @@
 }
 
 #label[focused] {
-  color: var(--paper-input-focus-color, blue);
+  color: var(--input-focus-color, blue);
 }
 
 #error {
-  color: var(--paper-input-error-color, red);
+  color: var(--input-error-color, red);
   @apply --paper-font-caption;
 }
 
 #container {
-  background-color: var(--paper-input-background-color, white);
-  border: 1px solid var(--paper-input-border-color, #ddd);
+  background-color: var(--input-background-color, white);
+  border: 1px solid var(--input-border-color, #ddd);
   padding: 0px 4px;
 }
 
@@ -45,7 +45,7 @@ input {
 }
 
 #underline[focused] {
-  border-top: 2px solid var(--paper-input-focus-color, blue);
+  border-top: 2px solid var(--input-focus-color, blue);
   height: 0;
   opacity: 1.0;
   transition-duration: 0.5s;

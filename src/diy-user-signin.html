@@ -8,7 +8,7 @@
 <link rel="import" href="mixin-redux.html">
 <link rel="import" href="mixin-router.html">
 <link rel="import" href="diy-theme.html">
-<link rel="import" href="diy-paper-input.html">
+<link rel="import" href="diy-input.html">
 <link rel="import" href="diy-firebase.html">
 <link rel="import" href="diy-dialog.html">
 
@@ -54,17 +54,17 @@
     <paper-card class="layout horizontal">
       <div class="flex layout vertical right-separator">
         <h2>E-Mail Sign-In</h2>
-        <diy-paper-input
+        <diy-input
             id="signinEmailInput"
             always-float-label
             label="E-Mail">
-        </diy-paper-input>
-        <diy-paper-input
+        </diy-input>
+        <diy-input
             id="signinPasswordInput"
             always-float-label
             label="Password"
             type="password">
-        </diy-paper-input>
+        </diy-input>
 
         <div class="flex"></div>
         <div class="layout horizontal">
@@ -80,23 +80,23 @@
 
       <div class="flex layout vertical">
         <h2>Email Sign-up</h2>
-        <diy-paper-input
+        <diy-input
             id="signupEmailInput"
             always-float-label
             label="E-Mail">
-        </diy-paper-input>
-        <diy-paper-input
+        </diy-input>
+        <diy-input
             id="signupPasswordInput"
             always-float-label
             label="Password"
             type="password">
-        </diy-paper-input>
-        <diy-paper-input
+        </diy-input>
+        <diy-input
             id="signupPasswordRepeatInput"
             always-float-label
             label="Password (repeat)"
             type="password">
-        </diy-paper-input>
+        </diy-input>
         <div class="layout horizontal end-justified">
           <paper-button id="signupButton" on-tap="userSignupTap_">
             Sign up

@@ -1,6 +1,6 @@
-class DiyPaperInput extends Polymer.Element {
+class DiyInput extends Polymer.Element {
   static get is() {
-    return 'diy-paper-input';
+    return 'diy-input';
   }
 
   static get properties() {
@@ -75,4 +75,4 @@ class DiyPaperInput extends Polymer.Element {
   }
 }
 
-customElements.define(DiyPaperInput.is, DiyPaperInput);
+customElements.define(DiyInput.is, DiyInput);

@@ -6,7 +6,7 @@
 <link rel="import" href="mixin-router.html">
 <link rel="import" href="diy-firebase.html">
 <link rel="import" href="diy-theme.html">
-<link rel="import" href="diy-paper-input.html">
+<link rel="import" href="diy-input.html">
 <link rel="import" href="diy-dialog.html">
 
 <dom-module id="diy-user-action">
@@ -25,10 +25,10 @@
         to reset the password. You will be receiving an email from Firebase
         with a confirmation code to reset your password.
       </p>
-      <diy-paper-input
+      <diy-input
           id="passwordResetEmailInput"
           label="E-Mail Address">
-      </diy-paper-input>
+      </diy-input>
       <div class="layout horizontal end-justified">
         <paper-button raised
             id="passwordResetSendEmailButton"
@@ -61,21 +61,21 @@
       <p>
         Please enter the reset code and the new password for the account.
       </p>
-      <diy-paper-input
+      <diy-input
           id="passwordResetPasswordInput"
           type="password"
           label="New Password">
-      </diy-paper-input>
-      <diy-paper-input
+      </diy-input>
+      <diy-input
           id="passwordResetPasswordInputRepeat"
           type="password"
           label="New Password (repeat)">
-      </diy-paper-input>
-      <diy-paper-input
+      </diy-input>
+      <diy-input
           id="passwordResetCodeInput"
           label="Password Reset Code"
           value="[[activeRoute.query.oobCode]]">
-      </diy-paper-input>
+      </diy-input>
       <div class="layout horizontal end-justified">
         <paper-button raised
             id="passwordResetSubmitCodeButton"

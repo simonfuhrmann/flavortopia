@@ -1,8 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-input/iron-input.html">
 
-<dom-module id="diy-paper-input">
-  <link rel="import" type="css" href="diy-paper-input.css">
+<dom-module id="diy-input">
+  <link rel="import" type="css" href="diy-input.css">
   <template>
     <div id="label" focused$="[[focused]]" hidden="[[!hasLabel_(label)]]">
       [[label]]
@@ -19,5 +19,5 @@
     <div id="underline" focused$="[[focused]]"></div>
     <div id="error" hidden="[[!hasError_(error)]]">[[error]]</div>
   </template>
-  <script type="text/javascript" src="diy-paper-input.js"></script>
+  <script type="text/javascript" src="diy-input.js"></script>
 </dom-module>

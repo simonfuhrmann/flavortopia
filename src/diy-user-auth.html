@@ -5,7 +5,7 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="diy-firebase.html">
-<link rel="import" href="diy-paper-input.html">
+<link rel="import" href="diy-input.html">
 <link rel="import" href="diy-theme.html">
 
 <dom-module id="diy-user-auth">
@@ -30,10 +30,10 @@
           see.
           <!-- You can change your display name at any time in your profile. -->
         </p>
-        <diy-paper-input
+        <diy-input
             label="Display Name"
             id="displayNameInput">
-        </diy-paper-input>
+        </diy-input>
       </div>
       <div class="buttons">
         <paper-button on-tap="onSetDisplayNameTap_">Set Name</paper-button>
