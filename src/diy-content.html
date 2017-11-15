@@ -5,6 +5,7 @@
 <link rel="import" href="diy-welcome.html">
 <link rel="import" href="diy-user-signin.html">
 <link rel="import" href="diy-user-action.html">
+<link rel="import" href="diy-user-recipes.html">
 <link rel="import" href="diy-all-flavors.html">
 <link rel="import" href="diy-all-recipes.html">
 
@@ -22,6 +23,10 @@
 
     <template is="dom-if" if="[[activeRoute.isFlavorsActive]]">
       <diy-all-flavors></diy-all-flavors>
+    </template>
+
+    <template is="dom-if" if="[[activeRoute.isUserRecipesActive]]">
+      <diy-user-recipes></diy-user-recipes>
     </template>
 
     <template is="dom-if" if="[[activeRoute.isUserSigninActive]]" restamp>
