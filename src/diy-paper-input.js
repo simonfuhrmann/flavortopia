@@ -21,6 +21,10 @@ class DiyPaperInput extends Polymer.Element {
         type: String,
         value: 'text',
       },
+      maxlength: {
+        type: Number,
+        value: undefined,
+      },
       focused: {
         type: Boolean,
         value: false,

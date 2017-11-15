@@ -9,7 +9,11 @@
     </div>
     <div id="container">
       <iron-input id="input" bind-value="{{value}}">
-        <input id="nativeInput" type="[[type]]" value="{{value::input}}">
+        <input
+            id="nativeInput"
+            type$="[[type]]"
+            maxlength$="[[maxlength]]"
+            value="{{value::input}}">
       </iron-input>
     </div>
     <div id="underline" focused$="[[focused]]"></div>

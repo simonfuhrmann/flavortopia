@@ -34,6 +34,7 @@ input {
   box-shadow: none;
   outline: none;
   background: transparent;
+  text-align: inherit;
   @apply --paper-font-subhead;
 }
 
