@@ -12,8 +12,34 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
     };
   }
 
+  static get actions() {
+    return {
+      initFlavors(data) {
+        return { type: 'INIT_FLAVORS', data: data };
+      },
+      initVendors(data) {
+        return { type: 'INIT_VENDORS', data: data };
+      },
+    };
+  }
+
   onLoadDataTap_() {
-    this.$.firebase.loadFlavorsAndVendors();
+    this.$.firebase.loadVendors()
+        .then(snapshot => {
+          this.dispatch('initVendors', snapshot.val());
+        })
+        .catch(error => {
+          console.log('error loading vendors', error);
+        });
+
+    this.$.firebase.loadFlavors()
+        .then(snapshot => {
+          this.dispatch('initFlavors', snapshot.val());
+        })
+        .catch(error => {
+          console.log('error loading vendors', error);
+        });
+
   }
 
   onLogStoreTap_() {

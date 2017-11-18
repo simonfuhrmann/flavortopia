@@ -1,19 +1,8 @@
 let firebaseGlobal = undefined;
 
-class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
+class DiyFirebase extends Polymer.Element {
   static get is() {
     return 'diy-firebase';
-  }
-
-  static get actions() {
-    return {
-      initFlavors(data) {
-        return { type: 'INIT_FLAVORS', data: data };
-      },
-      initVendors(data) {
-        return { type: 'INIT_VENDORS', data: data };
-      },
-    };
   }
 
   initialize() {
@@ -97,22 +86,17 @@ class DiyFirebase extends DiyMixinRedux(Polymer.Element) {
     return userRef.set(userRecord);
   }
 
-  // TODO: error handling
-  loadFlavorsAndVendors() {
+  loadFlavors() {
     this.initialize();
     // Load all flavors and update redux store.
     const flavorsRef = firebaseGlobal.database.ref('flavors/');
-    flavorsRef.on('value', function(snapshot) {
-      this.dispatch('initFlavors', snapshot.val());
-      flavorsRef.off();
-    }.bind(this));
+    return flavorsRef.once('value');
+  }
 
-    // Load all vendors and update redux store.
+  loadVendors() {
+    this.initialize();
     const vendorsRef = firebaseGlobal.database.ref('vendors/');
-    vendorsRef.on('value', function(snapshot) {
-      this.dispatch('initVendors', snapshot.val());
-      vendorsRef.off();
-    }.bind(this));
+    return vendorsRef.once('value');
   }
 }
 
