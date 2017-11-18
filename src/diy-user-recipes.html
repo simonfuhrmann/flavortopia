@@ -1,9 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="diy-paper-input.html">
+<link rel="import" href="common/diy-input.html">
+<link rel="import" href="common/diy-textarea.html">
 <link rel="import" href="diy-theme.html">
 
 <dom-module id="diy-user-recipes">
@@ -11,6 +13,29 @@
   <template>
     <style include="iron-flex iron-flex-alignment"></style>
     <style include="diy-theme"></style>
+
+    <paper-card>
+      <div>Recipe Name</div>
+      <diy-input></diy-input>
+
+      <div>Ingredients</div>
+      <div class="layout horizontal center">
+        <diy-input class="flex"></diy-input>
+        <diy-input maxlength="4" class="percent"></diy-input>
+        <span>%</span>
+      </div>
+
+      <div>Recipe Notes (public)</div>
+      <diy-textarea value="{{testvalue}}"></diy-textarea>
+
+      <div>Personal Notes (private)</div>
+      <diy-textarea ></diy-textarea>
+
+      <div class="layout horizontal end-justified">
+        <paper-button on-tap="onSaveTap_">Save Recipe</paper-button>
+      </div>
+
+    </paper-card>
 
   </template>
   <script type="text/javascript" src="diy-user-recipes.js"></script>

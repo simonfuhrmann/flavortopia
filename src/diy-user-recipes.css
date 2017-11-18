@@ -9,3 +9,8 @@
 paper-card {
   padding: 24px;
 }
+
+diy-input.percent {
+  text-align: right;
+  width: 6ex;
+}
