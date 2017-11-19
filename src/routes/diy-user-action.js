@@ -55,7 +55,7 @@ class DiyUserAction extends DiyMixinRouter(Polymer.Element) {
       return;
     }
 
-    this.$.firebase.authSendPasswordResetEmail(email)
+    this.$.firebaseAuth.sendPasswordResetEmail(email)
         .catch((error) => {
           this.$.passwordResetSendEmailButton.disabled = false;
           this.$.errorDialog.openError('Error Sending Code', error.message);
@@ -89,7 +89,7 @@ class DiyUserAction extends DiyMixinRouter(Polymer.Element) {
       return;
     }
 
-    this.$.firebase.authConfirmPasswordReset(code, pass1)
+    this.$.firebaseAuth.confirmPasswordReset(code, pass1)
         .then((data) => {
           this.$.passwordResetSubmitCodeButton.disabled = false;
           this.goUserAction('resetComplete');

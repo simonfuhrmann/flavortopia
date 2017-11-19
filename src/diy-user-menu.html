@@ -5,14 +5,14 @@
 
 <link rel="import" href="mixins/mixin-redux.html">
 <link rel="import" href="mixins/mixin-router.html">
-<link rel="import" href="diy-firebase.html">
+<link rel="import" href="diy-firebase-auth.html">
 
 <dom-module id="diy-user-menu">
   <link rel="import" type="css" href="diy-user-menu.css">
   <template>
 
     <!-- Access to the firebase system. -->
-    <diy-firebase id="firebase"></diy-firebase>
+    <diy-firebase-auth id="firebaseAuth"></diy-firebase-auth>
 
     <paper-button on-tap="onSigninTap_" hidden="[[userSignedIn]]">
       <iron-icon icon="icons:account-circle"></iron-icon>

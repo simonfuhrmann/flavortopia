@@ -24,7 +24,7 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
   }
 
   onLoadDataTap_() {
-    this.$.firebase.loadVendors()
+    this.$.firebaseStore.loadVendors()
         .then(snapshot => {
           this.dispatch('initVendors', snapshot.val());
         })
@@ -32,14 +32,13 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
           console.log('error loading vendors', error);
         });
 
-    this.$.firebase.loadFlavors()
+    this.$.firebaseStore.loadFlavors()
         .then(snapshot => {
           this.dispatch('initFlavors', snapshot.val());
         })
         .catch(error => {
           console.log('error loading vendors', error);
         });
-
   }
 
   onLogStoreTap_() {
@@ -48,6 +47,18 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
 
   toFlavorsArray_(flavors) {
     return Object.keys(flavors);
+  }
+
+  databaseTest_() {
+    const uid = this.getState().user.auth.firebaseUser.uid;
+    console.log('user', uid);
+    this.$.firebaseStore.getUserAdminRecord(uid + 's')
+        .then(snapshot => {
+          console.log('is admin: ', snapshot.exists);
+        })
+        .catch(error => {
+          console.log('admin error', error);
+        });
   }
 }
 

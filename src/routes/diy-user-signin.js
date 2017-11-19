@@ -30,13 +30,13 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     // which case we want to redirect the user to the welcome page. In case of
     // errors, just let the user know.
     this.$.waitingForTokenDialog.open();
-    this.$.firebase.authGetRedirectResult()
+    this.$.firebaseAuth.getRedirectResult()
         .then(data => {
           this.$.waitingForTokenDialog.close();
           // Even after sign-out, getRedirectResult() resolves the promise
           // although the user has not signed in. Check if there is a current
           // user before redirecting.
-          if (this.$.firebase.authGetCurrentUser()) {
+          if (this.$.firebaseAuth.getCurrentUser()) {
             this.goHome();
           }
         })
@@ -59,7 +59,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     // Authenticate credentials using Firebase.
     this.$.signupButton.disabled = true;
     this.$.signinButton.disabled = true;
-    this.$.firebase.authSigninEmailPassword(email, pass)
+    this.$.firebaseAuth.signinEmailPassword(email, pass)
         .catch(error => {
           this.$.signupButton.disabled = false;
           this.$.signinButton.disabled = false;
@@ -93,7 +93,7 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     // Authenticate credentials using Firebase.
     this.$.signupButton.disabled = true;
     this.$.signinButton.disabled = true;
-    this.$.firebase.authSignupEmailPassword(email, pass1)
+    this.$.firebaseAuth.signupEmailPassword(email, pass1)
         .then(data => {
           // If sign-up was successful, return to home.
           this.$.signupButton.disabled = false;
@@ -113,10 +113,10 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
   }
 
   signinGoogle_() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = this.$.firebaseAuth.getGoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
-    this.$.firebase.authSigninWithProvider(provider);
+    this.$.firebaseAuth.signinWithProvider(provider);
   }
 
   signinFacebook_() {

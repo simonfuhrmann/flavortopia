@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 690px;
+  margin: 0 auto;
+}
+
+paper-card {
+  padding: 24px;
+}
+
+paper-card h2 {
+  margin-top: 0;
+}
+
+paper-card.warning {
+  border: 5px solid  var(--warning-button-background);
+}
+
+[hidden] {
+  display: none !important;
+}

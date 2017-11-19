@@ -2,6 +2,7 @@
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 
 <link rel="import" href="mixins/mixin-router.html">
+<link rel="import" href="routes/diy-administration.html">
 <link rel="import" href="routes/diy-all-flavors.html">
 <link rel="import" href="routes/diy-all-recipes.html">
 <link rel="import" href="routes/diy-user-action.html">
@@ -35,6 +36,10 @@
 
     <template is="dom-if" if="[[activeRoute.isUserActionActive]]" restamp>
       <diy-user-action></diy-user-action>
+    </template>
+
+    <template is="dom-if" if="[[activeRoute.isAdministrationActive]]" restamp>
+      <diy-administration></diy-administration>
     </template>
 
   </template>

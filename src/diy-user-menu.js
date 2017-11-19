@@ -17,7 +17,7 @@ class DiyUserMenu extends DiyMixinRedux(DiyMixinRouter(Polymer.Element)) {
   }
 
   onSignoutTap_() {
-    this.$.firebase.authSignOut();
+    this.$.firebaseAuth.signOut();
     this.goHome();
   }
 }

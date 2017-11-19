@@ -1,0 +1,22 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="../mixins/mixin-redux.html">
+<link rel="import" href="../diy-theme.html">
+
+<dom-module id="diy-administration">
+  <link rel="import" type="css" href="diy-administration.css">
+  <template>
+    <style include="diy-theme"></style>
+
+    <paper-card class="warning" hidden$="[[isAdmin]]">
+      <h2>You are not an administrator!</h2>
+      <p>
+        It appears your current user is not registered as an administrator.
+        Please move along. The tools on this page will not work for you.
+      </p>
+    </paper-card>
+
+  </template>
+  <script type="text/javascript" src="diy-administration.js"></script>
+</dom-module>

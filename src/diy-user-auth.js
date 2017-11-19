@@ -16,18 +16,21 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
   static get actions() {
     return {
       userSignin(data) {
-        return { type: 'USER_SIGNIN', data: data };
+        return { type: 'USER_SIGNIN', data };
       },
       userDetails(data) {
-        return { type: 'USER_DETAILS', data: data };
-      }
+        return { type: 'USER_DETAILS', data };
+      },
+      userAdmin(data) {
+        return { type: 'USER_ADMIN', data };
+      },
     };
   }
 
   ready() {
     super.ready();
     // Register a handler when user authentication state changes.
-    this.$.firebase.authSetupStateHandler(firebaseUser => {
+    this.$.firebaseAuth.setupAuthStateHandler(firebaseUser => {
       this.onAuthStateChanged_(firebaseUser);
     });
   }
@@ -46,23 +49,41 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
   }
 
   loadUserDetails_() {
+    const firebaseUser = this.getState().user.auth.firebaseUser;
+    if (!firebaseUser || !firebaseUser.uid) {
+      return;
+    }
+
     // Load user details and store in Redux state. Once user details are
     // available, prompt the user to enter a display name if not already done.
-    const firebaseUser = this.getState().user.auth.firebaseUser;
-    this.$.firebase.loadUserDetails(firebaseUser.uid)
+    this.$.firebaseStore.getUserDetails(firebaseUser.uid)
         .then(snapshot => {
-          const val = snapshot.val();
           const userDetails = { name: '', email: '' };
-          if (val && val.public && val.public.name) {
-            userDetails.name = val.public.name;
-          }
-          if (val && val.private && val.private.email) {
-            userDetails.email = val.private.email;
+          if (snapshot && snapshot.exists) {
+            const data = snapshot.data();
+            if (data && data.public && data.public.name) {
+              userDetails.name = data.public.name;
+            }
+            if (data && data.private && data.private.email) {
+              userDetails.email = data.public.email;
+            }
           }
           this.dispatch('userDetails', userDetails);
         })
         .catch (error => {
           console.warn('Error loading user details: ' + error.message);
+        });
+
+    // Check if the user has admin permissions. Admins get additional UI.
+    this.$.firebaseStore.getUserAdminRecord(firebaseUser.uid)
+        .then(snapshot => {
+          if (snapshot && snapshot.exists) {
+            console.log('dispatching admin');
+            this.dispatch('userAdmin', { isAdmin: true });
+          }
+        })
+        .catch(error => {
+          console.warn('Error loading admin status: ' + error.message);
         });
   }
 
@@ -86,7 +107,7 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
     const firebaseUser = this.getState().user.auth.firebaseUser;
     const uid = firebaseUser.uid;
     const email = firebaseUser.email;
-    this.$.firebase.writeUserDetails(uid, email, displayName)
+    this.$.firebaseStore.setUserDetails(uid, email, displayName)
         .then(data => {
           this.$.enterDisplayNameDialog.close();
           return data;

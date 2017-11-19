@@ -6,7 +6,7 @@
 <link rel="import" href="../mixins/mixin-router.html">
 <link rel="import" href="../common/diy-dialog.html">
 <link rel="import" href="../common/diy-input.html">
-<link rel="import" href="../diy-firebase.html">
+<link rel="import" href="../diy-firebase-auth.html">
 <link rel="import" href="../diy-theme.html">
 
 <dom-module id="diy-user-action">
@@ -15,7 +15,7 @@
     <style include="iron-flex iron-flex-alignment"></style>
     <style include="diy-theme"></style>
 
-    <diy-firebase id="firebase"></diy-firebase>
+    <diy-firebase-auth id="firebaseAuth"></diy-firebase-auth>
 
     <!-- Interface to send an email with a password reset code. -->
     <paper-card id="lostPasswordCard" hidden>

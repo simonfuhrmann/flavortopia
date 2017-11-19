@@ -9,6 +9,7 @@ const initialState = {
     isUserRecipesActive: false,
     isUserSigninActive: false,
     isUserActionActive: false,
+    isAdministrationActive: false,
   },
   flavors: {},
   vendors: {},
@@ -16,6 +17,7 @@ const initialState = {
     auth: {
       signedIn: false,
       verified: false,
+      isAdmin: false,
       firebaseUser: undefined,
     },
     details: {
@@ -68,6 +70,9 @@ function reducerUpdateRoute(state, action) {
     case '/user/action':
       newRoute.isUserActionActive = true;
       break;
+    case '/administration':
+      newRoute.isAdministrationActive = true;
+      break;
     default:
       newRoute.isWelcomeActive = true;
       break;
@@ -102,6 +107,12 @@ function reducerUserDetails(state, action) {
   return newState;
 }
 
+function reducerUserAdmin(state, action) {
+  const newState = Object.assign({}, state);
+  newState.user.auth.isAdmin = action.data.isAdmin;
+  return newState;
+}
+
 const reduxReducer = function(state = initialState, action) {
   switch (action.type) {
     case 'INIT_FLAVORS':
@@ -114,6 +125,8 @@ const reduxReducer = function(state = initialState, action) {
       return reducerUserSignin(state, action);
     case 'USER_DETAILS':
       return reducerUserDetails(state, action);
+    case 'USER_ADMIN':
+      return reducerUserAdmin(state, action);
   }
   return state;
 }

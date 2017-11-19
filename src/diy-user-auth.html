@@ -5,7 +5,8 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="common/diy-input.html">
-<link rel="import" href="diy-firebase.html">
+<link rel="import" href="diy-firebase-auth.html">
+<link rel="import" href="diy-firebase-store.html">
 <link rel="import" href="diy-theme.html">
 
 <dom-module id="diy-user-auth">
@@ -14,7 +15,8 @@
     <style include="diy-theme"></style>
 
     <!-- Access to the firebase system. -->
-    <diy-firebase id="firebase"></diy-firebase>
+    <diy-firebase-auth id="firebaseAuth"></diy-firebase-auth>
+    <diy-firebase-store id="firebaseStore"></diy-firebase-store>
 
     <!-- Dialog to force the user to enter a display name. -->
     <paper-dialog id="enterDisplayNameDialog" class="info-dialog" modal>
