@@ -17,7 +17,7 @@ paper-menu-button span {
 }
 
 paper-icon-item {
-  color: var(--secondary-color);
+  color: var(--primary-text-color);
 }
 
 paper-icon-item span {

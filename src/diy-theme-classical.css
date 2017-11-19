@@ -3,34 +3,37 @@
  * https://polymerthemes.com/classical/
  */
 :root {
-  --primary-color: #3f3838;
+  --primary-text-color: #333333;
   --primary-background-color: #f9fafb;
-  --secondary-color: #594f4f;
+  --secondary-text-color: #594f4f;
   --secondary-background-color: #eceff1;
 
-  --primary-button-color: white;
-  --primary-button-background: #424b4b;
-  --secondary-button-color: white;
-  --secondary-button-background: #3b8183;
-  --info-button-color: white;
-  --info-button-background: #4db6ac;
-  --success-button-color: white;
-  --success-button-background: #7cb342;
-  --warning-button-color: var(--primary-color);
-  --warning-button-background: #f2d65e;
-  --error-button-color: white;
-  --error-button-background: #e26f4b;
+  --contrast-text-color: #2d3333;
+  --contrast-foreground-color: white;
+  --contrast-background-color: #424b4b;
+  --info-text-color: #1e4243;
+  --info-foreground-color: white;
+  --info-background-color: #3b8183;
+  --success-text-color: #50732a;
+  --success-foreground-color: white;
+  --success-background-color: #7cb342;
+  --warning-text-color: #b29e45;
+  --warning-foreground-color: var(--primary-text-color);
+  --warning-background-color: #f2d65e;
+  --error-text-color: #a25036;
+  --error-foreground-color: white;
+  --error-background-color: #e26f4b;
 
-  --toolbar-color: white;
-  --toolbar-background: var(--primary-button-background);
+  --toolbar-color: var(--contrast-foreground-color);;
+  --toolbar-background: var(--contrast-background-color);
   --toolbar-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 3px 3px rgba(0, 0, 0, 0.1);
 
-  --input-focus-color: var(--secondary-button-background);
+  --input-focus-color: var(--info-background-color);
   --input-border-color: #ddd;
   --input-background-color: white;
-  --input-error-color: var(--error-button-background);
+  --input-error-color: var(--error-text-color);
 
-  --drawer-background: var(--secondary-background);
+  --drawer-background: var(--secondary-background-color);
   --drawer-active-background: #d4d7d7;
 }
 
@@ -48,13 +51,13 @@ paper-dialog .dialog-title {
 }
 
 paper-dialog.error-dialog .dialog-title {
-  background-color: var(--error-button-background);
-  color: var(--error-button-color);
+  background-color: var(--error-background-color);
+  color: var(--error-foreground-color);
 }
 
 paper-dialog.info-dialog .dialog-title {
-  background-color: var(--info-button-background);
-  color: var(--info-button-color);
+  background-color: var(--info-background-color);
+  color: var(--info-foreground-color);
 }
 
 paper-dialog .dialog-title iron-icon {

@@ -19,7 +19,7 @@ paper-card h2 {
 }
 
 paper-card.warning {
-  border: 5px solid  var(--warning-button-background);
+  border: 5px solid  var(--warning-background-color);
 }
 
 [hidden] {

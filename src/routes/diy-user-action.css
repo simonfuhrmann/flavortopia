@@ -14,8 +14,8 @@ paper-card h2 {
 #passwordResetSubmitCodeButton,
 #passwordResetSigninButton {
   margin: 8px 0 0 0;
-  background-color: var(--primary-button-background);
-  color: var(--primary-button-color);
+  background-color: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
 }
 
 [hidden] {

@@ -3,11 +3,11 @@
 }
 
 .vendor-short {
-  color: var(--secondary-color);
+  color: var(--secondary-text-color);
 }
 
 .vendor-name {
-  color: var(--secondary-color);
+  color: var(--secondary-text-color);
   font-size: 0.9em;
 }
 

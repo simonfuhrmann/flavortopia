@@ -1,11 +1,11 @@
 a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--primary-text-color);
 }
 
 div.menu-header {
-  background-color: var(--secondary-button-background);
-  color: var(--secondary-button-color);
+  background-color: var(--info-background-color);
+  color: var(--info-foreground-color);
   font-weight: bold;
   margin: 16px 0;
   padding: 16px;
