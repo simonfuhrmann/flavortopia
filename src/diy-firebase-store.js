@@ -32,18 +32,20 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     return adminRef.get();
   }
 
-  // loadFlavors() {
-  //   this.initialize();
-  //   // Load all flavors and update redux store.
-  //   const flavorsRef = firebaseGlobal.database.ref('flavors/');
-  //   return flavorsRef.once('value');
-  // }
+  getRecipes(uid) {
+    const recipesRef = this.store.collection('recipes');
+    return recipesRef.where('user', '==', uid).get();
+  }
 
-  // loadVendors() {
-  //   this.initialize();
-  //   const vendorsRef = firebaseGlobal.database.ref('vendors/');
-  //   return vendorsRef.once('value');
-  // }
+  getFlavors() {
+    const flavorsRef = this.store.collection('flavors');
+    return flavorsRef.get();
+  }
+
+  getVendors() {
+    const vendorsRef = this.store.collection('vendors');
+    return vendorsRef.get();
+  }
 }
 
 customElements.define(DiyFirebaseStore.is, DiyFirebaseStore);

@@ -78,7 +78,6 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
     this.$.firebaseStore.getUserAdminRecord(firebaseUser.uid)
         .then(snapshot => {
           if (snapshot && snapshot.exists) {
-            console.log('dispatching admin');
             this.dispatch('userAdmin', { isAdmin: true });
           }
         })

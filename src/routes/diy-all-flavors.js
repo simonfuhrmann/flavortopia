@@ -15,26 +15,36 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
   static get actions() {
     return {
       initFlavors(data) {
-        return { type: 'INIT_FLAVORS', data: data };
+        return { type: 'INIT_FLAVORS', data };
       },
       initVendors(data) {
-        return { type: 'INIT_VENDORS', data: data };
+        return { type: 'INIT_VENDORS', data };
       },
     };
   }
 
   onLoadDataTap_() {
-    this.$.firebaseStore.loadVendors()
+    this.$.firebaseStore.getVendors()
         .then(snapshot => {
-          this.dispatch('initVendors', snapshot.val());
+          if (!snapshot) return;
+          const data = {};
+          snapshot.docs.forEach(doc => {
+            data[doc.id] = doc.data();
+          });
+          this.dispatch('initVendors', data);
         })
         .catch(error => {
           console.log('error loading vendors', error);
         });
 
-    this.$.firebaseStore.loadFlavors()
+    this.$.firebaseStore.getFlavors()
         .then(snapshot => {
-          this.dispatch('initFlavors', snapshot.val());
+          if (!snapshot) return;
+          const data = {};
+          snapshot.docs.forEach(doc => {
+            data[doc.id] = doc.data();
+          });
+          this.dispatch('initFlavors', data);
         })
         .catch(error => {
           console.log('error loading vendors', error);

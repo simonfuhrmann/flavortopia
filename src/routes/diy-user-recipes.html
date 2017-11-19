@@ -4,15 +4,19 @@
 <link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
+<link rel="import" href="../mixins/mixin-redux.html">
 <link rel="import" href="../common/diy-input.html">
 <link rel="import" href="../common/diy-textarea.html">
 <link rel="import" href="../diy-theme.html">
+<link rel="import" href="../diy-firebase-store.html">
 
 <dom-module id="diy-user-recipes">
   <link rel="import" type="css" href="diy-user-recipes.css">
   <template>
     <style include="iron-flex iron-flex-alignment"></style>
     <style include="diy-theme"></style>
+
+    <diy-firebase-store id="firebaseStore"></diy-firebase-store>
 
     <paper-card>
       <div>Recipe Name</div>
@@ -35,6 +39,12 @@
         <paper-button on-tap="onSaveTap_">Save Recipe</paper-button>
       </div>
 
+    </paper-card>
+
+    <paper-card>
+      <template is="dom-repeat" items="[[userRecipes]]">
+        <div>[[item.name]]</div>
+      </template>
     </paper-card>
 
   </template>
