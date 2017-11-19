@@ -60,17 +60,18 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     this.$.signupButton.disabled = true;
     this.$.signinButton.disabled = true;
     this.$.firebaseAuth.signinEmailPassword(email, pass)
+        .then(data => {
+          // If sign-up was successful, return to home.
+          this.$.signupButton.disabled = false;
+          this.$.signinButton.disabled = false;
+          this.goHome();
+          return data;
+        })
         .catch(error => {
           this.$.signupButton.disabled = false;
           this.$.signinButton.disabled = false;
           this.$.errorDialog.openError('Sign-in error', error.message);
           throw error;
-        })
-        .then(data => {
-          // If sign-up was successful, return to home.
-          this.$.signupButton.disabled = false;
-          this.$.signinButton.disabled = false;
-          return data;
         });
   }
 

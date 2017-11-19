@@ -42,6 +42,10 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
     this.changeRoute('/#/user/action?mode=' + mode);
   }
 
+  goAdministration() {
+    this.changeRoute('/#/administration');
+  }
+
   changeRoute(url) {
     window.history.pushState({}, null, url);
     window.dispatchEvent(new CustomEvent('location-changed'));

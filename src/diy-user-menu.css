@@ -7,6 +7,40 @@ paper-button > iron-icon {
   margin-right: 8px;
 }
 
+paper-menu-button {
+  --paper-menu-button-dropdown-background: var(--primary-background-color);
+}
+
+paper-menu-button span {
+  /* Prevent bold button text on keyboard focus. */
+  font-weight: normal;
+}
+
+paper-icon-item {
+  color: var(--secondary-color);
+}
+
+paper-icon-item span {
+  /* Prevent menu text from wrapping. */
+  white-space: nowrap;
+}
+
+#dropdownMenu hr {
+  background: #ccc;
+  margin: 8px 16px;
+  border: 0;
+  height: 1px;
+}
+
+#dropdownMenu paper-icon-item {
+  --paper-item-icon-width: 32px;
+  cursor: pointer;
+}
+
+#dropdownMenu paper-icon-item:hover {
+  background-color: var(--secondary-background-color);
+}
+
 [hidden] {
   display: none !important;
 }

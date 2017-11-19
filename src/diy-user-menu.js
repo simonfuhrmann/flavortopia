@@ -5,11 +5,19 @@ class DiyUserMenu extends DiyMixinRedux(DiyMixinRouter(Polymer.Element)) {
 
   static get properties() {
     return {
-      userSignedIn: {
+      isUserSignedIn: {
         type: Boolean,
         statePath: 'user.auth.signedIn',
       },
+      isUserAdmin: {
+        type: Boolean,
+        statePath: 'user.auth.isAdmin',
+      }
     };
+  }
+
+  closeDropdown_() {
+    this.$.dropdownMenu.opened = false;
   }
 
   onSigninTap_() {
@@ -19,6 +27,10 @@ class DiyUserMenu extends DiyMixinRedux(DiyMixinRouter(Polymer.Element)) {
   onSignoutTap_() {
     this.$.firebaseAuth.signOut();
     this.goHome();
+  }
+
+  onAdminTap_() {
+    this.goAdministration();
   }
 }
 

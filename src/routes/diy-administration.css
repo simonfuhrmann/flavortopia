@@ -6,6 +6,10 @@
   margin: 0 auto;
 }
 
+:host > :not(:last-child) {
+  margin-bottom: 16px;
+}
+
 paper-card {
   padding: 24px;
 }
