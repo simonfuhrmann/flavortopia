@@ -9,20 +9,18 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     };
   }
 
-  connectedCallback() {
+  constructor() {
+    super();
     this.store = this.getFirebaseFirestore();
   }
 
-  getUserDetails(uid) {
+  getUserRecord(uid) {
     const userRef = this.store.collection('users').doc(uid);
     return userRef.get();
   }
 
-  setUserDetails(uid, email, name) {
-    const userRecord = {
-      private: { email },
-      public: { name },
-    };
+  setUserName(uid, name) {
+    const userRecord = { name };
     const userRef = this.store.collection('users').doc(uid);
     return userRef.set(userRecord);
   }

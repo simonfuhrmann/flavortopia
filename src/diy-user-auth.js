@@ -56,19 +56,14 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
 
     // Load user details and store in Redux state. Once user details are
     // available, prompt the user to enter a display name if not already done.
-    this.$.firebaseStore.getUserDetails(firebaseUser.uid)
+    this.$.firebaseStore.getUserRecord(firebaseUser.uid)
         .then(snapshot => {
-          const userDetails = { name: '', email: '' };
+          let userDetails = { name: '' };
           if (snapshot && snapshot.exists) {
-            const data = snapshot.data();
-            if (data && data.public && data.public.name) {
-              userDetails.name = data.public.name;
-            }
-            if (data && data.private && data.private.email) {
-              userDetails.email = data.public.email;
-            }
+            userDetails = Object.assign(userDetails, snapshot.data());
           }
           this.dispatch('userDetails', userDetails);
+          return snapshot;
         })
         .catch (error => {
           console.warn('Error loading user details: ' + error.message);
@@ -80,6 +75,7 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
           if (snapshot && snapshot.exists) {
             this.dispatch('userAdmin', { isAdmin: true });
           }
+          return snapshot;
         })
         .catch(error => {
           console.warn('Error loading admin status: ' + error.message);
@@ -104,9 +100,7 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
 
     // Persist the user's display name to the database.
     const firebaseUser = this.getState().user.auth.firebaseUser;
-    const uid = firebaseUser.uid;
-    const email = firebaseUser.email;
-    this.$.firebaseStore.setUserDetails(uid, email, displayName)
+    this.$.firebaseStore.setUserName(firebaseUser.uid, displayName)
         .then(data => {
           this.$.enterDisplayNameDialog.close();
           return data;

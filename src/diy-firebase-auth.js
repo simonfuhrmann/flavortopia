@@ -9,7 +9,8 @@ class DiyFirebaseAuth extends DiyMixinFirebase(Polymer.Element) {
     };
   }
 
-  ready() {
+  constructor() {
+    super();
     this.auth = this.getFirebaseAuth();
   }
 
