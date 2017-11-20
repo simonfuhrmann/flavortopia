@@ -13,6 +13,9 @@ const initialState = {
   },
   flavors: {},
   vendors: {},
+  // Caches a mapping from userID to user name.
+  userCache: {},
+  // Information about the current user.
   user: {
     auth: {
       signedIn: false,
@@ -22,7 +25,6 @@ const initialState = {
     },
     details: {
       name: undefined,  // The public user display name.
-      email: undefined,  // The private user email.
     },
   },
 };
@@ -113,6 +115,12 @@ function reducerUserAdmin(state, action) {
   return newState;
 }
 
+function reducerCacheUser(state, action) {
+  const newState = Object.assign({}, state);
+  newState.userCache[action.data.uid] = action.data.name;
+  return newState;
+}
+
 const reduxReducer = function(state = initialState, action) {
   switch (action.type) {
     case 'INIT_FLAVORS':
@@ -127,6 +135,8 @@ const reduxReducer = function(state = initialState, action) {
       return reducerUserDetails(state, action);
     case 'USER_ADMIN':
       return reducerUserAdmin(state, action);
+    case 'CACHE_USER':
+      return reducerCacheUser(state, action);
   }
   return state;
 }
