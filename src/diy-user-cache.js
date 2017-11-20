@@ -6,9 +6,6 @@
  *
  * Usage:
  *   <diy-user-cache uid="[[userId]]" name="{{userName}}" />
- *
- * TODO:
- *   Make requesting the same UID multiple times more efficient.
  */
 class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
   static get is() {
@@ -25,6 +22,11 @@ class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
         type: String,
         notify: true,
       },
+      userCache: {
+        type: Object,
+        statePath: 'userCache',
+        observer: 'onUserCacheChanged_',
+      }
     };
   }
 
@@ -37,40 +39,52 @@ class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
   }
 
   onUidChanged_(uid) {
-    // Check if the ID is already in the Redux store.
     const cache = this.getState().userCache;
-    if (cache && cache[uid]) {
-      console.log('Using cache for ' + uid + ' -> ' + cache[uid]);
-      return cache[uid];
+    if (!cache) {
+      console.error('User cache not available!');
+      return;
     }
+
+    // Check if the ID is already in the Redux store.
+    if (cache[uid]) {
+      console.log('Using cache for ' + uid + ' -> ' + cache[uid]);
+      this.set('name', cache[uid]);
+      return;
+    }
+
+    // Check if the name has already been requested.
+    // The 'null' value is used to indicate that a request is already made.
+    if (cache[uid] === null) {
+      console.log('Waiting for cache for ' + uid + '...');
+      return;
+    }
+
+    // Mark the user ID as being requested.
+    this.dispatch('cacheUser', { uid, name: null });
 
     // Request the user name from the
     console.log('Requesting user name for: ' + uid);
-    this.set('name', '(requesting)');
     this.$.firebaseStore.getUserRecord(uid)
         .then(snapshot => {
-          if (!snapshot || !snapshot.exists) {
-            this.set('name', '(unknown)');
-            return snapshot;
+          let name = '(unknown)';
+          if (snapshot && snapshot.exists && snapshot.data().name) {
+            name = snapshot.data().name;
           }
-          this.onNameForUidAvailable_(snapshot.data().name);
+          console.log('dispatching to cache', name);
+          this.dispatch('cacheUser', { uid, name });
           return snapshot;
         })
         .catch(error => {
           console.warn('Error loading user name: ' + error.message);
-          this.set('name', '(error)');
-          throw error;
+          this.dispatch('cacheUser', { uid, name: '(error)' });
         });
   }
 
-  onNameForUidAvailable_(name) {
-    if (!name) {
-      this.set('name', '(unknown)');
-      return;
+  onUserCacheChanged_(cache) {
+    console.log('cache changed', cache);
+    if (!this.name && this.uid && cache[this.uid]) {
+      this.set('name', cache[this.uid]);
     }
-    this.set('name', name);
-    this.dispatch('cacheUser', { uid, name: data.name });
-    return;
   }
 }
 

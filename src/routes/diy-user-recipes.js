@@ -6,18 +6,29 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
   static get properties() {
     return {
       userRecipes: Array,
-      //lastVisible: Object,
       testvalue: {
         type: String,
         observer: 'onValueChanged_',
-      }
+      },
+      userId: {
+        type: String,
+        statePath: 'user.auth.firebaseUser.uid',
+        observer: 'onUserIdChanged_',
+      },
     };
   }
 
+  onUserIdChanged_(uid) {
+    this.loadUserRecipes_();
+  }
+
   onSaveTap_() {
+  }
+
+  loadUserRecipes_() {
     const uid = this.getState().user.auth.firebaseUser.uid;
-    console.log('uid', uid);
-    this.$.firebaseStore.getUserRecipes(uid)
+    console.log('loading recipies for uid:', uid);
+    this.$.firebaseStore.getRecipes(uid)
         .then(snapshot => {
           console.log('snapshot', snapshot);
           if (snapshot) {

@@ -1,0 +1,24 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="diy-user-cache.html">
+
+<dom-module id="diy-recipe">
+  <link rel="import" type="css" href="diy-recipe.css">
+  <template>
+
+    <diy-user-cache uid="[[recipeUserId]]" name="{{recipeAuthor}}">
+    </diy-user-cache>
+
+    <h2>[[recipeName]] <span>by [[recipeAuthor]]</span></h2>
+
+    <h3>Ingredients</h3>
+    <template is="dom-repeat" items="[[ingredients]]">
+      <div>[[item.flavor]] at [[item.percent]] %</div>
+    </template>
+
+    <h3>Recipe Notes</h3>
+    <div>[[recipeNotes]]</div>
+
+  </template>
+  <script type="text/javascript" src="diy-recipe.js"></script>
+</dom-module>
