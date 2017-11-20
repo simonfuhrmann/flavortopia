@@ -92,6 +92,7 @@ function reducerInitVendors(state, action) {
 
 function reducerUserSignin(state, action) {
   const newState = Object.assign({}, state);
+  newState.user = Object.assign({}, state.user);
   newState.user.auth = {
     signedIn: action.data.signedIn,
     verified: action.data.verified,
@@ -102,6 +103,7 @@ function reducerUserSignin(state, action) {
 
 function reducerUserDetails(state, action) {
   const newState = Object.assign({}, state);
+  newState.user = Object.assign({}, state.user);
   newState.user.details = {
     name: action.data.name,
     email: action.data.email,
@@ -111,12 +113,15 @@ function reducerUserDetails(state, action) {
 
 function reducerUserAdmin(state, action) {
   const newState = Object.assign({}, state);
+  newState.user = Object.assign({}, state.user);
+  newState.user.auth = Object.assign({}, state.user.auth);
   newState.user.auth.isAdmin = action.data.isAdmin;
   return newState;
 }
 
 function reducerCacheUser(state, action) {
   const newState = Object.assign({}, state);
+  newState.userCache = Object.assign({}, state.userCache);
   newState.userCache[action.data.uid] = action.data.name;
   return newState;
 }
