@@ -64,7 +64,7 @@ class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
 
     // Request the user name from the
     console.log('Requesting user name for: ' + uid);
-    this.$.firebaseStore.getUserRecord(uid)
+    this.$.firebaseStore.getUserDoc(uid)
         .then(snapshot => {
           let name = '(unknown)';
           if (snapshot && snapshot.exists && snapshot.data().name) {

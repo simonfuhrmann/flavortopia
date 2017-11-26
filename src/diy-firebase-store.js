@@ -14,6 +14,11 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     this.store = this.getFirebaseFirestore();
   }
 
+  getUserDoc(uid) {
+    const userRef = this.store.collection('users').doc(uid);
+    return userRef.get();
+  }
+
   onUserDocChanged(uid, func) {
     const userRef = this.store.collection('users').doc(uid);
     userRef.onSnapshot(func);
