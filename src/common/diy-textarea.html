@@ -1,8 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="../theme/diy-theme.html">
+
 <dom-module id="diy-textarea">
   <link rel="import" type="css" href="diy-textarea.css">
   <template>
+    <style include="diy-theme"></style>
+
     <div id="container">
       <textarea id="nativeInput" value="{{value::input}}"></textarea>
     </div>

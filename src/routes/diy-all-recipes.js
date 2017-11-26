@@ -1,10 +1,6 @@
-class DiyAllRecipes extends Polymer.Element {
+class DiyAllRecipes extends DiyMixinRedux(Polymer.Element) {
   static get is() {
     return 'diy-all-recipes';
-  }
-
-  openDialog_() {
-    this.$.dialog.open();
   }
 }
 
