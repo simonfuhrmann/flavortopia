@@ -1,0 +1,54 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/app-layout/app-layout.html">
+<link rel="import" href="/bower_components/app-route/app-location.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="/bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="/src/common/diy-drawer-layout.html">
+<link rel="import" href="/src/mixins/mixin-router.html">
+<link rel="import" href="/src/skeleton/diy-content.html">
+<link rel="import" href="/src/skeleton/diy-user-menu.html">
+<link rel="import" href="/src/skeleton/diy-user-auth.html">
+<link rel="import" href="/src/skeleton/diy-main-menu.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-app">
+  <link rel="import" type="css" href="diy-app.css">
+  <template>
+    <!-- <link rel="stylesheet" type="css" href="diy-app.css"> -->
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <!-- Application routes. -->
+    <app-location use-hash-as-path route="{{route}}"></app-location>
+
+    <!-- User authentication state handler. -->
+    <diy-user-auth></diy-user-auth>
+
+    <!-- Application toolbar. -->
+    <app-toolbar>
+      <paper-icon-button icon="icons:home" on-tap="goHome"></paper-icon-button>
+      <div main-title>Flavortopia</div>
+      <diy-user-menu></diy-user-menu>
+    </app-toolbar>
+
+    <diy-drawer-layout>
+      <!-- Application menu. -->
+      <app-drawer slot="drawer" opened>
+        <diy-main-menu></diy-main-menu>
+      </app-drawer>
+
+      <!-- Main content. -->
+      <main>
+        <diy-content></diy-content>
+      </main>
+    </diy-drawer-layout>
+
+  </template>
+  <script type="text/javascript" src="diy-app.js"></script>
+</dom-module>
