@@ -14,9 +14,9 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     this.store = this.getFirebaseFirestore();
   }
 
-  getUserRecord(uid) {
+  onUserDocChanged(uid, func) {
     const userRef = this.store.collection('users').doc(uid);
-    return userRef.get();
+    userRef.onSnapshot(func);
   }
 
   setUserName(uid, name) {
@@ -25,7 +25,7 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     return userRef.set(userRecord);
   }
 
-  getUserAdminRecord(uid) {
+  getUserAdminDoc(uid) {
     const adminRef = this.store.collection('admins').doc(uid);
     return adminRef.get();
   }

@@ -4,6 +4,7 @@
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
+<link rel="import" href="mixins/mixin-firebase-username.html">
 <link rel="import" href="common/diy-input.html">
 <link rel="import" href="diy-firebase-auth.html">
 <link rel="import" href="diy-firebase-store.html">
@@ -38,7 +39,11 @@
         </diy-input>
       </div>
       <div class="buttons">
-        <paper-button on-tap="onSetDisplayNameTap_">Set Name</paper-button>
+        <paper-button
+            id="setDisplayNameButton"
+            on-tap="onSetDisplayNameTap_">
+          Set Name
+        </paper-button>
       </div>
     </paper-dialog>
 

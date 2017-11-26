@@ -1,4 +1,5 @@
-class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
+class DiyUserAuth extends
+    DiyMixinFirebaseUsername(DiyMixinRedux((Polymer.Element))) {
   static get is() {
     return 'diy-user-auth';
   }
@@ -56,21 +57,18 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
 
     // Load user details and store in Redux state. Once user details are
     // available, prompt the user to enter a display name if not already done.
-    this.$.firebaseStore.getUserRecord(firebaseUser.uid)
-        .then(snapshot => {
-          let userDetails = { name: '' };
-          if (snapshot && snapshot.exists) {
-            userDetails = Object.assign(userDetails, snapshot.data());
-          }
-          this.dispatch('userDetails', userDetails);
-          return snapshot;
-        })
-        .catch (error => {
-          console.warn('Error loading user details: ' + error.message);
-        });
+    let onUserDocChangedFn = (doc) => {
+      let userDetails = { name: '' };
+      if (doc && doc.exists) {
+        userDetails = Object.assign(userDetails, doc.data());
+      }
+      console.log('user record changed', doc);
+      this.dispatch('userDetails', userDetails);
+    };
+    this.$.firebaseStore.onUserDocChanged(firebaseUser.uid, onUserDocChangedFn);
 
     // Check if the user has admin permissions. Admins get additional UI.
-    this.$.firebaseStore.getUserAdminRecord(firebaseUser.uid)
+    this.$.firebaseStore.getUserAdminDoc(firebaseUser.uid)
         .then(snapshot => {
           if (snapshot && snapshot.exists) {
             this.dispatch('userAdmin', { isAdmin: true });
@@ -92,22 +90,34 @@ class DiyUserAuth extends DiyMixinRouter(DiyMixinRedux((Polymer.Element))) {
   onSetDisplayNameTap_() {
     // Get the display name from the input field.
     this.$.displayNameInput.setError('');
-    const displayName = this.$.displayNameInput.value;
-    if (!displayName) {
-      this.$.displayNameInput.setError('Name must not be empty');
+    const newName = this.$.displayNameInput.value;
+    if (!newName) {
+      this.$.displayNameInput.setError('The name must not be empty');
+      return;
+    }
+    if (newName.length < 3) {
+      this.$.displayNameInput.setError('A name has at least 3 characters');
+      return;
+    }
+    if (newName.length > 30) {
+      this.$.displayNameInput.setError('A name has at most 30 characters');
       return;
     }
 
-    // Persist the user's display name to the database.
+    // Persist the user's display name to the database. The Firestore real-time
+    // updates will update the username in the Redux store automatically.
+    this.$.setDisplayNameButton.disabled = true;
     const firebaseUser = this.getState().user.auth.firebaseUser;
-    this.$.firebaseStore.setUserName(firebaseUser.uid, displayName)
-        .then(data => {
+    const userId = firebaseUser.uid;
+    const oldName = this.getState().user.details.name;
+    this.changeUsername(userId, newName, oldName)
+        .then(() => {
+          this.$.setDisplayNameButton.disabled = false;
           this.$.enterDisplayNameDialog.close();
-          return data;
         })
-        .catch (error => {
-          this.$.displayNameInput.setError('Name must be at least 3 letters');
-          throw error;
+        .catch((errorMessage) => {
+          this.$.setDisplayNameButton.disabled = false;
+          this.$.displayNameInput.setError(errorMessage);
         });
   }
 }
