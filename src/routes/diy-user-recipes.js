@@ -25,6 +25,7 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
   onSaveTap_() {
   }
 
+  // TODO: Update recipes when new recipes are created (real-time handler?)
   loadUserRecipes_() {
     const uid = this.getState().user.auth.firebaseUser.uid;
     console.log('loading recipies for uid:', uid);

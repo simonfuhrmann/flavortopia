@@ -81,7 +81,6 @@ class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
   }
 
   onUserCacheChanged_(cache) {
-    console.log('cache changed', cache);
     if (!this.name && this.uid && cache[this.uid]) {
       this.set('name', cache[this.uid]);
     }
