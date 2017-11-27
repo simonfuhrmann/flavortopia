@@ -10,6 +10,20 @@ paper-card {
   padding: 24px;
 }
 
+paper-card h1 {
+  margin-top: 0;
+}
+
+paper-button#newRecipeButton {
+  margin: 0;
+  background-color: var(--info-background-color);
+  color: var(--info-foreground-color);
+}
+
+paper-button > iron-icon {
+  margin-right: 4px;
+}
+
 diy-input.percent {
   text-align: right;
   width: 6ex;

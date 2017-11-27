@@ -14,20 +14,6 @@ class DiyAuthState extends
     };
   }
 
-  static get actions() {
-    return {
-      userSignin(data) {
-        return { type: 'USER_SIGNIN', data };
-      },
-      userDetails(data) {
-        return { type: 'USER_DETAILS', data };
-      },
-      userAdmin(data) {
-        return { type: 'USER_ADMIN', data };
-      },
-    };
-  }
-
   ready() {
     super.ready();
     // Register a handler when user authentication state changes.

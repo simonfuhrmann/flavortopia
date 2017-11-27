@@ -21,9 +21,12 @@
 
     <!-- Recipe List. -->
     <paper-card id="recipeListCard">
-      <div class="layout horizontal">
-        <h2 class="flex">Your Recipes</h2>
-        <paper-button raised on-tap="onNewRecipeTap_">New Recipe</paper-button>
+      <div class="layout horizontal start">
+        <h1 class="flex">Your Recipes</h1>
+        <paper-button id="newRecipeButton" raised on-tap="onNewRecipeTap_">
+          <iron-icon icon="icons:add"></iron-icon>
+          <span>New Recipe</span>
+        </paper-button>
       </div>
 
       <template is="dom-repeat" items="[[userRecipes]]">

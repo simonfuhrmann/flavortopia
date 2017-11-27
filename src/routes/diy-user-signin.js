@@ -9,14 +9,6 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
     };
   }
 
-  static get actions() {
-    return {
-      userSignin(data) {
-        return { type: 'USER_SIGNIN', data: data };
-      }
-    };
-  }
-
   ready() {
     super.ready();
     // Focus Email input by default. Needs to be in a timeout.

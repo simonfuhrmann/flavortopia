@@ -12,17 +12,6 @@ class DiyAllFlavors extends DiyMixinRedux(Polymer.Element) {
     };
   }
 
-  static get actions() {
-    return {
-      initFlavors(data) {
-        return { type: 'INIT_FLAVORS', data };
-      },
-      initVendors(data) {
-        return { type: 'INIT_VENDORS', data };
-      },
-    };
-  }
-
   onLoadDataTap_() {
     this.$.firebaseStore.getVendors()
         .then(snapshot => {

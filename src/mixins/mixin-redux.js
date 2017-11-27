@@ -52,8 +52,8 @@ function parsePathQueryFragment(url) {
 }
 
 function reducerUpdateRoute(state, action) {
-  if (!action.route) return state;
-  const url =  action.route.path || '/';
+  if (!action.data.route) return state;
+  const url =  action.data.route.path || '/';
   const pathQueryFragment = parsePathQueryFragment(url);
   const newRoute = Object.assign({}, initialState.appRoute, pathQueryFragment);
   switch (newRoute.path) {
@@ -147,4 +147,32 @@ const reduxReducer = function(state = initialState, action) {
 }
 
 const reduxStore = Redux.createStore(reduxReducer);
-const DiyMixinRedux = PolymerRedux(reduxStore);
+const DiyMixinReduxBase = PolymerRedux(reduxStore);
+
+DiyMixinRedux = (superClass) => class extends DiyMixinReduxBase(superClass) {
+  static get actions() {
+    return {
+      initFlavors(data) {
+        return { type: 'INIT_FLAVORS', data };
+      },
+      initVendors(data) {
+        return { type: 'INIT_VENDORS', data };
+      },
+      updateRoute(data) {
+        return { type: 'UPDATE_ROUTE', data };
+      },
+      userSignin(data) {
+        return { type: 'USER_SIGNIN', data };
+      },
+      userDetails(data) {
+        return { type: 'USER_DETAILS', data };
+      },
+      userAdmin(data) {
+        return { type: 'USER_ADMIN', data };
+      },
+      cacheUser(data) {
+        return { type: 'CACHE_USER', data };
+      },
+    };
+  }
+};

@@ -22,14 +22,6 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
     };
   }
 
-  static get actions() {
-    return {
-      updateRoute(route) {
-        return { type: 'UPDATE_ROUTE', route: route };
-      },
-    };
-  }
-
   goHome() {
     this.changeRoute('/#/');
   }
@@ -52,6 +44,6 @@ DiyMixinRouter = (superClass) => class extends DiyMixinRedux(superClass) {
   }
 
   onRouteChanged_(route) {
-    this.dispatch('updateRoute', route);
+    this.dispatch('updateRoute', { route });
   }
 };

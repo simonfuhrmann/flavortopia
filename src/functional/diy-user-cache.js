@@ -30,14 +30,6 @@ class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
     };
   }
 
-  static get actions() {
-    return {
-      cacheUser(data) {
-        return { type: 'CACHE_USER', data };
-      },
-    };
-  }
-
   onUidChanged_(uid) {
     const cache = this.getState().userCache;
     if (!cache) {
