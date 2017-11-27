@@ -13,7 +13,10 @@ class DiyRecipe extends Polymer.Element {
       recipeUserId: String,
       recipeAuthor: String,
       recipeNotes: String,
+      recipeCreated: String,
       ingredients: Array,
+      hasIngredients: Boolean,
+      hasRecipeNotes: Boolean,
     };
   }
 
@@ -21,8 +24,21 @@ class DiyRecipe extends Polymer.Element {
     console.log('recipeData:', recipeData);
     this.set('recipeName', recipeData.name);
     this.set('recipeUserId', recipeData.user);
-    this.set('recipeNotes', recipeData.notes);
+    this.set('recipeNotes', recipeData.notes || '');
+    this.set('recipeCreated', this.timestampToString_(recipeData.created));
     this.set('ingredients', this.mapIngredients_(recipeData.ingredients));
+    this.set('hasIngredients', this.ingredients.length > 0);
+    this.set('hasRecipeNotes', this.recipeNotes.length > 0);
+  }
+
+  timestampToString_(timestamp) {
+    if (!timestamp) {
+      return '(unavailable)';
+    }
+    let date = new Date(timestamp);
+    let isoString = date.toISOString();
+    let endIndex = isoString.indexOf('T');
+    return isoString.substring(0, endIndex);
   }
 
   mapIngredients_(ingredients) {
@@ -32,6 +48,15 @@ class DiyRecipe extends Polymer.Element {
       array.push({ flavor: key, percent: ingredients[key] });
     });
     return array;
+  }
+
+  onEditTap_() {
+  }
+
+  onMixTap_() {
+  }
+
+  onDeleteTap_() {
   }
 }
 

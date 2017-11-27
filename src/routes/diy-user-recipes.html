@@ -1,4 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/iron-icons/image-icons.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/paper-card/paper-card.html">
 <link rel="import" href="/bower_components/paper-input/paper-textarea.html">
@@ -19,21 +22,23 @@
 
     <diy-firebase-store id="firebaseStore"></diy-firebase-store>
 
-    <!-- Recipe List. -->
-    <paper-card id="recipeListCard">
-      <div class="layout horizontal start">
-        <h1 class="flex">Your Recipes</h1>
-        <paper-button id="newRecipeButton" raised on-tap="onNewRecipeTap_">
-          <iron-icon icon="icons:add"></iron-icon>
-          <span>New Recipe</span>
-        </paper-button>
-      </div>
+    <!-- Recipe list header with create button. -->
+    <div id="listHeader">
+      <h1 class="flex">Your Recipes</h1>
+      <paper-button id="newRecipeButton" raised on-tap="onNewRecipeTap_">
+        <iron-icon icon="icons:add"></iron-icon>
+        <span>New Recipe</span>
+      </paper-button>
+    </div>
 
-      <template is="dom-repeat" items="[[userRecipes]]">
+    <!-- Recipe list. -->
+    <template is="dom-repeat" items="[[userRecipes]]">
+      <paper-card>
         <diy-recipe recipe-data="[[item]]"></diy-recipe>
-      </template>
-    </paper-card>
+      </paper-card>
+    </template>
 
+    <!-- Recipe editor. -->
     <paper-card id="newRecipeCard" hidden>
       <div>Recipe Name</div>
       <diy-input></diy-input>

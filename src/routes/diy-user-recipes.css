@@ -7,20 +7,28 @@
 }
 
 paper-card {
-  padding: 24px;
+  margin-bottom: 8px;
 }
 
-paper-card h1 {
-  margin-top: 0;
+#listHeader {
+  margin-bottom: 16px;
+  @apply --layout-horizontal;
+  @apply --layout-start;
 }
 
-paper-button#newRecipeButton {
+#listHeader h1 {
   margin: 0;
-  background-color: var(--info-background-color);
-  color: var(--info-foreground-color);
 }
 
-paper-button > iron-icon {
+#listHeader paper-button {
+  margin: 0;
+  padding: 8px;
+  text-transform: none;
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+}
+
+#listHeader paper-button iron-icon {
   margin-right: 4px;
 }
 

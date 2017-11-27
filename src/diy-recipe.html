@@ -1,23 +1,58 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/iron-icons/image-icons.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="/src/functional/diy-user-cache.html">
 
 <dom-module id="diy-recipe">
   <link rel="import" type="css" href="diy-recipe.css">
   <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
 
     <diy-user-cache uid="[[recipeUserId]]" name="{{recipeAuthor}}">
     </diy-user-cache>
 
-    <h2>[[recipeName]] <span>by [[recipeAuthor]]</span></h2>
+    <div id="header">
+      <h2 class="flex">[[recipeName]]</h2>
+      <div id="details">
+        <span class="detail">by [[recipeAuthor]]</span>
+        <span class="detail">created [[recipeCreated]]</span>
+      </div>
 
-    <h3>Ingredients</h3>
-    <template is="dom-repeat" items="[[ingredients]]">
-      <div>[[item.flavor]] at [[item.percent]] %</div>
-    </template>
+      <div id="actions">
+        <paper-button raised on-tap="onEditTap_">
+          <iron-icon icon="icons:create"></iron-icon>
+        </paper-button>
+        <paper-button raised on-tap="onMixTap_">
+          <iron-icon icon="image:colorize"></iron-icon>
+        </paper-button>
+        <paper-button raised on-tap="onDeleteTap_">
+          <iron-icon icon="icons:delete"></iron-icon>
+        </paper-button>
+      </div>
+    </div>
 
-    <h3>Recipe Notes</h3>
-    <div>[[recipeNotes]]</div>
+    <div id="ingredients" class="flex">
+      <div hidden$="[[hasIngredients]]">
+        This recipe doesn't have any ingredients. That's odd!
+      </div>
+      <table>
+        <template is="dom-repeat" items="[[ingredients]]">
+          <tr>
+            <td class="vendor">([[item.vendor]])</td>
+            <td class="flavor">[[item.flavor]]</td>
+            <td class="percent">[[item.percent]]%</td>
+          </tr>
+        </template>
+      </table>
+    </div>
+
+    <div id="notes" hidden$="[[!hasRecipeNotes]]">
+      <div><b>Notes:</b> [[recipeNotes]]</div>
+    </div>
 
   </template>
   <script type="text/javascript" src="diy-recipe.js"></script>
