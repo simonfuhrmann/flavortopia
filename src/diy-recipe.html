@@ -5,6 +5,7 @@
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="/src/functional/diy-user-cache.html">
+<link rel="import" href="/src/mixins/mixin-redux.html">
 
 <dom-module id="diy-recipe">
   <link rel="import" type="css" href="diy-recipe.css">
@@ -37,7 +38,7 @@
 
     <div id="ingredients" class="flex">
       <div hidden$="[[hasIngredients]]">
-        This recipe doesn't have any ingredients. That's odd!
+        No ingredients here. That's odd!
       </div>
       <table>
         <template is="dom-repeat" items="[[ingredients]]">

@@ -48,7 +48,6 @@ class DiyAuthState extends
       if (doc && doc.exists) {
         userDetails = Object.assign(userDetails, doc.data());
       }
-      console.log('user record changed', doc);
       this.dispatch('userDetails', userDetails);
     };
     this.$.firebaseStore.onUserDocChanged(firebaseUser.uid, onUserDocChangedFn);

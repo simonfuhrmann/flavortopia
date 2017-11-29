@@ -9,7 +9,7 @@
 
 <link rel="import" href="/src/common/diy-input.html">
 <link rel="import" href="/src/common/diy-textarea.html">
-<link rel="import" href="/src/functional/diy-firebase-store.html">
+<link rel="import" href="/src/functional/diy-firebase-get.html">
 <link rel="import" href="/src/mixins/mixin-redux.html">
 <link rel="import" href="/src/theme/diy-theme.html">
 <link rel="import" href="/src/diy-recipe.html">
@@ -20,7 +20,13 @@
     <style include="iron-flex iron-flex-alignment"></style>
     <style include="diy-theme"></style>
 
-    <diy-firebase-store id="firebaseStore"></diy-firebase-store>
+    <!-- Datasource for user recipes. -->
+    <diy-firebase-get
+        id="firebaseGet"
+        loading="{{isLoading}}"
+        error="{{loadingError}}"
+        data="{{userRecipes}}">
+    </diy-firebase-get>
 
     <!-- Recipe list header with create button. -->
     <div id="listHeader">
@@ -30,6 +36,24 @@
         <span>New Recipe</span>
       </paper-button>
     </div>
+
+    <template is="dom-if" if="[[isLoading]]">
+      <paper-card id="loadingRecipesCard">
+        <span>Loading Recipes...</span>
+      </paper-card>
+    </template>
+
+    <template is="dom-if" if="[[loadingError]]">
+      <paper-card id="loadingErrorCard">
+        <span>Error: [[loadingError]]</span>
+      </paper-card>
+    </template>
+
+    <template is="dom-if" if="[[showNoRecipes_(userRecipes)]]">
+      <paper-card id="noRecipesCard">
+        <span>There are no recipes. Create one!</span>
+      </paper-card>
+    </template>
 
     <!-- Recipe list. -->
     <template is="dom-repeat" items="[[userRecipes]]">

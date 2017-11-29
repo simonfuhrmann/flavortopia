@@ -39,7 +39,6 @@ class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
 
     // Check if the ID is already in the Redux store.
     if (cache[uid]) {
-      console.log('Using cache for ' + uid + ' -> ' + cache[uid]);
       this.set('name', cache[uid]);
       return;
     }
@@ -47,7 +46,6 @@ class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
     // Check if the name has already been requested.
     // The 'null' value is used to indicate that a request is already made.
     if (cache[uid] === null) {
-      console.log('Waiting for cache for ' + uid + '...');
       return;
     }
 
@@ -55,14 +53,12 @@ class DiyUserCache extends DiyMixinRedux(Polymer.Element) {
     this.dispatch('cacheUser', { uid, name: null });
 
     // Request the user name from the
-    console.log('Requesting user name for: ' + uid);
     this.$.firebaseStore.getUserDoc(uid)
         .then(snapshot => {
           let name = '(unknown)';
           if (snapshot && snapshot.exists && snapshot.data().name) {
             name = snapshot.data().name;
           }
-          console.log('dispatching to cache', name);
           this.dispatch('cacheUser', { uid, name });
           return snapshot;
         })

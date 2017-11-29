@@ -5,11 +5,12 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
 
   static get properties() {
     return {
-      userRecipes: Array,
-      testvalue: {
-        type: String,
-        observer: 'onValueChanged_',
+      isLoading: {
+        type: Boolean,
+        value: true,
       },
+      loadingError: String,
+      userRecipes: Array,
       userId: {
         type: String,
         statePath: 'user.auth.firebaseUser.uid',
@@ -19,27 +20,15 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
   }
 
   onUserIdChanged_(uid) {
-    this.loadUserRecipes_();
+    this.set('userRecipes', undefined);
+    this.$.firebaseGet.loadUserRecipes(uid);
+  }
+
+  showNoRecipes_(userRecipes) {
+    return userRecipes && userRecipes.length == 0;
   }
 
   onSaveTap_() {
-  }
-
-  // TODO: Update recipes when new recipes are created (real-time handler?)
-  loadUserRecipes_() {
-    const uid = this.getState().user.auth.firebaseUser.uid;
-    console.log('loading recipies for uid:', uid);
-    this.$.firebaseStore.getRecipes(uid)
-        .then(snapshot => {
-          console.log('snapshot', snapshot);
-          if (snapshot) {
-            const userRecipes = snapshot.docs.map(doc => doc.data());
-            this.set('userRecipes', userRecipes);
-          }
-        })
-        .catch(error => {
-          console.warn('Error getting recipes:', error.message);
-        });
   }
 }
 

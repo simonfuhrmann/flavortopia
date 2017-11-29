@@ -10,6 +10,18 @@ paper-card {
   margin-bottom: 8px;
 }
 
+#loadingRecipesCard,
+#loadingErrorCard,
+#noRecipesCard {
+  padding: 24px;
+  @apply --layout-horizontal;
+  @apply --layout-center-justified;
+}
+
+ #loadingErrorCard {
+  color: var(--error-text-color);
+}
+
 #listHeader {
   margin-bottom: 16px;
   @apply --layout-horizontal;

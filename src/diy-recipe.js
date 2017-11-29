@@ -1,4 +1,4 @@
-class DiyRecipe extends Polymer.Element {
+class DiyRecipe extends DiyMixinRedux(Polymer.Element) {
   static get is() {
     return 'diy-recipe';
   }
@@ -21,7 +21,6 @@ class DiyRecipe extends Polymer.Element {
   }
 
   onRecipeDataChanged_(recipeData) {
-    console.log('recipeData:', recipeData);
     this.set('recipeName', recipeData.name);
     this.set('recipeUserId', recipeData.user);
     this.set('recipeNotes', recipeData.notes || '');
@@ -31,14 +30,15 @@ class DiyRecipe extends Polymer.Element {
     this.set('hasRecipeNotes', this.recipeNotes.length > 0);
   }
 
+  // Returns a YYYY-MM-DD date representation from a timestamp.
   timestampToString_(timestamp) {
     if (!timestamp) {
       return '(unavailable)';
     }
     let date = new Date(timestamp);
-    let isoString = date.toISOString();
-    let endIndex = isoString.indexOf('T');
-    return isoString.substring(0, endIndex);
+    let dateString = date.toISOString();
+    let endIndex = dateString.indexOf('T');
+    return dateString.substring(0, endIndex);
   }
 
   mapIngredients_(ingredients) {
