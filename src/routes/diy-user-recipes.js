@@ -21,6 +21,9 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
 
   onUserIdChanged_(uid) {
     this.set('userRecipes', undefined);
+    if (!uid) {
+      return;
+    }
     this.$.firebaseGet.loadUserRecipes(uid);
   }
 

@@ -36,7 +36,10 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     this.store = this.getFirebaseFirestore();
   }
 
-  firebaseMultiGet(func) {
+  // For multiple-document queries, the snapshot contains an array of docs,
+  // which is mapped to an array of the document's data for convenience.
+  // The argument is a function that returns a multiple document snapshot.
+  firebaseGetMulti(func) {
     this.set('loading', true);
     this.set('error', undefined);
     func()
@@ -60,7 +63,7 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
 
   loadUserRecipes(uid) {
     const recipesRef = this.store.collection('recipes');
-    this.firebaseMultiGet(() => recipesRef.where('user', '==', uid).get());
+    this.firebaseGetMulti(() => recipesRef.where('user', '==', uid).get());
   }
 }
 

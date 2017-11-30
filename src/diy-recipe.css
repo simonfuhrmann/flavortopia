@@ -1,6 +1,25 @@
+table {
+  width: 100%;
+  border: 1px solid var(--secondary-background-color);
+  background-color: white;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 4px;
+}
+
+table .percent {
+  text-align: right;
+  width: 3em;
+}
+
+table .vendor {
+  text-align: right;
+  width: 3em;
+}
+
 #header {
-  @apply --layout-horizontal;
-  @apply --layout-center;
   background-color: var(--info-background-color);
   color: var(--info-foreground-color);
   padding: 8px 0 8px 16px;
@@ -12,13 +31,10 @@
 }
 
 #actions {
-  @apply --layout-horizontal;
-  @apply --layout-end-justified;
   padding: 0 4px 0 12px;
 }
 
 #actions paper-button {
-  /* background-color: rgba(255, 255, 255, 0.2); */
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   padding: 3px;
@@ -44,4 +60,8 @@
 
 #notes {
   margin: 16px;
+}
+
+[hidden] {
+  display: none !important;
 }

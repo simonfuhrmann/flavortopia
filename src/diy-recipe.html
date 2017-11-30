@@ -16,36 +16,42 @@
     <diy-user-cache uid="[[recipeUserId]]" name="{{recipeAuthor}}">
     </diy-user-cache>
 
-    <div id="header">
+    <div id="header" class="layout horizontal center">
       <h2 class="flex">[[recipeName]]</h2>
       <div id="details">
         <span class="detail">by [[recipeAuthor]]</span>
         <span class="detail">created [[recipeCreated]]</span>
       </div>
 
-      <div id="actions">
-        <paper-button raised on-tap="onEditTap_">
-          <iron-icon icon="icons:create"></iron-icon>
-        </paper-button>
+      <div id="actions" class="layout horizontal">
         <paper-button raised on-tap="onMixTap_">
           <iron-icon icon="image:colorize"></iron-icon>
         </paper-button>
-        <paper-button raised on-tap="onDeleteTap_">
+        <paper-button
+            raised
+            hidden="[[!isAuthenticated_(authUserId, recipeUserId)]]"
+            on-tap="onEditTap_">
+          <iron-icon icon="icons:create"></iron-icon>
+        </paper-button>
+        <paper-button
+            raised
+            hidden="[[!isAuthenticated_(authUserId, recipeUserId)]]"
+            on-tap="onDeleteTap_">
           <iron-icon icon="icons:delete"></iron-icon>
         </paper-button>
       </div>
     </div>
 
-    <div id="ingredients" class="flex">
+    <div id="ingredients" class="layout vertical">
       <div hidden$="[[hasIngredients]]">
         No ingredients here. That's odd!
       </div>
       <table>
         <template is="dom-repeat" items="[[ingredients]]">
           <tr>
-            <td class="vendor">([[item.vendor]])</td>
-            <td class="flavor">[[item.flavor]]</td>
             <td class="percent">[[item.percent]]%</td>
+            <td class="vendor">[<span>[[item.vendor]]</span>]</td>
+            <td class="flavor">[[item.flavor]]</td>
           </tr>
         </template>
       </table>

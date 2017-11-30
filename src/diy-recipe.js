@@ -5,6 +5,10 @@ class DiyRecipe extends DiyMixinRedux(Polymer.Element) {
 
   static get properties() {
     return {
+      authUserId: {
+        type: String,
+        statePath: 'user.auth.firebaseUser.uid',
+      },
       recipeData: {
         type: Object,
         observer: 'onRecipeDataChanged_',
@@ -44,10 +48,34 @@ class DiyRecipe extends DiyMixinRedux(Polymer.Element) {
   mapIngredients_(ingredients) {
     if (!ingredients) return [];
     const array = [];
-    Object.keys(ingredients).forEach(key => {
-      array.push({ flavor: key, percent: ingredients[key] });
+    Object.keys(ingredients).forEach(flavorKey => {
+      const ingredient = this.ingredientFromKey_(flavorKey);
+      ingredient.percent = this.formatPercent_(ingredients[flavorKey]);
+      array.push(ingredient);
     });
     return array;
+  }
+
+  ingredientFromKey_(flavorKey) {
+    const allFlavors = this.getState().flavors;
+    const allVendors = this.getState().vendors;
+    const flavorData = allFlavors[flavorKey];
+    if (!flavorData) {
+      return { vendor: 'n/a', flavor: flavorKey };
+    }
+    const vendorData = allVendors[flavorData.vendor];
+    return {
+      vendor: vendorData ? vendorData.short || 'n/a' : 'n/a',
+      flavor: flavorData.name || flavorKey,
+    };
+  }
+
+  isAuthenticated_(authUserId, recipeUserId) {
+    return authUserId == recipeUserId;
+  }
+
+  formatPercent_(value) {
+    return Number(value).toFixed(2);
   }
 
   onEditTap_() {
