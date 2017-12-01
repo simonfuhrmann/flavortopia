@@ -2,11 +2,7 @@
   display: block;
 }
 
-.vendor-short {
-  color: var(--secondary-text-color);
-}
-
-.vendor-name {
+.vendor {
   color: var(--secondary-text-color);
   font-size: 0.9em;
 }

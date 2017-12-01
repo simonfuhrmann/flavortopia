@@ -1,20 +1,12 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
-<link rel="import" href="/bower_components/paper-button/paper-button.html">
 
-<link rel="import" href="/src/functional/diy-firebase-store.html">
-<link rel="import" href="/src/mixins/mixin-redux.html">
+<link rel="import" href="/src/mixins/mixin-static-data.html">
 <link rel="import" href="/src/diy-flavor.html">
 
 <dom-module id="diy-all-flavors">
   <link rel="import" type="css" href="diy-all-flavors.css">
   <template>
-    <diy-firebase-store id="firebaseStore"></diy-firebase-store>
-
-    <paper-button raised on-tap="onLoadDataTap_">Load Data</paper-button>
-    <paper-button raised on-tap="onLogStoreTap_">Log Store</paper-button>
-    <paper-button raised on-tap="databaseTest_">Database Test</paper-button>
-
-    <template is="dom-repeat" items="[[toFlavorsArray_(flavors)]]">
+    <template is="dom-repeat" items="[[allFlavorKeys]]">
       <diy-flavor identifier="[[item]]"></diy-flavor>
     </template>
   </template>

@@ -11,8 +11,6 @@ const initialState = {
     isUserActionActive: false,
     isAdministrationActive: false,
   },
-  flavors: {},
-  vendors: {},
   // Caches a mapping from userID to user name.
   userCache: {},
   // Information about the current user.
@@ -82,14 +80,6 @@ function reducerUpdateRoute(state, action) {
   return Object.assign({}, state, { appRoute: newRoute });
 }
 
-function reducerInitFlavors(state, action) {
-  return Object.assign({}, state, { flavors: action.data });
-}
-
-function reducerInitVendors(state, action) {
-  return Object.assign({}, state, { vendors: action.data });
-}
-
 function reducerUserSignin(state, action) {
   const newState = Object.assign({}, state);
   newState.user = Object.assign({}, state.user);
@@ -128,10 +118,6 @@ function reducerCacheUser(state, action) {
 
 const reduxReducer = function(state = initialState, action) {
   switch (action.type) {
-    case 'INIT_FLAVORS':
-      return reducerInitFlavors(state, action);
-    case 'INIT_VENDORS':
-      return reducerInitVendors(state, action);
     case 'UPDATE_ROUTE':
       return reducerUpdateRoute(state, action);
     case 'USER_SIGNIN':
@@ -152,12 +138,6 @@ const DiyMixinReduxBase = PolymerRedux(reduxStore);
 DiyMixinRedux = (superClass) => class extends DiyMixinReduxBase(superClass) {
   static get actions() {
     return {
-      initFlavors(data) {
-        return { type: 'INIT_FLAVORS', data };
-      },
-      initVendors(data) {
-        return { type: 'INIT_VENDORS', data };
-      },
       updateRoute(data) {
         return { type: 'UPDATE_ROUTE', data };
       },

@@ -1,4 +1,4 @@
-class DiyRecipe extends DiyMixinRedux(Polymer.Element) {
+class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
   static get is() {
     return 'diy-recipe';
   }
@@ -57,13 +57,11 @@ class DiyRecipe extends DiyMixinRedux(Polymer.Element) {
   }
 
   ingredientFromKey_(flavorKey) {
-    const allFlavors = this.getState().flavors;
-    const allVendors = this.getState().vendors;
-    const flavorData = allFlavors[flavorKey];
+    const flavorData = this.allFlavors[flavorKey];
     if (!flavorData) {
       return { vendor: 'n/a', flavor: flavorKey };
     }
-    const vendorData = allVendors[flavorData.vendor];
+    const vendorData = this.allVendors[flavorData.vendor];
     return {
       vendor: vendorData ? vendorData.short || 'n/a' : 'n/a',
       flavor: flavorData.name || flavorKey,

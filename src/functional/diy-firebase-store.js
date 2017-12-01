@@ -39,16 +39,6 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     const recipesRef = this.store.collection('recipes');
     return recipesRef.where('user', '==', uid).get();
   }
-
-  getFlavors() {
-    const flavorsRef = this.store.collection('flavors');
-    return flavorsRef.get();
-  }
-
-  getVendors() {
-    const vendorsRef = this.store.collection('vendors');
-    return vendorsRef.get();
-  }
 }
 
 customElements.define(DiyFirebaseStore.is, DiyFirebaseStore);

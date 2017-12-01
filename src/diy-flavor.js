@@ -1,40 +1,27 @@
 /*
  * Visual element for a single flavor.
  */
-class DiyFlavor extends DiyMixinRedux(Polymer.Element) {
+class DiyFlavor extends DiyMixinStaticData(Polymer.Element) {
   static get is() {
     return 'diy-flavor';
   }
   static get properties() {
     return {
-      identifier: String,
+      identifier: {
+        type: String,
+        observer: 'onIdentifierChanged_',
+      },
       flavorName: String,
       vendorShort: String,
       vendorName: String,
       imageUrl: String,
-
-      flavors: {
-        type: Object,
-        statePath: 'flavors',
-      },
-      vendors: {
-        type: Object,
-        statePath: 'vendors',
-      },
     };
   }
 
-  static get observers() {
-    return [
-      'onFlavorDataChanged_(identifier, flavors, vendors)',
-    ];
-  }
-
-  onFlavorDataChanged_(identifier, flavors, vendors) {
-    if (!identifier || !flavors || !vendors) return;
-    const flavor = flavors[identifier];
+  onIdentifierChanged_(identifier) {
+    const flavor = this.allFlavors[identifier];
     if (!flavor) return;
-    const vendor = vendors[flavor.vendor];
+    const vendor = this.allVendors[flavor.vendor];
     if (!vendor) return;
 
     this.set('flavorName', flavor.name);

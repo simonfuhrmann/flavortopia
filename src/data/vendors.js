@@ -1,4 +1,4 @@
-{
+const staticDataVendors = {
   "cap": {
     "name": "Capella Flavors",
     "short": "CAP",
@@ -9,4 +9,4 @@
     "short": "TFA",
     "website": "https://shop.perfumersapprentice.com"
   }
-}
+};

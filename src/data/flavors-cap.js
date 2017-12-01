@@ -1,4 +1,4 @@
-{
+const staticDataFlavorsCap = {
   "cap-apple-pie": {
     "name": "Apple Pie",
     "vendor": "cap"
@@ -519,4 +519,4 @@
     "name": "Yellow Peach",
     "vendor": "cap"
   }
-}
+};
