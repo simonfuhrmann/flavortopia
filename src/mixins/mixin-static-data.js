@@ -1,5 +1,5 @@
 const staticData = {
-  flavors: Object.assign({}, staticDataFlavorsCap),
+  flavors: Object.assign({}, staticDataFlavorsCap, staticDataFlavorsTfa),
   vendors: Object.assign({}, staticDataVendors),
 };
 
