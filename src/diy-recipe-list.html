@@ -1,0 +1,65 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="/src/functional/diy-firebase-get.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+<link rel="import" href="/src/diy-recipe.html">
+
+<dom-module id="diy-recipe-list">
+  <link rel="import" type="css" href="diy-recipe-list.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <!-- Datasource for user recipes. -->
+    <diy-firebase-get
+        id="firebaseGet"
+        loading="{{isLoading}}"
+        error="{{loadingError}}"
+        data="{{userRecipes}}">
+    </diy-firebase-get>
+
+    <!-- Recipe list header with create button. -->
+    <div id="listHeader">
+      <h1 class="flex">Your Recipes</h1>
+      <paper-button id="newRecipeButton" raised on-tap="onNewRecipeTap_">
+        <iron-icon icon="icons:add"></iron-icon>
+        <span>New Recipe</span>
+      </paper-button>
+    </div>
+
+    <!-- Card that shows during loading. -->
+    <template is="dom-if" if="[[isLoading]]">
+      <paper-card id="loadingRecipesCard">
+        <span>Loading Recipes...</span>
+      </paper-card>
+    </template>
+
+    <!-- Card that shows on loading errors. -->
+    <template is="dom-if" if="[[loadingError]]">
+      <paper-card id="loadingErrorCard">
+        <span>Error: [[loadingError]]</span>
+      </paper-card>
+    </template>
+
+    <!-- Card that shows when there are no recipes. -->
+    <template is="dom-if" if="[[showNoRecipes_(userRecipes)]]">
+      <paper-card id="noRecipesCard">
+        <span>There are no recipes. Create one!</span>
+      </paper-card>
+    </template>
+
+    <!-- Recipe list. -->
+    <template is="dom-repeat" items="[[userRecipes]]">
+      <paper-card>
+        <diy-recipe recipe-data="[[item]]"></diy-recipe>
+      </paper-card>
+    </template>
+
+  </template>
+  <script type="text/javascript" src="diy-recipe-list.js"></script>
+</dom-module>

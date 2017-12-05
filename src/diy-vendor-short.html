@@ -1,0 +1,31 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="/src/mixins/mixin-static-data.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-vendor-short">
+  <link rel="import" type="css" href="diy-vendor-short.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <div id="anchor">
+      <div id="text" class="layout horizontal" on-tap="onVendorTap_">
+        <span>[</span>
+        <span>[[vendorShort]]</span>
+        <span>]</span>
+      </div>
+
+      <div id="tooltip" hidden on-tap="onTooltipTap_">
+        <div>
+          <h3>[<span>[[vendorShort]]</span>] [[vendorName]]</h3>
+          <p>[[vendorDescription]]</p>
+          <a href="[[vendorWebsite]]">[[vendorWebsite]]</a>
+        </div>
+      </div>
+
+    </div>
+  </template>
+  <script type="text/javascript" src="diy-vendor-short.js"></script>
+</dom-module>

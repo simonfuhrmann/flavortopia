@@ -1,0 +1,12 @@
+:host {
+  @apply --layout-vertical;
+}
+
+diy-input.percent {
+  text-align: right;
+  width: 6ex;
+}
+
+[hidden] {
+  display: none !important;
+}

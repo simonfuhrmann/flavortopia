@@ -61,9 +61,8 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
     if (!flavorData) {
       return { vendor: 'n/a', flavor: flavorKey };
     }
-    const vendorData = this.allVendors[flavorData.vendor];
     return {
-      vendor: vendorData ? vendorData.short || 'n/a' : 'n/a',
+      vendor: flavorData.vendor || 'n/a',
       flavor: flavorData.name || flavorKey,
     };
   }

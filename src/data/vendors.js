@@ -8,6 +8,7 @@ const staticDataVendors = {
   "tfa": {
     "name": "The Flavor Apprentice",
     "short": "TFA",
-    "website": "https://shop.perfumersapprentice.com"
+    "website": "https://shop.perfumersapprentice.com",
+    "description": "The Flavor Apprentice was founded in 2009 by The Perfumer's Apprentice staff to create a clear separation between their food flavors and perfume fragrances."
   }
 };

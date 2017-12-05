@@ -31,7 +31,7 @@ table .vendor {
 }
 
 #actions {
-  padding: 0 4px 0 12px;
+  padding-right: 4px;
 }
 
 #actions paper-button {
@@ -56,6 +56,7 @@ table .vendor {
   @apply --layout-vertical;
   @apply --layout-end;
   line-height: 1.2em;
+  padding: 0 8px;
 }
 
 #notes {

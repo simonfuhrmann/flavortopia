@@ -5,12 +5,6 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
 
   static get properties() {
     return {
-      isLoading: {
-        type: Boolean,
-        value: true,
-      },
-      loadingError: String,
-      userRecipes: Array,
       userId: {
         type: String,
         statePath: 'user.auth.firebaseUser.uid',
@@ -24,14 +18,6 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
     if (!uid) {
       return;
     }
-    this.$.firebaseGet.loadUserRecipes(uid);
-  }
-
-  showNoRecipes_(userRecipes) {
-    return userRecipes && userRecipes.length == 0;
-  }
-
-  onSaveTap_() {
   }
 }
 
