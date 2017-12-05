@@ -31,12 +31,12 @@ const staticDataFlavorsCap = {
     "name": "Blue Raspberry Cotton Candy",
     "vendor": "cap"
   },
-  "cap-blueberry-cinnamon-crumble": {
-    "name": "Blueberry Cinnamon Crumble",
-    "vendor": "cap"
-  },
   "cap-blueberry": {
     "name": "Blueberry",
+    "vendor": "cap"
+  },
+  "cap-blueberry-cinnamon-crumble": {
+    "name": "Blueberry Cinnamon Crumble",
     "vendor": "cap"
   },
   "cap-blueberry-jam": {
@@ -395,7 +395,7 @@ const staticDataFlavorsCap = {
     "name": "Popcorn v2",
     "vendor": "cap"
   },
-  "cap-pralines-&-cream": {
+  "cap-pralines-and-cream": {
     "name": "Pralines & Cream",
     "vendor": "cap"
   },
@@ -443,6 +443,10 @@ const staticDataFlavorsCap = {
     "name": "Sugar Cookie v2",
     "vendor": "cap"
   },
+  "cap-super-sweet": {
+    "name": "Super Sweet",
+    "vendor": "cap"
+  },
   "cap-sweet-cream": {
     "name": "Sweet Cream",
     "vendor": "cap"
@@ -469,6 +473,10 @@ const staticDataFlavorsCap = {
   },
   "cap-sweet-tangerine": {
     "name": "Sweet Tangerine",
+    "vendor": "cap"
+  },
+  "cap-sweet-tangerine-rf": {
+    "name": "Sweet Tangerine Rf",
     "vendor": "cap"
   },
   "cap-sweet-watermelon": {
