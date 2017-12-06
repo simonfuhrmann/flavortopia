@@ -1,0 +1,16 @@
+p {
+  width: 320px;
+  text-align: center;
+  color: var(--secondary-text-color);
+}
+
+iron-icon {
+  width: 160px;
+  height: 160px;
+  color: #d4d7d9;
+}
+
+paper-button {
+  width: 200px;
+  background-color: white;
+}

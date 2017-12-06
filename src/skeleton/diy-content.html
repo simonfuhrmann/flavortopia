@@ -1,7 +1,9 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/lib/elements/dom-if.html">
 <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
 
 <link rel="import" href="/src/mixins/mixin-router.html">
+<link rel="import" href="/src/common/diy-signin-wall.html">
 <link rel="import" href="/src/routes/diy-administration.html">
 <link rel="import" href="/src/routes/diy-all-flavors.html">
 <link rel="import" href="/src/routes/diy-all-recipes.html">
@@ -27,7 +29,9 @@
     </template>
 
     <template is="dom-if" if="[[activeRoute.isUserRecipesActive]]">
-      <diy-user-recipes></diy-user-recipes>
+      <diy-signin-wall signed-in="[[signedIn]]">
+        <diy-user-recipes></diy-user-recipes>
+      </diy-signin-wall>
     </template>
 
     <template is="dom-if" if="[[activeRoute.isUserSigninActive]]" restamp>
