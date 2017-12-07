@@ -17,7 +17,6 @@ class DiyVendorShort extends DiyMixinStaticData(Polymer.Element) {
 
   onKeyChanged_(key) {
     const vendorData = this.allVendors[key];
-    console.log('vendorData', vendorData);
     if (!vendorData) {
       this.setProperties({
         vendorShort: key,

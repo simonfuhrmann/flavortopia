@@ -56,7 +56,8 @@
     <!-- Recipe list. -->
     <template is="dom-repeat" items="[[userRecipes]]">
       <paper-card>
-        <diy-recipe recipe-data="[[item]]"></diy-recipe>
+        <diy-recipe recipe="[[item]]" on-edit-recipe="onEditRecipe_">
+        </diy-recipe>
       </paper-card>
     </template>
 

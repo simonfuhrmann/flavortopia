@@ -9,3 +9,7 @@
 #editRecipeCard {
   padding: 16px;
 }
+
+[hidden] {
+  display: none !important;
+}

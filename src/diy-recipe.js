@@ -9,10 +9,11 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
         type: String,
         statePath: 'user.auth.firebaseUser.uid',
       },
-      recipeData: {
+      recipe: {
         type: Object,
-        observer: 'onRecipeDataChanged_',
+        observer: 'onRecipeChanged_',
       },
+      recipeId: String,
       recipeName: String,
       recipeUserId: String,
       recipeAuthor: String,
@@ -24,12 +25,13 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
     };
   }
 
-  onRecipeDataChanged_(recipeData) {
-    this.set('recipeName', recipeData.name);
-    this.set('recipeUserId', recipeData.user);
-    this.set('recipeNotes', recipeData.notes || '');
-    this.set('recipeCreated', this.timestampToString_(recipeData.created));
-    this.set('ingredients', this.mapIngredients_(recipeData.ingredients));
+  onRecipeChanged_(recipe) {
+    this.set('recipeId', recipe.id);
+    this.set('recipeName', recipe.data.name);
+    this.set('recipeUserId', recipe.data.user);
+    this.set('recipeNotes', recipe.data.notes || '');
+    this.set('recipeCreated', this.timestampToString_(recipe.data.created));
+    this.set('ingredients', this.mapIngredients_(recipe.data.ingredients));
     this.set('hasIngredients', this.ingredients.length > 0);
     this.set('hasRecipeNotes', this.recipeNotes.length > 0);
   }
@@ -76,6 +78,8 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
   }
 
   onEditTap_() {
+    const detail = { detail: { recipeId: this.recipeId } };
+    this.dispatchEvent(new CustomEvent('edit-recipe', detail));
   }
 
   onMixTap_() {

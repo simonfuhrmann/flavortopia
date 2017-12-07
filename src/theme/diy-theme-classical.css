@@ -7,6 +7,7 @@
   --primary-background-color: #f9fafb;
   --secondary-text-color: #594f4f;
   --secondary-background-color: #eceff1;
+  --separator-color: #d4d7d9;
 
   --contrast-text-color: #2d3333;
   --contrast-foreground-color: white;
@@ -29,7 +30,7 @@
   --toolbar-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 3px 3px rgba(0, 0, 0, 0.1);
 
   --input-focus-color: var(--info-background-color);
-  --input-border-color: #ddd;
+  --input-border-color: var(--separator-color);
   --input-background-color: white;
   --input-error-color: var(--error-text-color);
 

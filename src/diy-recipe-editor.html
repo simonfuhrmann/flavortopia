@@ -1,0 +1,59 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/bower_components/paper-listbox/paper-listbox.html">
+
+<link rel="import" href="/src/common/diy-input.html">
+<link rel="import" href="/src/common/diy-textarea.html">
+
+<dom-module id="diy-recipe-editor">
+  <link rel="import" type="css" href="diy-recipe-editor.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <paper-card>
+
+      <div class="layout horizontal">
+        <div class="flex">
+          <div>Recipe Name</div>
+          <diy-input></diy-input>
+        </div>
+        <div>
+          <paper-dropdown-menu label="Visibility" always-float-label>
+            <paper-listbox slot="dropdown-content" selected="0">
+              <paper-item>Public</paper-item>
+              <paper-item>Unlisted</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+        </div>
+      </div>
+
+      <div>Ingredients</div>
+      <div class="layout horizontal center">
+        <diy-input class="flex"></diy-input>
+        <diy-input maxlength="4" class="percent"></diy-input>
+        <span>%</span>
+      </div>
+
+      <div>Recipe Notes (public)</div>
+      <diy-textarea value="{{testvalue}}"></diy-textarea>
+
+      <div>Personal Notes (unlisted)</div>
+      <diy-textarea ></diy-textarea>
+
+      <div id="buttonBar" class="layout horizontal end-justified">
+        <paper-button on-tap="onDiscardTap_">Discard Changes</paper-button>
+        <paper-button id="saveButton" raised on-tap="onSaveTap_">
+          Save Recipe
+        </paper-button>
+      </div>
+
+    </paper-card>
+
+  </template>
+  <script type="text/javascript" src="diy-recipe-editor.js"></script>
+</dom-module>

@@ -31,6 +31,13 @@ class DiyRecipeList extends Polymer.Element {
   }
 
   onNewRecipeTap_() {
+    this.dispatchEvent(new CustomEvent('create-recipe'));
+  }
+
+  // When editing a recipe was requested, forward the request.
+  onEditRecipe_(event) {
+    const detail = event.detail;
+    this.dispatchEvent(new CustomEvent('edit-recipe', { detail }));
   }
 }
 

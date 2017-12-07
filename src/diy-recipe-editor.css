@@ -1,0 +1,34 @@
+:host {
+  @apply --layout-vertical;
+}
+
+paper-card {
+  padding: 16px;
+}
+
+diy-input.percent {
+  text-align: right;
+  width: 6ex;
+}
+
+paper-button {
+  margin: 0;
+}
+
+paper-button#saveButton {
+  background-color: var(--info-background-color);
+  color: var(--info-foreground-color);
+  margin-left: 16px;
+}
+
+paper-dropdown-menu {
+  width: 100px;
+}
+
+#buttonBar {
+  padding-top: 16px;
+}
+
+[hidden] {
+  display: none !important;
+}

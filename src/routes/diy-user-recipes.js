@@ -13,11 +13,31 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
     };
   }
 
+  openEditor_(recipeId) {
+    this.$.recipeList.setAttribute('hidden', true);
+    this.$.recipeEditor.open(recipeId);
+    this.$.recipeEditor.removeAttribute('hidden');
+  }
+
+  closeEditor_() {
+    this.$.recipeEditor.setAttribute('hidden', true);
+    this.$.recipeList.removeAttribute('hidden');
+  }
+
   onUserIdChanged_(uid) {
     this.set('userRecipes', undefined);
     if (!uid) {
       return;
     }
+  }
+
+  onEditRecipe_(event) {
+    const recipeId = event.detail.recipeId;
+    this.openEditor_(recipeId);
+  }
+
+  onCreateRecipe_(event) {
+    this.openEditor_();
   }
 }
 

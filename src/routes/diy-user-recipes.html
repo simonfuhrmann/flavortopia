@@ -3,7 +3,7 @@
 
 <link rel="import" href="/src/mixins/mixin-redux.html">
 <link rel="import" href="/src/theme/diy-theme.html">
-<link rel="import" href="/src/diy-recipe-edit.html">
+<link rel="import" href="/src/diy-recipe-editor.html">
 <link rel="import" href="/src/diy-recipe-list.html">
 
 <dom-module id="diy-user-recipes">
@@ -13,12 +13,19 @@
     <style include="diy-theme"></style>
 
     <!-- Recipe list. -->
-    <diy-recipe-list user-id="[[userId]]"></diy-recipe-list>
+    <diy-recipe-list
+        id="recipeList"
+        hidden
+        user-id="[[userId]]"
+        on-edit-recipe="onEditRecipe_"
+        on-create-recipe="onCreateRecipe_">
+    </diy-recipe-list>
 
     <!-- Recipe editor. -->
-    <paper-card id="editRecipeCard" hidden>
-      <diy-recipe-edit></diy-recipe-edit>
-    </paper-card>
+    <diy-recipe-editor
+        id="recipeEditor"
+        on-close-editor="closeEditor_">
+    </diy-recipe-editor>
 
   </template>
   <script type="text/javascript" src="diy-user-recipes.js"></script>

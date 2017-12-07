@@ -37,7 +37,7 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
   }
 
   // For multiple-document queries, the snapshot contains an array of docs,
-  // which is mapped to an array of the document's data for convenience.
+  // which is mapped to an array with the doc key and data, for convenience.
   // The argument is a function that returns a multiple document snapshot.
   firebaseGetMulti(func) {
     this.set('loading', true);
@@ -49,7 +49,9 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
           if (snapshot) {
             docs = snapshot.docs || [];
           }
-          this.set('data', docs.map(doc => doc.data()));
+          this.set('data', docs.map(doc => {
+            return { id: doc.id, data: doc.data() };
+          }));
         })
         .catch(error => {
           this.set('loading', false);

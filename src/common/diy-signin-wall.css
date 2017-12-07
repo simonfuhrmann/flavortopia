@@ -7,7 +7,7 @@ p {
 iron-icon {
   width: 160px;
   height: 160px;
-  color: #d4d7d9;
+  color: var(--separator-color);
 }
 
 paper-button {
