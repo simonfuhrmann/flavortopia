@@ -1,0 +1,24 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="diy-live-search">
+  <link rel="import" type="css" href="diy-live-search.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <div id="inputContainer" class="flex layout horizontal">
+      <iron-icon id="searchIcon" icon="icons:search"></iron-icon>
+      <input value="{{value::input}}" class="flex">
+      <iron-icon
+          id="clearIcon"
+          icon="icons:close"
+          on-tap="onClearTap_">
+      </iron-icon>
+    </div>
+
+  </template>
+  <script type="text/javascript" src="diy-live-search.js"></script>
+</dom-module>
