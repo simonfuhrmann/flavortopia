@@ -34,7 +34,11 @@ class DiyVendorShort extends DiyMixinStaticData(Polymer.Element) {
   }
 
   onVendorTap_() {
-    this.$.tooltip.removeAttribute('hidden');
+    if (this.$.tooltip.hasAttribute('hidden')) {
+      this.$.tooltip.removeAttribute('hidden');
+    } else {
+      this.$.tooltip.setAttribute('hidden', true);
+    }
   }
 
   onTooltipTap_() {

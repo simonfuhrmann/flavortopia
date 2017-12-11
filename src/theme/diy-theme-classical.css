@@ -25,7 +25,7 @@
   --error-foreground-color: white;
   --error-background-color: #e26f4b;
 
-  --toolbar-color: var(--contrast-foreground-color);;
+  --toolbar-color: var(--contrast-foreground-color);
   --toolbar-background: var(--contrast-background-color);
   --toolbar-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 3px 3px rgba(0, 0, 0, 0.1);
 

@@ -18,6 +18,11 @@ class DiyLiveSearch extends Polymer.Element {
         type: Number,
         value: 500,
       },
+
+      search: {
+        value: String,
+        notify: true,
+      }
     };
   }
 
@@ -37,7 +42,7 @@ class DiyLiveSearch extends Polymer.Element {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
-    this.dispatchEvent(new CustomEvent('search', { detail: this.value }));
+    this.set('search', this.value);
   }
 }
 
