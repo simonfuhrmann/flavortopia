@@ -11,7 +11,7 @@
 
     <div id="inputContainer" class="flex layout horizontal">
       <iron-icon id="searchIcon" icon="icons:search"></iron-icon>
-      <input value="{{value::input}}" class="flex">
+      <input class="flex" value="{{value::input}}" on-keyup="handleKey_">
       <iron-icon
           id="clearIcon"
           icon="icons:close"

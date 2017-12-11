@@ -22,24 +22,21 @@ class DiyAllFlavors extends DiyMixinStaticData(Polymer.Element) {
 
     // Group all flavors by vendor.
     const byVendorMap = {};
-    this.allFlavorKeys.forEach(flavorKey => {
-      const flavor = Object.assign({}, this.allFlavors[flavorKey]);
-      flavor.key = flavorKey;
+    this.allFlavorsArray.forEach(flavor => {
       if (!byVendorMap[flavor.vendor]) {
         byVendorMap[flavor.vendor] = [];
       }
       byVendorMap[flavor.vendor].push(flavor);
     });
 
-    console.log(byVendorMap);
-
     // Convert to a vendor array.
     const byVendorArray = [];
-    for (const vendorKey in byVendorMap) {
+    Object.keys(byVendorMap).forEach(vendorKey => {
       const vendor = this.allVendors[vendorKey];
       const flavors = byVendorMap[vendorKey];
       byVendorArray.push({ vendor, flavors });
-    }
+    });
+
     this.set('flavorsByVendor', byVendorArray);
   }
 
@@ -49,20 +46,19 @@ class DiyAllFlavors extends DiyMixinStaticData(Polymer.Element) {
       return;
     }
 
-    // Clean non-alphanum characters, condense white spaces.
+    // Create array of cleaned search terms.
     const cleaned = searchTerm.replace(/\s+/g, ' ').replace(/[^\w ]/g, '');
     const terms = cleaned.toLowerCase().split(' ');
-    const filteredKeys = this.allFlavorKeys.filter(flavorKey => {
-      const flavor = this.allFlavors[flavorKey];
+
+    // Create array of flavor keys whose flavor match the search terms.
+    const searchResult = this.allFlavorsArray.filter(flavor => {
       const subject = (flavor.vendor + ' ' + flavor.name).toLowerCase();
       return terms.reduce((isMatch, elem) => {
         return isMatch && subject.includes(elem)
       }, true);
     });
 
-    // Create array with flavors.
-    const flavors = filteredKeys.map(key => this.allFlavors[key]);
-    this.set('searchFlavors', flavors);
+    this.set('searchFlavors', searchResult);
   }
 
   hasSearchResults_(searchFlavors) {

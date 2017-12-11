@@ -32,17 +32,28 @@ class DiyLiveSearch extends Polymer.Element {
   }
 
   onValueChanged_(value) {
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
+    this.clearTimeout_();
     this.timeout = setTimeout(this.onTimeout_.bind(this), this.delayMs);
   }
 
   onTimeout_() {
+    this.clearTimeout_();
+    this.set('search', this.value);
+  }
+
+  clearTimeout_() {
     if (this.timeout) {
       clearTimeout(this.timeout);
+      this.timeout = undefined;
     }
-    this.set('search', this.value);
+  }
+
+  handleKey_(event) {
+    if (event.keyCode == 13 /* Enter */) {
+      this.onTimeout_();
+    } else if (event.keyCode == 27 /* Esc */) {
+      this.onClearTap_();
+    }
   }
 }
 
