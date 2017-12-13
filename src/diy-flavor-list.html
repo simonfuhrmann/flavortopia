@@ -1,0 +1,46 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="/src/theme/diy-theme.html">
+<link rel="import" href="/src/diy-vendor-short.html">
+
+<dom-module id="diy-flavor-list">
+  <link rel="import" type="css" href="diy-flavor-list.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <div id="title" class="layout horizontal end">
+      <h2 class="flex">[[title]]</h2>
+      <span id="info">[[info]]</span>
+      <span id="showAllButton" hidden on-tap="onShowAll_">Show all</span>
+      <span id="collapseButton" hidden on-tap="onCollapse_">Collapse</span>
+    </div>
+
+    <paper-card id="emptyCard" hidden>
+      [[emptyMessage]]
+    </paper-card>
+
+    <paper-card id="flavorCard">
+      <div class="two-column">
+        <table>
+          <template is="dom-repeat" items="[[showFlavors]]">
+            <tr>
+              <td class="vendor-short">
+                <diy-vendor-short key="[[item.vendor]]"></diy-vendor-short>
+              </td>
+              <td>[[item.name]]</td>
+            </tr>
+          </template>
+        </table>
+      </div>
+      <div id="excerptNotice" hidden>
+        <span id="showAllNotice" on-tap="onShowAll_">
+          Show [[numHidden]] hidden flavors
+        </span>
+      </div>
+    </paper-card>
+
+  </template>
+  <script type="text/javascript" src="diy-flavor-list.js"></script>
+</dom-module>

@@ -3,10 +3,12 @@
 <link rel="import" href="/bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/paper-fab/paper-fab.html">
 
 <link rel="import" href="/src/mixins/mixin-static-data.html">
 <link rel="import" href="/src/common/diy-live-search.html">
-<link rel="import" href="/src/diy-vendor-short.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+<link rel="import" href="/src/diy-flavor-list.html">
 
 <dom-module id="diy-all-flavors">
   <link rel="import" type="css" href="diy-all-flavors.css">
@@ -18,51 +20,22 @@
 
     <!-- Display search result if a term was entered. -->
     <template is="dom-if" if="[[searchTerm]]">
-      <h2>Search: [[searchTerm]]</h2>
-
-      <!-- No search matches. -->
-      <template is="dom-if" if="[[!hasSearchResults_(searchFlavors)]]">
-        <paper-card class="no-results">
-          <iron-icon icon="icons:search"></iron-icon>
-          <div>Search does not match any flavors.</div>
-        </paper-card>
-      </template>
-
-      <!-- Search results. -->
-      <template is="dom-if" if="[[hasSearchResults_(searchFlavors)]]">
-        <paper-card class="flavor-card">
-          <table>
-            <template is="dom-repeat" items="[[searchFlavors]]" as="flavor">
-              <tr>
-                <td class="vendor-short">
-                  <diy-vendor-short key="[[flavor.vendor]]"></diy-vendor-short>
-                </td>
-                <td class="flavor-name">[[flavor.name]]</td>
-              </tr>
-            </template>
-          </table>
-        </paper-card>
-      </template>
+      <diy-flavor-list
+          title="Search: [[searchTerm]]"
+          empty-message="Search does not match any flavors."
+          flavors="[[searchFlavors]]">
+      </diy-flavor-list>
     </template>
 
     <!-- Show all flavors if no search term was entered. -->
     <template is="dom-if" if="[[!searchTerm]]">
       <template is="dom-repeat" items="[[flavorsByVendor]]" as="vendor">
-        <h2>Vendor: [[vendor.vendor.name]]</h2>
-
-        <paper-card class="flavor-card">
-          <table>
-            <template is="dom-repeat" items="[[vendor.flavors]]" as="flavor">
-              <tr>
-                <td class="vendor-short">
-                  <diy-vendor-short key="[[flavor.vendor]]"></diy-vendor-short>
-                </td>
-                <td class="flavor-name">[[flavor.name]]</td>
-              </tr>
-            </template>
-          </table>
-        </paper-card>
-
+        <diy-flavor-list
+            excerpt="10"
+            title="[[vendor.vendor.name]]"
+            empty-message="No flavors to show."
+            flavors="[[vendor.flavors]]">
+        </diy-flavor-list>
       </template>
     </template>
 

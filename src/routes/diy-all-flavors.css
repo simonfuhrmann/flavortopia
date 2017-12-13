@@ -3,37 +3,3 @@
   width: 690px;
   margin: 0 auto;
 }
-
-table.flavor-table {
-  width: 100%;
-  border: 1px solid var(--secondary-background-color);
-  background-color: white;
-  border-collapse: collapse;
-}
-
-table td {
-  padding: 4px;
-}
-
-table .vendor-short {
-  width: 1px;
-}
-
-paper-card.flavor-card {
-  display: block;
-  padding: 8px;
-  column-count: 2;
-  column-rule: 1px solid var(--separator-color);
-}
-
-paper-card.no-results {
-  display: block;
-  padding: 16px;
-  text-align: center;
-}
-
-paper-card.no-results iron-icon {
-  width: 40px;
-  height: 40px;
-  color: var(--separator-color);
-}

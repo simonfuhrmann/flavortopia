@@ -1,0 +1,62 @@
+:host {
+  @apply --layout-vertical;
+}
+
+div.two-column {
+  padding: 8px;
+  column-count: 2;
+  column-rule: 1px solid var(--separator-color);
+}
+
+h2 {
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 4px;
+}
+
+table .vendor-short {
+  width: 1px;
+}
+
+#emptyCard {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+#excerptNotice {
+  padding: 2px;
+  text-align: center;
+  background-color: var(--secondary-background-color);
+}
+
+#title {
+  margin: 24px 0 8px 0;
+}
+
+#info {
+  @apply --paper-font-caption;
+  margin-right: 8px;
+}
+
+#showAllButton,
+#collapseButton {
+  margin-right: 8px;
+  cursor: pointer;
+  @apply --paper-font-caption;
+}
+
+#showAllNotice {
+  cursor: pointer;
+  @apply --paper-font-caption;
+}
+
+[hidden] {
+  display: none !important;
+}

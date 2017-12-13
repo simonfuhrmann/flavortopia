@@ -1,5 +1,5 @@
 class DiyAuthState extends
-    DiyMixinFirebaseUsername(DiyMixinRedux((Polymer.Element))) {
+    DiyMixinFirebaseUsername(DiyMixinRedux(Polymer.Element)) {
   static get is() {
     return 'diy-auth-state';
   }
