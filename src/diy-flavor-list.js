@@ -1,4 +1,4 @@
-class DiyFlavorList extends Polymer.Element {
+class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
   static get is() {
     return 'diy-flavor-list';
   }
@@ -77,10 +77,12 @@ class DiyFlavorList extends Polymer.Element {
 
   setFlavors_() {
     if (this.showAll) {
-      this.set('showFlavors', this.flavors);
+      const flavors = this.keysToFlavors_(this.flavors);
+      this.set('showFlavors', flavors);
       this.set('numHidden', 0);
     } else {
-      this.set('showFlavors', this.flavors.slice(0, this.excerpt));
+      const flavors = this.keysToFlavors_(this.flavors, 0, this.excerpt);
+      this.set('showFlavors', flavors);
       this.set('numHidden', this.flavors.length - this.excerpt);
     }
   }
@@ -99,6 +101,19 @@ class DiyFlavorList extends Polymer.Element {
     this.$.excerptNotice.removeAttribute('hidden');
     this.showAll = false;
     this.setFlavors_();
+  }
+
+  keysToFlavors_(flavorKeys, startIndex, length) {
+    startIndex = startIndex || 0;
+    length = length || flavorKeys.length;
+    let flavors = [];
+    for (let i = startIndex; i < startIndex + length; ++i) {
+      const key = flavorKeys[i];
+      const dummy = { key: key, vendor: 'n/a', name: key };
+      const flavor = this.allFlavors[key] || dummy;
+      flavors.push(flavor);
+    }
+    return flavors;
   }
 }
 

@@ -47,12 +47,14 @@ table .vendor-short {
 
 #showAllButton,
 #collapseButton {
+  color: var(--info-text-color);
   margin-right: 8px;
   cursor: pointer;
   @apply --paper-font-caption;
 }
 
 #showAllNotice {
+  color: var(--info-text-color);
   cursor: pointer;
   @apply --paper-font-caption;
 }

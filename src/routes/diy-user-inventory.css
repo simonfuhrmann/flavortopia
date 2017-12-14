@@ -1,0 +1,12 @@
+:host {
+  max-width: 690px;
+  margin: 0 auto;
+  @apply --layout-vertical;
+}
+
+#loadingCard,
+#errorCard {
+  padding: 24px;
+  @apply --layout-horizontal;
+  @apply --layout-center-justified;
+}

@@ -26,7 +26,7 @@ class DiyAllFlavors extends DiyMixinStaticData(Polymer.Element) {
       if (!byVendorMap[flavor.vendor]) {
         byVendorMap[flavor.vendor] = [];
       }
-      byVendorMap[flavor.vendor].push(flavor);
+      byVendorMap[flavor.vendor].push(flavor.key);
     });
 
     // Convert to a vendor array.
@@ -50,7 +50,7 @@ class DiyAllFlavors extends DiyMixinStaticData(Polymer.Element) {
     const cleaned = searchTerm.replace(/\s+/g, ' ').replace(/[^\w ]/g, '');
     const terms = cleaned.toLowerCase().split(' ');
 
-    // Create array of flavor keys whose flavor match the search terms.
+    // Create array of flavors that match the search terms.
     const searchResult = this.allFlavorsArray.filter(flavor => {
       const subject = (flavor.vendor + ' ' + flavor.name).toLowerCase();
       return terms.reduce((isMatch, elem) => {
@@ -58,7 +58,9 @@ class DiyAllFlavors extends DiyMixinStaticData(Polymer.Element) {
       }, true);
     });
 
-    this.set('searchFlavors', searchResult);
+    // Map the search result to flavor keys.
+    const searchResultKeys = searchResult.map(flavor => flavor.key);
+    this.set('searchFlavors', searchResultKeys);
   }
 
   hasSearchResults_(searchFlavors) {

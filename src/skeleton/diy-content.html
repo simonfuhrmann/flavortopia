@@ -8,6 +8,7 @@
 <link rel="import" href="/src/routes/diy-all-recipes.html">
 <link rel="import" href="/src/routes/diy-user-action.html">
 <link rel="import" href="/src/routes/diy-user-recipes.html">
+<link rel="import" href="/src/routes/diy-user-inventory.html">
 <link rel="import" href="/src/routes/diy-user-signin.html">
 <link rel="import" href="/src/routes/diy-welcome.html">
 
@@ -30,6 +31,12 @@
     <template is="dom-if" if="[[activeRoute.isUserRecipesActive]]">
       <diy-signin-wall signed-in="[[signedIn]]">
         <diy-user-recipes></diy-user-recipes>
+      </diy-signin-wall>
+    </template>
+
+    <template is="dom-if" if="[[activeRoute.isUserInventoryActive]]">
+      <diy-signin-wall signed-in="[[signedIn]]">
+        <diy-user-inventory></diy-user-inventory>
       </diy-signin-wall>
     </template>
 

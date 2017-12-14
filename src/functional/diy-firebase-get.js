@@ -55,17 +55,43 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
         })
         .catch(error => {
           this.set('loading', false);
-          if (error && error.message) {
-            this.set('error', error.message);
-          } else {
-            this.set('error', 'Unknown error');
-          }
+          this.setError(error);
         });
+  }
+
+  // For single document queries.
+  // The argument is a function that returns a single document.
+  firebaseGetDoc(func) {
+    this.set('loading', true);
+    this.set('error', undefined);
+    func()
+        .then(snapshot => {
+          this.set('loading', false);
+          const doc = snapshot && snapshot.exists ? snapshot.data() : {};
+          this.set('data', doc);
+        })
+        .catch(error => {
+          this.set('loading', false);
+          this.setError(error);
+        })
+  }
+
+  setError(error) {
+    if (error && error.message) {
+      this.set('error', error.message);
+    } else {
+      this.set('error', 'Unknown error');
+    }
   }
 
   loadUserRecipes(uid) {
     const recipesRef = this.store.collection('recipes');
     this.firebaseGetMulti(() => recipesRef.where('user', '==', uid).get());
+  }
+
+  loadUserInventory(uid) {
+    const inventoryRef = this.store.collection('inventory');
+    this.firebaseGetDoc(() => inventoryRef.doc(uid).get());
   }
 }
 

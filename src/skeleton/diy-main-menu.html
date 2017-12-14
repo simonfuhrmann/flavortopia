@@ -36,21 +36,21 @@
       <iron-icon slot="item-icon" icon="icons:face"></iron-icon>
       <span>Your Stuff</span>
     </div>
-    <a href="#/user/inventory">
-      <paper-icon-item highlight$="[[activeRoute.isUserInventoryActive]]">
-        <iron-icon slot="item-icon" icon="icons:work"></iron-icon>
-        <paper-item-body>
-          <div primary>Inventory</div>
-          <div secondary>Flavors you possess</div>
-        </paper-item-body>
-      </paper-icon-item>
-    </a>
     <a href="#/user/recipes">
       <paper-icon-item highlight$="[[activeRoute.isUserRecipesActive]]">
         <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>
         <paper-item-body>
           <div primary>Receips</div>
           <div secondary>Your own creations</div>
+        </paper-item-body>
+      </paper-icon-item>
+    </a>
+    <a href="#/user/inventory">
+      <paper-icon-item highlight$="[[activeRoute.isUserInventoryActive]]">
+        <iron-icon slot="item-icon" icon="icons:work"></iron-icon>
+        <paper-item-body>
+          <div primary>Inventory</div>
+          <div secondary>Flavors you possess</div>
         </paper-item-body>
       </paper-icon-item>
     </a>
