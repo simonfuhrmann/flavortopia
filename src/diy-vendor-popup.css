@@ -1,0 +1,21 @@
+#popup {
+  background-color: white;
+  padding: 16px;
+  width: 300px;
+  border: 1px solid #ccc;
+  @apply --shadow-elevation-6dp;
+}
+
+#popup h3 {
+  margin: 0;
+}
+
+#popup p {
+  margin: 8px 0;
+  font-size: 0.9em;
+}
+
+#popup a {
+  color: var(--primary-text-color);
+  font-size: 0.9em;
+}

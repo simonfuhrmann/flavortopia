@@ -9,7 +9,7 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
         type: String,
         value: '',
       },
-      emptyMessage: {
+      vendorKey: {
         type: String,
         value: '',
       },
@@ -17,23 +17,15 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
         type: Array,
         value: () => [],
       },
+      emptyMessage: {
+        type: String,
+        value: '',
+      },
       excerpt: {
         type: Number,
         value: 0,
       },
 
-      info: {
-        type: String,
-        value: '',
-      },
-      showAllHidden: {
-        type: Boolean,
-        value: true,
-      },
-      collapseHidden: {
-        type: Boolean,
-        value: true,
-      },
       showAll: {
         type: Boolean,
         value: true,
@@ -41,6 +33,10 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
       showFlavors: {
         type: Array,
         value: () => [],
+      },
+      numFlavors: {
+        type: String,
+        value: '',
       },
       numHidden: {
         type: Number,
@@ -59,11 +55,11 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
     if (flavors.length == 0) {
       this.$.flavorCard.setAttribute('hidden', true);
       this.$.emptyCard.removeAttribute('hidden');
-      this.set('info', '');
+      this.set('numFlavors', '');
     } else {
       this.$.flavorCard.removeAttribute('hidden');
       this.$.emptyCard.setAttribute('hidden', true);
-      this.set('info', flavors.length + ' flavors');
+      this.set('numFlavors', flavors.length + ' flavors');
     }
 
     if (excerpt == 0 || flavors.length <= excerpt) {
@@ -114,6 +110,17 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
       flavors.push(flavor);
     }
     return flavors;
+  }
+
+  vendorFromKey_(vendorKey) {
+    const vendor = this.allVendors[vendorKey];
+    return vendor ? vendor.short : vendorKey;
+  }
+
+  onVendorTap_(event) {
+    this.$.vendorPopup.set('positionTarget', event.path[1]);
+    this.$.vendorPopup.set('key', this.vendorKey);
+    this.$.vendorPopup.open();
   }
 }
 

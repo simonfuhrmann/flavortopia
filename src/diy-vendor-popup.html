@@ -1,0 +1,27 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-dropdown/iron-dropdown.html">
+
+<link rel="import" href="/src/mixins/mixin-static-data.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-vendor-popup">
+  <link rel="import" type="css" href="diy-vendor-popup.css">
+  <template>
+    <style include="diy-theme"></style>
+
+    <iron-dropdown
+        id="dropdown"
+        position-target="[[positionTarget]]"
+        dynamic-align
+        no-overlap
+        with-backdrop>
+      <div id="popup" slot="dropdown-content" on-tap="close">
+        <h3>[<span>[[vendorShort]]</span>] [[vendorName]]</h3>
+        <p>[[vendorDescription]]</p>
+        <a href="[[vendorWebsite]]">[[vendorWebsite]]</a>
+      </div>
+    </iron-dropdown>
+
+  </template>
+  <script type="text/javascript" src="diy-vendor-popup.js"></script>
+</dom-module>

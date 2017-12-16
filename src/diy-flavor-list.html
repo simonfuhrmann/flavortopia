@@ -2,7 +2,7 @@
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="/src/theme/diy-theme.html">
-<link rel="import" href="/src/diy-vendor-short.html">
+<link rel="import" href="/src/diy-vendor-popup.html">
 
 <dom-module id="diy-flavor-list">
   <link rel="import" type="css" href="diy-flavor-list.css">
@@ -11,10 +11,13 @@
     <style include="diy-theme"></style>
 
     <div id="title" class="layout horizontal end">
-      <h2 class="flex">[[title]]</h2>
-      <span id="info">[[info]]</span>
-      <span id="showAllButton" hidden on-tap="onShowAll_">Show All</span>
-      <span id="collapseButton" hidden on-tap="onCollapse_">Collapse</span>
+      <h2 class="flex layout horizontal center">
+        <span>[[title]]</span>
+        <iron-icon hidden="[[!vendorKey]]" on-tap="onVendorTap_" icon="icons:info"></iron-icon>
+      </h2>
+      <span id="numFlavorsInfo">[[numFlavors]]</span>
+      <a id="showAllButton" hidden on-tap="onShowAll_">Show All</a>
+      <a id="collapseButton" hidden on-tap="onCollapse_">Collapse</a>
     </div>
 
     <paper-card id="emptyCard" hidden>
@@ -24,22 +27,24 @@
     <paper-card id="flavorCard">
       <div class="two-column">
         <table>
-          <template is="dom-repeat" items="[[showFlavors]]">
+          <template is="dom-repeat" items="[[showFlavors]]" as="flavor">
             <tr>
               <td class="vendor-short">
-                <diy-vendor-short key="[[item.vendor]]"></diy-vendor-short>
+                [<span>[[vendorFromKey_(flavor.vendor)]]</span>]
               </td>
-              <td>[[item.name]]</td>
+              <td>[[flavor.name]]</td>
             </tr>
           </template>
         </table>
       </div>
       <div id="excerptNotice" hidden>
-        <span id="showAllNotice" on-tap="onShowAll_">
+        <a id="showAllNotice" on-tap="onShowAll_">
           Show [[numHidden]] hidden flavors
-        </span>
+        </a>
       </div>
     </paper-card>
+
+    <diy-vendor-popup id="vendorPopup"></diy-vendor-popup>
 
   </template>
   <script type="text/javascript" src="diy-flavor-list.js"></script>

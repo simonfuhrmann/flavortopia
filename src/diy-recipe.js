@@ -69,12 +69,24 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
     };
   }
 
+  vendorFromKey_(vendorKey) {
+    const vendor = this.allVendors[vendorKey];
+    return vendor ? vendor.short : vendorKey;
+  }
+
   isAuthenticated_(authUserId, recipeUserId) {
     return authUserId == recipeUserId;
   }
 
   formatPercent_(value) {
     return Number(value).toFixed(2);
+  }
+
+  onVendorTap_(event) {
+    const flavor = event.model.item;
+    this.$.vendorPopup.set('positionTarget', event.path[1]);
+    this.$.vendorPopup.set('key', flavor.vendor);
+    this.$.vendorPopup.open();
   }
 
   onEditTap_() {

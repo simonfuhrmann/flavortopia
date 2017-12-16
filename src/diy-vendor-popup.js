@@ -1,6 +1,6 @@
-class DiyVendorShort extends DiyMixinStaticData(Polymer.Element) {
+class DiyVendorPopup extends DiyMixinStaticData(Polymer.Element) {
   static get is() {
-    return 'diy-vendor-short';
+    return 'diy-vendor-popup';
   }
 
   static get properties() {
@@ -9,10 +9,20 @@ class DiyVendorShort extends DiyMixinStaticData(Polymer.Element) {
         type: String,
         observer: 'onKeyChanged_',
       },
+      positionTarget: Object,
+
       vendorShort: String,
       vendorName: String,
       vendorWebsite: String,
     };
+  }
+
+  open() {
+    this.$.dropdown.open();
+  }
+
+  close() {
+    this.$.dropdown.close();
   }
 
   onKeyChanged_(key) {
@@ -32,18 +42,6 @@ class DiyVendorShort extends DiyMixinStaticData(Polymer.Element) {
       vendorDescription: vendorData.description,
     });
   }
-
-  onVendorTap_() {
-    if (this.$.tooltip.hasAttribute('hidden')) {
-      this.$.tooltip.removeAttribute('hidden');
-    } else {
-      this.$.tooltip.setAttribute('hidden', true);
-    }
-  }
-
-  onTooltipTap_() {
-    this.$.tooltip.setAttribute('hidden', true);
-  }
 }
 
-customElements.define(DiyVendorShort.is, DiyVendorShort);
+customElements.define(DiyVendorPopup.is, DiyVendorPopup);
