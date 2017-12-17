@@ -13,10 +13,6 @@ div.two-column {
   column-rule: 1px solid var(--separator-color);
 }
 
-h2 {
-  margin: 0;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -30,35 +26,29 @@ table .vendor-short {
   width: 1px;
 }
 
-table .actions {
-  width: 1px;
-  padding: 0 4px;
-}
-
 #emptyCard {
   padding: 32px 16px;
   text-align: center;
-}
-
-#excerptNotice {
-  padding: 2px;
-  text-align: center;
-  background-color: var(--secondary-background-color);
 }
 
 #title {
   margin: 24px 0 8px 0;
 }
 
+#title h2 {
+  margin: 0;
+}
+
 #title iron-icon {
+  color: var(--separator-color);
+  cursor: pointer;
   margin-left: 8px;
   width: 20px;
   height: 20px;
-  color: var(--separator-color);
 }
 
 #title iron-icon:hover {
-  color: var(--secondary-text-color);
+  color: var(--info-text-color);
 }
 
 #numFlavorsInfo,
@@ -68,7 +58,10 @@ table .actions {
   @apply --paper-font-caption;
 }
 
-#showAllNotice {
+#flavorsHiddenNotice {
+  padding: 2px;
+  text-align: center;
+  background-color: var(--secondary-background-color);
   @apply --paper-font-caption;
 }
 

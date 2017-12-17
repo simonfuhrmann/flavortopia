@@ -86,7 +86,7 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
   onShowAll_() {
     this.$.showAllButton.setAttribute('hidden', true);
     this.$.collapseButton.removeAttribute('hidden');
-    this.$.excerptNotice.setAttribute('hidden', true);
+    this.$.flavorsHiddenNotice.setAttribute('hidden', true);
     this.showAll = true;
     this.setFlavors_();
   }
@@ -94,7 +94,7 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
   onCollapse_() {
     this.$.collapseButton.setAttribute('hidden', true);
     this.$.showAllButton.removeAttribute('hidden');
-    this.$.excerptNotice.removeAttribute('hidden');
+    this.$.flavorsHiddenNotice.removeAttribute('hidden');
     this.showAll = false;
     this.setFlavors_();
   }
@@ -117,8 +117,8 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
     return vendor ? vendor.short : vendorKey;
   }
 
-  onVendorTap_(event) {
-    this.$.vendorPopup.set('positionTarget', event.path[1]);
+  onVendorTap_() {
+    this.$.vendorPopup.set('positionTarget', this.$.title);
     this.$.vendorPopup.set('key', this.vendorKey);
     this.$.vendorPopup.open();
   }
