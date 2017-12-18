@@ -122,6 +122,14 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
     this.$.vendorPopup.set('key', this.vendorKey);
     this.$.vendorPopup.open();
   }
+
+  onActionTap_(event) {
+    const flavor = event.model.flavor;
+    if (!flavor || !flavor.key) return;
+    this.$.flavorActions.set('positionTarget', event.path[0]);
+    this.$.flavorActions.set('flavor', flavor.key);
+    this.$.flavorActions.open();
+  }
 }
 
 customElements.define(DiyFlavorList.is, DiyFlavorList);

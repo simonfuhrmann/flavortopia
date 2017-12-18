@@ -26,6 +26,8 @@ const initialState = {
       name: undefined,  // The public user display name.
     },
   },
+  // The current users flavor inventory.
+  inventory: {},
 };
 
 // Parses a URL and returns the path, query and fragment components. The path
@@ -120,6 +122,12 @@ function reducerCacheUser(state, action) {
   return newState;
 }
 
+function reducerSetInventory(state, action) {
+  const newState = Object.assign({}, state);
+  newState.inventory = action.data;
+  return newState;
+}
+
 const reduxReducer = function(state = initialState, action) {
   switch (action.type) {
     case 'UPDATE_ROUTE':
@@ -132,6 +140,8 @@ const reduxReducer = function(state = initialState, action) {
       return reducerUserAdmin(state, action);
     case 'CACHE_USER':
       return reducerCacheUser(state, action);
+    case 'SET_INVENTORY':
+      return reducerSetInventory(state, action);
   }
   return state;
 }
@@ -156,6 +166,9 @@ DiyMixinRedux = (superClass) => class extends DiyMixinReduxBase(superClass) {
       },
       cacheUser(data) {
         return { type: 'CACHE_USER', data };
+      },
+      setInventory(data) {
+        return { type: 'SET_INVENTORY', data };
       },
     };
   }

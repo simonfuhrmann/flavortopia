@@ -5,24 +5,14 @@ class DiyUserInventory extends DiyMixinRedux(Polymer.Element) {
 
   static get properties() {
     return {
-      userId: {
-        type: String,
-        statePath: 'user.auth.firebaseUser.uid',
-        observer: 'onUserIdChanged_',
-      },
-      isLoading: Boolean,
-      loadingError: String,
       inventoryData: {
         type: Object,
+        statePath: 'inventory',
         observer: 'onInventoryChanged_',
       },
       wishlist: Array,
       inventory: Array,
     };
-  }
-
-  onUserIdChanged_(userId) {
-    this.$.firebaseGet.loadUserInventory(userId);
   }
 
   onInventoryChanged_(data) {

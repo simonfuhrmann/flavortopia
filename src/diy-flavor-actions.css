@@ -1,0 +1,14 @@
+#menu {
+  background-color: var(--primary-background-color);
+  @apply --shadow-elevation-6dp;
+}
+
+paper-icon-item {
+  --paper-item-icon-width: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+paper-icon-item:hover {
+  background-color: var(--secondary-background-color);
+}

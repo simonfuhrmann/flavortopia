@@ -63,6 +63,15 @@ class DiyAuthState extends
         .catch(error => {
           console.warn('Error loading admin status: ' + error.message);
         });
+
+    // Load the user's inventory.
+    let onInventoryChangedFn = (doc) => {
+      if (doc && doc.exists) {
+        this.dispatch('setInventory', doc.data());
+      }
+    };
+    this.$.firebaseStore.onInventoryChanged(
+        firebaseUser.uid, onInventoryChangedFn);
   }
 
   onUserDetailsChanged_(userDetails) {

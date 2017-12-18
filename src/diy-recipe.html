@@ -54,8 +54,10 @@
         <template is="dom-repeat" items="[[ingredients]]">
           <tr>
             <td class="percent">[[item.percent]]%</td>
-            <td class="vendor" on-tap="onVendorTap_">
-              [<span>[[vendorFromKey_(item.vendor)]]</span>]
+            <td class="vendor">
+              <div on-tap="onVendorTap_">
+                [<span>[[vendorFromKey_(item.vendor)]]</span>]
+              </div>
             </td>
             <td class="flavor">[[item.flavor]]</td>
           </tr>

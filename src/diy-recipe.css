@@ -19,6 +19,10 @@ table .vendor {
   width: 1em;
 }
 
+table .vendor div {
+  cursor: pointer;
+}
+
 #header {
   background-color: var(--info-background-color);
   color: var(--info-foreground-color);

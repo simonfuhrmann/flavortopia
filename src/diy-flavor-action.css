@@ -1,0 +1,14 @@
+#button {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  color: var(--separator-color);
+}
+
+#button:hover {
+  color: var(--info-text-color);
+}
+
+[hidden] {
+  display: none !important;
+}

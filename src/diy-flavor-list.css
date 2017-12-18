@@ -26,6 +26,11 @@ table .vendor-short {
   width: 1px;
 }
 
+table .flavor-action {
+  padding: 0;
+  width: 1px;
+}
+
 #emptyCard {
   padding: 32px 16px;
   text-align: center;

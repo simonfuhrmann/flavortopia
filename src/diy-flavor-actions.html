@@ -1,0 +1,76 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/paper-item/paper-icon-item.html">
+
+<link rel="import" href="/src/mixins/mixin-redux.html">
+<link rel="import" href="/src/common/diy-dialog.html">
+<link rel="import" href="/src/functional/diy-firebase-store.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-flavor-actions">
+  <link rel="import" type="css" href="diy-flavor-actions.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <diy-firebase-store id="firebaseStore"></diy-firebase-store>
+
+    <iron-dropdown
+        id="dropdown"
+        position-target="[[positionTarget]]"
+        dynamic-align
+        no-overlap>
+
+      <div id="menu" slot="dropdown-content" on-tap="closeDropdown_">
+        <!-- Actions when not in inventory or wishlist. -->
+        <paper-icon-item
+            hidden="[[!inNowhere]]"
+            on-tap="addToInventory_">
+          <iron-icon icon="icons:add" slot="item-icon"></iron-icon>
+          Add to inventory
+        </paper-icon-item>
+        <paper-icon-item
+            hidden="[[!inNowhere]]"
+            on-tap="addToWishlist_">
+          <iron-icon icon="icons:add" slot="item-icon"></iron-icon>
+          Add to wishlist
+        </paper-icon-item>
+
+        <!-- Actions when in inventory. -->
+        <paper-icon-item
+            hidden="[[!inInventory]]"
+            on-tap="removeFromInventory_">
+          <iron-icon icon="icons:remove" slot="item-icon"></iron-icon>
+          Remove from inventory
+        </paper-icon-item>
+        <paper-icon-item
+            hidden="[[!inInventory]]"
+            on-tap="addToWishlist_">
+          <iron-icon icon="icons:swap-horiz" slot="item-icon"></iron-icon>
+          Move to wishlist
+        </paper-icon-item>
+
+        <!-- Actions when in wishlist. -->
+        <paper-icon-item
+            hidden="[[!inWishlist]]"
+            on-tap="removeFromWishlist_">
+          <iron-icon icon="icons:remove" slot="item-icon"></iron-icon>
+          Remove from wishlist
+        </paper-icon-item>
+        <paper-icon-item
+            hidden="[[!inWishlist]]"
+            on-tap="addToInventory_">
+          <iron-icon icon="icons:swap-horiz" slot="item-icon"></iron-icon>
+          Move to inventory
+        </paper-icon-item>
+      </div>
+    </iron-dropdown>
+
+    <diy-dialog id="errorDialog"></diy-dialog>
+
+  </template>
+  <script type="text/javascript" src="diy-flavor-actions.js"></script>
+</dom-module>
