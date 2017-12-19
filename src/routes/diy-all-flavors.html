@@ -21,9 +21,10 @@
     <!-- Display search result if a term was entered. -->
     <template is="dom-if" if="[[searchTerm]]">
       <diy-flavor-list
+          flavors="[[searchFlavors]]"
+          limit="50"
           title="Search: [[searchTerm]]"
-          empty-message="Search does not match any flavors."
-          flavors="[[searchFlavors]]">
+          empty-message="Search does not match any flavors.">
       </diy-flavor-list>
     </template>
 
@@ -31,11 +32,11 @@
     <template is="dom-if" if="[[!searchTerm]]">
       <template is="dom-repeat" items="[[flavorsByVendor]]" as="vendor">
         <diy-flavor-list
-            excerpt="10"
+            flavors="[[vendor.flavors]]"
+            limit="10"
             title="[[vendor.vendor.name]]"
             vendor-key="[[vendor.vendor.key]]"
-            empty-message="No flavors to show."
-            flavors="[[vendor.flavors]]">
+            empty-message="No flavors to show.">
         </diy-flavor-list>
       </template>
     </template>

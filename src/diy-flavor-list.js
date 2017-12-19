@@ -5,6 +5,14 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
 
   static get properties() {
     return {
+      flavors: {
+        type: Array,
+        value: () => [],
+      },
+      limit: {
+        type: Number,
+        value: 0,
+      },
       title: {
         type: String,
         value: '',
@@ -13,28 +21,16 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
         type: String,
         value: '',
       },
-      flavors: {
-        type: Array,
-        value: () => [],
-      },
       emptyMessage: {
         type: String,
         value: '',
       },
-      excerpt: {
-        type: Number,
-        value: 0,
-      },
 
-      showAll: {
-        type: Boolean,
-        value: true,
-      },
       showFlavors: {
         type: Array,
         value: () => [],
       },
-      numFlavors: {
+      numFlavorsText: {
         type: String,
         value: '',
       },
@@ -47,61 +43,62 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
 
   static get observers() {
     return [
-      'update_(flavors, excerpt)'
+      'update_(flavors, limit)'
     ];
   }
 
-  update_(flavors, excerpt) {
+  update_(flavors, limit) {
     if (flavors.length == 0) {
       this.$.flavorCard.setAttribute('hidden', true);
       this.$.emptyCard.removeAttribute('hidden');
-      this.set('numFlavors', '');
+      this.set('numFlavorsText', '');
     } else {
       this.$.flavorCard.removeAttribute('hidden');
       this.$.emptyCard.setAttribute('hidden', true);
-      this.set('numFlavors', flavors.length + ' flavors');
+      this.set('numFlavorsText', flavors.length + ' flavors');
     }
 
-    if (excerpt == 0 || flavors.length <= excerpt) {
-      this.showAll = true;
-      this.setFlavors_();
-      return;
-    }
-
-    this.onCollapse_();
-  }
-
-  setFlavors_() {
-    if (this.showAll) {
-      const flavors = this.keysToFlavors_(this.flavors);
-      this.set('showFlavors', flavors);
-      this.set('numHidden', 0);
+    // Show all flavors if the limit is unset of big enough.
+    if (limit == 0 || flavors.length <= limit) {
+      this.onShowAll_();
     } else {
-      const flavors = this.keysToFlavors_(this.flavors, 0, this.excerpt);
-      this.set('showFlavors', flavors);
-      this.set('numHidden', this.flavors.length - this.excerpt);
+      this.onCollapse_();
     }
   }
 
   onShowAll_() {
     this.$.showAllButton.setAttribute('hidden', true);
-    this.$.collapseButton.removeAttribute('hidden');
     this.$.flavorsHiddenNotice.setAttribute('hidden', true);
-    this.showAll = true;
-    this.setFlavors_();
+    if (this.limit > 0 && this.flavors.length > this.limit) {
+      this.$.collapseButton.removeAttribute('hidden');
+    }
+    this.showAllFlavors_();
   }
 
   onCollapse_() {
+    if (this.limit > 0 && this.flavors.length > this.limit) {
+      this.$.showAllButton.removeAttribute('hidden');
+      this.$.flavorsHiddenNotice.removeAttribute('hidden');
+    }
     this.$.collapseButton.setAttribute('hidden', true);
-    this.$.showAllButton.removeAttribute('hidden');
-    this.$.flavorsHiddenNotice.removeAttribute('hidden');
-    this.showAll = false;
-    this.setFlavors_();
+    this.showSomeFlavors_();
+  }
+
+  showAllFlavors_() {
+    const flavors = this.keysToFlavors_(this.flavors);
+    this.set('showFlavors', flavors);
+    this.set('numHidden', 0);
+  }
+
+  showSomeFlavors_() {
+    const flavors = this.keysToFlavors_(this.flavors, 0, this.limit);
+    this.set('showFlavors', flavors);
+    this.set('numHidden', this.flavors.length - flavors.length);
   }
 
   keysToFlavors_(flavorKeys, startIndex, length) {
     startIndex = startIndex || 0;
-    length = length || flavorKeys.length;
+    length = Math.min(flavorKeys.length, length || flavorKeys.length);
     let flavors = [];
     for (let i = startIndex; i < startIndex + length; ++i) {
       const key = flavorKeys[i];
