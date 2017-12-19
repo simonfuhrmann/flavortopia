@@ -22,7 +22,7 @@
     <template is="dom-if" if="[[!signedIn]]" restamp>
       <div class="layout vertical center">
         <iron-icon icon="icons:lock"></iron-icon>
-        <paper-button raised>Sign In</paper-button>
+        <paper-button raised on-tap="onSigninTap_">Sign In</paper-button>
         <p>
           Please sign in to create your own recipies, manage your inventory,
           and bookmark recpies you liked and rated.

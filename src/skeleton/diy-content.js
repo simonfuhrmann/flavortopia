@@ -11,6 +11,10 @@ class DiyContent extends DiyMixinRedux(DiyMixinRouter(Polymer.Element)) {
       },
     };
   }
+
+  onSignin_() {
+    this.goUserSignin();
+  }
 }
 
 customElements.define(DiyContent.is, DiyContent);

@@ -29,13 +29,13 @@
     </template>
 
     <template is="dom-if" if="[[activeRoute.isUserRecipesActive]]">
-      <diy-signin-wall signed-in="[[signedIn]]">
+      <diy-signin-wall signed-in="[[signedIn]]" on-signin-request="onSignin_">
         <diy-user-recipes></diy-user-recipes>
       </diy-signin-wall>
     </template>
 
     <template is="dom-if" if="[[activeRoute.isUserInventoryActive]]">
-      <diy-signin-wall signed-in="[[signedIn]]">
+      <diy-signin-wall signed-in="[[signedIn]]" on-signin-request="onSignin_">
         <diy-user-inventory></diy-user-inventory>
       </diy-signin-wall>
     </template>
