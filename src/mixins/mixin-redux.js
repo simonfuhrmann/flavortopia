@@ -97,6 +97,13 @@ function reducerUserSignin(state, action) {
   return newState;
 }
 
+function reducerUserSignout(state, action) {
+  const newState = Object.assign({}, state);
+  newState.user = initialState.user;
+  newState.inventory = initialState.inventory;
+  return newState;
+}
+
 function reducerUserDetails(state, action) {
   const newState = Object.assign({}, state);
   newState.user = Object.assign({}, state.user);
@@ -134,6 +141,8 @@ const reduxReducer = function(state = initialState, action) {
       return reducerUpdateRoute(state, action);
     case 'USER_SIGNIN':
       return reducerUserSignin(state, action);
+    case 'USER_SIGNOUT':
+      return reducerUserSignout(state, action);
     case 'USER_DETAILS':
       return reducerUserDetails(state, action);
     case 'USER_ADMIN':
@@ -157,6 +166,9 @@ DiyMixinRedux = (superClass) => class extends DiyMixinReduxBase(superClass) {
       },
       userSignin(data) {
         return { type: 'USER_SIGNIN', data };
+      },
+      userSignout(data) {
+        return { type: 'USER_SIGNOUT', data };
       },
       userDetails(data) {
         return { type: 'USER_DETAILS', data };

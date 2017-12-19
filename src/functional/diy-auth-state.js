@@ -23,16 +23,20 @@ class DiyAuthState extends
   }
 
   onAuthStateChanged_(firebaseUser) {
+    // If the user signed out, clear user-specific Redux state.
+    if (!firebaseUser) {
+      this.dispatch('userSignout');
+      return;
+    }
+
     // Store the new authentication state in the Redux state.
     this.dispatch('userSignin', {
-      signedIn: !!firebaseUser,
-      verified: !!firebaseUser && firebaseUser.emailVerified,
+      signedIn: true,
+      verified: firebaseUser.emailVerified,
       firebaseUser: firebaseUser,
     });
     // Request additional user data after login.
-    if (firebaseUser) {
-      this.loadUserDetails_();
-    }
+    this.loadUserDetails_();
   }
 
   loadUserDetails_() {
