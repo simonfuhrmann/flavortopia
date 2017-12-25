@@ -20,23 +20,34 @@ class DiyLiveSearch extends Polymer.Element {
       },
 
       search: {
-        value: String,
+        type: String,
         notify: true,
-      }
+      },
+
+      withButton: {
+        type: Boolean,
+        value: false,
+      },
     };
   }
 
-  onClearTap_() {
+  clear() {
     this.set('value', '');
-    this.onTimeout_();
+  }
+
+  onClearTap_() {
+    this.clear();
+    this.onSearch_();
   }
 
   onValueChanged_(value) {
     this.clearTimeout_();
-    this.timeout = setTimeout(this.onTimeout_.bind(this), this.delayMs);
+    if (this.delayMs > 0) {
+      this.timeout = setTimeout(this.onSearch_.bind(this), this.delayMs);
+    }
   }
 
-  onTimeout_() {
+  onSearch_() {
     this.clearTimeout_();
     this.set('search', this.value);
   }
@@ -50,10 +61,14 @@ class DiyLiveSearch extends Polymer.Element {
 
   handleKey_(event) {
     if (event.keyCode == 13 /* Enter */) {
-      this.onTimeout_();
+      this.onSearch_();
     } else if (event.keyCode == 27 /* Esc */) {
       this.onClearTap_();
     }
+  }
+
+  onSearchTap_() {
+    this.onSearch_();
   }
 }
 

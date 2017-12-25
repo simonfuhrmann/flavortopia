@@ -9,7 +9,7 @@
     <style include="iron-flex iron-flex-alignment"></style>
     <style include="diy-theme"></style>
 
-    <div id="inputContainer" class="flex layout horizontal">
+    <div id="inputContainer" class="flex layout horizontal center">
       <iron-icon id="searchIcon" icon="icons:search"></iron-icon>
       <input class="flex" value="{{value::input}}" on-keyup="handleKey_">
       <iron-icon
@@ -18,6 +18,12 @@
           on-tap="onClearTap_">
       </iron-icon>
     </div>
+
+    <template is="dom-if" if="[[withButton]]">
+      <paper-button raised on-tap="onSearchTap_">
+        <iron-icon icon="icons:search"></iron-icon>
+      </paper-button>
+    </template>
 
   </template>
   <script type="text/javascript" src="diy-live-search.js"></script>
