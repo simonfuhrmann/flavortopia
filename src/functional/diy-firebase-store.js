@@ -35,9 +35,19 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     return adminRef.get();
   }
 
-  getRecipes(uid) {
-    const recipesRef = this.store.collection('recipes');
-    return recipesRef.where('user', '==', uid).get();
+  getRecipes(limit, search, startAt) {
+    let recipesRef = this.store.collection('recipes');
+    if (limit) {
+      recipesRef = recipesRef.limit(limit);
+    }
+    if (search) {
+      recipesRef = recipesRef.where('name', '>=', search);
+      //recipesRef = recipesRef.where('name', '<=', search);
+    }
+    if (startAt) {
+      recipesRef = recipesRef.startAt(startAt);
+    }
+    return recipesRef.get();
   }
 
   onInventoryChanged(uid, func) {

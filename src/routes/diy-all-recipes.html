@@ -1,8 +1,55 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/paper-spinner/paper-spinner-lite.html">
+
+<link rel="import" href="/src/theme/diy-theme.html">
+<link rel="import" href="/src/common/diy-dialog.html">
+<link rel="import" href="/src/common/diy-live-search.html">
+<link rel="import" href="/src/functional/diy-firebase-store.html">
 
 <dom-module id="diy-all-recipes">
   <link rel="import" type="css" href="diy-all-recipes.css">
   <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <diy-firebase-store id="firebaseStore"></diy-firebase-store>
+
+    <diy-live-search
+        id="searchInput"
+        search="{{search}}"
+        with-button
+        delay-ms="0"></diy-live-search>
+
+    <template is="dom-repeat" items="[[recipes]]" as="recipe">
+      <paper-card class="recipe-card">
+        <diy-recipe recipe="[[recipe]]"></diy-recipe>
+      </paper-card>
+    </template>
+
+    <div id="footer">
+      <div class="layout horizontal center" hidden="[[!isLoading]]">
+        <paper-spinner-lite active></paper-spinner-lite>
+        <span>Loading...</span>
+      </div>
+
+      <paper-button
+          id="loadMoreButton"
+          hidden="[[hideLoadMoreButton_(endReached, isLoading)]]"
+          on-tap="loadMore_"
+          raised>
+        Load More Recipes
+      </paper-button>
+
+      <div hidden="[[!endReached]]">
+        You have reached the end!
+      </div>
+    </div>
+
+    <diy-dialog id="errorDialog"></diy-dialog>
+
   </template>
   <script type="text/javascript" src="diy-all-recipes.js"></script>
 </dom-module>

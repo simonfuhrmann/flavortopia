@@ -8,6 +8,7 @@ class DiyAllFlavors extends DiyMixinStaticData(Polymer.Element) {
       flavorsByVendor: Array,
       searchTerm: {
         type: String,
+        value: '',
         observer: 'onSearchTermChanged_',
       },
       searchFlavors: {

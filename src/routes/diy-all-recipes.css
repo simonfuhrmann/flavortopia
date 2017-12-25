@@ -1,3 +1,33 @@
 :host {
-  display: block;
+  max-width: 690px;
+  margin: 0 auto;
+  @apply --layout-vertical;
+}
+
+diy-live-search {
+  margin-bottom: 16px;
+}
+
+paper-card {
+  margin-bottom: 8px;
+}
+
+paper-spinner-lite {
+  margin-right: 24px;
+}
+
+#loadMoreButton {
+  background-color: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+  width: 250px;
+}
+
+#footer {
+  margin-top: 16px;
+  @apply --layout-vertical;
+  @apply --layout-center;
+}
+
+[hidden] {
+  display: none !important;
 }
