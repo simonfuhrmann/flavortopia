@@ -53,6 +53,7 @@ input::placeholder {
 }
 
 #error {
+  text-align: left;
   color: var(--input-error-color, red);
   @apply --paper-font-caption;
 }
