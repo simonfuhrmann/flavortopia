@@ -3,7 +3,7 @@
  * https://polymerthemes.com/classical/
  */
 :root {
-  --primary-text-color: #333333;
+  --primary-text-color: #222;
   --primary-background-color: #f9fafb;
   --secondary-text-color: #594f4f;
   --secondary-background-color: #eceff1;
@@ -33,9 +33,12 @@
   --input-border-color: var(--separator-color);
   --input-background-color: white;
   --input-error-color: var(--error-text-color);
+  --input-placeholder-color: #aaa;
 
   --drawer-background: var(--secondary-background-color);
   --drawer-active-background: #d4d7d7;
+
+  --paper-radio-button-checked-color: var(--info-background-color);
 }
 
 /* Dialog styles. */
