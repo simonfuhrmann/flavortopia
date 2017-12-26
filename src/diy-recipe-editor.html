@@ -5,6 +5,8 @@
 <link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="/bower_components/paper-item/paper-item.html">
 <link rel="import" href="/bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
 
 <link rel="import" href="/src/common/diy-input.html">
 <link rel="import" href="/src/common/diy-textarea.html">
@@ -16,43 +18,121 @@
     <style include="diy-theme"></style>
 
     <paper-card>
+      <h2 hidden="[[!isNewRecipe]]">Create Recipe</h2>
+      <h2 hidden="[[isNewRecipe]]">Edit Recipe</h2>
 
-      <div class="layout horizontal">
-        <div class="flex">
-          <div>Recipe Name</div>
-          <diy-input></diy-input>
-        </div>
-        <div>
-          <paper-dropdown-menu label="Visibility" always-float-label>
-            <paper-listbox slot="dropdown-content" selected="0">
-              <paper-item>Public</paper-item>
-              <paper-item>Unlisted</paper-item>
-            </paper-listbox>
-          </paper-dropdown-menu>
-        </div>
+      <diy-input
+          label="Recipe name"
+          placeholder="Your creative and meaningful recipe name."
+          value="{{recipeName}}">
+      </diy-input>
+
+      <diy-textarea
+          label="Recipe description"
+          placeholder="Advertise your recipe, describe the flavor profile, ..."
+          value="{{recipeDescription}}">
+      </diy-textarea>
+
+      <h3>Ingredients</h3>
+      <p>
+        Flavortopia does not believe in specifying base ingredients (PG, VG,
+        nicotine, etc.) as part of your recipe. Instead, it can be configured
+        when mixing. If you have a suggestion for a PG/VG ratio, put it in
+        the recipe notes.
+      </p>
       </div>
 
-      <div>Ingredients</div>
-      <div class="layout horizontal center">
-        <diy-input class="flex"></diy-input>
-        <diy-input maxlength="4" class="percent"></diy-input>
-        <span>%</span>
-      </div>
+      <table>
+        <template is="dom-repeat" items="[[recipeIngredients]]">
+          <tr>
+            <td class="flavor-input">
+              <diy-input error="[[item.error]]" value="{{item.flavor}}"></diy-input>
+            </td>
+            <td class="percent-input">
+              <div class="layout horizontal center">
+                <diy-input
+                    class="percent"
+                    maxlength="4"
+                    value="{{item.percent}}">
+                </diy-input>
+                <span>%</span>
+              </div>
+            </td>
+            <td class="actions">
+              <div class="layout horizontal">
+                <paper-button
+                    on-tap="onMoveIngredientUpTap_"
+                    title="Move Up">
+                  <iron-icon icon="icons:arrow-upward"></iron-icon>
+                </paper-button>
+                <paper-button
+                    on-tap="onMoveIngredientDownTap_"
+                    title="Move Down">
+                  <iron-icon icon="icons:arrow-downward"></iron-icon>
+                </paper-button>
+                <paper-button
+                    on-tap="onClearIngredientTap_"
+                    title="Clear">
+                  <iron-icon icon="icons:clear"></iron-icon>
+                </paper-button>
+              </div>
+            </td>
+          </tr>
 
-      <div>Recipe Notes (public)</div>
-      <diy-textarea value="{{testvalue}}"></diy-textarea>
+          <div class="layout horizontal center">
 
-      <div>Personal Notes (unlisted)</div>
-      <diy-textarea ></diy-textarea>
+          </div>
+        </template>
+      </table>
 
-      <div id="buttonBar" class="layout horizontal end-justified">
-        <paper-button on-tap="onDiscardTap_">Discard Changes</paper-button>
-        <paper-button id="saveButton" raised on-tap="onSaveTap_">
-          Save Recipe
-        </paper-button>
-      </div>
+      <paper-button
+          id="addIngredientButton"
+          on-tap="onAddIngredientTap_"
+          raised>
+        <iron-icon icon="icons:add"></iron-icon>
+        <span>Add Ingredient</span>
+      </paper-button>
+
+      <h3>Visibility</h3>
+      <paper-radio-group
+          class="layout vertical"
+          selected="{{recipeVisibility}}">
+        <paper-radio-button name="public">
+          <div>Public</div>
+          <div secondary>
+            The recipe is publicly visible to all users. Make it good!
+          </div>
+        </paper-radio-button>
+        <paper-radio-button name="unlisted">
+          <div>Unlisted</div>
+          <div secondary>
+            The recipe is not visible, but unprotected from curious users.
+          </div>
+        </paper-radio-button>
+      </paper-radio-group>
+
+      <h3>Recipe Notes</h3>
+      <diy-textarea
+          label="Public notes (visible to anyone)"
+          placeholder="Suggested PG/VG ratio, tips on flavor substitutions, ..."
+          value="{{recipePublicNotes}}">
+      </diy-textarea>
+
+      <diy-textarea
+          label="Personal Notes (not visible to others, but unprotected)"
+          placeholder="Open questions, notes on improvements, ..."
+          value="{{recipePersonalNotes}}">
+      </diy-textarea>
 
     </paper-card>
+
+    <div class="layout horizontal end-justified">
+      <paper-button on-tap="onDiscardTap_">Discard Changes</paper-button>
+      <paper-button id="saveButton" raised on-tap="onSaveTap_">
+        Save Recipe
+      </paper-button>
+    </div>
+
 
   </template>
   <script type="text/javascript" src="diy-recipe-editor.js"></script>

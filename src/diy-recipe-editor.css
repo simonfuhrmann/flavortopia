@@ -2,8 +2,62 @@
   @apply --layout-vertical;
 }
 
+h2 {
+  margin: 0 0 16px 0;
+}
+
+h3 {
+  margin: 16px 0 8px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 0 8px 0 0;
+  vertical-align: top;
+}
+
+table td.percent-input {
+  width: 1px;
+}
+
+table td.percent-input span {
+  margin-left: 4px;
+}
+
+table td.actions {
+  width: 1px;
+}
+
+table td.actions paper-button {
+  color: var(--separator-color);
+  margin: 3px 1px;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  min-width: initial;
+}
+
+table td.actions paper-button:hover {
+  color: var(--secondary-text-color);
+}
+
 paper-card {
   padding: 16px;
+  margin-bottom: 16px;
+}
+
+paper-radio-button div[secondary] {
+  color: var(--secondary-text-color);
+  @apply --paper-font-caption;
+  line-height: 1em;
+}
+
+paper-radio-group {
+  --paper-radio-group-item-padding: 4px;
 }
 
 diy-input.percent {
@@ -11,22 +65,29 @@ diy-input.percent {
   width: 6ex;
 }
 
+diy-textarea {
+  margin-top: 8px;
+}
+
 paper-button {
   margin: 0;
+}
+
+paper-button#addIngredientButton {
+  background-color: var(--info-background-color);
+  color: var(--info-foreground-color);
+  padding: 4px 16px;
+  margin: 8px 0;
+}
+
+paper-button#addIngredientButton iron-icon {
+  margin-right: 4px;
 }
 
 paper-button#saveButton {
   background-color: var(--info-background-color);
   color: var(--info-foreground-color);
   margin-left: 16px;
-}
-
-paper-dropdown-menu {
-  width: 100px;
-}
-
-#buttonBar {
-  padding-top: 16px;
 }
 
 [hidden] {

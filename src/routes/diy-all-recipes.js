@@ -72,7 +72,7 @@ class DiyAllRecipes extends DiyMixinRedux(Polymer.Element) {
       this.startAt = snapshot.docs[this.docLimit];
       docs.pop();
       this.set('endReached', false);
-      docs.forEach(doc => { console.log(doc); this.push('recipes', doc); });
+      docs.forEach(doc => { this.push('recipes', doc); });
     } else {
       this.startAt = undefined;
       this.set('endReached', true);
