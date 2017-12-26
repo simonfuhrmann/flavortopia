@@ -7,10 +7,19 @@
   <template>
     <style include="diy-theme"></style>
 
-    <div id="container">
-      <textarea id="nativeInput" value="{{value::input}}"></textarea>
+    <div id="label" focused$="[[focused]]" hidden="[[!hasLabel_(label)]]">
+      [[label]]
     </div>
+
+    <div id="container">
+      <textarea
+          id="nativeInput"
+          placeholder="[[placeholder]]"
+          value="{{value::input}}"></textarea>
+    </div>
+
     <div id="underline" focused$="[[focused]]"></div>
+
   </template>
   <script type="text/javascript" src="diy-textarea.js"></script>
 </dom-module>

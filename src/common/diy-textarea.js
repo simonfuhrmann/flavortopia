@@ -9,6 +9,14 @@ class DiyTextarea extends Polymer.Element {
         type: String,
         notify: true
       },
+      label: {
+        type: String,
+        value: '',
+      },
+      placeholder: {
+        type: String,
+        value: undefined,
+      },
       boundOnFocus_: {
         type: Function,
         value: function() {
@@ -39,6 +47,10 @@ class DiyTextarea extends Polymer.Element {
 
   onBlur_() {
     this.set('focused', false);
+  }
+
+  hasLabel_(label) {
+    return !!label;
   }
 }
 

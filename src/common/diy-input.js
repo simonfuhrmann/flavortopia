@@ -25,6 +25,10 @@ class DiyInput extends Polymer.Element {
         type: Number,
         value: undefined,
       },
+      placeholder: {
+        type: String,
+        value: undefined,
+      },
       focused: {
         type: Boolean,
         value: false,

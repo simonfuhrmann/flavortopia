@@ -4,6 +4,15 @@
   @apply --layout-vertical;
 }
 
+#label {
+  color: var(--secondary-text-color);
+  @apply --paper-font-caption;
+}
+
+#label[focused] {
+  color: var(--input-focus-color, blue);
+}
+
 #container {
   background-color: var(--input-background-color, white);
   border: 1px solid var(--input-border-color, #ddd);
@@ -20,6 +29,10 @@ textarea {
   width: 100%;
   resize: vertical;
   @apply --paper-font-subhead;
+}
+
+textarea::placeholder {
+  color: var(--input-placeholder-color);
 }
 
 #underline {

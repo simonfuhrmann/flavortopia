@@ -11,17 +11,21 @@
     <div id="label" focused$="[[focused]]" hidden="[[!hasLabel_(label)]]">
       [[label]]
     </div>
+
     <div id="container">
       <iron-input id="input" bind-value="{{value}}">
         <input
             id="nativeInput"
             type$="[[type]]"
             maxlength$="[[maxlength]]"
+            placeholder="[[placeholder]]"
             value="{{value::input}}">
       </iron-input>
     </div>
+
     <div id="underline" focused$="[[focused]]"></div>
     <div id="error" hidden="[[!hasError_(error)]]">[[error]]</div>
+
   </template>
   <script type="text/javascript" src="diy-input.js"></script>
 </dom-module>
