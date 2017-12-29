@@ -13,13 +13,25 @@ class DiyDialog extends Polymer.Element {
   }
 
   openError(title, message, icon = 'icons:error') {
+    this.$.dialog.removeAttribute('with-backdrop');
+    this.$.dialog.setAttribute('modal', true);
+    this.openDialog_(title, message, icon, 'error-dialog');
+  }
+
+  openInfo(title, message, icon = 'icons:info-outline') {
+    this.$.dialog.removeAttribute('modal');
+    this.$.dialog.setAttribute('with-backdrop', true);
+    this.openDialog_(title, message, icon, 'info-dialog');
+  }
+
+  openDialog_(title, message, icon, style) {
     this.setProperties({
       dialogTitle: title,
       dialogMessage: message,
       dialogIcon: icon,
-      dialogStyle: 'error-dialog',
+      dialogStyle: style,
     })
-    this.$.errorDialog.open();
+    this.$.dialog.open();
   }
 }
 
