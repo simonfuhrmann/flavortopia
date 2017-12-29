@@ -13,7 +13,7 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
         type: Number,
         value: 0,
       },
-      title: {
+      heading: {
         type: String,
         value: '',
       },
@@ -115,7 +115,7 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
   }
 
   onVendorTap_() {
-    this.$.vendorPopup.set('positionTarget', this.$.title);
+    this.$.vendorPopup.set('positionTarget', this.$.heading);
     this.$.vendorPopup.set('key', this.vendorKey);
     this.$.vendorPopup.open();
   }
