@@ -48,6 +48,31 @@ DiyMixinStaticData = (superClass) => class extends superClass {
       },
     };
   }
+
+  // Returns an array with flavor keys for flavors that match the search terms.
+  // The search matches both, the flavor vendor and the flavor name.
+  searchFlavors(searchString) {
+    if (!searchString) {
+      return [];
+    }
+
+    // Replace consecutive whitespace characters with single spaces.
+    const cleaned = searchString.replace(/\s+/g, ' ').replace(/[^\w ]/g, '');
+
+    // Split search terms at spaces.
+    const terms = cleaned.toLowerCase().split(' ');
+
+    // Create an array of flavors that match the search terms.
+    const searchResult = this.allFlavorsArray.filter(flavor => {
+      const subject = (flavor.vendor + ' ' + flavor.name).toLowerCase();
+      return terms.reduce((isMatch, elem) => {
+        return isMatch && subject.includes(elem)
+      }, true);
+    });
+
+    // Map the search result to flavor keys.
+    return searchResult.map(flavor => flavor.key);
+  }
 };
 
 function prepareAllFlavors() {

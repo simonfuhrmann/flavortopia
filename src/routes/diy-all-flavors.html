@@ -21,7 +21,7 @@
     <!-- Display search result if a term was entered. -->
     <template is="dom-if" if="[[searchTerm]]">
       <diy-flavor-list
-          flavors="[[searchFlavors]]"
+          flavors="[[flavorsSearch]]"
           limit="50"
           title="Search: [[searchTerm]]"
           empty-message="Search does not match any flavors.">

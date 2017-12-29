@@ -11,7 +11,7 @@ class DiyAllFlavors extends DiyMixinStaticData(Polymer.Element) {
         value: '',
         observer: 'onSearchTermChanged_',
       },
-      searchFlavors: {
+      flavorsSearch: {
         type: Array,
         value: () => [],
       }
@@ -43,29 +43,14 @@ class DiyAllFlavors extends DiyMixinStaticData(Polymer.Element) {
 
   onSearchTermChanged_(searchTerm) {
     if (!searchTerm) {
-      this.set('searchFlavors', undefined);
+      this.set('flavorsSearch', undefined);
       return;
     }
-
-    // Create array of cleaned search terms.
-    const cleaned = searchTerm.replace(/\s+/g, ' ').replace(/[^\w ]/g, '');
-    const terms = cleaned.toLowerCase().split(' ');
-
-    // Create array of flavors that match the search terms.
-    const searchResult = this.allFlavorsArray.filter(flavor => {
-      const subject = (flavor.vendor + ' ' + flavor.name).toLowerCase();
-      return terms.reduce((isMatch, elem) => {
-        return isMatch && subject.includes(elem)
-      }, true);
-    });
-
-    // Map the search result to flavor keys.
-    const searchResultKeys = searchResult.map(flavor => flavor.key);
-    this.set('searchFlavors', searchResultKeys);
+    this.set('flavorsSearch', this.searchFlavors(searchTerm));
   }
 
-  hasSearchResults_(searchFlavors) {
-    return searchFlavors && searchFlavors.length > 0;
+  hasSearchResults_(flavorsSearch) {
+    return flavorsSearch && flavorsSearch.length > 0;
   }
 }
 
