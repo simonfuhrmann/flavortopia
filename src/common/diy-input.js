@@ -34,24 +34,13 @@ class DiyInput extends Polymer.Element {
         value: false,
         notify: true,
       },
-      boundOnFocus_: {
-        type: Function,
-        value: function() {
-          return this.onFocus_.bind(this);
-        },
-      },
-      boundOnBlur_: {
-        type: Function,
-        value: function() {
-          return this.onBlur_.bind(this);
-        }
-      },
     };
   }
 
   connectedCallback() {
-    this.addEventListener('focus', this.boundOnFocus_, true);
-    this.addEventListener('blur', this.boundOnBlur_, true);
+    super.connectedCallback();
+    this.addEventListener('focus', this.onFocus_.bind(this), true);
+    this.addEventListener('blur', this.onBlur_.bind(this), true);
   }
 
   focus() {

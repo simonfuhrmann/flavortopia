@@ -17,28 +17,21 @@ class DiyTextarea extends Polymer.Element {
         type: String,
         value: undefined,
       },
-      boundOnFocus_: {
-        type: Function,
-        value: function() {
-          return this.onFocus_.bind(this);
-        },
-      },
-      boundOnBlur_: {
-        type: Function,
-        value: function() {
-          return this.onBlur_.bind(this);
-        }
-      },
     };
   }
 
   connectedCallback() {
-    this.addEventListener('focus', this.boundOnFocus_, true);
-    this.addEventListener('blur', this.boundOnBlur_, true);
+    super.connectedCallback();
+    this.addEventListener('focus', this.onFocus_.bind(this), true);
+    this.addEventListener('blur', this.onBlur_.bind(this), true);
   }
 
   focus() {
     this.$.nativeInput.focus();
+  }
+
+  hasLabel_(label) {
+    return !!label;
   }
 
   onFocus_() {
@@ -47,10 +40,6 @@ class DiyTextarea extends Polymer.Element {
 
   onBlur_() {
     this.set('focused', false);
-  }
-
-  hasLabel_(label) {
-    return !!label;
   }
 }
 
