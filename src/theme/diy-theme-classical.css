@@ -39,6 +39,13 @@
   --drawer-active-background: #d4d7d7;
 
   --paper-radio-button-checked-color: var(--info-background-color);
+
+  --diy-vendor-box: {
+    background-color: var(--separator-color);
+    color: var(--primary-text-color);
+    border-radius: 3px;
+    padding: 1px 4px;
+  };
 }
 
 /* Dialog styles. */

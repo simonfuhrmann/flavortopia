@@ -49,12 +49,12 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
 
   update_(flavors, limit) {
     if (flavors.length == 0) {
-      this.$.flavorCard.setAttribute('hidden', true);
-      this.$.emptyCard.removeAttribute('hidden');
+      this.$.flavorList.setAttribute('hidden', true);
+      this.$.emptyMessage.removeAttribute('hidden');
       this.set('numFlavorsText', '');
     } else {
-      this.$.flavorCard.removeAttribute('hidden');
-      this.$.emptyCard.setAttribute('hidden', true);
+      this.$.flavorList.removeAttribute('hidden');
+      this.$.emptyMessage.setAttribute('hidden', true);
       this.set('numFlavorsText', flavors.length + ' flavors');
     }
 

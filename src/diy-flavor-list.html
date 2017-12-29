@@ -14,33 +14,37 @@
     <style include="iron-flex iron-flex-alignment"></style>
     <style include="diy-theme"></style>
 
-    <div id="heading" class="layout horizontal end">
-      <h2 class="flex layout horizontal center">
-        <span>[[heading]]</span>
-        <iron-icon
-            icon="icons:info"
-            hidden="[[!vendorKey]]"
-            on-tap="onVendorTap_">
-        </iron-icon>
-      </h2>
-      <span id="numFlavorsInfo">[[numFlavorsText]]</span>
-      <a id="showAllButton" hidden on-tap="onShowAll_">Show All</a>
-      <a id="collapseButton" hidden on-tap="onCollapse_">Collapse</a>
-    </div>
+    <paper-card>
 
-    <!-- Card that shows when no flavors are displayed. -->
-    <paper-card id="emptyCard" hidden>
-      [[emptyMessage]]
-    </paper-card>
+      <!-- Heading with vendor/search info and actions. -->
+      <div id="heading" class="layout horizontal end">
+        <h2 class="flex layout horizontal center">
+          <span>[[heading]]</span>
+          <iron-icon
+              icon="icons:info"
+              hidden="[[!vendorKey]]"
+              on-tap="onVendorTap_">
+          </iron-icon>
+        </h2>
+        <div id="details">
+          <span>[[numFlavorsText]]</span>
+          <a id="showAllButton" hidden on-tap="onShowAll_">Show All</a>
+          <a id="collapseButton" hidden on-tap="onCollapse_">Collapse</a>
+        </div>
+      </div>
 
-    <paper-card id="flavorCard">
+      <!-- Message when no flavors are displayed. -->
+      <div id="emptyMessage" hidden>
+        [[emptyMessage]]
+      </div>
+
       <!-- 2-column table with flavors. -->
-      <div class="two-column">
+      <div id="flavorList" class="two-column">
         <table>
           <template is="dom-repeat" items="[[showFlavors]]" as="flavor">
             <tr>
               <td class="vendor-short">
-                [<span>[[vendorFromKey_(flavor.vendor)]]</span>]
+                <span>[[vendorFromKey_(flavor.vendor)]]</span>
               </td>
               <td>[[flavor.name]]</td>
               <td class="flavor-action">

@@ -30,11 +30,8 @@
 }
 
 span.vendor {
-  background-color: var(--separator-color);
-  color: var(--primary-text-color);
-  border-radius: 3px;
-  padding: 1px 4px;
   margin-right: 4px;
+  @apply --diy-vendor-box;
 }
 
 paper-button {

@@ -4,12 +4,8 @@
   @apply --layout-vertical;
 }
 
-diy-live-search {
-  margin-bottom: 16px;
-}
-
 paper-card {
-  margin-bottom: 8px;
+  margin-top: 16px;
 }
 
 paper-spinner-lite {

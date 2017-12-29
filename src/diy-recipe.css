@@ -9,18 +9,19 @@ table td {
   padding: 4px;
 }
 
-table .percent {
+table td.percent {
   text-align: right;
   width: 3em;
 }
 
-table .vendor {
+table td.vendor {
   text-align: right;
   width: 1em;
 }
 
-table .vendor div {
+table td.vendor > span {
   cursor: pointer;
+  @apply --diy-vendor-box;
 }
 
 #header {

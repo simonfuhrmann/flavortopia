@@ -84,7 +84,7 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
 
   onVendorTap_(event) {
     const flavor = event.model.item;
-    this.$.vendorPopup.set('positionTarget', event.path[1]);
+    this.$.vendorPopup.set('positionTarget', event.path[0]);
     this.$.vendorPopup.set('key', flavor.vendor);
     this.$.vendorPopup.open();
   }

@@ -4,6 +4,10 @@
   @apply --layout-vertical;
 }
 
+diy-flavor-list {
+  margin-bottom: 16px;
+}
+
 #loadingCard,
 #errorCard {
   padding: 24px;
