@@ -54,6 +54,10 @@ paper-dialog .dialog-title {
   @apply --layout-center;
 }
 
+paper-dialog .dialog-title iron-icon {
+  margin-right: 16px;
+}
+
 paper-dialog.error-dialog .dialog-title {
   background-color: var(--error-background-color);
   color: var(--error-foreground-color);
@@ -64,6 +68,6 @@ paper-dialog.info-dialog .dialog-title {
   color: var(--info-foreground-color);
 }
 
-paper-dialog .dialog-title iron-icon {
-  margin-right: 16px;
+paper-dialog .buttons {
+  color: var(--contrast-text-color);
 }
