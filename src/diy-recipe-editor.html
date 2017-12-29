@@ -1,4 +1,5 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/paper-card/paper-card.html">
@@ -104,6 +105,19 @@
         <span>Add Ingredient</span>
       </paper-button>
 
+      <h3>Recipe Notes</h3>
+      <diy-textarea
+          label="Public notes (visible to anyone)"
+          placeholder="Suggested PG/VG ratio, tips on flavor substitutions, ..."
+          value="{{recipePublicNotes}}">
+      </diy-textarea>
+
+      <diy-textarea
+          label="Personal Notes (not visible to others, but unprotected)"
+          placeholder="Open questions, notes on improvements, ..."
+          value="{{recipePersonalNotes}}">
+      </diy-textarea>
+
       <h3>
         Visibility
         <iron-icon
@@ -129,19 +143,6 @@
           </div>
         </paper-radio-button>
       </paper-radio-group>
-
-      <h3>Recipe Notes</h3>
-      <diy-textarea
-          label="Public notes (visible to anyone)"
-          placeholder="Suggested PG/VG ratio, tips on flavor substitutions, ..."
-          value="{{recipePublicNotes}}">
-      </diy-textarea>
-
-      <diy-textarea
-          label="Personal Notes (not visible to others, but unprotected)"
-          placeholder="Open questions, notes on improvements, ..."
-          value="{{recipePersonalNotes}}">
-      </diy-textarea>
 
     </paper-card>
 

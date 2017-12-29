@@ -12,6 +12,7 @@
   z-index: 1;
   background-color: white;
   border: 1px solid var(--separator-color);
+  @apply --shadow-elevation-4dp;
 }
 
 #popup .popup-info {
