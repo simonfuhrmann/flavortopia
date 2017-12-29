@@ -11,12 +11,15 @@ class DiyRecipeEditor extends Polymer.Element {
       },
       isNewRecipe: {
         type: Boolean,
-        value: false,
+        value: true,
       },
 
       recipeName: String,
       recipeDescription: String,
-      recipeIngredients: Array,
+      recipeIngredients: {
+        type: Array,
+        value: () => [],
+      },
       recipePublicNotes: String,
       recipePersonalNotes: String,
       recipeVisibility: {
@@ -37,12 +40,32 @@ class DiyRecipeEditor extends Polymer.Element {
     // TODO
   }
 
+  onIngredientsInfoTap_() {
+    const title = 'Notes on Ingredients';
+    const content = 'Flavortopia does not believe in specifying base '
+        + 'ingredients (PG, VG, nicotine, etc.) as part of your recipe. '
+        + 'Instead, it can be configured when mixing a recipe. If you have a '
+        + 'suggestion for a PG/VG ratio, put it in the recipe notes.';
+    this.$.dialog.openInfo(title, content);
+  }
+
+  onVisibilityInfoTap_() {
+    const title = 'Recipe Visibility';
+    const content = 'Your recipe stored in a database powered by Firebase. '
+        + 'The visibility selection will be stored as a flag as part of '
+        + 'your recipe. Flavortopia will not display unlisted recipes to '
+        + 'other users. Note, however, that all recipes could be queried by '
+        + 'proficient users. Do not submit confidential information with your '
+        + 'recipes.';
+    this.$.dialog.openInfo(title, content);
+  }
+
   onAddIngredientTap_() {
     if (!this.recipeIngredients) {
       this.set('recipeIngredients', []);
     }
     this.push('recipeIngredients', {});
-    console.log(this.recipeIngredients);
+    setTimeout(this.focusLastIngredient_.bind(this), 0);
   }
 
   onClearIngredientTap_(event) {
@@ -81,16 +104,22 @@ class DiyRecipeEditor extends Polymer.Element {
     }
   }
 
+  onDiscardTap_() {
+    this.dispatchEvent(new CustomEvent('close-editor'));
+  }
+
+  focusLastIngredient_() {
+    let inputs = this.shadowRoot.querySelectorAll('diy-flavor-input');
+    if (!inputs || inputs.length == 0) return;
+    inputs[inputs.length - 1].focus();
+  }
+
   validateIngredient_(flavor) {
     const propName = 'recipeIngredients.' + flavor.index + '.error';
     this.set(propName, '');
     if (!flavor.flavor) {
       this.set(propName, 'Invalid ingredient!');
     }
-  }
-
-  onDiscardTap_() {
-    this.dispatchEvent(new CustomEvent('close-editor'));
   }
 }
 

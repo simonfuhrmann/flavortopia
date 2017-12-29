@@ -15,9 +15,18 @@ table {
   border-collapse: collapse;
 }
 
+table tr:nth-child(even){
+  background-color: var(--secondary-background-color);
+}
+
+table th {
+  text-align: left;
+  font-size: 0.85em;
+  padding: 4px;
+}
+
 table td {
-  padding: 0 8px 0 0;
-  vertical-align: top;
+  padding: 0 4px;
 }
 
 table td.percent-input {
@@ -73,21 +82,37 @@ paper-button {
   margin: 0;
 }
 
-paper-button#addIngredientButton {
+paper-dialog {
+  max-width: 500px;
+}
+
+#addIngredientButton {
   background-color: var(--info-background-color);
   color: var(--info-foreground-color);
   padding: 4px 16px;
-  margin: 8px 0;
+  margin: 8px 4px;
 }
 
-paper-button#addIngredientButton iron-icon {
+#addIngredientButton iron-icon {
   margin-right: 4px;
 }
 
-paper-button#saveButton {
+#saveRecipeButton {
   background-color: var(--info-background-color);
   color: var(--info-foreground-color);
   margin-left: 16px;
+}
+
+.info-button {
+  cursor: pointer;
+  color: var(--info-background-color);
+  opacity: 0.2;
+  width: 20px;
+  height: 20px;
+}
+
+.info-button:hover {
+  opacity: 1.0;
 }
 
 [hidden] {

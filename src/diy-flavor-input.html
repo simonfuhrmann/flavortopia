@@ -1,0 +1,63 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="/src/mixins/mixin-static-data.html">
+<link rel="import" href="/src/common/diy-input.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-flavor-input">
+  <link rel="import" type="css" href="diy-flavor-input.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <!-- Flavor search input field. -->
+    <diy-input
+        id="input"
+        hidden="[[selected]]"
+        value="{{search}}"
+        focused="{{searchFocused}}">
+    </diy-input>
+
+    <!-- Selected flavor display. -->
+    <div hidden="[[!selected]]" class="layout horizontal center">
+      <span class="vendor">[[selected.vendor.short]]</span>
+      <span>[[selected.flavor.name]]</span>
+      <paper-button on-tap="onEditSelectedTap_">
+        <iron-icon icon="icons:create"></iron-icon>
+      </paper-button>
+    </div>
+
+    <!-- Search results popup. -->
+    <div id="container">
+      <div id="popup" hidden="[[!searchFocused]]">
+        <!-- Info when search does not match any flavors. -->
+        <div
+            class="popup-info"
+            hidden="[[!hasNoResults_(search, searchResult)]]">
+          No matching flavors.
+        </div>
+
+        <!-- Info when no search term was entered. -->
+        <div
+            class="popup-info"
+            hidden="[[!hasNoString_(search)]]">
+          Type to search and select a flavor.
+        </div>
+
+        <!-- List of search results. -->
+        <template is="dom-repeat" items="[[searchResult]]">
+          <div
+              class="result layout horizontal center"
+              on-mousedown="onResultTap_">
+            <span class="vendor">[[item.vendor.short]]</span>
+            <span class="flex">[[item.flavor.name]]</span>
+          </div>
+        </template>
+
+      </div>
+    </div>
+
+  </template>
+  <script type="text/javascript" src="diy-flavor-input.js"></script>
+</dom-module>
