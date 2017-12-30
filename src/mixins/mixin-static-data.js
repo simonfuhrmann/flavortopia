@@ -56,15 +56,17 @@ DiyMixinStaticData = (superClass) => class extends superClass {
       return [];
     }
 
-    // Replace consecutive whitespace characters with single spaces.
-    const cleaned = searchString.replace(/\s+/g, ' ').replace(/[^\w ]/g, '');
+    // Clean the search string.
+    const cleaned = searchString
+        .replace(/\s+/g, ' ')       // Collapse whitespaces into blanks.
+        .replace(/[^\w\- ]/g, '');  // Remove non-word characters.
 
     // Split search terms at spaces.
     const terms = cleaned.toLowerCase().split(' ');
 
     // Create an array of flavors that match the search terms.
     const searchResult = this.allFlavorsArray.filter(flavor => {
-      const subject = (flavor.vendor + ' ' + flavor.name).toLowerCase();
+      const subject = flavor.key;
       return terms.reduce((isMatch, elem) => {
         return isMatch && subject.includes(elem)
       }, true);
@@ -84,6 +86,7 @@ function prepareAllFlavors() {
   Object.keys(allFlavors).forEach(key => {
     allFlavors[key].key = key;
   });
+  console.log(allFlavors);
   return allFlavors;
 }
 
