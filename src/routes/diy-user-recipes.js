@@ -13,9 +13,9 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
     };
   }
 
-  openEditor_(recipeId) {
+  openEditor_(recipe) {
     this.$.recipeList.setAttribute('hidden', true);
-    this.$.recipeEditor.open(recipeId);
+    this.$.recipeEditor.open(recipe);
     this.$.recipeEditor.removeAttribute('hidden');
   }
 
@@ -32,8 +32,8 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
   }
 
   onEditRecipe_(event) {
-    const recipeId = event.detail.recipeId;
-    this.openEditor_(recipeId);
+    const recipe = event.detail;
+    this.openEditor_(recipe);
   }
 
   onCreateRecipe_(event) {

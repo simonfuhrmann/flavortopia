@@ -52,7 +52,7 @@
           <th>Percent</th>
           <th></th>
         </tr>
-        <template is="dom-repeat" items="{{recipeIngredients}}">
+        <template is="dom-repeat" items="[[recipeIngredients]]">
           <tr>
             <td class="flavor-input">
               <!--
@@ -61,7 +61,7 @@
               -->
               <diy-flavor-input
                   search="{{item.search}}"
-                  selected="{{item.flavor}}">
+                  selected="{{item.selected}}">
               </diy-flavor-input>
             </td>
             <td class="percent-input">
@@ -113,7 +113,7 @@
       </diy-textarea>
 
       <diy-textarea
-          label="Personal Notes (not visible to others, but unprotected)"
+          label="Personal notes (not visible to others, but unprotected)"
           placeholder="Open questions, notes on improvements, ..."
           value="{{recipePersonalNotes}}">
       </diy-textarea>

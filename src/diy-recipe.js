@@ -13,11 +13,13 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
         type: Object,
         observer: 'onRecipeChanged_',
       },
-      recipeId: String,
+      recipeKey: String,
       recipeName: String,
       recipeUserId: String,
       recipeAuthor: String,
-      recipeNotes: String,
+      recipeDescription: String,
+      recipePublicNotes: String,
+      recipePersonalNotes: String,
       recipeCreated: String,
       ingredients: Array,
       hasIngredients: Boolean,
@@ -26,14 +28,16 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
   }
 
   onRecipeChanged_(recipe) {
-    this.set('recipeId', recipe.id);
-    this.set('recipeName', recipe.data.name);
-    this.set('recipeUserId', recipe.data.user);
-    this.set('recipeNotes', recipe.data.notes || '');
-    this.set('recipeCreated', this.timestampToString_(recipe.data.created));
-    this.set('ingredients', this.mapIngredients_(recipe.data.ingredients));
+    this.set('recipeKey', recipe.key);
+    this.set('recipeName', recipe.name);
+    this.set('recipeUserId', recipe.user);
+    this.set('recipeDescription', recipe.description || '');
+    this.set('recipePublicNotes', recipe.publicNotes || '');
+    this.set('recipePersonalNotes', recipe.personalNotes || '');
+    this.set('recipeCreated', this.timestampToString_(recipe.created));
+    this.set('ingredients', this.mapIngredients_(recipe.ingredients));
     this.set('hasIngredients', this.ingredients.length > 0);
-    this.set('hasRecipeNotes', this.recipeNotes.length > 0);
+    this.set('hasDescription', this.recipeDescription.length > 0);
   }
 
   // Returns a YYYY-MM-DD date representation from a timestamp.
@@ -90,7 +94,7 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
   }
 
   onEditTap_() {
-    const detail = { detail: { recipeId: this.recipeId } };
+    const detail = { detail: this.recipe };
     this.dispatchEvent(new CustomEvent('edit-recipe', detail));
   }
 

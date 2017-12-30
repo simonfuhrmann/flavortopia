@@ -1,10 +1,27 @@
-class DiyRecipeEditor extends Polymer.Element {
+class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
   static get is() {
     return 'diy-recipe-editor';
   }
 
   static get properties() {
     return {
+      /**
+       * The format of recipe is as follows:
+       *
+       * {
+       *   key: <String>,
+       *   name: <String>,
+       *   description: <String>,
+       *   publicNotes: <String>,
+       *   personalNotes: <String>,
+       *   created: <Timestamp>,
+       *   isPublic: <Boolean>,
+       *   ingredients: {
+       *     'cap-lime': <Number>,
+       *     'tfa-apricot': <Number>,
+       *   },
+       * }
+       */
       recipe: {
         type: Object,
         value: () => {},
@@ -14,14 +31,22 @@ class DiyRecipeEditor extends Polymer.Element {
         value: true,
       },
 
+      recipeKey: String,
       recipeName: String,
       recipeDescription: String,
+      recipePublicNotes: String,
+      recipePersonalNotes: String,
+
+      /**
+       * An array of ingredient objects. Each ingredient contains the search
+       * term, the selected flavor, the percent, and an error if the ingredient
+       * is invalid: { search, selected, percent, error }.
+       */
       recipeIngredients: {
         type: Array,
         value: () => [],
       },
-      recipePublicNotes: String,
-      recipePersonalNotes: String,
+      /** The visibility is either 'public' or 'unlisted'. */
       recipeVisibility: {
         type: String,
         value: 'public',
@@ -29,15 +54,65 @@ class DiyRecipeEditor extends Polymer.Element {
     };
   }
 
-  open(recipeId) {
-    this.set('isNewRecipe', !recipeId);
-    this.clearForm_();
+  open(recipe) {
+    this.set('isNewRecipe', !recipe);
+    if (!recipe) {
+      this.clearForm_();
+      return;
+    }
 
-    // TODO: Set properties.
+    console.log("opening recipe", recipe);
+
+    this.set('recipeKey', recipe.key);
+    this.set('recipeName', recipe.name);
+    this.set('recipeDescription', recipe.description);
+    this.set('recipePublicNotes', recipe.publicNotes);
+    this.set('recipePersonalNotes', recipe.personalNotes);
+    this.set('recipeVisibility', recipe.isPublic ? 'public' : 'unlisted');
+    this.set('recipeIngredients', this.ingredientsToProperty_(recipe.ingredients));
   }
 
   clearForm_() {
-    // TODO
+    this.set('recipeKey', '');
+    this.set('recipeName', '');
+    this.set('recipeDescription', '');
+    this.set('recipePublicNotes', '');
+    this.set('recipePersonalNotes', '');
+    this.set('recipeVisibility', 'public');
+    this.set('recipeIngredients', []);
+  }
+
+  ingredientsToProperty_(ingredients) {
+    return Object.keys(ingredients).map(flavorKey => {
+      const percent = ingredients[flavorKey];
+      const flavor = this.allFlavors[flavorKey];
+      const vendor = this.allVendors[flavor.vendor];
+      return {
+        search: flavor.key,
+        selected: { flavor, vendor },
+        percent: Number(percent).toFixed(2),
+        error: undefined,
+      };
+    });
+  }
+
+  onSaveTap_() {
+    const recipe = {};
+    recipe.name = this.recipeName;
+    recipe.publicNotes = this.recipePublicNotes;
+    recipe.personalNotes = this.recipePersonalNotes;
+    recipe.isPublic = this.recipeVisibility == 'public';
+    recipe.ingredients = {};
+    for (let i = 0; i < this.recipeIngredients.length; ++i) {
+      const ingredient = this.recipeIngredients[i];
+      ingredient.index = i;
+      if (!this.validateIngredient_(ingredient)) continue;
+      recipe.ingrendients[ingredient.flavor] = ingredient.percent;
+    }
+  }
+
+  onDiscardTap_() {
+    this.dispatchEvent(new CustomEvent('close-editor'));
   }
 
   onIngredientsInfoTap_() {
@@ -87,25 +162,6 @@ class DiyRecipeEditor extends Polymer.Element {
     const item = this.recipeIngredients[index];
     this.splice('recipeIngredients', index, 1);
     this.splice('recipeIngredients', index + 1, 0, item);
-  }
-
-  onSaveTap_() {
-    const recipe = {};
-    recipe.name = this.recipeName;
-    recipe.publicNotes = this.recipePublicNotes;
-    recipe.personalNotes = this.recipePersonalNotes;
-    recipe.isPublic = this.recipeVisibility == 'public';
-    recipe.ingredients = {};
-    for (let i = 0; i < this.recipeIngredients.length; ++i) {
-      const ingredient = this.recipeIngredients[i];
-      ingredient.index = i;
-      if (!this.validateIngredient_(ingredient)) continue;
-      recipe.ingrendients[ingredient.flavor] = ingredient.percent;
-    }
-  }
-
-  onDiscardTap_() {
-    this.dispatchEvent(new CustomEvent('close-editor'));
   }
 
   focusLastIngredient_() {

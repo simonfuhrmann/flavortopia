@@ -5,19 +5,23 @@ class DiyFlavorInput extends DiyMixinStaticData(Polymer.Element) {
 
   static get properties() {
     return {
+      /** The typed search value. On change, update search result. */
       search: {
         type: String,
         notify: true,
         observer: 'onSearchChanged_',
       },
+      /** Whether the input field is focused. */
       searchFocused: {
         type: Boolean,
         value: false,
       },
+      /** Array for { vendor, flavor } objects. */
       searchResult: {
         type: Array,
         value: () => [],
       },
+      /** The selected { vendor, flavor } object. */
       selected: {
         type: Object,
         value: null,
@@ -39,8 +43,12 @@ class DiyFlavorInput extends DiyMixinStaticData(Polymer.Element) {
       this.set('searchResult', []);
       return;
     }
+    // Search and limit the number of results.
+    const searchResultKeys = this.searchFlavors(searchTerm);
+    searchResultKeys.length = Math.min(50, searchResultKeys.length);
+    // Convert search result to { flavor, vendor } objects.
     // TODO: Add undefined checks.
-    const searchResult = this.searchFlavors(searchTerm).map(flavorKey => {
+    const searchResult = searchResultKeys.map(flavorKey => {
       const flavor = this.allFlavors[flavorKey];
       const vendor = this.allVendors[flavor.vendor];
       return { flavor, vendor };

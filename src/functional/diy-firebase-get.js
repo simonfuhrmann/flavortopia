@@ -36,8 +36,8 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     this.store = this.getFirebaseFirestore();
   }
 
-  // For multiple-document queries, the snapshot contains an array of docs,
-  // which is mapped to an array with the doc key and data, for convenience.
+  // For multiple-document queries, the snapshot contains an array of docs for
+  // convenience. The database doc ID is stored in the objects 'key' field.
   // The argument is a function that returns a multiple document snapshot.
   firebaseGetMulti(func) {
     this.set('loading', true);
@@ -50,7 +50,9 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
             docs = snapshot.docs || [];
           }
           this.set('data', docs.map(doc => {
-            return { id: doc.id, data: doc.data() };
+            const docData = doc.data();
+            docData.key = doc.id;
+            return docData;
           }));
         })
         .catch(error => {
@@ -60,15 +62,17 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
   }
 
   // For single document queries.
+  // The document ID is stored in the objects 'key' field.
   // The argument is a function that returns a single document.
   firebaseGetDoc(func) {
     this.set('loading', true);
     this.set('error', undefined);
     func()
-        .then(snapshot => {
+        .then(doc => {
           this.set('loading', false);
-          const doc = snapshot && snapshot.exists ? snapshot.data() : {};
-          this.set('data', doc);
+          const docData = doc && doc.exists ? doc.data() : {};
+          docData.key = doc.id;
+          this.set('data', docData);
         })
         .catch(error => {
           this.set('loading', false);
