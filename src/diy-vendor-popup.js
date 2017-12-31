@@ -30,8 +30,9 @@ class DiyVendorPopup extends DiyMixinStaticData(Polymer.Element) {
     if (!vendorData) {
       this.setProperties({
         vendorShort: key,
-        vendorName: undefined,
+        vendorName: 'Unknown Vendor',
         vendorWebsite: undefined,
+        vendorDescription: 'A vendor called "' + key + '" was not found.',
       });
       return;
     }

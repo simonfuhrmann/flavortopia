@@ -49,6 +49,27 @@ DiyMixinStaticData = (superClass) => class extends superClass {
     };
   }
 
+  // Returns a flavor object for the given flavor key. If the flavor is not
+  // known, a mock object is returned with all common fields for safe usage.
+  flavorForKey(flavorKey) {
+    const flavor = this.allFlavors[flavorKey];
+    return flavor || { key: flavorKey, name: flavorKey, vendor: '???' };
+  }
+
+  // Returns a vendor object for the given vendor key. If the vendor is not
+  // known, a mock object is returned with all common fields for safe usage.
+  vendorForKey(vendorKey) {
+    const vendor = this.allVendors[vendorKey];
+    return vendor || { key: vendorKey, name: 'Unknown', short: '???' };
+  }
+
+  // Returns a vendor object for the given flavor key. If the flavor or the
+  // vendor is not known, a mock object is returned with common fields set.
+  vendorForFlavorKey(flavorKey) {
+    const flavor = this.flavorForKey(flavorKey);
+    return this.vendorForKey(flavor.vendor);
+  }
+
   // Returns an array with flavor keys for flavors that match the search terms.
   // The search matches both, the flavor vendor and the flavor name.
   searchFlavors(searchString) {
@@ -86,7 +107,6 @@ function prepareAllFlavors() {
   Object.keys(allFlavors).forEach(key => {
     allFlavors[key].key = key;
   });
-  console.log(allFlavors);
   return allFlavors;
 }
 

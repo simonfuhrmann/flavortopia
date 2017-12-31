@@ -10,6 +10,10 @@
   margin: 0;
 }
 
+#popup h3 > span {
+  @apply --diy-vendor-box;
+}
+
 #popup p {
   margin: 8px 0;
   font-size: 0.9em;

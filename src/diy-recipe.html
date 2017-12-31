@@ -18,14 +18,14 @@
     <style include="iron-flex iron-flex-alignment"></style>
     <style include="diy-theme"></style>
 
-    <diy-user-cache uid="[[recipeUserId]]" name="{{recipeAuthor}}">
+    <diy-user-cache uid="[[recipe.user]]" name="{{recipeAuthor}}">
     </diy-user-cache>
 
     <div id="header" class="layout horizontal center">
-      <h2 class="flex">[[recipeName]]</h2>
+      <h2 class="flex">[[recipe.name]]</h2>
       <div id="details">
         <span class="detail">by [[recipeAuthor]]</span>
-        <span class="detail">created [[recipeCreated]]</span>
+        <span class="detail">created [[recipeTimestamp]]</span>
       </div>
 
       <div id="actions" class="layout horizontal">
@@ -34,13 +34,13 @@
         </paper-button>
         <paper-button
             raised
-            hidden="[[!isAuthenticated_(authUserId, recipeUserId)]]"
+            hidden="[[!isAuthenticated_(authUserId, recipe.user)]]"
             on-tap="onEditTap_">
           <iron-icon icon="icons:create"></iron-icon>
         </paper-button>
         <paper-button
             raised
-            hidden="[[!isAuthenticated_(authUserId, recipeUserId)]]"
+            hidden="[[!isAuthenticated_(authUserId, recipe.user)]]"
             on-tap="onDeleteTap_">
           <iron-icon icon="icons:delete"></iron-icon>
         </paper-button>
@@ -56,16 +56,16 @@
           <tr>
             <td class="percent">[[item.percent]]%</td>
             <td class="vendor">
-              <span on-tap="onVendorTap_">[[vendorFromKey_(item.vendor)]]</span>
+              <span on-tap="onVendorTap_">[[item.vendor.short]]</span>
             </td>
-            <td class="flavor">[[item.flavor]]</td>
+            <td class="flavor">[[item.flavor.name]]</td>
           </tr>
         </template>
       </table>
     </div>
 
     <div id="notes" hidden$="[[!hasDescription]]">
-      <div><b>Description:</b> [[recipeDescription]]</div>
+      <div><b>Description:</b> [[recipe.description]]</div>
     </div>
 
     <diy-vendor-popup id="vendorPopup"></diy-vendor-popup>
