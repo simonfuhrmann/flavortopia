@@ -19,6 +19,10 @@ table tr:nth-child(even){
   background-color: var(--secondary-background-color);
 }
 
+table tr[error] {
+  border-left: 2px solid var(--error-text-color);
+}
+
 table th {
   text-align: left;
   font-size: 0.85em;

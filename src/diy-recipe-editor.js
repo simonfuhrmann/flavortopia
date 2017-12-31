@@ -61,15 +61,14 @@ class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
       return;
     }
 
-    console.log("opening recipe", recipe);
-
     this.set('recipeKey', recipe.key);
     this.set('recipeName', recipe.name);
     this.set('recipeDescription', recipe.description);
     this.set('recipePublicNotes', recipe.publicNotes);
     this.set('recipePersonalNotes', recipe.personalNotes);
     this.set('recipeVisibility', recipe.isPublic ? 'public' : 'unlisted');
-    this.set('recipeIngredients', this.ingredientsToProperty_(recipe.ingredients));
+    this.set('recipeIngredients',
+        this.ingredientsToProperty_(recipe.ingredients));
   }
 
   clearForm_() {
@@ -82,33 +81,73 @@ class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
     this.set('recipeIngredients', []);
   }
 
+  onSaveTap_() {
+    // Clear previous errors.
+    this.$.recipeNameInput.set('error', undefined);
+    for (let i = 0; i < this.recipeIngredients.length; ++i) {
+      this.set('recipeIngredients.' + i + '.error', false);
+    }
+
+    // Validate inputs.
+    let hasErrors = false;
+    if (!this.recipeName) {
+      this.$.recipeNameInput.set('error', 'Please provide a recipe name');
+      hasErrors = true;
+    }
+    for (let i = 0; i < this.recipeIngredients.length; ++i) {
+      const ingredient = this.recipeIngredients[i];
+      const percent = this.convertToNumber_(ingredient.percent);
+      const selected = ingredient.selected;
+      if (isNaN(percent) || !selected || !selected.flavor) {
+        this.set('recipeIngredients.' + i + '.error', true);
+        hasErrors = true;
+      }
+    }
+    if (hasErrors) {
+      return;
+    }
+
+    // Create recipe database representation.
+    const recipe = {
+      key: this.recipeKey,
+      name: this.recipeName,
+      description: this.recipeDescription,
+      publicNotes: this.recipePublicNotes,
+      personalNotes: this.recipePersonalNotes,
+      isPublic: this.recipeVisibility == 'public',
+      ingredients: this.ingredientsFromProperty_(),
+    };
+
+    console.log('Recipe for DB:', recipe);
+  }
+
   ingredientsToProperty_(ingredients) {
     return Object.keys(ingredients).map(flavorKey => {
-      const percent = ingredients[flavorKey];
-      const flavor = this.allFlavors[flavorKey];
-      const vendor = this.allVendors[flavor.vendor];
+      const percent = this.convertToNumber_(ingredients[flavorKey]);
+      const flavor = this.flavorForKey(flavorKey);
+      const vendor = this.vendorForKey(flavor.vendor);
       return {
         search: flavor.key,
         selected: { flavor, vendor },
         percent: Number(percent).toFixed(2),
-        error: undefined,
+        error: false,
       };
     });
   }
 
-  onSaveTap_() {
-    const recipe = {};
-    recipe.name = this.recipeName;
-    recipe.publicNotes = this.recipePublicNotes;
-    recipe.personalNotes = this.recipePersonalNotes;
-    recipe.isPublic = this.recipeVisibility == 'public';
-    recipe.ingredients = {};
+  ingredientsFromProperty_() {
+    if (!this.recipeIngredients) return {};
+    const result = {};
     for (let i = 0; i < this.recipeIngredients.length; ++i) {
       const ingredient = this.recipeIngredients[i];
-      ingredient.index = i;
-      if (!this.validateIngredient_(ingredient)) continue;
-      recipe.ingrendients[ingredient.flavor] = ingredient.percent;
+      const flavorKey = ingredient.selected.flavor.key;
+      result[flavorKey] = Number(ingredient.percent);
     }
+    return result;
+  }
+
+  convertToNumber_(string) {
+    return /^[0-9.]+$/.test(string) ? Number(string) : NaN;
   }
 
   onDiscardTap_() {
@@ -139,7 +178,7 @@ class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
     if (!this.recipeIngredients) {
       this.set('recipeIngredients', []);
     }
-    this.push('recipeIngredients', {});
+    this.push('recipeIngredients', { percent: 0.0 });
     setTimeout(this.focusLastIngredient_.bind(this), 0);
   }
 
@@ -168,14 +207,6 @@ class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
     let inputs = this.shadowRoot.querySelectorAll('diy-flavor-input');
     if (!inputs || inputs.length == 0) return;
     inputs[inputs.length - 1].focus();
-  }
-
-  validateIngredient_(flavor) {
-    const propName = 'recipeIngredients.' + flavor.index + '.error';
-    this.set(propName, '');
-    if (!flavor.flavor) {
-      this.set(propName, 'Invalid ingredient!');
-    }
   }
 }
 

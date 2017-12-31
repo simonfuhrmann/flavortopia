@@ -27,6 +27,7 @@
 
       <diy-input
           label="Recipe name"
+          id="recipeNameInput"
           placeholder="Your creative and meaningful recipe name."
           value="{{recipeName}}">
       </diy-input>
@@ -53,7 +54,7 @@
           <th></th>
         </tr>
         <template is="dom-repeat" items="[[recipeIngredients]]">
-          <tr>
+          <tr error$="[[item.error]]">
             <td class="flavor-input">
               <!--
                 Capture all relevant properties in case the dom-repeat

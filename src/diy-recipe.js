@@ -19,10 +19,10 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
       recipeAuthor: String,
       /** Formatted recipe timestamp. */
       recipeTimestamp: String,
-
+      /** Ingredients prepared for display. */
       ingredients: Array,
       hasIngredients: Boolean,
-      hasRecipeNotes: Boolean,
+      hasDescription: Boolean,
     };
   }
 
@@ -30,7 +30,7 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
     this.set('recipeTimestamp', this.timestampToString_(recipe.created));
     this.set('ingredients', this.mapIngredients_(recipe.ingredients));
     this.set('hasIngredients', this.ingredients.length > 0);
-    this.set('hasDescription', recipe.description && recipe.description.length > 0);
+    this.set('hasDescription', !!recipe.description);
   }
 
   /** Returns a YYYY-MM-DD date representation from a timestamp. */

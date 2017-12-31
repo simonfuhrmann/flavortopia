@@ -65,7 +65,9 @@ class DiyAllRecipes extends DiyMixinRedux(Polymer.Element) {
     }
 
     const docs = snapshot.docs.map(doc => {
-      return { id: doc.id, data: doc.data() };
+      const docData = doc.data();
+      docData.key = doc.key;
+      return docData;
     });
 
     if (docs.length > this.docLimit) {
