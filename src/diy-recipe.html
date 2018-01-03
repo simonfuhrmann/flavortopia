@@ -7,6 +7,7 @@
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="/src/functional/diy-user-cache.html">
+<link rel="import" href="/src/mixins/mixin-common.html">
 <link rel="import" href="/src/mixins/mixin-redux.html">
 <link rel="import" href="/src/mixins/mixin-static-data.html">
 <link rel="import" href="/src/theme/diy-theme.html">
@@ -29,19 +30,21 @@
       </div>
 
       <div id="actions" class="layout horizontal">
-        <paper-button raised on-tap="onMixTap_">
+        <paper-button raised on-tap="onMixTap_" title="Mix recipe">
           <iron-icon icon="image:colorize"></iron-icon>
         </paper-button>
         <paper-button
             raised
             hidden="[[!isAuthenticated_(authUserId, recipe.user)]]"
-            on-tap="onEditTap_">
+            on-tap="onEditTap_"
+            title="Edit recipe">
           <iron-icon icon="icons:create"></iron-icon>
         </paper-button>
         <paper-button
             raised
             hidden="[[!isAuthenticated_(authUserId, recipe.user)]]"
-            on-tap="onDeleteTap_">
+            on-tap="onDeleteTap_"
+            title="Delete recipe">
           <iron-icon icon="icons:delete"></iron-icon>
         </paper-button>
       </div>

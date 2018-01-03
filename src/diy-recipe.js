@@ -1,4 +1,5 @@
-class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
+class DiyRecipe extends
+    DiyMixinCommon(DiyMixinStaticData(DiyMixinRedux(Polymer.Element))) {
   static get is() {
     return 'diy-recipe';
   }
@@ -27,21 +28,10 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
   }
 
   onRecipeChanged_(recipe) {
-    this.set('recipeTimestamp', this.timestampToString_(recipe.created));
+    this.set('recipeTimestamp', this.formatTimestamp(recipe.created));
     this.set('ingredients', this.mapIngredients_(recipe.ingredients));
     this.set('hasIngredients', this.ingredients.length > 0);
     this.set('hasDescription', !!recipe.description);
-  }
-
-  /** Returns a YYYY-MM-DD date representation from a timestamp. */
-  timestampToString_(timestamp) {
-    if (!timestamp) {
-      return '(unavailable)';
-    }
-    let date = new Date(timestamp);
-    let dateString = date.toISOString();
-    let endIndex = dateString.indexOf('T');
-    return dateString.substring(0, endIndex);
   }
 
   /** Maps the recipe ingredients to values for display. */
@@ -50,17 +40,13 @@ class DiyRecipe extends DiyMixinStaticData(DiyMixinRedux(Polymer.Element)) {
     return Object.keys(ingredients).map(flavorKey => {
       const flavor = this.flavorForKey(flavorKey);
       const vendor = this.vendorForKey(flavor.vendor);
-      const percent = this.formatPercent_(ingredients[flavorKey]);
+      const percent = this.formatPercent(ingredients[flavorKey]);
       return { flavor, vendor, percent };
     });
   }
 
   isAuthenticated_(authUserId, recipeUserId) {
     return authUserId == recipeUserId;
-  }
-
-  formatPercent_(value) {
-    return Number(value).toFixed(2);
   }
 
   onVendorTap_(event) {

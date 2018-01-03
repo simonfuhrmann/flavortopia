@@ -1,4 +1,5 @@
-class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
+class DiyRecipeEditor extends
+    DiyMixinCommon(DiyMixinStaticData(Polymer.Element)) {
   static get is() {
     return 'diy-recipe-editor';
   }
@@ -61,24 +62,27 @@ class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
       return;
     }
 
-    this.set('recipeKey', recipe.key);
-    this.set('recipeName', recipe.name);
-    this.set('recipeDescription', recipe.description);
-    this.set('recipePublicNotes', recipe.publicNotes);
-    this.set('recipePersonalNotes', recipe.personalNotes);
-    this.set('recipeVisibility', recipe.isPublic ? 'public' : 'unlisted');
-    this.set('recipeIngredients',
-        this.ingredientsToProperty_(recipe.ingredients));
+    this.setProperties({
+      recipeKey: recipe.key,
+      recipeName: recipe.name,
+      recipeDescription: recipe.description,
+      recipePublicNotes: recipe.publicNotes,
+      recipePersonalNotes: recipe.personalNotes,
+      recipeVisibility: recipe.isPublic ? 'public' : 'unlisted',
+      recipeIngredients: this.ingredientsToProperty_(recipe.ingredients),
+    });
   }
 
   clearForm_() {
-    this.set('recipeKey', '');
-    this.set('recipeName', '');
-    this.set('recipeDescription', '');
-    this.set('recipePublicNotes', '');
-    this.set('recipePersonalNotes', '');
-    this.set('recipeVisibility', 'public');
-    this.set('recipeIngredients', []);
+    this.setProperties({
+      recipeKey: '',
+      recipeName: '',
+      recipeDescription: '',
+      recipePublicNotes: '',
+      recipePersonalNotes: '',
+      recipeVisibility: 'public',
+      recipeIngredients: [],
+    });
   }
 
   onSaveTap_() {
@@ -96,7 +100,7 @@ class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
     }
     for (let i = 0; i < this.recipeIngredients.length; ++i) {
       const ingredient = this.recipeIngredients[i];
-      const percent = this.convertToNumber_(ingredient.percent);
+      const percent = this.stringToNumber(ingredient.percent);
       const selected = ingredient.selected;
       if (isNaN(percent) || !selected || !selected.flavor) {
         this.set('recipeIngredients.' + i + '.error', true);
@@ -123,13 +127,13 @@ class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
 
   ingredientsToProperty_(ingredients) {
     return Object.keys(ingredients).map(flavorKey => {
-      const percent = this.convertToNumber_(ingredients[flavorKey]);
+      const percent = this.stringToNumber(ingredients[flavorKey]);
       const flavor = this.flavorForKey(flavorKey);
       const vendor = this.vendorForKey(flavor.vendor);
       return {
         search: flavor.key,
         selected: { flavor, vendor },
-        percent: Number(percent).toFixed(2),
+        percent: this.formatPercent(percent),
         error: false,
       };
     });
@@ -141,13 +145,9 @@ class DiyRecipeEditor extends DiyMixinStaticData(Polymer.Element) {
     for (let i = 0; i < this.recipeIngredients.length; ++i) {
       const ingredient = this.recipeIngredients[i];
       const flavorKey = ingredient.selected.flavor.key;
-      result[flavorKey] = Number(ingredient.percent);
+      result[flavorKey] = this.stringToNumber(ingredient.percent);
     }
     return result;
-  }
-
-  convertToNumber_(string) {
-    return /^[0-9.]+$/.test(string) ? Number(string) : NaN;
   }
 
   onDiscardTap_() {

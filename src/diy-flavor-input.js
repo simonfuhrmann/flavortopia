@@ -11,6 +11,12 @@ class DiyFlavorInput extends DiyMixinStaticData(Polymer.Element) {
         notify: true,
         observer: 'onSearchChanged_',
       },
+      /** The selected { vendor, flavor } object. */
+      selected: {
+        type: Object,
+        value: null,
+        notify: true,
+      },
       /** Whether the input field is focused. */
       searchFocused: {
         type: Boolean,
@@ -20,12 +26,6 @@ class DiyFlavorInput extends DiyMixinStaticData(Polymer.Element) {
       searchResult: {
         type: Array,
         value: () => [],
-      },
-      /** The selected { vendor, flavor } object. */
-      selected: {
-        type: Object,
-        value: null,
-        notify: true,
       },
     };
   }
@@ -43,11 +43,12 @@ class DiyFlavorInput extends DiyMixinStaticData(Polymer.Element) {
       this.set('searchResult', []);
       return;
     }
+
     // Search and limit the number of results.
     const searchResultKeys = this.searchFlavors(searchTerm);
     searchResultKeys.length = Math.min(50, searchResultKeys.length);
+
     // Convert search result to { flavor, vendor } objects.
-    // TODO: Add undefined checks.
     const searchResult = searchResultKeys.map(flavorKey => {
       const flavor = this.allFlavors[flavorKey];
       const vendor = this.allVendors[flavor.vendor];
@@ -64,7 +65,7 @@ class DiyFlavorInput extends DiyMixinStaticData(Polymer.Element) {
     return !search;
   }
 
-  onResultTap_(event) {
+  onSelectFlavorTap_(event) {
     const selected = event.model.item;
     this.set('selected', selected);
   }

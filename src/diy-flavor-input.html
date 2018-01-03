@@ -50,7 +50,7 @@
         <template is="dom-repeat" items="[[searchResult]]">
           <div
               class="result layout horizontal center"
-              on-mousedown="onResultTap_">
+              on-mousedown="onSelectFlavorTap_">
             <span class="vendor">[[item.vendor.short]]</span>
             <span class="flex">[[item.flavor.name]]</span>
           </div>
