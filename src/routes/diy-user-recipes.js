@@ -19,7 +19,7 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
     this.$.recipeEditor.removeAttribute('hidden');
   }
 
-  closeEditor_() {
+  onCloseEditor_() {
     this.$.recipeEditor.setAttribute('hidden', true);
     this.$.recipeList.removeAttribute('hidden');
   }

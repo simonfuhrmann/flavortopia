@@ -59,6 +59,28 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     const inventoryRef = this.store.collection('inventory').doc(uid);
     return inventoryRef.set(inventory);
   }
+
+  setRecipe(recipe) {
+    // Add a timestamp field to the recipe.
+    const recipeCopy = Object.assign({}, recipe);
+    recipeCopy.created = firebase.firestore.FieldValue.serverTimestamp();
+
+    // If the recipe contains a 'key', delete the key and overwrite the record
+    // in the DB. Otherwise create a new recipe record.
+    let recipesRef = this.store.collection('recipes');
+    if (recipeCopy.key) {
+      const documentKey = recipeCopy.key;
+      delete recipeCopy.key;
+      return recipesRef.doc(documentKey).set(recipeCopy);
+    } else {
+      return recipesRef.add(recipeCopy);
+    }
+  }
+
+  deleteRecipe(recipeKey) {
+    let recipesRef = this.store.collection('recipes').doc(recipeKey);
+    return recipesRef.delete();
+  }
 }
 
 customElements.define(DiyFirebaseStore.is, DiyFirebaseStore);

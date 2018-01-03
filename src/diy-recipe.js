@@ -65,6 +65,8 @@ class DiyRecipe extends
   }
 
   onDeleteTap_() {
+    const detail = { detail: this.recipe };
+    this.dispatchEvent(new CustomEvent('delete-recipe', detail));
   }
 }
 

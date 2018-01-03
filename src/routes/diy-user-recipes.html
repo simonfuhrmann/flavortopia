@@ -14,7 +14,6 @@
 
     <!-- Recipe list. -->
     <diy-recipe-list
-        hidden
         id="recipeList"
         user-id="[[userId]]"
         on-edit-recipe="onEditRecipe_"
@@ -24,7 +23,9 @@
     <!-- Recipe editor. -->
     <diy-recipe-editor
         id="recipeEditor"
-        on-close-editor="closeEditor_">
+        hidden
+        user-id="[[userId]]"
+        on-close-editor="onCloseEditor_">
     </diy-recipe-editor>
 
   </template>

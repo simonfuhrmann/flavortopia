@@ -6,11 +6,14 @@ class DiyRecipeEditor extends
 
   static get properties() {
     return {
+      userId: String,
+
       /**
        * The format of recipe is as follows:
        *
        * {
        *   key: <String>,
+       *   user: <String>,
        *   name: <String>,
        *   description: <String>,
        *   publicNotes: <String>,
@@ -94,10 +97,20 @@ class DiyRecipeEditor extends
 
     // Validate inputs.
     let hasErrors = false;
-    if (!this.recipeName) {
-      this.$.recipeNameInput.set('error', 'Please provide a recipe name');
+    if (!this.recipeName || this.recipeName.length < 3) {
+      this.$.recipeNameInput.set(
+          'error', 'Provide at least 3 characters for the recipe name');
       hasErrors = true;
     }
+
+    // Check that there is at least one ingredient.
+    if (!this.recipeIngredients || this.recipeIngredients.length == 0) {
+      this.$.dialog.openError(
+          'No Ingredients',
+          'Add some ingredients to your recipe before saving.')
+      return;
+    }
+
     for (let i = 0; i < this.recipeIngredients.length; ++i) {
       const ingredient = this.recipeIngredients[i];
       const percent = this.stringToNumber(ingredient.percent);
@@ -111,9 +124,18 @@ class DiyRecipeEditor extends
       return;
     }
 
+    // Check if an active user is set. Otherwise saving is not possible.
+    if (!this.userId) {
+      this.$.dialog.openError(
+          'No User ID Set',
+          'The recipe can not be saved. A user ID has not been set.');
+      return;
+    }
+
     // Create recipe database representation.
     const recipe = {
       key: this.recipeKey,
+      user: this.userId,
       name: this.recipeName,
       description: this.recipeDescription,
       publicNotes: this.recipePublicNotes,
@@ -122,7 +144,7 @@ class DiyRecipeEditor extends
       ingredients: this.ingredientsFromProperty_(),
     };
 
-    console.log('Recipe for DB:', recipe);
+    this.saveRecipe_(recipe);
   }
 
   ingredientsToProperty_(ingredients) {
@@ -148,6 +170,20 @@ class DiyRecipeEditor extends
       result[flavorKey] = this.stringToNumber(ingredient.percent);
     }
     return result;
+  }
+
+  saveRecipe_(recipe) {
+    this.deleteUndefinedProperties(recipe);
+    this.deleteEmptyStringProperties(recipe);
+    console.log('recipe to save', recipe);
+    this.$.firebaseStore.setRecipe(recipe)
+        .then(() => {
+          this.set('recipe', recipe);
+          this.dispatchEvent(new CustomEvent('close-editor'));
+        })
+        .catch(error => {
+          this.$.dialog.openError('Error Saving Recipe', error.message);
+        });
   }
 
   onDiscardTap_() {

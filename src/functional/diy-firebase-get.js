@@ -90,7 +90,10 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
 
   loadUserRecipes(uid) {
     const recipesRef = this.store.collection('recipes');
-    this.firebaseGetMulti(() => recipesRef.where('user', '==', uid).get());
+    this.firebaseGetMulti(() => recipesRef
+        .where('user', '==', uid)
+        .orderBy('created', 'desc')
+        .get());
   }
 
   loadUserInventory(uid) {

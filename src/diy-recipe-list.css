@@ -3,7 +3,7 @@
 }
 
 paper-card {
-  margin-bottom: 8px;
+  margin-top: 16px;
 }
 
 #loadingRecipesCard,
@@ -19,7 +19,6 @@ paper-card {
 }
 
 #listHeader {
-  margin-bottom: 16px;
   @apply --layout-horizontal;
   @apply --layout-start;
 }
@@ -38,6 +37,12 @@ paper-card {
 
 #listHeader paper-button iron-icon {
   margin-right: 4px;
+}
+
+#deleteButton {
+  background-color: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
+  margin-right: 0;
 }
 
 [hidden] {

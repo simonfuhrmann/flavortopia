@@ -15,6 +15,7 @@ class DiyRecipeList extends Polymer.Element {
       },
       loadingError: String,
       userRecipes: Array,
+      deleteRecipe: Object,
     };
   }
 
@@ -35,8 +36,26 @@ class DiyRecipeList extends Polymer.Element {
   }
 
   onEditRecipe_(event) {
-    const detail = event.detail;
-    this.dispatchEvent(new CustomEvent('edit-recipe', { detail }));
+    const recipe = event.detail;
+    this.dispatchEvent(new CustomEvent('edit-recipe', { detail: recipe }));
+  }
+
+  onDeleteRecipe_(event) {
+    const recipe = event.detail;
+    this.set('deleteRecipe', recipe);
+    this.$.deleteDialog.open();
+  }
+
+  onDeleteRecipeConfirmed_() {
+    this.$.firebaseStore.deleteRecipe(this.deleteRecipe.key)
+        .then(() => {
+          this.$.deleteDialog.close();
+          this.set('deleteRecipe', undefined);
+        })
+        .catch(error => {
+          this.$.deleteDialog.close();
+          this.$.dialog.openError('Error Deleting Recipe', error.message);
+        });
   }
 }
 

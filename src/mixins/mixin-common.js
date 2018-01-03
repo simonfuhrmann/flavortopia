@@ -22,4 +22,23 @@ DiyMixinCommon = (superClass) => class extends superClass {
   stringToNumber(string) {
     return /^[0-9.]+$/.test(string) ? Number(string) : NaN;
   }
+
+  /** Deletes all undefined properties from an object. */
+  deleteUndefinedProperties(object) {
+    Object.keys(object).forEach(key => {
+      if (object[key] === undefined) {
+        delete object[key];
+      }
+    });
+  }
+
+  /** Deletes all empty string properties from an object. */
+  deleteEmptyStringProperties(object) {
+    Object.keys(object).forEach(key => {
+      if (object[key] === '') {
+        delete object[key];
+      }
+    });
+  }
+
 };

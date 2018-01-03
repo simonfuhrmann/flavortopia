@@ -6,7 +6,9 @@
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/paper-card/paper-card.html">
 
+<link rel="import" href="/src/common/diy-dialog.html">
 <link rel="import" href="/src/functional/diy-firebase-get.html">
+<link rel="import" href="/src/functional/diy-firebase-store.html">
 <link rel="import" href="/src/theme/diy-theme.html">
 <link rel="import" href="/src/diy-recipe.html">
 
@@ -23,6 +25,9 @@
         error="{{loadingError}}"
         data="{{userRecipes}}">
     </diy-firebase-get>
+
+    <!-- Database interface for deleting recipes. -->
+    <diy-firebase-store id="firebaseStore"></diy-firebase-store>
 
     <!-- Recipe list header with create button. -->
     <div id="listHeader">
@@ -57,10 +62,37 @@
     <!-- Recipe list. -->
     <template is="dom-repeat" items="[[userRecipes]]">
       <paper-card>
-        <diy-recipe recipe="[[item]]" on-edit-recipe="onEditRecipe_">
+        <diy-recipe
+            recipe="[[item]]"
+            on-edit-recipe="onEditRecipe_"
+            on-delete-recipe="onDeleteRecipe_">
         </diy-recipe>
       </paper-card>
     </template>
+
+    <!-- Delete dialog for recipes. -->
+    <paper-dialog id="deleteDialog" class="warning-dialog" modal>
+      <div class="dialog-title">
+        <iron-icon icon="icons:warning"></iron-icon>
+        <h2>Delete Recipe?</h2>
+      </div>
+      <div class="content">
+        <p>Do you really want to delete the followoing recipe?</p>
+        <p><b>Name: [[deleteRecipe.name]]</b></p>
+      </div>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Close</paper-button>
+        <paper-button
+            id="deleteButton"
+            raised
+            on-tap="onDeleteRecipeConfirmed_">
+          Delete
+        </paper-button>
+      </div>
+    </paper-dialog>
+
+    <!-- Generic dialog for errors. -->
+    <diy-dialog id="dialog"></diy-dialog>
 
   </template>
   <script type="text/javascript" src="diy-recipe-list.js"></script>

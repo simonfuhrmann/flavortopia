@@ -70,6 +70,11 @@ paper-dialog.error-dialog .dialog-title {
   color: var(--error-foreground-color);
 }
 
+paper-dialog.warning-dialog .dialog-title {
+  background-color: var(--warning-background-color);
+  color: var(--warning-foreground-color);
+}
+
 paper-dialog.info-dialog .dialog-title {
   background-color: var(--info-background-color);
   color: var(--info-foreground-color);
