@@ -179,13 +179,6 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     this.notifySplices('data');
   }
 
-  subscribeUpdate_(snapshot) {
-    snapshot.docChanges.forEach(change => {
-      console.log('change', change.type);
-      console.log('doc ' + change.doc.id, change.doc.metadata.hasPendingWrites ? 'hasWrites' : 'final', change.doc.data());
-    });
-  }
-
   onSubscribeError_(error) {
     this.listener = undefined;
     this.setError_(error);

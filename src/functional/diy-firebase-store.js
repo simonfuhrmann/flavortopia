@@ -36,7 +36,8 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
   }
 
   getRecipes(limit, search, startAt) {
-    let recipesRef = this.store.collection('recipes');
+    let recipesRef = this.store.collection('recipes')
+        .where('isPublic', '==', true);
     if (limit) {
       recipesRef = recipesRef.limit(limit);
     }
