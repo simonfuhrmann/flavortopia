@@ -24,7 +24,7 @@ class DiyRecipeList extends Polymer.Element {
     if (!userId) {
       return;
     }
-    this.$.firebaseGet.loadUserRecipes(userId);
+    this.$.firebaseGet.subscribeUserRecipes(userId);
   }
 
   showNoRecipes_(userRecipes) {

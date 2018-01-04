@@ -67,7 +67,7 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
 
     // If the recipe contains a 'key', delete the key and overwrite the record
     // in the DB. Otherwise create a new recipe record.
-    let recipesRef = this.store.collection('recipes');
+    const recipesRef = this.store.collection('recipes');
     if (recipeCopy.key) {
       const documentKey = recipeCopy.key;
       delete recipeCopy.key;
@@ -78,7 +78,7 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
   }
 
   deleteRecipe(recipeKey) {
-    let recipesRef = this.store.collection('recipes').doc(recipeKey);
+    const recipesRef = this.store.collection('recipes').doc(recipeKey);
     return recipesRef.delete();
   }
 }
