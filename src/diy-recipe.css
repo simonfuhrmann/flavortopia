@@ -34,6 +34,13 @@ table td.vendor > span {
   margin: 0;
 }
 
+#header #isPublicIndicator {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  opacity: 0.5;
+}
+
 #actions {
   padding-right: 4px;
 }
