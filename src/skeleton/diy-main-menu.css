@@ -4,8 +4,8 @@ a {
 }
 
 div.menu-header {
-  background-color: var(--info-background-color);
-  color: var(--info-foreground-color);
+  background-color: var(--contrast-background-color);
+  color: var(--contrast-foreground-color);
   font-weight: bold;
   margin: 16px 0;
   padding: 16px;
