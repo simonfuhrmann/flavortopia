@@ -102,11 +102,19 @@ function prepareAllFlavors() {
   // Copy all flavors into a new object.
   const allFlavors = Object.assign({},
       staticDataFlavorsCap,
-      staticDataFlavorsTfa);
+      staticDataFlavorsFw,
+      staticDataFlavorsTfa,
+      staticDataFlavorsWf);
   // De-normalize the flavor key.
   Object.keys(allFlavors).forEach(key => {
     allFlavors[key].key = key;
   });
+  // Check for flavors with invalid characters in the key.
+  // Object.keys(allFlavors).forEach(key => {
+  //   if (key.match(/[^a-zA-Z0-9\-]/)) {
+  //     console.warn('Flavor with invalid key: ' + key);
+  //   }
+  // });
   return allFlavors;
 }
 
