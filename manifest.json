@@ -13,6 +13,11 @@
       "src": "images/favicon-256.png",
       "type": "image/png",
       "sizes": "256x256"
+    },
+    {
+      "src": "images/favicon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "background_color": "#f9fafb",
