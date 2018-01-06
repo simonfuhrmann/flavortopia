@@ -7,11 +7,22 @@
   <link rel="import" type="css" href="diy-main-menu.css">
   <template>
 
+    <a href="#/">
+      <paper-icon-item highlight$="[[activeRoute.isWelcomeActive]]">
+        <iron-icon slot="item-icon" icon="icons:home"></iron-icon>
+        <paper-item-body>
+          <div primary>Flavortopia</div>
+          <div secondary>A warm welcome</div>
+        </paper-item-body>
+      </paper-icon-item>
+    </a>
+
     <!-- Database -->
     <div class="menu-header layout horizontal center">
       <iron-icon slot="item-icon" icon="icons:cloud"></iron-icon>
       <span>Database</span>
     </div>
+
     <a href="#/recipes">
       <paper-icon-item highlight$="[[activeRoute.isRecipesActive]]">
         <iron-icon slot="item-icon" icon="icons:receipt"></iron-icon>

@@ -9,7 +9,6 @@
 <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="/src/common/diy-drawer-layout.html">
 <link rel="import" href="/src/functional/diy-auth-state.html">
 <link rel="import" href="/src/mixins/mixin-router.html">
 <link rel="import" href="/src/skeleton/diy-content.html">
@@ -30,24 +29,27 @@
     <!-- User authentication state handler. -->
     <diy-auth-state></diy-auth-state>
 
-    <!-- Application toolbar. -->
-    <app-toolbar>
-      <paper-icon-button icon="icons:home" on-tap="goHome"></paper-icon-button>
-      <div main-title>Flavortopia</div>
-      <diy-user-menu></diy-user-menu>
-    </app-toolbar>
+    <app-header-layout>
+      <app-header slot="header" fixed>
+        <app-toolbar>
+          <paper-icon-button icon="icons:menu" on-tap="toggleDrawer_">
+          </paper-icon-button>
+          <div main-title>Flavortopia</div>
+          <diy-user-menu></diy-user-menu>
+        </app-toolbar>
+      </app-header>
 
-    <diy-drawer-layout>
-      <!-- Application menu. -->
-      <app-drawer slot="drawer" opened>
-        <diy-main-menu></diy-main-menu>
-      </app-drawer>
+      <app-drawer-layout responsive-width="1000px">
+        <app-drawer id="drawer" slot="drawer" on-tap="toggleDrawer_">
+          <diy-main-menu></diy-main-menu>
+        </app-drawer>
 
-      <!-- Main content. -->
-      <main>
-        <diy-content></diy-content>
-      </main>
-    </diy-drawer-layout>
+        <main>
+          <diy-content></diy-content>
+        </main>
+      </app-drawer-layout>
+
+    </app-header-layout>
 
   </template>
   <script type="text/javascript" src="diy-app.js"></script>

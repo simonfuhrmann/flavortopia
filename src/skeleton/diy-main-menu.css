@@ -7,7 +7,7 @@ div.menu-header {
   background-color: var(--contrast-background-color);
   color: var(--contrast-foreground-color);
   font-weight: bold;
-  margin: 16px 0;
+  margin: 8px 0;
   padding: 16px;
 }
 
@@ -17,7 +17,10 @@ div.menu-header iron-icon {
 
 paper-icon-item {
   --paper-item-icon-width: 40px;
-  border-bottom: 1px solid var(--drawer-active-background);
+}
+
+paper-icon-item[highlight] {
+  background-color: var(--drawer-active-background);
 }
 
 paper-icon-item [primary] {
@@ -27,8 +30,4 @@ paper-icon-item [primary] {
 paper-icon-item [secondary] {
   line-height: 1.2em;
   font-size: 0.8em;
-}
-
-paper-icon-item[highlight] {
-  background-color: var(--drawer-active-background);
 }

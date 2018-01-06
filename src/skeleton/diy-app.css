@@ -2,28 +2,45 @@
   color: var(--primary-text-color);
 }
 
-app-toolbar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-
-  background-color: var(--toolbar-background);
-  color: var(--toolbar-color);
-  box-shadow: var(--toolbar-shadow);
+app-header {
   z-index: 2;
 }
 
-diy-drawer-layout {
-  margin-top: 64px;
-  z-index: 1;
+app-toolbar {
+  height: 64px;
+  background-color: var(--toolbar-background);
+  color: var(--toolbar-color);
+  box-shadow: var(--toolbar-shadow);
+}
+
+app-drawer-layout {
   --app-drawer-width: 220px;
 }
 
 app-drawer {
-  margin-top: 64px;
-  box-shadow: var(--shadow-elevation-2dp_-_box-shadow);
-  --app-drawer-content-container: {
-    background-color: var(--primary-background-color);
+  margin-top: calc(64px + 8px);
+  z-index: 1;
+}
+
+main {
+  display: block;
+  padding: 32px;
+}
+
+@media (max-width: 600px) {
+  /* Compact toolbar when browser window is small. */
+  app-toolbar {
+    height: 56px;
+    padding: 0 8px;
+  }
+
+  /* Adapt app-drawer for compact toolbar. */
+  app-drawer {
+    margin-top: calc(56px + 8px);
+  }
+
+  /* Compact content padding when browser window is small. */
+  main {
+    padding: 16px;
   }
 }
