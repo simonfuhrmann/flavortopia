@@ -102,6 +102,7 @@ function prepareAllFlavors() {
   // Copy all flavors into a new object.
   const allFlavors = Object.assign({},
       staticDataFlavorsCap,
+      staticDataFlavorsFlv,
       staticDataFlavorsFw,
       staticDataFlavorsTfa,
       staticDataFlavorsWf);

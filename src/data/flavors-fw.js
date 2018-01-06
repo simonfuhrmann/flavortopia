@@ -19,8 +19,8 @@ const staticDataFlavorsFw = {
     "name": "Amaretto",
     "vendor": "fw"
   },
-  "fw-american-usa-blend": {
-    "name": "American USA Blend",
+  "fw-american-tobacco-usa-blend": {
+    "name": "American Tobacco USA Blend",
     "vendor": "fw"
   },
   "fw-anise": {
@@ -1324,19 +1324,19 @@ const staticDataFlavorsFw = {
     "vendor": "fw"
   },
   "fw-wine-blush-chablis": {
-    "name": "Wine-Blush Chablis",
+    "name": "Wine (Blush Chablis)",
     "vendor": "fw"
   },
   "fw-wine-merlot": {
-    "name": "Wine-Merlot",
+    "name": "Wine (Merlot)",
     "vendor": "fw"
   },
   "fw-wine-red-wine": {
-    "name": "Wine-Red Wine",
+    "name": "Wine (Red Wine)",
     "vendor": "fw"
   },
   "fw-wine-white-wine": {
-    "name": "Wine-White Wine",
+    "name": "Wine (White Wine)",
     "vendor": "fw"
   },
   "fw-wintergreen": {

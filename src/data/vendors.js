@@ -5,11 +5,17 @@ const staticDataVendors = {
     "website": "http://www.capellaflavors.com",
     "description": "Capella Flavors is a USA based company with over 100 unique flavors in their repertoire."
   },
+  "flv": {
+    "name": "Flavorah",
+    "short": "FLV",
+    "website": "http://store.flavorah.com",
+    "description": "Flavorah crafts food grade flavorings specifically formulated for ejuice and vaping, by designing ejuice flavorings that steep faster, mix well together and vape strong."
+  },
   "fw": {
     "name": "Flavor West",
     "short": "FW",
     "website": "https://flavorwest.com",
-    "description": "Flavor West is a California (USA) based company with over 400 affordable flavorings in their assortment."
+    "description": "Flavor West is a California (USA) based company with many affordable flavorings in their assortment."
   },
   "tfa": {
     "name": "The Flavor Apprentice",
