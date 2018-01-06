@@ -11,10 +11,6 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
 
   ready() {
     super.ready();
-    // Focus Email input by default. Needs to be in a timeout.
-    setTimeout(() => {
-      this.$.signinEmailInput.focus();
-    }, 250);
 
     // Read authentication redirect result. The promise resolves immediately
     // with a null user if no authentication request has been made. The promise

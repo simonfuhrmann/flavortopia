@@ -1,8 +1,11 @@
-paper-card {
-  display: block;
-  padding: 16px;
+:host {
   max-width: 690px;
   margin: 0 auto;
+  @apply --layout-vertical;
+}
+
+paper-card {
+  padding: 16px;
 }
 
 paper-card h2 {

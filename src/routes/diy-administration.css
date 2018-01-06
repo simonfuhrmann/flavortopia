@@ -1,9 +1,7 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
   max-width: 690px;
   margin: 0 auto;
+  @apply --layout-vertical;
 }
 
 :host > :not(:last-child) {

@@ -1,8 +1,11 @@
-paper-card {
-  display: block;
-  padding: 16px;
+:host {
   max-width: 690px;
   margin: 0 auto;
+  @apply --layout-vertical;
+}
+
+paper-card {
+  padding: 16px;
 }
 
 paper-card h2 {
@@ -17,17 +20,13 @@ paper-button {
   margin-bottom: 16px;
 }
 
-.right-separator {
-  margin-right: 16px;
-  border-right: 1px solid #ccc;
-  padding-right: 16px;
-}
-
 .auth-provider {
-  margin: 0;
+  margin: 8px;
+  width: 100px;
+  height: 100px;
   background-color: white;
   text-transform: none;
-  width: 100px;
+  font-size: 0.8em;
 
   @apply --layout-vertical;
   @apply --layout-center;
@@ -43,12 +42,12 @@ paper-button {
   opacity: 0.5;
 }
 
-.auth-provider span {
-  font-size: 0.8em;
+.signin-container {
+  margin: -8px;
 }
 
-.spaced > :not(:last-child) {
-  margin-right: 16px;
+.signin-card {
+  margin: 8px;
 }
 
 #waitingForTokenDialog {

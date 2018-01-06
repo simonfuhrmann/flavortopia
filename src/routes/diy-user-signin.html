@@ -22,7 +22,7 @@
 
     <paper-card class="bottom-margin">
       <h2>Third Party Sign-In</h2>
-      <div class="layout horizontal center-justified spaced">
+      <div class="layout horizontal wrap center-justified">
 
         <paper-button raised class="auth-provider" on-tap="signinGoogle_">
           <img src="images/auth_service_google.svg">
@@ -32,78 +32,82 @@
 
         <paper-button disabled class="auth-provider" on-tap="signinFacebook_">
           <img src="images/auth_service_facebook.svg">
-          <span>Sign-in with</span>
-          <span>Facebook</span>
+          <span>Not yet</span>
+          <span>available</span>
         </paper-button>
 
         <paper-button disabled class="auth-provider" on-tap="signinGithub_">
           <img src="images/auth_service_github.svg">
-          <span>Sign-in with</span>
-          <span>Github</span>
+          <span>Not yet</span>
+          <span>available</span>
         </paper-button>
 
         <paper-button disabled class="auth-provider" on-tap="signinTwitter_">
           <img src="images/auth_service_twitter.svg">
-          <span>Sign-in with</span>
-          <span>Twitter</span>
+          <span>Not yet</span>
+          <span>available</span>
         </paper-button>
 
       </div>
     </paper-card>
 
-    <paper-card class="layout horizontal">
-      <div class="flex layout vertical right-separator">
-        <h2>E-Mail Sign-In</h2>
-        <diy-input
-            id="signinEmailInput"
-            always-float-label
-            label="E-Mail">
-        </diy-input>
-        <diy-input
-            id="signinPasswordInput"
-            always-float-label
-            label="Password"
-            type="password">
-        </diy-input>
+    <div class="signin-container layout horizontal wrap">
+      <paper-card class="flex signin-card">
+        <div class="layout vertical">
+          <h2>E-Mail Sign-In</h2>
+          <diy-input
+              id="signinEmailInput"
+              always-float-label
+              label="E-Mail">
+          </diy-input>
+          <diy-input
+              id="signinPasswordInput"
+              always-float-label
+              label="Password"
+              type="password">
+          </diy-input>
 
-        <div class="flex"></div>
-        <div class="layout horizontal">
-          <paper-button on-tap="resetPasswordTap_">
-            Reset Password
-          </paper-button>
           <div class="flex"></div>
-          <paper-button id="signinButton" on-tap="userSigninTap_">
-            Sign in
-          </paper-button>
+          <div class="layout horizontal">
+            <paper-button on-tap="resetPasswordTap_">
+              Reset Password
+            </paper-button>
+            <div class="flex"></div>
+            <paper-button id="signinButton" on-tap="userSigninTap_">
+              Sign in
+            </paper-button>
+          </div>
         </div>
-      </div>
+      </paper-card>
 
-      <div class="flex layout vertical">
-        <h2>Email Sign-up</h2>
-        <diy-input
-            id="signupEmailInput"
-            always-float-label
-            label="E-Mail">
-        </diy-input>
-        <diy-input
-            id="signupPasswordInput"
-            always-float-label
-            label="Password"
-            type="password">
-        </diy-input>
-        <diy-input
-            id="signupPasswordRepeatInput"
-            always-float-label
-            label="Password (repeat)"
-            type="password">
-        </diy-input>
-        <div class="layout horizontal end-justified">
-          <paper-button id="signupButton" on-tap="userSignupTap_">
-            Sign up
-          </paper-button>
+      <paper-card class="flex signin-card">
+        <div class="layout vertical">
+          <h2>Email Sign-up</h2>
+          <diy-input
+              id="signupEmailInput"
+              always-float-label
+              label="E-Mail">
+          </diy-input>
+          <diy-input
+              id="signupPasswordInput"
+              always-float-label
+              label="Password"
+              type="password">
+          </diy-input>
+          <diy-input
+              id="signupPasswordRepeatInput"
+              always-float-label
+              label="Password (repeat)"
+              type="password">
+          </diy-input>
+          <div class="layout horizontal end-justified">
+            <paper-button id="signupButton" on-tap="userSignupTap_">
+              Sign up
+            </paper-button>
+          </div>
         </div>
-      </div>
-    </paper-card>
+      </paper-card>
+    </div>
 
     <paper-dialog id="waitingForTokenDialog" modal>
       <div class="layout horizontal center">
