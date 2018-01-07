@@ -1,6 +1,4 @@
 :host {
-  max-width: 690px;
-  margin: 0 auto;
   @apply --layout-vertical;
 }
 
