@@ -30,10 +30,7 @@
           title="Unlisted Recipe"
           hidden="[[recipe.isPublic]]">
       </iron-icon>
-      <div id="details" class="flex end-justified">
-        <span class="detail">by [[recipeAuthor]]</span>
-        <span class="detail">created [[recipeTimestamp]]</span>
-      </div>
+      <div class="flex"></div>
 
       <div id="actions" class="layout horizontal">
         <paper-button raised on-tap="onMixTap_" title="Mix recipe">
@@ -56,6 +53,11 @@
       </div>
     </div>
 
+    <div id="details" class="layout horizontal justified">
+      <span>Recipe by [[recipeAuthor]]</span>
+      <span>created [[recipeTimestamp]]</span>
+    </div>
+
     <div id="ingredients" class="layout vertical">
       <div hidden$="[[hasIngredients]]">
         No ingredients here. That's odd!
@@ -64,8 +66,8 @@
         <template is="dom-repeat" items="[[ingredients]]">
           <tr>
             <td class="percent">[[item.percent]]%</td>
-            <td class="vendor">
-              <span on-tap="onVendorTap_">[[item.vendor.short]]</span>
+            <td class="vendor" on-tap="onVendorTap_">
+              <span>[[item.vendor.short]]</span>
             </td>
             <td class="flavor">[[item.flavor.name]]</td>
           </tr>
@@ -74,7 +76,7 @@
     </div>
 
     <div id="notes" hidden$="[[!hasDescription]]">
-      <div><b>Description:</b> [[recipe.description]]</div>
+      <b>Description:</b> [[recipe.description]]
     </div>
 
     <diy-vendor-popup id="vendorPopup"></diy-vendor-popup>

@@ -1,7 +1,5 @@
 table {
   width: 100%;
-  border: 1px solid var(--secondary-background-color);
-  background-color: white;
   border-collapse: collapse;
 }
 
@@ -24,10 +22,8 @@ table td.vendor > span {
 }
 
 #header {
-  background-color: var(--info-background-color);
-  color: var(--info-foreground-color);
+  background-color: var(--tertiary-background-color);
   padding: 8px 0 8px 16px;
-  margin: 4px;
 }
 
 #header h2 {
@@ -59,15 +55,14 @@ table td.vendor > span {
 }
 
 #ingredients {
-  margin: 16px;
+  margin: 8px 16px 16px 16px;
+  border: 1px solid var(--secondary-background-color);
+  background-color: white;
 }
 
 #details {
-  @apply --paper-font-caption;
-  @apply --layout-vertical;
-  @apply --layout-end;
-  line-height: 1.2em;
-  padding: 0 8px;
+  margin: 8px 16px;
+  font-size: 0.85em;
 }
 
 #notes {
