@@ -18,6 +18,11 @@ DiyMixinCommon = (superClass) => class extends superClass {
     return Number(value).toFixed(2);
   }
 
+  /** Formats a milliliter value to two digits, e.g., 1.50. */
+  formatMilliliters(value) {
+    return Number(value).toFixed(2);
+  }
+
   /** Converts a string to a number. Returns NaN if invalid. */
   stringToNumber(string) {
     return /^[0-9.]+$/.test(string) ? Number(string) : NaN;
