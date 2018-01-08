@@ -5,6 +5,12 @@ const staticDataVendors = {
     "website": "http://www.capellaflavors.com",
     "description": "Capella Flavors is a USA based company with over 100 unique flavors in their repertoire."
   },
+  "fa": {
+    "name": "FlavourArt",
+    "short": "FA",
+    "website": "https://flavourart.com",
+    "description": "FlavourArt was born in 2006 with the intention to form a small company engaged in the creation of food and vaping flavourings."
+  },
   "flv": {
     "name": "Flavorah",
     "short": "FLV",

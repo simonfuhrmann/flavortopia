@@ -102,6 +102,7 @@ function prepareAllFlavors() {
   // Copy all flavors into a new object.
   const allFlavors = Object.assign({},
       staticDataFlavorsCap,
+      staticDataFlavorsFa,
       staticDataFlavorsFlv,
       staticDataFlavorsFw,
       staticDataFlavorsTfa,
@@ -111,11 +112,11 @@ function prepareAllFlavors() {
     allFlavors[key].key = key;
   });
   // Check for flavors with invalid characters in the key.
-  // Object.keys(allFlavors).forEach(key => {
-  //   if (key.match(/[^a-zA-Z0-9\-]/)) {
-  //     console.warn('Flavor with invalid key: ' + key);
-  //   }
-  // });
+  Object.keys(allFlavors).forEach(key => {
+    if (key.match(/[^a-zA-Z0-9\-]/)) {
+      console.warn('Flavor with invalid key: ' + key);
+    }
+  });
   return allFlavors;
 }
 
