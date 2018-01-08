@@ -23,17 +23,17 @@ const staticDataVendors = {
     "website": "https://flavorwest.com",
     "description": "Flavor West is a California (USA) based company with many affordable flavorings in their assortment."
   },
-  "tfa": {
-    "name": "The Flavor Apprentice",
-    "short": "TFA",
-    "website": "https://shop.perfumersapprentice.com",
-    "description": "The Flavor Apprentice was founded in 2009 by The Perfumer's Apprentice staff to create a clear separation between their food flavors and perfume fragrances."
-  },
   "ina": {
     "name": "Inawera Flavours",
     "short": "INA",
     "website": "http://www.inaweraflavours.com",
     "description": "Inawera flavours have been created from food aromas especially reconstructed for vaping."
+  },
+  "tfa": {
+    "name": "The Flavor Apprentice",
+    "short": "TFA",
+    "website": "https://shop.perfumersapprentice.com",
+    "description": "The Flavor Apprentice was founded in 2009 by The Perfumer's Apprentice staff to create a clear separation between their food flavors and perfume fragrances."
   },
   "wf": {
     "name": "Wonder Flavors",

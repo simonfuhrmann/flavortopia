@@ -108,17 +108,53 @@ function prepareAllFlavors() {
       staticDataFlavorsIna,
       staticDataFlavorsTfa,
       staticDataFlavorsWf);
+
   // De-normalize the flavor key.
   Object.keys(allFlavors).forEach(key => {
     allFlavors[key].key = key;
   });
+
+  // Sanity checks. This should be COMMENTED in a production release.
+  //sanityCheckFlavors(allFlavors);
+
+  return allFlavors;
+}
+
+function sanityCheckFlavors(allFlavors) {
+  console.warn('Flavor sanity checks are enabled, this may be slow.');
+
   // Check for flavors with invalid characters in the key.
   Object.keys(allFlavors).forEach(key => {
-    if (key.match(/[^a-zA-Z0-9\-]/)) {
+    if (key.match(/[^a-z0-9\-]/)) {
       console.warn('Flavor with invalid key: ' + key);
     }
   });
-  return allFlavors;
+
+  // Check for flavors with invalid characters in the name.
+  Object.keys(allFlavors).forEach(key => {
+    const name = allFlavors[key].name;
+    if (!name) {
+      console.warn('Flavor without a name: ' + key);
+      return;
+    }
+    if (name.match(/[^a-zA-Z0-9\-'&!(),./ ]/)) {
+      console.warn('Flavor with invalid name: ' + name + ', key: ' + key);
+    }
+  });
+
+  // Check that all words in the flavor name are also in the key.
+  Object.keys(allFlavors).forEach(key => {
+    const name = allFlavors[key].name;
+    let cleanName = name.replace(/\W/g, ' ').replace(/ +/g, ' ');
+    let tokens = cleanName.split(' ')
+        .filter(token => !!token)
+        .map(token => token.toLowerCase());
+    for (let i = 0; i < tokens.length; ++i) {
+      if (!key.includes(tokens[i])) {
+        console.log("Key does not contain name tokens: " + name + " -> " + key);
+      }
+    }
+  });
 }
 
 function prepareAllVendors() {

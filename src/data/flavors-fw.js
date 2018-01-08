@@ -224,11 +224,11 @@ const staticDataFlavorsFw = {
     "vendor": "fw"
   },
   "fw-cafe-coffee": {
-    "name": "Café Coffee",
+    "name": "Cafe Coffee",
     "vendor": "fw"
   },
   "fw-cafe-cream": {
-    "name": "Café Cream",
+    "name": "Cafe Cream",
     "vendor": "fw"
   },
   "fw-cake-white": {
@@ -436,7 +436,7 @@ const staticDataFlavorsFw = {
     "vendor": "fw"
   },
   "fw-creme-de-menthe": {
-    "name": "Crème De Menthe",
+    "name": "Creme De Menthe",
     "vendor": "fw"
   },
   "fw-crunch-cereal": {
@@ -936,7 +936,7 @@ const staticDataFlavorsFw = {
     "vendor": "fw"
   },
   "fw-pina-colada": {
-    "name": "Piña Colada",
+    "name": "Pina Colada",
     "vendor": "fw"
   },
   "fw-pineapple": {

@@ -4,7 +4,7 @@ const staticDataFlavorsWf = {
     "vendor": "wf"
   },
   "wf-banana-puree": {
-    "name": "Banana Purée",
+    "name": "Banana Puree",
     "vendor": "wf"
   },
   "wf-blueberry-smoothie": {

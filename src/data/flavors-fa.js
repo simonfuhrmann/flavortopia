@@ -36,7 +36,7 @@ const staticDataFlavorsFa = {
     "vendor": "fa"
   },
   "fa-bano-banana": {
-    "name": "Banò (Banana)",
+    "name": "Bano (Banana)",
     "vendor": "fa"
   },
   "fa-barley-malt": {
@@ -160,7 +160,7 @@ const staticDataFlavorsFa = {
     "vendor": "fa"
   },
   "fa-cerise-cherry": {
-    "name": "Cerìse (Cherry)",
+    "name": "Cerise (Cherry)",
     "vendor": "fa"
   },
   "fa-cheese-cheddar-oil-soluble": {
