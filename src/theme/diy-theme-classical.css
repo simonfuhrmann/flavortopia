@@ -40,6 +40,7 @@
   --drawer-active-background: #d4d7d7;
 
   --paper-radio-button-checked-color: var(--info-background-color);
+  --paper-checkbox-checked-color: var(--info-background-color);
 
   --diy-vendor-box: {
     background-color: var(--separator-color);
