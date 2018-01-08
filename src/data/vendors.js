@@ -29,6 +29,12 @@ const staticDataVendors = {
     "website": "https://shop.perfumersapprentice.com",
     "description": "The Flavor Apprentice was founded in 2009 by The Perfumer's Apprentice staff to create a clear separation between their food flavors and perfume fragrances."
   },
+  "ina": {
+    "name": "Inawera Flavours",
+    "short": "INA",
+    "website": "http://www.inaweraflavours.com",
+    "description": "Inawera flavours have been created from food aromas especially reconstructed for vaping."
+  },
   "wf": {
     "name": "Wonder Flavors",
     "short": "WF",

@@ -105,6 +105,7 @@ function prepareAllFlavors() {
       staticDataFlavorsFa,
       staticDataFlavorsFlv,
       staticDataFlavorsFw,
+      staticDataFlavorsIna,
       staticDataFlavorsTfa,
       staticDataFlavorsWf);
   // De-normalize the flavor key.
