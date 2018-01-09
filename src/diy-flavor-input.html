@@ -24,9 +24,11 @@
     <div hidden="[[!selected]]" class="layout horizontal center">
       <span class="vendor">[[selected.vendor.short]]</span>
       <span>[[selected.flavor.name]]</span>
-      <paper-button on-tap="onEditSelectedTap_">
-        <iron-icon icon="icons:create"></iron-icon>
-      </paper-button>
+      <iron-icon
+          id="editButton"
+          icon="icons:create"
+          on-tap="onEditSelectedTap_">
+      </iron-icon>
     </div>
 
     <!-- Search results popup. -->

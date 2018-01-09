@@ -40,8 +40,8 @@
           value="{{recipeDescription}}">
       </diy-textarea>
 
-      <h3>
-        Ingredients
+      <h3 class="layout horizontal">
+        <span>Ingredients</span>
         <iron-icon
             class="info-button"
             icon="icons:info"
@@ -80,11 +80,13 @@
             <td class="actions">
               <div class="layout horizontal">
                 <paper-button
+                    hidden="[[!item.selected]]"
                     on-tap="onMoveIngredientUpTap_"
                     title="Move Up">
                   <iron-icon icon="icons:arrow-upward"></iron-icon>
                 </paper-button>
                 <paper-button
+                    hidden="[[!item.selected]]"
                     on-tap="onMoveIngredientDownTap_"
                     title="Move Down">
                   <iron-icon icon="icons:arrow-downward"></iron-icon>
@@ -121,8 +123,8 @@
           value="{{recipePersonalNotes}}">
       </diy-textarea>
 
-      <h3>
-        Visibility
+      <h3 class="layout horizontal">
+        <span>Visibility</span>
         <iron-icon
             class="info-button"
             icon="icons:info"

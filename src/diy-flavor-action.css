@@ -1,12 +1,13 @@
 #button {
-  cursor: pointer;
+  color: var(--info-text-color);
   width: 20px;
   height: 20px;
-  color: var(--separator-color);
+  cursor: pointer;
+  opacity: 0.2;
 }
 
 #button:hover {
-  color: var(--info-text-color);
+  opacity: 1.0;
 }
 
 [hidden] {
