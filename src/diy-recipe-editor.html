@@ -79,23 +79,23 @@
             </td>
             <td class="actions">
               <div class="layout horizontal">
-                <paper-button
+                <iron-icon
+                    icon="icons:arrow-upward"
                     hidden="[[!item.selected]]"
                     on-tap="onMoveIngredientUpTap_"
                     title="Move Up">
-                  <iron-icon icon="icons:arrow-upward"></iron-icon>
-                </paper-button>
-                <paper-button
+                </iron-icon>
+                <iron-icon
+                    icon="icons:arrow-downward"
                     hidden="[[!item.selected]]"
                     on-tap="onMoveIngredientDownTap_"
                     title="Move Down">
-                  <iron-icon icon="icons:arrow-downward"></iron-icon>
-                </paper-button>
-                <paper-button
+                </iron-icon>
+                <iron-icon
+                    icon="icons:clear"
                     on-tap="onClearIngredientTap_"
                     title="Clear">
-                  <iron-icon icon="icons:clear"></iron-icon>
-                </paper-button>
+                </iron-icon>
               </div>
             </td>
           </tr>

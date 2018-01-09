@@ -45,17 +45,15 @@ table td.actions {
   width: 1px;
 }
 
-table td.actions paper-button {
-  color: var(--separator-color);
-  margin: 3px 1px;
-  padding: 0;
-  width: 22px;
-  height: 22px;
-  min-width: initial;
+table td.actions iron-icon {
+  color: var(--primary-text-color);
+  width: 20px;
+  height: 20px;
+  opacity: 0.4;
 }
 
-table td.actions paper-button:hover {
-  color: var(--secondary-text-color);
+table td.actions iron-icon:hover {
+  opacity: 1.0;
 }
 
 paper-card {
