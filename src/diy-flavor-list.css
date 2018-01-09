@@ -8,8 +8,13 @@ a {
 
 div.two-column {
   padding: 8px;
-  column-count: 2;
-  column-rule: 1px solid var(--separator-color);
+}
+
+@media (min-width: 600px) {
+  div.two-column {
+    column-count: 2;
+    column-rule: 1px solid var(--separator-color);
+  }
 }
 
 table {
