@@ -35,10 +35,8 @@ table .flavor-action {
 }
 
 #heading {
-  background-color: var(--info-background-color);
-  color: var(--info-foreground-color);
-  padding: 8px 0 8px 16px;
-  margin: 4px;
+  background-color: var(--tertiary-background-color);
+  padding: 8px;
 }
 
 #heading h2 {
@@ -62,7 +60,6 @@ table .flavor-action {
   @apply --layout-vertical;
   @apply --layout-end;
   line-height: 1.2em;
-  padding: 0 8px;
 }
 
 #showAllButton,
