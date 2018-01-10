@@ -60,6 +60,10 @@ table tr.base-row {
   margin: 0;
 }
 
+.inputs > *:not(:last-child) {
+  margin-right: 8px;
+}
+
 [hidden] {
   display: none !important;
 }

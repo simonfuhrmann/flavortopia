@@ -76,7 +76,7 @@
         <table>
           <template is="dom-repeat" items="[[ingredients]]">
             <tr>
-              <td class="percent">[[item.percent]]%</td>
+              <td class="percent">[[formatFixed(item.percent)]]%</td>
               <td class="vendor" on-tap="onVendorTap_">
                 <span>[[item.vendor.short]]</span>
               </td>

@@ -1,4 +1,5 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
 
@@ -12,40 +13,100 @@
     <style include="diy-theme"></style>
 
     <diy-input
-        value="{{volumeString}}"
+        value="{{volumeInput}}"
         label="Volume (ml) to mix">
     </diy-input>
 
     <div id="tableWrapper">
       <table>
-        <template is="dom-repeat" items="[[ingredients]]">
+        <template
+            is="dom-repeat"
+            items="[[ingredients]]"
+            sort="[[ingredientsSorter_(sortForScale)]]">
           <tr>
             <td class="volume">
-              <b>[[mlForIngredient_(item.percentValue, volume)]] ml</b>
+              <b>[[mlForIngredient_(item.percent, volumeMl)]] ml</b>
             </td>
-            <td class="percent">[[item.percent]]%</td>
+            <td class="percent">[[formatFixed(item.percent)]]%</td>
             <td class="vendor" on-tap="onVendorTap_">
               <span>[[item.vendor.short]]</span>
             </td>
             <td class="flavor">[[item.flavor.name]]</td>
           </tr>
         </template>
-        <tr class="base-row">
-          <td class="volume"><b>[[mlForBase_(ingredients, volume)]] ml</b></td>
-          <td class="percent">[[percentForBase_(ingredients)]]%</td>
-          <td colspan="2">Base Liquid</td>
-        </tr>
+
+        <!-- Simple base liquid. -->
+        <template is="dom-if" if="[[!customizeBase]]">
+          <tr class="base-row">
+            <td class="volume"><b>[[formatFixed(simpleBaseMl)]] ml</b></td>
+            <td class="percent">[[formatFixed(simpleBasePercent)]]%</td>
+            <td colspan="2">Base Liquid</td>
+          </tr>
+        </template>
+
+        <!-- Custom base liquid. -->
+        <template is="dom-if" if="[[customizeBase]]">
+          <tr class="base-row">
+            <td class="volume">
+              <b>[[formatFixed(customBaseNicotineMl)]] ml</b>
+            </td>
+            <td class="percent">[[formatFixed(customBaseNicotinePercent)]]%</td>
+            <td colspan="2">Nicotine Base ([[customBaseNicotineMg]] mg)</td>
+          </tr>
+          <tr>
+            <td class="volume"><b>[[formatFixed(customBaseWaterMl)]] ml</b></td>
+            <td class="percent">[[formatFixed(customBaseWaterPercent)]]%</td>
+            <td colspan="2">Water (dilution)</td>
+          </tr>
+          <tr>
+            <td class="volume"><b>[[formatFixed(customBasePgMl)]] ml</b></td>
+            <td class="percent">[[formatFixed(customBasePgPercent)]]%</td>
+            <td colspan="2">PG (Propylene Glycol)</td>
+          </tr>
+          <tr>
+            <td class="volume"><b>[[formatFixed(customBaseVgMl)]] ml</b></td>
+            <td class="percent">[[formatFixed(customBaseVgPercent)]]%</td>
+            <td colspan="2">VG (Vegetable Glycerin)</td>
+          </tr>
+        </template>
       </table>
     </div>
 
-    <div class="layout vertical" hidden>
+    <div class="layout vertical">
       <paper-checkbox checked="{{sortForScale}}">
-        Sort for using a scale
+        Sort ingredients for using a scale
       </paper-checkbox>
       <paper-checkbox checked="{{customizeBase}}">
         Customize base liquid
       </paper-checkbox>
     </div>
+
+    <template is="dom-if" if="[[customizeBase]]">
+      <div class="inputs layout horizontal">
+        <diy-input
+            label="Juice nicotine (mg)"
+            value="{{nicotineJuiceMgInput}}">
+        </diy-input>
+        <diy-input
+            label="Nicotine (mg) in base"
+            value="{{nicotineBaseMgInput}}">
+        </diy-input>
+      </div>
+      <div class="inputs layout horizontal">
+        <diy-input
+            label="PG percentage (%)"
+            value="{{basePgPercentInput}}">
+        </diy-input>
+        <diy-input
+            label="VG percentage (%)"
+            value="{{baseVgPercentInput}}">
+        </diy-input>
+      </div>
+      <diy-input
+          label="Water percentage (%)"
+          value="{{baseWaterPercentInput}}">
+      </diy-input>
+    </template>
 
   </template>
   <script type="text/javascript" src="diy-recipe-mixer.js"></script>

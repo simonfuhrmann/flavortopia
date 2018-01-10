@@ -45,9 +45,8 @@ class DiyRecipe extends
     return Object.keys(ingredients).map(flavorKey => {
       const flavor = this.flavorForKey(flavorKey);
       const vendor = this.vendorForKey(flavor.vendor);
-      const percentValue = ingredients[flavorKey];
-      const percent = this.formatPercent(percentValue);
-      return { flavor, vendor, percent, percentValue };
+      const percent = ingredients[flavorKey];
+      return { flavor, vendor, percent };
     });
   }
 

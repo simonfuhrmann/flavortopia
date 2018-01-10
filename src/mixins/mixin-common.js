@@ -13,13 +13,8 @@ DiyMixinCommon = (superClass) => class extends superClass {
     return dateString.substring(0, endIndex);
   }
 
-  /** Formats a flavor percent value to two digits, e.g., 1.50. */
-  formatPercent(value) {
-    return Number(value).toFixed(2);
-  }
-
-  /** Formats a milliliter value to two digits, e.g., 1.50. */
-  formatMilliliters(value) {
+  /** Formats a number to a fixed representation, e.g., 1.50. */
+  formatFixed(value, digits = 2) {
     return Number(value).toFixed(2);
   }
 
