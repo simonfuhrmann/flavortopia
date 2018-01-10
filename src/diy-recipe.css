@@ -21,9 +21,13 @@ table td.vendor > span {
   @apply --diy-vendor-box;
 }
 
+diy-recipe-mixer {
+  margin: 16px;
+}
+
 #header {
   background-color: var(--tertiary-background-color);
-  padding: 8px 0 8px 16px;
+  padding: 8px;
 }
 
 #header h2 {
@@ -37,36 +41,31 @@ table td.vendor > span {
   opacity: 0.5;
 }
 
-#actions {
-  padding-right: 4px;
-}
-
-#actions paper-button {
+#header .actions paper-button {
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   padding: 3px;
-  margin: 0 4px;
+  margin: 0 0 0 8px;
   min-width: 0;
 }
 
-#actions paper-button iron-icon {
+#header .actions paper-button iron-icon {
   width: 20px;
   height: 20px;
 }
 
-#ingredients {
+#content {
   margin: 8px 16px 16px 16px;
-  border: 1px solid var(--secondary-background-color);
-  background-color: white;
 }
 
 #details {
-  margin: 8px 16px;
   font-size: 0.85em;
 }
 
-#notes {
-  margin: 16px;
+#ingredients {
+  margin: 16px 0;
+  border: 1px solid var(--secondary-background-color);
+  background-color: white;
 }
 
 [hidden] {

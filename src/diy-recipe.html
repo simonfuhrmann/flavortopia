@@ -1,4 +1,5 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/lib/elements/dom-if.html">
 <link rel="import" href="/bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="/bower_components/iron-icon/iron-icon.html">
@@ -12,6 +13,7 @@
 <link rel="import" href="/src/mixins/mixin-static-data.html">
 <link rel="import" href="/src/theme/diy-theme.html">
 <link rel="import" href="/src/diy-vendor-popup.html">
+<link rel="import" href="/src/diy-recipe-mixer.html">
 
 <dom-module id="diy-recipe">
   <link rel="import" type="css" href="diy-recipe.css">
@@ -32,8 +34,14 @@
       </iron-icon>
       <div class="flex"></div>
 
-      <div id="actions" class="layout horizontal">
-        <paper-button raised on-tap="onMixTap_" title="Mix recipe">
+      <div class="actions layout horizontal" hidden="[[!showRecipeMixer]]">
+        <paper-button raised on-tap="onToggleMixer_" title="Close Mixer">
+          <iron-icon icon="icons:arrow-back"></iron-icon>
+        </paper-button>
+      </div>
+
+      <div class="actions layout horizontal" hidden="[[showRecipeMixer]]">
+        <paper-button raised on-tap="onToggleMixer_" title="Mix recipe">
           <iron-icon icon="image:colorize"></iron-icon>
         </paper-button>
         <paper-button
@@ -53,31 +61,41 @@
       </div>
     </div>
 
-    <div id="details" class="layout horizontal justified">
-      <span>Recipe by [[recipeAuthor]]</span>
-      <span>created [[recipeTimestamp]]</span>
-    </div>
-
-    <div id="ingredients" class="layout vertical">
-      <div hidden$="[[hasIngredients]]">
-        No ingredients here. That's odd!
+    <div id="content" hidden="[[showRecipeMixer]]">
+      <!-- Details with author and created timestamp. -->
+      <div id="details" class="layout horizontal justified">
+        <span>Recipe by [[recipeAuthor]]</span>
+        <span>created [[recipeTimestamp]]</span>
       </div>
-      <table>
-        <template is="dom-repeat" items="[[ingredients]]">
-          <tr>
-            <td class="percent">[[item.percent]]%</td>
-            <td class="vendor" on-tap="onVendorTap_">
-              <span>[[item.vendor.short]]</span>
-            </td>
-            <td class="flavor">[[item.flavor.name]]</td>
-          </tr>
-        </template>
-      </table>
+
+      <!-- The list of ingredients in a table. -->
+      <div id="ingredients" class="layout vertical" >
+        <div hidden$="[[hasIngredients]]">
+          No ingredients here. That's odd!
+        </div>
+        <table>
+          <template is="dom-repeat" items="[[ingredients]]">
+            <tr>
+              <td class="percent">[[item.percent]]%</td>
+              <td class="vendor" on-tap="onVendorTap_">
+                <span>[[item.vendor.short]]</span>
+              </td>
+              <td class="flavor">[[item.flavor.name]]</td>
+            </tr>
+          </template>
+        </table>
+      </div>
+
+      <!-- The recipe description. -->
+      <div hidden$="[[!hasDescription]]">
+        <b>Description:</b> [[recipe.description]]
+      </div>
     </div>
 
-    <div id="notes" hidden$="[[!hasDescription]]">
-      <b>Description:</b> [[recipe.description]]
-    </div>
+    <!-- The recipe mixer has expensive UI, use dom-if for efficiency. -->
+    <template is="dom-if" if="[[showRecipeMixer]]" restamp>
+      <diy-recipe-mixer ingredients="[[ingredients]]"></diy-recipe-mixer>
+    </template>
 
     <diy-vendor-popup id="vendorPopup"></diy-vendor-popup>
 

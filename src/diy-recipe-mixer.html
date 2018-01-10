@@ -1,0 +1,52 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+
+<link rel="import" href="/src/common/diy-input.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-recipe-mixer">
+  <link rel="import" type="css" href="diy-recipe-mixer.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <diy-input
+        value="{{volumeString}}"
+        label="Volume (ml) to mix">
+    </diy-input>
+
+    <div id="tableWrapper">
+      <table>
+        <template is="dom-repeat" items="[[ingredients]]">
+          <tr>
+            <td class="volume">
+              <b>[[mlForIngredient_(item.percentValue, volume)]] ml</b>
+            </td>
+            <td class="percent">[[item.percent]]%</td>
+            <td class="vendor" on-tap="onVendorTap_">
+              <span>[[item.vendor.short]]</span>
+            </td>
+            <td class="flavor">[[item.flavor.name]]</td>
+          </tr>
+        </template>
+        <tr class="base-row">
+          <td class="volume"><b>[[mlForBase_(ingredients, volume)]] ml</b></td>
+          <td class="percent">[[percentForBase_(ingredients)]]%</td>
+          <td colspan="2">Base Liquid</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="layout vertical" hidden>
+      <paper-checkbox checked="{{sortForScale}}">
+        Sort for using a scale
+      </paper-checkbox>
+      <paper-checkbox checked="{{customizeBase}}">
+        Customize base liquid
+      </paper-checkbox>
+    </div>
+
+  </template>
+  <script type="text/javascript" src="diy-recipe-mixer.js"></script>
+</dom-module>

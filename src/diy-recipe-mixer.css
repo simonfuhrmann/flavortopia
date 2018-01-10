@@ -1,0 +1,65 @@
+:host {
+  display: block;
+}
+
+paper-checkbox {
+  margin: 4px;
+}
+diy-input {
+  width: 10em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 6px 8px;
+  white-space: nowrap;
+}
+
+table td.volume {
+  text-align: right;
+  width: 1px;
+}
+
+table td.percent {
+  text-align: right;
+  width: 1px;
+}
+
+table td.vendor {
+  padding: 4px;
+  width: 1em;
+}
+
+table td.vendor > span {
+  cursor: pointer;
+  @apply --diy-vendor-box;
+}
+
+table td.flavor {
+  padding: 4px;
+}
+
+table tr.base-row {
+  border-top: 1px solid var(--contrast-text-color);
+}
+
+#tableWrapper {
+  margin: 8px 0;
+  padding: 4px 8px;
+  border: 1px solid var(--secondary-background-color);
+  background-color: white;
+}
+
+#backButton {
+  background-color: white;
+  padding: 4px 8px;
+  margin: 0;
+}
+
+[hidden] {
+  display: none !important;
+}

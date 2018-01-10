@@ -24,6 +24,11 @@ class DiyRecipe extends
       ingredients: Array,
       hasIngredients: Boolean,
       hasDescription: Boolean,
+      /** Whether the recipe mixer replaces the ingredient list. */
+      showRecipeMixer: {
+        type: Boolean,
+        value: false,
+      },
     };
   }
 
@@ -40,8 +45,9 @@ class DiyRecipe extends
     return Object.keys(ingredients).map(flavorKey => {
       const flavor = this.flavorForKey(flavorKey);
       const vendor = this.vendorForKey(flavor.vendor);
-      const percent = this.formatPercent(ingredients[flavorKey]);
-      return { flavor, vendor, percent };
+      const percentValue = ingredients[flavorKey];
+      const percent = this.formatPercent(percentValue);
+      return { flavor, vendor, percent, percentValue };
     });
   }
 
@@ -61,7 +67,8 @@ class DiyRecipe extends
     this.dispatchEvent(new CustomEvent('edit-recipe', detail));
   }
 
-  onMixTap_() {
+  onToggleMixer_() {
+    this.set('showRecipeMixer', !this.showRecipeMixer);
   }
 
   onDeleteTap_() {
