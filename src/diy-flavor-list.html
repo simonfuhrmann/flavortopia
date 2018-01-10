@@ -23,6 +23,7 @@
           <iron-icon
               icon="icons:info"
               hidden="[[!vendorKey]]"
+              role="button"
               on-tap="onVendorTap_">
           </iron-icon>
         </h2>
@@ -50,6 +51,7 @@
               <td class="flavor-action">
                 <diy-flavor-action
                     flavor="[[flavor.key]]"
+                    role="button"
                     on-tap="onActionTap_">
                 </diy-flavor-action>
               </td>
