@@ -73,6 +73,13 @@ class DiyRecipeMixer extends DiyMixinCommon(Polymer.Element) {
     this.set('volumeMl', this.stringToNumber(volumeInput));
   }
 
+  onVendorTap_(event) {
+    const vendor = event.model.item.vendor;
+    this.$.vendorPopup.set('positionTarget', event.path[0]);
+    this.$.vendorPopup.set('key', vendor.key);
+    this.$.vendorPopup.open();
+  }
+
   onActionTap_(event) {
     const flavor = event.model.item.flavor;
     if (!flavor || !flavor.key) return;

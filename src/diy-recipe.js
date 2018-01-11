@@ -62,9 +62,9 @@ class DiyRecipe extends
   }
 
   onVendorTap_(event) {
-    const ingredient = event.model.item;
+    const vendor = event.model.item.vendor;
     this.$.vendorPopup.set('positionTarget', event.path[0]);
-    this.$.vendorPopup.set('key', ingredient.vendor.key);
+    this.$.vendorPopup.set('key', vendor.key);
     this.$.vendorPopup.open();
   }
 
