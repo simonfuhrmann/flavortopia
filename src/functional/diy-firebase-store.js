@@ -66,8 +66,8 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     const recipeCopy = Object.assign({}, recipe);
     recipeCopy.created = firebase.firestore.FieldValue.serverTimestamp();
 
-    // If the recipe contains a 'key', delete the key and overwrite the record
-    // in the DB. Otherwise create a new recipe record.
+    // If the recipe contains a 'key', delete the key from the recipe and
+    // overwrite the record in the DB. Otherwise create a new recipe record.
     const recipesRef = this.store.collection('recipes');
     if (recipeCopy.key) {
       const documentKey = recipeCopy.key;

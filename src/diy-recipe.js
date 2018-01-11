@@ -42,10 +42,10 @@ class DiyRecipe extends
   /** Maps the recipe ingredients to values for display. */
   mapIngredients_(ingredients) {
     if (!ingredients) return [];
-    return Object.keys(ingredients).map(flavorKey => {
-      const flavor = this.flavorForKey(flavorKey);
+    return ingredients.map(ingredient => {
+      const flavor = this.flavorForKey(ingredient.flavor);
       const vendor = this.vendorForKey(flavor.vendor);
-      const percent = ingredients[flavorKey];
+      const percent = ingredient.percent;
       return { flavor, vendor, percent };
     });
   }

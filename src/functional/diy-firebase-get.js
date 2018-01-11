@@ -115,7 +115,6 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     this.unsubscribe_();
     this.set('loading', true);
     this.set('error', undefined);
-    this.set('data', []);
     this.listener = func().onSnapshot(
         this.onSubscribeUpdate_.bind(this),
         this.onSubscribeError_.bind(this));
@@ -124,6 +123,13 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
   onSubscribeUpdate_(snapshot) {
     this.set('loading', false);
     let needsSorting = false;
+
+    // For efficiency, changes to the data array are done directly on the
+    // property, and notifySplices() is used to inform Polymer after the fact.
+    if (!this.data) {
+      this.data = [];
+    }
+
     snapshot.docChanges.forEach(change => {
       // Ignore real-time updates that do not originate from the server.
       if (change.doc.metadata.hasPendingWrites) {
@@ -134,9 +140,7 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
       const docData = change.doc.data();
       docData.key = change.doc.id;
 
-      // Process the type of change. For efficiency, changes to the data array
-      // are done directly on the property, and notifySplices() is used to
-      // inform Polymer after the fact.
+      // Process the type of change.
       switch (change.type) {
         case 'added': {
           this.data.push(docData);

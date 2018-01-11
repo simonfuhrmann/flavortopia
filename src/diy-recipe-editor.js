@@ -9,7 +9,7 @@ class DiyRecipeEditor extends
       userId: String,
 
       /**
-       * The format of recipe is as follows:
+       * The format of a recipe in the database:
        *
        * {
        *   key: <String>,
@@ -20,10 +20,10 @@ class DiyRecipeEditor extends
        *   personalNotes: <String>,
        *   created: <Timestamp>,
        *   isPublic: <Boolean>,
-       *   ingredients: {
-       *     'cap-lime': <Number>,
-       *     'tfa-apricot': <Number>,
-       *   },
+       *   ingredients: [
+       *     { flavor: <String>, percent: <Number> },
+       *     { ... },
+       *   ],
        * }
        */
       recipe: {
@@ -147,29 +147,31 @@ class DiyRecipeEditor extends
     this.saveRecipe_(recipe);
   }
 
+  // Converts the ingredients array from DB to property representation.
   ingredientsToProperty_(ingredients) {
-    return Object.keys(ingredients).map(flavorKey => {
-      const percent = this.stringToNumber(ingredients[flavorKey]);
+    return ingredients.map(ingredient => {
+      const flavorKey = ingredient.flavor;
+      const percent = ingredient.percent;
       const flavor = this.flavorForKey(flavorKey);
       const vendor = this.vendorForKey(flavor.vendor);
       return {
         search: flavor.key,
         selected: { flavor, vendor },
-        percent: this.formatFixed(percent),
+        percent: percent,
         error: false,
       };
     });
   }
 
+  // Converts the ingredients from property to DB representation.
   ingredientsFromProperty_() {
-    if (!this.recipeIngredients) return {};
-    const result = {};
-    for (let i = 0; i < this.recipeIngredients.length; ++i) {
-      const ingredient = this.recipeIngredients[i];
-      const flavorKey = ingredient.selected.flavor.key;
-      result[flavorKey] = this.stringToNumber(ingredient.percent);
-    }
-    return result;
+    if (!this.recipeIngredients) return [];
+    return this.recipeIngredients.map(ingredient => {
+      return {
+        flavor: ingredient.selected.flavor.key,
+        percent: this.stringToNumber(ingredient.percent),
+      };
+    });
   }
 
   saveRecipe_(recipe) {
