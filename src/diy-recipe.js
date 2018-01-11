@@ -50,6 +50,13 @@ class DiyRecipe extends
     });
   }
 
+  totalFlavoring_(ingredients) {
+    const totalPercent = ingredients.reduce((prev, curr) => {
+      return prev + curr.percent;
+    }, 0.0);
+    return this.formatFixed(totalPercent);
+  }
+
   isAuthenticated_(authUserId, recipeUserId) {
     return authUserId == recipeUserId;
   }
@@ -59,6 +66,14 @@ class DiyRecipe extends
     this.$.vendorPopup.set('positionTarget', event.path[0]);
     this.$.vendorPopup.set('key', ingredient.vendor.key);
     this.$.vendorPopup.open();
+  }
+
+  onActionTap_(event) {
+    const flavor = event.model.item.flavor;
+    if (!flavor || !flavor.key) return;
+    this.$.flavorActions.set('positionTarget', event.path[0]);
+    this.$.flavorActions.set('flavor', flavor.key);
+    this.$.flavorActions.open();
   }
 
   onEditTap_() {

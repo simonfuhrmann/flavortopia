@@ -14,8 +14,16 @@ table {
   border-collapse: collapse;
 }
 
+table tr:nth-child(even){
+  background-color: var(--secondary-background-color);
+}
+
+table tr.separator-row {
+  border-top: 2px solid var(--contrast-background-color);
+}
+
 table td {
-  padding: 6px 8px;
+  padding: 4px;
   white-space: nowrap;
 }
 
@@ -43,8 +51,8 @@ table td.flavor {
   padding: 4px;
 }
 
-table tr.base-row {
-  border-top: 1px solid var(--contrast-text-color);
+table td.actions {
+  width: 1px;
 }
 
 #tableWrapper {

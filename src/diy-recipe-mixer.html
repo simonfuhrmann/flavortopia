@@ -5,6 +5,8 @@
 
 <link rel="import" href="/src/common/diy-input.html">
 <link rel="import" href="/src/theme/diy-theme.html">
+<link rel="import" href="/src/diy-flavor-action.html">
+<link rel="import" href="/src/diy-flavor-actions.html">
 
 <dom-module id="diy-recipe-mixer">
   <link rel="import" type="css" href="diy-recipe-mixer.css">
@@ -32,41 +34,48 @@
               <span>[[item.vendor.short]]</span>
             </td>
             <td class="flavor">[[item.flavor.name]]</td>
+            <td class="actions">
+              <diy-flavor-action
+                  flavor="[[item.flavor.key]]"
+                  role="button"
+                  on-tap="onActionTap_">
+              </diy-flavor-action>
+            </td>
           </tr>
         </template>
 
         <!-- Simple base liquid. -->
-        <template is="dom-if" if="[[!customizeBase]]">
-          <tr class="base-row">
+        <template is="dom-if" if="[[!customizeBase]]" restamp>
+          <tr class="separator-row">
             <td class="volume"><b>[[formatFixed(simpleBaseMl)]] ml</b></td>
             <td class="percent">[[formatFixed(simpleBasePercent)]]%</td>
-            <td colspan="2">Base Liquid</td>
+            <td colspan="3">Base Liquid</td>
           </tr>
         </template>
 
         <!-- Custom base liquid. -->
-        <template is="dom-if" if="[[customizeBase]]">
-          <tr class="base-row">
+        <template is="dom-if" if="[[customizeBase]]" restamp>
+          <tr class="separator-row">
             <td class="volume">
               <b>[[formatFixed(customBaseNicotineMl)]] ml</b>
             </td>
             <td class="percent">[[formatFixed(customBaseNicotinePercent)]]%</td>
-            <td colspan="2">Nicotine Base ([[customBaseNicotineMg]] mg)</td>
+            <td colspan="3">Nicotine Base ([[customBaseNicotineMg]] mg)</td>
           </tr>
           <tr>
             <td class="volume"><b>[[formatFixed(customBaseWaterMl)]] ml</b></td>
             <td class="percent">[[formatFixed(customBaseWaterPercent)]]%</td>
-            <td colspan="2">Water (dilution)</td>
+            <td colspan="3">Water (dilution)</td>
           </tr>
           <tr>
             <td class="volume"><b>[[formatFixed(customBasePgMl)]] ml</b></td>
             <td class="percent">[[formatFixed(customBasePgPercent)]]%</td>
-            <td colspan="2">PG (Propylene Glycol)</td>
+            <td colspan="3">PG (Propylene Glycol)</td>
           </tr>
           <tr>
             <td class="volume"><b>[[formatFixed(customBaseVgMl)]] ml</b></td>
             <td class="percent">[[formatFixed(customBaseVgPercent)]]%</td>
-            <td colspan="2">VG (Vegetable Glycerin)</td>
+            <td colspan="3">VG (Vegetable Glycerin)</td>
           </tr>
         </template>
       </table>
@@ -107,6 +116,9 @@
           value="{{baseWaterPercentInput}}">
       </diy-input>
     </template>
+
+    <!-- Dropdown for flavor actions (inventory, whishlist). -->
+    <diy-flavor-actions id="flavorActions"></diy-flavor-actions>
 
   </template>
   <script type="text/javascript" src="diy-recipe-mixer.js"></script>

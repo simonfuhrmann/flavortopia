@@ -3,6 +3,14 @@ table {
   border-collapse: collapse;
 }
 
+table tr:nth-child(even){
+  background-color: var(--secondary-background-color);
+}
+
+table tr.separator-row {
+  border-top: 2px solid var(--contrast-background-color);
+}
+
 table td {
   padding: 4px;
 }
@@ -19,6 +27,10 @@ table td.vendor {
 table td.vendor > span {
   cursor: pointer;
   @apply --diy-vendor-box;
+}
+
+table td.actions {
+  width: 1px;
 }
 
 diy-recipe-mixer {
@@ -63,7 +75,8 @@ diy-recipe-mixer {
 }
 
 #ingredients {
-  margin: 16px 0;
+  margin: 8px 0;
+  padding: 8px;
   border: 1px solid var(--secondary-background-color);
   background-color: white;
 }

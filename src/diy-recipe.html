@@ -12,6 +12,8 @@
 <link rel="import" href="/src/mixins/mixin-redux.html">
 <link rel="import" href="/src/mixins/mixin-static-data.html">
 <link rel="import" href="/src/theme/diy-theme.html">
+<link rel="import" href="/src/diy-flavor-action.html">
+<link rel="import" href="/src/diy-flavor-actions.html">
 <link rel="import" href="/src/diy-vendor-popup.html">
 <link rel="import" href="/src/diy-recipe-mixer.html">
 
@@ -70,20 +72,35 @@
 
       <!-- The list of ingredients in a table. -->
       <div id="ingredients" class="layout vertical" >
+        <!-- Notice when there are no ingredients. -->
         <div hidden$="[[hasIngredients]]">
           No ingredients here. That's odd!
         </div>
-        <table>
-          <template is="dom-repeat" items="[[ingredients]]">
-            <tr>
-              <td class="percent">[[formatFixed(item.percent)]]%</td>
-              <td class="vendor" on-tap="onVendorTap_">
-                <span>[[item.vendor.short]]</span>
-              </td>
-              <td class="flavor">[[item.flavor.name]]</td>
+        <!-- List of ingredients. -->
+        <div hidden$="[[!hasIngredients]]">
+          <table>
+            <template is="dom-repeat" items="[[ingredients]]">
+              <tr>
+                <td class="percent">[[formatFixed(item.percent)]]%</td>
+                <td class="vendor" on-tap="onVendorTap_">
+                  <span>[[item.vendor.short]]</span>
+                </td>
+                <td class="flavor">[[item.flavor.name]]</td>
+                <td class="actions">
+                  <diy-flavor-action
+                      flavor="[[item.flavor.key]]"
+                      role="button"
+                      on-tap="onActionTap_">
+                  </diy-flavor-action>
+                </td>
+              </tr>
+            </template>
+            <tr class="separator-row">
+              <td class="percent">[[totalFlavoring_(ingredients)]]%</td>
+              <td colspan="3">Total flavoring</td>
             </tr>
-          </template>
-        </table>
+          </table>
+        </div>
       </div>
 
       <!-- The recipe description. -->
@@ -97,7 +114,11 @@
       <diy-recipe-mixer ingredients="[[ingredients]]"></diy-recipe-mixer>
     </template>
 
+    <!-- Popup when vendor information is requested. -->
     <diy-vendor-popup id="vendorPopup"></diy-vendor-popup>
+
+    <!-- Dropdown for flavor actions (inventory, whishlist). -->
+    <diy-flavor-actions id="flavorActions"></diy-flavor-actions>
 
   </template>
   <script type="text/javascript" src="diy-recipe.js"></script>

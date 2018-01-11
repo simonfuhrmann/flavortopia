@@ -73,6 +73,14 @@ class DiyRecipeMixer extends DiyMixinCommon(Polymer.Element) {
     this.set('volumeMl', this.stringToNumber(volumeInput));
   }
 
+  onActionTap_(event) {
+    const flavor = event.model.item.flavor;
+    if (!flavor || !flavor.key) return;
+    this.$.flavorActions.set('positionTarget', event.path[0]);
+    this.$.flavorActions.set('flavor', flavor.key);
+    this.$.flavorActions.open();
+  }
+
   ingredientsSorter_(sortForScale) {
     // If sorting for a scale is requested, provide a sort comparator.
     if (sortForScale) {
