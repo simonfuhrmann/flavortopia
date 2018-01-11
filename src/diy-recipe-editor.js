@@ -155,7 +155,7 @@ class DiyRecipeEditor extends
       return {
         search: flavor.key,
         selected: { flavor, vendor },
-        percent: this.formatPercent(percent),
+        percent: this.formatFixed(percent),
         error: false,
       };
     });
@@ -175,7 +175,6 @@ class DiyRecipeEditor extends
   saveRecipe_(recipe) {
     this.deleteUndefinedProperties(recipe);
     this.deleteEmptyStringProperties(recipe);
-    console.log('recipe to save', recipe);
     this.$.firebaseStore.setRecipe(recipe)
         .then(() => {
           this.set('recipe', recipe);

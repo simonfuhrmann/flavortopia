@@ -151,7 +151,7 @@ function sanityCheckFlavors(allFlavors) {
         .map(token => token.toLowerCase());
     for (let i = 0; i < tokens.length; ++i) {
       if (!key.includes(tokens[i])) {
-        console.log("Key does not contain name tokens: " + name + " -> " + key);
+        console.warn("Recipe key incomplete: " + key + '(' + name + ')');
       }
     }
   });
