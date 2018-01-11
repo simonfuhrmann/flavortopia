@@ -23,23 +23,23 @@ input {
               inset 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-iron-icon#searchIcon {
+#searchIcon {
   color: var(--secondary-text-color);
   margin-right: 8px;
 }
 
-iron-icon#clearIcon {
+#clearIcon {
   color: var(--secondary-text-color);
   margin-left: 8px;
   cursor: pointer;
 }
 
-iron-icon#clearIcon:hover {
+#clearIcon:hover {
   color: var(--primary-text-color);
 }
 
-paper-button {
-  margin: 0 0 0 4px;
+#searchButton {
+  margin: 0 0 0 8px;
   padding: 2px;
   background-color: var(--info-background-color);
   color: var(--info-foreground-color);
