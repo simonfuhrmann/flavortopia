@@ -1,0 +1,7 @@
+:host {
+  display: inline;
+}
+
+#content p:first-child {
+  display: inline;
+}

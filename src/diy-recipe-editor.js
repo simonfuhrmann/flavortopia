@@ -152,7 +152,7 @@ class DiyRecipeEditor extends
   ingredientsToProperty_(ingredients) {
     return ingredients.map(ingredient => {
       const flavorKey = ingredient.flavor;
-      const percent = ingredient.percent;
+      const percent = String(ingredient.percent);
       const flavor = this.flavorForKey(flavorKey);
       const vendor = this.vendorForKey(flavor.vendor);
       return {
