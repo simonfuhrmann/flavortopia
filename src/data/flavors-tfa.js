@@ -67,8 +67,8 @@ const staticDataFlavorsTfa = {
     "name": "Bavarian Cream",
     "vendor": "tfa"
   },
-  "tfa-berry-cereal": {
-    "name": "Berry Cereal",
+  "tfa-crunchy-berry-cereal": {
+    "name": "Crunchy Berry Cereal",
     "vendor": "tfa"
   },
   "tfa-berry-mix": {
