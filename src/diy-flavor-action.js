@@ -23,26 +23,38 @@ class DiyFlavorAction extends DiyMixinRedux(Polymer.Element) {
 
   static get observers() {
     return [
-      'updateIcon_(userId, inventory, flavor)',
+      'update_(userId, inventory, flavor)',
     ];
   }
 
-  updateIcon_(userId, inventory, flavor) {
+  update_(userId, inventory, flavor) {
     if (!userId || !inventory || !flavor) {
       this.setAttribute('hidden', true);
       return;
     }
-    this.removeAttribute('hidden');
-    this.$.button.set('icon', this.iconForFlavor_());
-  }
 
-  iconForFlavor_() {
+    let icon, title;
     const entry = this.inventory[this.flavor];
     switch (entry) {
-      case true: return 'icons:work';
-      case false: return 'icons:shopping-cart';
+      case true:
+        icon = 'icons:work';
+        title = 'In your inventory';
+        break;
+
+      case false:
+        icon = 'icons:shopping-cart';
+        title = 'In your wishlist';
+        break;
+
+      default:
+        icon = 'icons:add';
+        title = 'Add to inventory';
+        break;
     }
-    return 'icons:add';
+
+    this.removeAttribute('hidden');
+    this.$.button.set('icon', icon);
+    this.$.button.setAttribute('title', title);
   }
 }
 
