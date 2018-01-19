@@ -18,9 +18,15 @@ DiyMixinCommon = (superClass) => class extends superClass {
     return Number(value).toFixed(2);
   }
 
+  /** Trims white spaces and replaces commas with periods. */
+  sanitizeNumber(string) {
+    return string.trim().replace(',', '.');
+  }
+
   /** Converts a string to a number. Returns NaN if invalid. */
   stringToNumber(string) {
-    return /^[0-9.]+$/.test(string) ? Number(string) : NaN;
+    const sanitized = this.sanitizeNumber(string);
+    return /^[0-9.]+$/.test(sanitized) ? Number(sanitized) : NaN;
   }
 
   /** Deletes all undefined properties from an object. */

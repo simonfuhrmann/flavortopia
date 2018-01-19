@@ -111,6 +111,7 @@ class DiyRecipeEditor extends
       return;
     }
 
+    // Validate each ingredient.
     for (let i = 0; i < this.recipeIngredients.length; ++i) {
       const ingredient = this.recipeIngredients[i];
       const percent = this.stringToNumber(ingredient.percent);
