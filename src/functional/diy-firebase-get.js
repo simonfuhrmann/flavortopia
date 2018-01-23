@@ -55,9 +55,14 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
 
   subscribeUserRecipes(uid) {
     const recipesRef = this.store.collection('recipes');
-    this.firebaseSubscribe_(() => recipesRef
+    this.firebaseSubscribeMulti_(() => recipesRef
         .where('user', '==', uid)
         .orderBy('created', 'desc'));
+  }
+
+  subscribeSingleRecipe(recipeKey) {
+    const recipesRef = this.store.collection('recipes');
+    this.firebaseSubscribeSingle_(() => recipesRef.doc(recipeKey));
   }
 
   loadUserInventory(uid) {
@@ -111,16 +116,36 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
 
   // Real-time update subscription for multi-document queries.
   // Only one subscription per element can be active.
-  firebaseSubscribe_(func) {
+  firebaseSubscribeMulti_(func) {
     this.unsubscribe_();
     this.set('loading', true);
     this.set('error', undefined);
     this.listener = func().onSnapshot(
-        this.onSubscribeUpdate_.bind(this),
+        this.onSubscribeMultiUpdate_.bind(this),
         this.onSubscribeError_.bind(this));
   }
 
-  onSubscribeUpdate_(snapshot) {
+  firebaseSubscribeSingle_(func) {
+    this.unsubscribe_();
+    this.set('loading', true);
+    this.set('error', undefined);
+    this.listener = func().onSnapshot(
+      this.onSubscribeSingleUpdate_.bind(this),
+      this.onSubscribeError_.bind(this));
+  }
+
+  onSubscribeSingleUpdate_(doc) {
+    this.set('loading', false);
+    if (!doc || !doc.exists) {
+      this.onSubscribeError_({message: 'Document does not exist'});
+      return;
+    }
+    const docData = doc.data();
+    docData.key = doc.id;
+    this.set('data', docData);
+  }
+
+  onSubscribeMultiUpdate_(snapshot) {
     this.set('loading', false);
     let needsSorting = false;
 

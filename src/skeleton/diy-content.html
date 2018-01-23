@@ -6,6 +6,7 @@
 <link rel="import" href="/src/routes/diy-administration.html">
 <link rel="import" href="/src/routes/diy-all-flavors.html">
 <link rel="import" href="/src/routes/diy-all-recipes.html">
+<link rel="import" href="/src/routes/diy-single-recipe.html">
 <link rel="import" href="/src/routes/diy-user-action.html">
 <link rel="import" href="/src/routes/diy-user-recipes.html">
 <link rel="import" href="/src/routes/diy-user-inventory.html">
@@ -22,6 +23,10 @@
 
     <template is="dom-if" if="[[activeRoute.isRecipesActive]]">
       <diy-all-recipes></diy-all-recipes>
+    </template>
+
+    <template is="dom-if" if="[[activeRoute.isSingleRecipeActive]]">
+      <diy-single-recipe></diy-single-recipe>
     </template>
 
     <template is="dom-if" if="[[activeRoute.isFlavorsActive]]">

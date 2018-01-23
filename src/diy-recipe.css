@@ -46,6 +46,11 @@ diy-recipe-mixer {
   margin: 0;
 }
 
+#header a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #header #isPublicIndicator {
   width: 20px;
   height: 20px;
@@ -67,10 +72,13 @@ diy-recipe-mixer {
 }
 
 #content {
-  margin: 8px 16px 16px 16px;
+  margin: 16px;
 }
 
 #details {
+  padding: 4px 8px;
+  background-color: var(--secondary-background-color);
+  border-bottom: 1px solid var(--separator-color);
   font-size: 0.85em;
 }
 

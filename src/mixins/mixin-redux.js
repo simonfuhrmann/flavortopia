@@ -6,6 +6,7 @@ const initialState = {
     isWelcomeActive: false,
     isFlavorsActive: false,
     isRecipesActive: false,
+    isSingleRecipeActive: false,
     isUserRecipesActive: false,
     isUserInventoryActive: false,
     isUserSigninActive: false,
@@ -63,6 +64,9 @@ function reducerUpdateRoute(state, action) {
       break;
     case '/recipes':
       newRoute.isRecipesActive = true;
+      break;
+    case '/recipe':
+      newRoute.isSingleRecipeActive = true;
       break;
     case '/user/recipes':
       newRoute.isUserRecipesActive = true;

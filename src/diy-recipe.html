@@ -27,7 +27,7 @@
     </diy-user-cache>
 
     <div id="header" class="layout horizontal center">
-      <h2>[[recipe.name]]</h2>
+      <h2><a href="/#/recipe?id=[[recipe.key]]">[[recipe.name]]</a></h2>
       <iron-icon
           id="isPublicIndicator"
           icon="icons:visibility-off"
@@ -63,13 +63,17 @@
       </div>
     </div>
 
-    <div id="content" hidden="[[showRecipeMixer]]">
-      <!-- Details with author and created timestamp. -->
-      <div id="details" class="layout horizontal justified">
-        <span>Recipe by [[recipeAuthor]]</span>
-        <span>created [[recipeTimestamp]]</span>
-      </div>
+    <!-- Details with author and created timestamp. -->
+    <div id="details" class="layout horizontal">
+      <span>By [[recipeAuthor]]</span>
+      <span>&nbsp;&ndash;&nbsp;</span>
+      <span hidden="[[recipe.isPublic]]">Unlisted</span>
+      <span hidden="[[!recipe.isPublic]]">Public</span>
+      <span class="flex"></span>
+      <span>created [[recipeTimestamp]]</span>
+    </div>
 
+    <div id="content" hidden="[[showRecipeMixer]]">
       <!-- The list of ingredients in a table. -->
       <div id="ingredients" class="layout vertical" >
         <!-- Notice when there are no ingredients. -->
@@ -105,7 +109,7 @@
 
       <!-- The recipe description. -->
       <div hidden$="[[!hasDescription]]">
-        <b>Description:</b>
+        <b>Description: </b>
         <diy-markdown text="[[recipe.description]]"></diy-markdown>
       </div>
     </div>

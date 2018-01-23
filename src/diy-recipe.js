@@ -15,6 +15,9 @@ class DiyRecipe extends DiyMixinCommon(DiyMixinStaticData(Polymer.Element)) {
         type: Object,
         observer: 'onRecipeChanged_',
       },
+
+      // The following properties are assigned when a recipe is set.
+
       /** Recipe author user name. */
       recipeAuthor: String,
       /** Formatted recipe timestamp. */

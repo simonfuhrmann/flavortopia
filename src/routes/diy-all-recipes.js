@@ -1,4 +1,4 @@
-class DiyAllRecipes extends DiyMixinRedux(Polymer.Element) {
+class DiyAllRecipes extends Polymer.Element {
   static get is() {
     return 'diy-all-recipes';
   }
@@ -62,7 +62,7 @@ class DiyAllRecipes extends DiyMixinRedux(Polymer.Element) {
 
     const docs = snapshot.docs.map(doc => {
       const docData = doc.data();
-      docData.key = doc.key;
+      docData.key = doc.id;
       return docData;
     });
 
