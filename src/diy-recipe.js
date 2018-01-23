@@ -1,15 +1,14 @@
-class DiyRecipe extends
-    DiyMixinCommon(DiyMixinStaticData(DiyMixinRedux(Polymer.Element))) {
+class DiyRecipe extends DiyMixinCommon(DiyMixinStaticData(Polymer.Element)) {
   static get is() {
     return 'diy-recipe';
   }
 
   static get properties() {
     return {
-      /** The authenticated user's user ID. */
+      /** The authenticated user's ID. */
       authUserId: {
         type: String,
-        statePath: 'user.auth.firebaseUser.uid',
+        value: null,
       },
       /** The recipe database object. */
       recipe: {

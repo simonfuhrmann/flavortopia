@@ -19,15 +19,11 @@ class DiyAllRecipes extends DiyMixinRedux(Polymer.Element) {
       },
       docLimit: {
         type: Number,
-        value: 2,
+        value: 10,
       },
       recipes: {
         type: Array,
         value: () => [],
-      },
-      search: {
-        type: String,
-        observer: 'onSearchChanged_',
       },
     };
   }
@@ -47,7 +43,7 @@ class DiyAllRecipes extends DiyMixinRedux(Polymer.Element) {
   loadMore_() {
     this.set('isLoading', true);
     this.$.firebaseStore
-        .getRecipes(this.docLimit + 1, this.search, this.startAt)
+        .getRecipes(this.docLimit + 1, this.startAt)
         .then(snapshot => {
           this.set('isLoading', false);
           this.loadComplete_(snapshot);
