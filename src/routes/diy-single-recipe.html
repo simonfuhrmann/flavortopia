@@ -1,0 +1,45 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/paper-spinner/paper-spinner-lite.html">
+
+<link rel="import" href="/src/theme/diy-theme.html">
+<link rel="import" href="/src/diy-recipe.html">
+<link rel="import" href="/src/mixins/mixin-router.html">
+
+<dom-module id="diy-single-recipe">
+  <link rel="import" type="css" href="diy-single-recipe.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <diy-firebase-get
+        id="firebaseGet"
+        loading="{{isLoading}}"
+        error="{{loadingError}}"
+        data="{{recipe}}">
+    </diy-firebase-get>
+
+    <!-- Message that shows during loading. -->
+    <div class="layout horizontal center center-justified" hidden="[[!isLoading]]">
+      <paper-spinner-lite active></paper-spinner-lite>
+      <span>Loading...</span>
+    </div>
+
+    <!-- Card that shows on loading errors. -->
+    <template is="dom-if" if="[[loadingError]]">
+      <paper-card id="loadingErrorCard">
+        <span>Error: [[loadingError]]</span>
+      </paper-card>
+    </template>
+
+    <!-- The recipe. -->
+    <template is="dom-if" if="[[recipe]]">
+      <paper-card class="recipe-card">
+        <diy-recipe recipe="[[recipe]]"></diy-recipe>
+      </paper-card>
+    </template>
+
+  </template>
+  <script type="text/javascript" src="diy-single-recipe.js"></script>
+</dom-module>

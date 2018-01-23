@@ -1,0 +1,16 @@
+:host {
+  @apply --layout-vertical;
+}
+
+paper-spinner-lite {
+  margin-right: 24px;
+}
+
+#loadingErrorCard {
+  padding: 24px;
+  color: var(--error-text-color);
+}
+
+[hidden] {
+  display: none !important;
+}
