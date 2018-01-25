@@ -37,6 +37,10 @@ diy-recipe-mixer {
   margin: 16px;
 }
 
+h3 {
+  margin: 16px 0 8px 0;
+}
+
 #header {
   background-color: var(--tertiary-background-color);
   padding: 8px;

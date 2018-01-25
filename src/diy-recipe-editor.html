@@ -114,15 +114,9 @@
 
       <h3>Recipe Notes</h3>
       <diy-textarea
-          label="Public notes (visible to anyone)"
+          label="Recipe notes (markdown syntax)"
           placeholder="Suggested PG/VG ratio, tips on flavor substitutions, ..."
-          value="{{recipePublicNotes}}">
-      </diy-textarea>
-
-      <diy-textarea
-          label="Personal notes (not visible to others, but unprotected)"
-          placeholder="Open questions, notes on improvements, ..."
-          value="{{recipePersonalNotes}}">
+          value="{{recipeNotes}}">
       </diy-textarea>
 
       <h3 class="layout horizontal">

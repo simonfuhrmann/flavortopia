@@ -10,10 +10,17 @@ class DiyRecipe extends DiyMixinCommon(DiyMixinStaticData(Polymer.Element)) {
         type: String,
         value: null,
       },
+
       /** The recipe database object. */
       recipe: {
         type: Object,
         observer: 'onRecipeChanged_',
+      },
+
+      /** A more compact recipe view. */
+      compact: {
+        type: Boolean,
+        value: false,
       },
 
       // The following properties are assigned when a recipe is set.
@@ -26,6 +33,7 @@ class DiyRecipe extends DiyMixinCommon(DiyMixinStaticData(Polymer.Element)) {
       ingredients: Array,
       hasIngredients: Boolean,
       hasDescription: Boolean,
+      hasRecipeNotes: Boolean,
       /** Whether the recipe mixer replaces the ingredient list. */
       showRecipeMixer: {
         type: Boolean,
@@ -39,6 +47,7 @@ class DiyRecipe extends DiyMixinCommon(DiyMixinStaticData(Polymer.Element)) {
     this.set('ingredients', this.mapIngredients_(recipe.ingredients));
     this.set('hasIngredients', this.ingredients.length > 0);
     this.set('hasDescription', !!recipe.description);
+    this.set('hasRecipeNotes', !!recipe.notes);
   }
 
   /** Maps the recipe ingredients to values for display. */

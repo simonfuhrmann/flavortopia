@@ -64,7 +64,7 @@
     <template is="dom-repeat" items="[[userRecipes]]">
       <paper-card>
         <diy-recipe
-            recipe="[[item]]"
+            compact recipe="[[item]]"
             auth-user-id="[[userId]]"
             on-edit-recipe="onEditRecipe_"
             on-delete-recipe="onDeleteRecipe_">
@@ -83,7 +83,7 @@
         <p><b>Name: [[deleteRecipe.name]]</b></p>
       </div>
       <div class="buttons">
-        <paper-button dialog-dismiss>Close</paper-button>
+        <paper-button dialog-dismiss>Cancel</paper-button>
         <paper-button
             id="deleteButton"
             raised

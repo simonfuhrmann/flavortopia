@@ -75,6 +75,7 @@
 
     <div id="content" hidden="[[showRecipeMixer]]">
       <!-- The list of ingredients in a table. -->
+      <h3 hidden="[[compact]]">Ingredients</h3>
       <div id="ingredients" class="layout vertical" >
         <!-- Notice when there are no ingredients. -->
         <div hidden$="[[hasIngredients]]">
@@ -107,11 +108,17 @@
         </div>
       </div>
 
-      <!-- The recipe description. -->
-      <div hidden$="[[!hasDescription]]">
-        <b>Description: </b>
+      <!-- Recipe description. -->
+      <template is="dom-if" if="[[hasDescription]]">
+        <h3 hidden="[[compact]]">Description</h3>
         <diy-markdown text="[[recipe.description]]"></diy-markdown>
-      </div>
+      </template>
+
+      <!-- Recipe notes. -->
+      <template is="dom-if" if="[[hasRecipeNotes]]">
+        <h3 hidden="[[compact]]">Notes</h3>
+        <diy-markdown text="[[recipe.notes]]"></diy-markdown>
+      </template>
     </div>
 
     <!-- The recipe mixer has expensive UI, use dom-if for efficiency. -->

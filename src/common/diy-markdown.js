@@ -13,7 +13,7 @@ class DiyMarkdown extends Polymer.Element {
   }
 
   onTextChanged_(text) {
-    this.$.content.innerHTML = marked(text);
+    this.$.content.innerHTML = marked(text || '');
   }
 }
 
