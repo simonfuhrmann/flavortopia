@@ -1,3 +1,7 @@
+h3 {
+  margin: 16px 0 8px 0;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -37,22 +41,18 @@ diy-recipe-mixer {
   margin: 16px;
 }
 
-h3 {
-  margin: 16px 0 8px 0;
-}
-
 #header {
   background-color: var(--tertiary-background-color);
   padding: 8px;
 }
 
-#header h2 {
-  margin: 0;
-}
-
 #header a {
   text-decoration: none;
   color: inherit;
+}
+
+#header h2 {
+  margin: 0;
 }
 
 #header #isPublicIndicator {
@@ -84,6 +84,10 @@ h3 {
   background-color: var(--secondary-background-color);
   border-bottom: 1px solid var(--separator-color);
   font-size: 0.85em;
+}
+
+#details a {
+  color: inherit;
 }
 
 #ingredients {

@@ -22,7 +22,7 @@ class DiySingleRecipe extends DiyMixinRouter(Polymer.Element) {
 
   static get observers() {
     return [
-      'updateRoute_(activeRoute)'
+      'updateRoute_(activeRoute)',
     ];
   }
 

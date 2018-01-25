@@ -65,7 +65,10 @@
 
     <!-- Details with author and created timestamp. -->
     <div id="details" class="layout horizontal">
-      <span>By [[recipeAuthor]]</span>
+      <span>
+        By
+        <a href="/#/recipes?user=[[recipe.user]]">[[recipeAuthor]]</a>
+      </span>
       <span>&nbsp;&ndash;&nbsp;</span>
       <span hidden="[[recipe.isPublic]]">Unlisted</span>
       <span hidden="[[!recipe.isPublic]]">Public</span>

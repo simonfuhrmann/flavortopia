@@ -1,4 +1,4 @@
-class DiyAllRecipes extends Polymer.Element {
+class DiyAllRecipes extends DiyMixinRouter(Polymer.Element) {
   static get is() {
     return 'diy-all-recipes';
   }
@@ -25,12 +25,17 @@ class DiyAllRecipes extends Polymer.Element {
         type: Array,
         value: () => [],
       },
+      user: {
+        type: String,
+        value: undefined,
+      }
     };
   }
 
-  ready() {
-    super.ready();
-    this.loadMore_();
+  static get observers() {
+    return [
+      'updateRoute_(activeRoute)',
+    ];
   }
 
   loadRecipes() {
@@ -40,10 +45,16 @@ class DiyAllRecipes extends Polymer.Element {
     this.loadMore_();
   }
 
+  updateRoute_(activeRoute) {
+    const query = activeRoute.query || { user: '' };
+    this.set('user', query.user);
+    this.loadRecipes();
+  }
+
   loadMore_() {
     this.set('isLoading', true);
     this.$.firebaseStore
-        .getRecipes(this.docLimit + 1, this.startAt)
+        .getRecipes(this.docLimit + 1, this.startAt, this.user)
         .then(snapshot => {
           this.set('isLoading', false);
           this.loadComplete_(snapshot);
