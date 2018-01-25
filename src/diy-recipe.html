@@ -74,6 +74,13 @@
     </div>
 
     <div id="content" hidden="[[showRecipeMixer]]">
+
+      <!-- Recipe description. -->
+      <template is="dom-if" if="[[hasDescription]]">
+        <h3 hidden="[[compact]]">Description</h3>
+        <diy-markdown text="[[recipe.description]]"></diy-markdown>
+      </template>
+
       <!-- The list of ingredients in a table. -->
       <h3 hidden="[[compact]]">Ingredients</h3>
       <div id="ingredients" class="layout vertical" >
@@ -107,12 +114,6 @@
           </table>
         </div>
       </div>
-
-      <!-- Recipe description. -->
-      <template is="dom-if" if="[[hasDescription]]">
-        <h3 hidden="[[compact]]">Description</h3>
-        <diy-markdown text="[[recipe.description]]"></diy-markdown>
-      </template>
 
       <!-- Recipe notes. -->
       <template is="dom-if" if="[[hasRecipeNotes]]">

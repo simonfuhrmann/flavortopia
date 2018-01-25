@@ -17,6 +17,10 @@ class DiyTextarea extends Polymer.Element {
         type: String,
         value: undefined,
       },
+      rows: {
+        type: Number,
+        value: 2,
+      },
     };
   }
 
