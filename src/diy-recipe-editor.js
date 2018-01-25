@@ -196,6 +196,15 @@ class DiyRecipeEditor extends
     this.$.dialog.openInfo(title, content);
   }
 
+  onRecipeNotesInfoTap_() {
+    const title = 'Recipe Notes';
+    const content = 'Recipe notes are not shown in the compact recipe view, '
+        + 'only when the recipe is shown individually. Add additional '
+        + 'information here for interested users, but keep important '
+        + 'information in the recipe description.';
+    this.$.dialog.openInfo(title, content);
+  }
+
   onVisibilityInfoTap_() {
     const title = 'Recipe Visibility';
     const content = 'Your recipe stored in a database powered by Firebase. '

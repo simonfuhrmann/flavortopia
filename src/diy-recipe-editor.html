@@ -113,7 +113,16 @@
         <span>Add Ingredient</span>
       </paper-button>
 
-      <h3>Recipe Notes</h3>
+      <h3 class="layout horizontal">
+        <span>Recipe Notes</span>
+        <iron-icon
+            class="info-button"
+            icon="icons:info"
+            role="button"
+            on-tap="onRecipeNotesInfoTap_">
+        </iron-icon>
+      </h3>
+
       <diy-textarea
           label="Recipe notes (markdown syntax)"
           placeholder="Suggested PG/VG ratio, tips on flavor substitutions, ..."
