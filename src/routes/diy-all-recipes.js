@@ -28,7 +28,11 @@ class DiyAllRecipes extends DiyMixinRouter(Polymer.Element) {
       user: {
         type: String,
         value: undefined,
-      }
+      },
+      search: {
+        type: String,
+        observer: 'onSearchChanged_',
+      },
     };
   }
 
