@@ -29,6 +29,18 @@ const staticDataVendors = {
     "website": "http://www.inaweraflavours.com",
     "description": "Inawera flavours have been created from food aromas especially reconstructed for vaping."
   },
+  "rf": {
+    "name": "Real Flavors",
+    "short": "RF",
+    "website": "http://www.realflavors.com",
+    "description": "Real Flavors is a natural flavoring company that specializes in all natural extracts, super concentrates, and water and oil soluble flavors."
+  },
+  "sc": {
+    "name": "Super Concentrates",
+    "short": "SC",
+    "website": "http://www.google.com",
+    "description": "No information available."
+  },
   "tfa": {
     "name": "The Flavor Apprentice",
     "short": "TFA",
