@@ -105,7 +105,7 @@ function prepareAllFlavors() {
       staticDataFlavorsFa,
       staticDataFlavorsFlv,
       staticDataFlavorsFw,
-      staticDataFlavorsIna,
+      staticDataFlavorsInw,
       staticDataFlavorsTfa,
       staticDataFlavorsWf);
 

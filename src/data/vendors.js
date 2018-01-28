@@ -23,9 +23,9 @@ const staticDataVendors = {
     "website": "https://flavorwest.com",
     "description": "Flavor West is a California (USA) based company with many affordable flavorings in their assortment."
   },
-  "ina": {
+  "inw": {
     "name": "Inawera Flavours",
-    "short": "INA",
+    "short": "INW",
     "website": "http://www.inaweraflavours.com",
     "description": "Inawera flavours have been created from food aromas especially reconstructed for vaping."
   },
