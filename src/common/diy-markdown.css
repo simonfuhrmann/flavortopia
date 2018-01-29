@@ -5,3 +5,7 @@
 #content p:first-child {
   display: inline;
 }
+
+#content a {
+  color: inherit;
+}

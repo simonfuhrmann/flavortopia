@@ -157,9 +157,9 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
 
     snapshot.docChanges.forEach(change => {
       // Ignore real-time updates that do not originate from the server.
-      if (change.doc.metadata.hasPendingWrites) {
-        return;
-      }
+      //if (change.doc.metadata.hasPendingWrites) {
+      //  return;
+      //}
 
       // Add the document ID to the document itself.
       const docData = change.doc.data();
@@ -201,7 +201,7 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     // Sort the array if necessary.
     // TODO: Make this configurable once needed.
     if (needsSorting) {
-      this.data.sort((lhs, rhs) => lhs.created < rhs.created);
+      this.data.sort((lhs, rhs) => rhs.created - lhs.created);
     }
 
     // Notify Polymer about the changes.

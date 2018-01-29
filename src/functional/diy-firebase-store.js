@@ -63,16 +63,17 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
   setRecipe(recipe) {
     // Add a timestamp field to the recipe.
     const recipeCopy = Object.assign({}, recipe);
-    recipeCopy.created = firebase.firestore.FieldValue.serverTimestamp();
 
     // If the recipe contains a 'key', delete the key from the recipe and
-    // overwrite the record in the DB. Otherwise create a new recipe record.
+    // overwrite the record in the DB. Otherwise create a new recipe record,
+    // and set the created timestamp value.
     const recipesRef = this.store.collection('recipes');
     if (recipeCopy.key) {
       const documentKey = recipeCopy.key;
       delete recipeCopy.key;
       return recipesRef.doc(documentKey).set(recipeCopy);
     } else {
+      recipeCopy.created = firebase.firestore.FieldValue.serverTimestamp();
       return recipesRef.add(recipeCopy);
     }
   }

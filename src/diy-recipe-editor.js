@@ -38,6 +38,7 @@ class DiyRecipeEditor extends
       recipeName: String,
       recipeDescription: String,
       recipeNotes: String,
+      recipeCreated: Object,
 
       /**
        * An array of ingredient objects. Each ingredient contains the search
@@ -48,6 +49,7 @@ class DiyRecipeEditor extends
         type: Array,
         value: () => [],
       },
+
       /** The visibility is either 'public' or 'unlisted'. */
       recipeVisibility: {
         type: String,
@@ -68,6 +70,7 @@ class DiyRecipeEditor extends
       recipeName: recipe.name,
       recipeDescription: recipe.description,
       recipeNotes: recipe.notes,
+      recipeCreated: recipe.created,
       recipeVisibility: recipe.isPublic ? 'public' : 'unlisted',
       recipeIngredients: this.ingredientsToProperty_(recipe.ingredients),
     });
@@ -79,6 +82,7 @@ class DiyRecipeEditor extends
       recipeName: '',
       recipeDescription: '',
       recipeNotes: '',
+      recipeCreated: null,
       recipeVisibility: 'public',
       recipeIngredients: [],
     });
@@ -136,6 +140,7 @@ class DiyRecipeEditor extends
       name: this.recipeName,
       description: this.recipeDescription,
       notes: this.recipeNotes,
+      created: this.recipeCreated,
       isPublic: this.recipeVisibility == 'public',
       ingredients: this.ingredientsFromProperty_(),
     };
