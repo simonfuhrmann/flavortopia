@@ -1,3 +1,4 @@
+// https://shop.perfumersapprentice.com/specsheetlist.aspx
 const staticDataFlavorsTfa = {
   "tfa-absinthe": {
     "name": "Absinthe",
@@ -15,12 +16,20 @@ const staticDataFlavorsTfa = {
     "name": "Acai",
     "vendor": "tfa"
   },
+  "tfa-acetyl-pyrazine-5-pg": {
+    "name": "Acetyl Pyrazine (5 PG)",
+    "vendor": "tfa"
+  },
   "tfa-almond-amaretto": {
     "name": "Almond Amaretto",
     "vendor": "tfa"
   },
   "tfa-almond": {
     "name": "Almond",
+    "vendor": "tfa"
+  },
+  "tfa-anise-star-essential-oil": {
+    "name": "Anise Star (Essential Oil)",
     "vendor": "tfa"
   },
   "tfa-apple-tart-granny-smith": {
@@ -55,6 +64,10 @@ const staticDataFlavorsTfa = {
     "name": "Banana",
     "vendor": "tfa"
   },
+  "tfa-banana-kush-terpenes": {
+    "name": "Banana Kush Terpenes",
+    "vendor": "tfa"
+  },
   "tfa-banana-nut-bread": {
     "name": "Banana Nut Bread",
     "vendor": "tfa"
@@ -73,6 +86,10 @@ const staticDataFlavorsTfa = {
   },
   "tfa-berry-mix": {
     "name": "Berry Mix",
+    "vendor": "tfa"
+  },
+  "tfa-bitter-nut-extra": {
+    "name": "Bitter Nut Extra",
     "vendor": "tfa"
   },
   "tfa-bittersweet-chocolate": {
@@ -103,12 +120,24 @@ const staticDataFlavorsTfa = {
     "name": "Blackberry",
     "vendor": "tfa"
   },
+  "tfa-blue-dream-terpenes": {
+    "name": "Blue Dream Terpenes",
+    "vendor": "tfa"
+  },
+  "tfa-blue-raspberry": {
+    "name": "Blue Raspberry",
+    "vendor": "tfa"
+  },
   "tfa-blueberry-wild": {
     "name": "Blueberry (Wild)",
     "vendor": "tfa"
   },
   "tfa-blueberry-candy-pg": {
     "name": "Blueberry Candy (PG)",
+    "vendor": "tfa"
+  },
+  "tfa-blueberry-candy-triacetin": {
+    "name": "Blueberry Candy (Triacetin)",
     "vendor": "tfa"
   },
   "tfa-blueberry-extra": {
@@ -125,6 +154,10 @@ const staticDataFlavorsTfa = {
   },
   "tfa-boysenberry": {
     "name": "Boysenberry",
+    "vendor": "tfa"
+  },
+  "tfa-brandy": {
+    "name": "Brandy",
     "vendor": "tfa"
   },
   "tfa-brown-sugar": {
@@ -183,6 +216,10 @@ const staticDataFlavorsTfa = {
     "name": "Champagne Type (PG)",
     "vendor": "tfa"
   },
+  "tfa-cheese-terpenes": {
+    "name": "Cheese Terpenes",
+    "vendor": "tfa"
+  },
   "tfa-cheesecake-graham-crust": {
     "name": "Cheesecake (Graham Crust)",
     "vendor": "tfa"
@@ -197,6 +234,10 @@ const staticDataFlavorsTfa = {
   },
   "tfa-cherry-extract": {
     "name": "Cherry Extract",
+    "vendor": "tfa"
+  },
+  "tfa-chicken-and-waffle": {
+    "name": "Chicken and Waffle",
     "vendor": "tfa"
   },
   "tfa-chili-mango": {
@@ -275,8 +316,20 @@ const staticDataFlavorsTfa = {
     "name": "Coffee",
     "vendor": "tfa"
   },
+  "tfa-coffee-extra-clear": {
+    "name": "Coffee Extra (Clear)",
+    "vendor": "tfa"
+  },
   "tfa-cola-cherry": {
     "name": "Cola Cherry",
+    "vendor": "tfa"
+  },
+  "tfa-cola-concentrate": {
+    "name": "Cola Concentrate",
+    "vendor": "tfa"
+  },
+  "tfa-cola-fizz": {
+    "name": "Cola Fizz",
     "vendor": "tfa"
   },
   "tfa-cola": {
@@ -335,12 +388,52 @@ const staticDataFlavorsTfa = {
     "name": "Cucumber",
     "vendor": "tfa"
   },
+  "tfa-cucumber-deluxe": {
+    "name": "Cucumber Deluxe",
+    "vendor": "tfa"
+  },
+  "tfa-dairy-milk": {
+    "name": "Dairy/Milk",
+    "vendor": "tfa"
+  },
+  "tfa-dark-rum": {
+    "name": "Dark Rum",
+    "vendor": "tfa"
+  },
+  "tfa-dill-pickle": {
+    "name": "Dill Pickle",
+    "vendor": "tfa"
+  },
   "tfa-dk-tobacco-base": {
     "name": "DK Tobacco Base",
     "vendor": "tfa"
   },
   "tfa-dk-tobacco-ii": {
     "name": "DK Tobacco II",
+    "vendor": "tfa"
+  },
+  "tfa-double-chocolate-clear": {
+    "name": "Double Chocolate (Clear)",
+    "vendor": "tfa"
+  },
+  "tfa-double-chocolate-dark": {
+    "name": "Double Chocolate (Dark)",
+    "vendor": "tfa"
+  },
+  "tfa-dr-pop": {
+    "name": "Dr. Pop",
+    "vendor": "tfa"
+  },
+  "tfa-dragonfruit": {
+    "name": "Dragonfruit",
+    "vendor": "tfa"
+  },
+  "tfa-dulce-de-leche-caramel": {
+    "name": "Dulce de Leche Caramel",
+    "vendor": "tfa"
+  },
+  "tfa-dulce-de-leche": {
+    "name": "Dulce de Leche",
     "vendor": "tfa"
   },
   "tfa-dx-banana-cream": {
@@ -431,38 +524,6 @@ const staticDataFlavorsTfa = {
     "name": "DX Vanilla Cupcake",
     "vendor": "tfa"
   },
-  "tfa-dairy-milk": {
-    "name": "Dairy/Milk",
-    "vendor": "tfa"
-  },
-  "tfa-dark-rum": {
-    "name": "Dark Rum",
-    "vendor": "tfa"
-  },
-  "tfa-double-chocolate-clear": {
-    "name": "Double Chocolate (Clear)",
-    "vendor": "tfa"
-  },
-  "tfa-double-chocolate-dark": {
-    "name": "Double Chocolate (Dark)",
-    "vendor": "tfa"
-  },
-  "tfa-dr-pop": {
-    "name": "Dr. Pop",
-    "vendor": "tfa"
-  },
-  "tfa-dragonfruit": {
-    "name": "Dragonfruit",
-    "vendor": "tfa"
-  },
-  "tfa-dulce-de-leche-caramel": {
-    "name": "Dulce de Leche Caramel",
-    "vendor": "tfa"
-  },
-  "tfa-dulce-de-leche": {
-    "name": "Dulce de Leche",
-    "vendor": "tfa"
-  },
   "tfa-earl-grey-tea": {
     "name": "Earl Grey Tea",
     "vendor": "tfa"
@@ -489,6 +550,14 @@ const staticDataFlavorsTfa = {
   },
   "tfa-espresso": {
     "name": "Espresso",
+    "vendor": "tfa"
+  },
+  "tfa-ethyl-maltol-crystals": {
+    "name": "Ethyl Maltol Crystals",
+    "vendor": "tfa"
+  },
+  "tfa-flue-cured": {
+    "name": "Flue Cured",
     "vendor": "tfa"
   },
   "tfa-french-vanilla-creme": {
@@ -559,6 +628,10 @@ const staticDataFlavorsTfa = {
     "name": "Graham Cracker",
     "vendor": "tfa"
   },
+  "tfa-grape-ape-terpenes": {
+    "name": "Grape Ape Terpenes",
+    "vendor": "tfa"
+  },
   "tfa-grape-candy": {
     "name": "Grape Candy",
     "vendor": "tfa"
@@ -579,6 +652,10 @@ const staticDataFlavorsTfa = {
     "name": "Green Apple",
     "vendor": "tfa"
   },
+  "tfa-green-crack-terpenes": {
+    "name": "Green Crack Terpenes",
+    "vendor": "tfa"
+  },
   "tfa-green-tea": {
     "name": "Green Tea",
     "vendor": "tfa"
@@ -595,6 +672,10 @@ const staticDataFlavorsTfa = {
     "name": "Gummy Candy",
     "vendor": "tfa"
   },
+  "tfa-hardcore-og-terpenes": {
+    "name": "Hardcore OG Terpenes",
+    "vendor": "tfa"
+  },
   "tfa-hawaiian-drink": {
     "name": "Hawaiian Drink",
     "vendor": "tfa"
@@ -609,6 +690,10 @@ const staticDataFlavorsTfa = {
   },
   "tfa-hibiscus": {
     "name": "Hibiscus",
+    "vendor": "tfa"
+  },
+  "tfa-hickory-smoke": {
+    "name": "Hickory Smoke",
     "vendor": "tfa"
   },
   "tfa-holiday-spice": {
@@ -633,6 +718,10 @@ const staticDataFlavorsTfa = {
   },
   "tfa-honeysuckle-pg": {
     "name": "Honeysuckle (PG)",
+    "vendor": "tfa"
+  },
+  "tfa-horchata": {
+    "name": "Horchata",
     "vendor": "tfa"
   },
   "tfa-horchata-smooth": {
@@ -663,6 +752,10 @@ const staticDataFlavorsTfa = {
     "name": "Irish Cream II",
     "vendor": "tfa"
   },
+  "tfa-jack-herer-terpenes": {
+    "name": "Jack Herer Terpenes",
+    "vendor": "tfa"
+  },
   "tfa-jackfruit": {
     "name": "Jackfruit",
     "vendor": "tfa"
@@ -689,6 +782,10 @@ const staticDataFlavorsTfa = {
   },
   "tfa-key-lime-pie": {
     "name": "Key Lime Pie",
+    "vendor": "tfa"
+  },
+  "tfa-kiwi": {
+    "name": "Kiwi",
     "vendor": "tfa"
   },
   "tfa-kiwi-double": {
@@ -731,6 +828,10 @@ const staticDataFlavorsTfa = {
     "name": "Lychee",
     "vendor": "tfa"
   },
+  "tfa-m-type-premium": {
+    "name": "M Type Premium",
+    "vendor": "tfa"
+  },
   "tfa-madagascar-bourbon-vanilla": {
     "name": "Madagascar Bourbon Vanilla",
     "vendor": "tfa"
@@ -767,12 +868,20 @@ const staticDataFlavorsTfa = {
     "name": "Mary Jane",
     "vendor": "tfa"
   },
+  "tfa-menthol-crystals": {
+    "name": "Menthol Crystals",
+    "vendor": "tfa"
+  },
   "tfa-menthol-liquid-pg": {
     "name": "Menthol Liquid (PG)",
     "vendor": "tfa"
   },
   "tfa-meringue": {
     "name": "Meringue",
+    "vendor": "tfa"
+  },
+  "tfa-mexican-coffee": {
+    "name": "Mexican Coffee",
     "vendor": "tfa"
   },
   "tfa-mexican-liqueur": {
@@ -815,6 +924,14 @@ const staticDataFlavorsTfa = {
     "name": "Oatmeal Cookie",
     "vendor": "tfa"
   },
+  "tfa-og-kush-terpenes": {
+    "name": "OG Kush Terpenes",
+    "vendor": "tfa"
+  },
+  "tfa-orange-sweet": {
+    "name": "Orange (Sweet)",
+    "vendor": "tfa"
+  },
   "tfa-orange-cream-bar": {
     "name": "Orange Cream Bar",
     "vendor": "tfa"
@@ -833,10 +950,6 @@ const staticDataFlavorsTfa = {
   },
   "tfa-papaya": {
     "name": "Papaya",
-    "vendor": "tfa"
-  },
-  "tfa-para-cymene": {
-    "name": "Para Cymene",
     "vendor": "tfa"
   },
   "tfa-passion-fruit": {
@@ -895,6 +1008,10 @@ const staticDataFlavorsTfa = {
     "name": "Pineapple",
     "vendor": "tfa"
   },
+  "tfa-pineapple-express-terpenes": {
+    "name": "Pineapple Express Terpenes",
+    "vendor": "tfa"
+  },
   "tfa-pineapple-juicy": {
     "name": "Pineapple Juicy",
     "vendor": "tfa"
@@ -947,20 +1064,16 @@ const staticDataFlavorsTfa = {
     "name": "Quince",
     "vendor": "tfa"
   },
-  "tfa-ry4-asian": {
-    "name": "RY4 Asian",
-    "vendor": "tfa"
-  },
-  "tfa-ry4-double": {
-    "name": "RY4 Double",
-    "vendor": "tfa"
-  },
   "tfa-rainbow-drops-nf": {
     "name": "Rainbow Drops (NF)",
     "vendor": "tfa"
   },
   "tfa-rainbow-drops": {
     "name": "Rainbow Drops",
+    "vendor": "tfa"
+  },
+  "tfa-rainbow-sherbet": {
+    "name": "Rainbow Sherbet",
     "vendor": "tfa"
   },
   "tfa-raisin": {
@@ -995,6 +1108,10 @@ const staticDataFlavorsTfa = {
     "name": "Red Velvet Cake",
     "vendor": "tfa"
   },
+  "tfa-red-velvet-no-ap": {
+    "name": "Red Velvet (no AP)",
+    "vendor": "tfa"
+  },
   "tfa-rice-crunchies": {
     "name": "Rice Crunchies",
     "vendor": "tfa"
@@ -1027,8 +1144,24 @@ const staticDataFlavorsTfa = {
     "name": "Ruby Chocolate",
     "vendor": "tfa"
   },
+  "tfa-rumchata": {
+    "name": "Rumchata",
+    "vendor": "tfa"
+  },
+  "tfa-ry4-asian": {
+    "name": "RY4 Asian",
+    "vendor": "tfa"
+  },
+  "tfa-ry4-double": {
+    "name": "RY4 Double",
+    "vendor": "tfa"
+  },
   "tfa-ry4-type": {
     "name": "Ry4 Type",
+    "vendor": "tfa"
+  },
+  "tfa-sea-buckthorn": {
+    "name": "Sea Buckthorn",
     "vendor": "tfa"
   },
   "tfa-silly-rabbit-cereal": {
@@ -1067,8 +1200,16 @@ const staticDataFlavorsTfa = {
     "name": "Strawberry Lemonade",
     "vendor": "tfa"
   },
+  "tfa-super-lemon-haze-terpenes": {
+    "name": "Super Lemon Haze Terpenes",
+    "vendor": "tfa"
+  },
   "tfa-swedish-gummy": {
     "name": "Swedish Gummy",
+    "vendor": "tfa"
+  },
+  "tfa-sweet-and-tart": {
+    "name": "Sweet and Tart",
     "vendor": "tfa"
   },
   "tfa-sweet-cereal-flakes": {
@@ -1083,16 +1224,16 @@ const staticDataFlavorsTfa = {
     "name": "Sweet Tea",
     "vendor": "tfa"
   },
-  "tfa-sweet-and-tart": {
-    "name": "Sweet and Tart",
-    "vendor": "tfa"
-  },
   "tfa-sweetener": {
     "name": "Sweetener",
     "vendor": "tfa"
   },
   "tfa-taro": {
     "name": "Taro",
+    "vendor": "tfa"
+  },
+  "tfa-tart-and-sour": {
+    "name": "Tart and Sour",
     "vendor": "tfa"
   },
   "tfa-tiramisu": {
@@ -1111,6 +1252,10 @@ const staticDataFlavorsTfa = {
     "name": "Tobacco",
     "vendor": "tfa"
   },
+  "tfa-triacetin": {
+    "name": "Triacetin",
+    "vendor": "tfa"
+  },
   "tfa-turkish": {
     "name": "Turkish",
     "vendor": "tfa"
@@ -1121,6 +1266,10 @@ const staticDataFlavorsTfa = {
   },
   "tfa-tutti-frutti": {
     "name": "Tutti-Frutti",
+    "vendor": "tfa"
+  },
+  "tfa-vanilla-bourbon": {
+    "name": "Vanilla (Bourbon)",
     "vendor": "tfa"
   },
   "tfa-vanilla-bean-gelato": {
@@ -1147,6 +1296,10 @@ const staticDataFlavorsTfa = {
     "name": "Vanillin 10 (PG)",
     "vendor": "tfa"
   },
+  "tfa-violet-candy": {
+    "name": "Violet Candy",
+    "vendor": "tfa"
+  },
   "tfa-waffle-belgian": {
     "name": "Waffle (Belgian)",
     "vendor": "tfa"
@@ -1161,6 +1314,10 @@ const staticDataFlavorsTfa = {
   },
   "tfa-watermelon": {
     "name": "Watermelon",
+    "vendor": "tfa"
+  },
+  "tfa-watermelon-vg": {
+    "name": "Watermelon (VG)",
     "vendor": "tfa"
   },
   "tfa-western": {
