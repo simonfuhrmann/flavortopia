@@ -34,6 +34,10 @@ class DiyInput extends Polymer.Element {
         value: false,
         notify: true,
       },
+      selectOnFocus: {
+        type: Boolean,
+        value: false,
+      },
     };
   }
 
@@ -45,6 +49,11 @@ class DiyInput extends Polymer.Element {
 
   focus() {
     this.$.nativeInput.focus();
+  }
+
+  select() {
+    const input = this.$.nativeInput;
+    input.setSelectionRange(0, input.value.length);
   }
 
   setError(errorMessage) {
@@ -61,6 +70,9 @@ class DiyInput extends Polymer.Element {
 
   onFocus_() {
     this.set('focused', true);
+    if (this.selectOnFocus) {
+      this.select();
+    }
   }
 
   onBlur_() {
