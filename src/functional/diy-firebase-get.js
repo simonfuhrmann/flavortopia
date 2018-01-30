@@ -157,9 +157,9 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
 
     snapshot.docChanges.forEach(change => {
       // Ignore real-time updates that do not originate from the server.
-      //if (change.doc.metadata.hasPendingWrites) {
-      //  return;
-      //}
+      if (change.doc.metadata.hasPendingWrites) {
+        return;
+      }
 
       // Add the document ID to the document itself.
       const docData = change.doc.data();
