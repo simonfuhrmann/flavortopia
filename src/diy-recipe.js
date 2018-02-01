@@ -87,18 +87,30 @@ class DiyRecipe extends DiyMixinCommon(DiyMixinStaticData(Polymer.Element)) {
     this.$.flavorActions.open();
   }
 
+  onToggleMixer_() {
+    this.set('showRecipeMixer', !this.showRecipeMixer);
+  }
+
   onEditTap_() {
     const detail = { detail: this.recipe };
     this.dispatchEvent(new CustomEvent('edit-recipe', detail));
   }
 
-  onToggleMixer_() {
-    this.set('showRecipeMixer', !this.showRecipeMixer);
+  onCloneTap_() {
+    const recipe = Object.assign({}, this.recipe);
+    recipe.name = recipe.name + ' (copy)';
+    delete recipe.key;
+    const detail = { detail: recipe };
+    this.dispatchEvent(new CustomEvent('edit-recipe', detail));
   }
 
   onDeleteTap_() {
     const detail = { detail: this.recipe };
     this.dispatchEvent(new CustomEvent('delete-recipe', detail));
+  }
+
+  closeDropdown_() {
+    this.$.dropdownMenu.opened = false;
   }
 }
 

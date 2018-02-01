@@ -3,9 +3,11 @@
 <link rel="import" href="/bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="/bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="/bower_components/iron-icons/image-icons.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="/bower_components/paper-menu-button/paper-menu-button.html">
 
 <link rel="import" href="/src/common/diy-markdown.html">
 <link rel="import" href="/src/functional/diy-user-cache.html">
@@ -36,30 +38,61 @@
       </iron-icon>
       <div class="flex"></div>
 
-      <div class="actions layout horizontal" hidden="[[!showRecipeMixer]]">
-        <paper-button raised on-tap="onToggleMixer_" title="Close Mixer">
+      <div class="actions">
+        <!-- Back button in recipe mixer. -->
+        <paper-button
+            raised
+            hidden="[[!showRecipeMixer]]"
+            on-tap="onToggleMixer_"
+            title="Close Mixer">
           <iron-icon icon="icons:arrow-back"></iron-icon>
+        </paper-button>
+
+        <!-- Mix button. -->
+        <paper-button
+            raised
+            hidden="[[showRecipeMixer]]"
+            on-tap="onToggleMixer_"
+            title="Mix recipe">
+          <iron-icon icon="image:colorize"></iron-icon>
         </paper-button>
       </div>
 
-      <div class="actions layout horizontal" hidden="[[showRecipeMixer]]">
-        <paper-button raised on-tap="onToggleMixer_" title="Mix recipe">
-          <iron-icon icon="image:colorize"></iron-icon>
-        </paper-button>
-        <paper-button
-            raised
-            hidden="[[!isAuthenticated_(authUserId, recipe.user)]]"
-            on-tap="onEditTap_"
-            title="Edit recipe">
-          <iron-icon icon="icons:create"></iron-icon>
-        </paper-button>
-        <paper-button
-            raised
-            hidden="[[!isAuthenticated_(authUserId, recipe.user)]]"
-            on-tap="onDeleteTap_"
-            title="Delete recipe">
-          <iron-icon icon="icons:delete"></iron-icon>
-        </paper-button>
+      <div
+          class="actions"
+          hidden="[[!isAuthenticated_(authUserId, recipe.user)]]">
+        <paper-menu-button
+            id="dropdownMenu"
+            hidden="[[showRecipeMixer]]"
+            no-animations
+            horizontal-align="right"
+            vertical-offset="30">
+
+          <paper-button raised slot="dropdown-trigger">
+            <iron-icon icon="icons:menu"></iron-icon>
+          </paper-button>
+
+          <div slot="dropdown-content" on-tap="closeDropdown_">
+            <!-- Edit recipe button. -->
+            <paper-icon-item on-tap="onEditTap_">
+              <iron-icon icon="icons:create" slot="item-icon"></iron-icon>
+              <span>Edit Recipe</span>
+            </paper-icon-item>
+
+            <!-- Clone recipe button. -->
+            <paper-icon-item on-tap="onCloneTap_">
+              <iron-icon icon="icons:content-copy" slot="item-icon"></iron-icon>
+              <span>Clone Recipe</span>
+            </paper-icon-item>
+
+            <!-- Delete recipe button. -->
+            <paper-icon-item on-tap="onDeleteTap_">
+              <iron-icon icon="icons:delete" slot="item-icon"></iron-icon>
+              <span>Delete Recipe</span>
+            </paper-icon-item>
+          </div>
+
+        </paper-menu-button>
       </div>
     </div>
 

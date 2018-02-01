@@ -75,6 +75,19 @@ diy-recipe-mixer {
   height: 20px;
 }
 
+#header #dropdownMenu {
+  padding: 0;
+}
+
+#header #dropdownMenu paper-icon-item {
+  --paper-item-icon-width: 32px;
+  cursor: pointer;
+}
+
+#header #dropdownMenu paper-icon-item:hover {
+  background-color: var(--secondary-background-color);
+}
+
 #content {
   margin: 16px;
 }
