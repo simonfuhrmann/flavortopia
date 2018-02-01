@@ -47,6 +47,7 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     if (startAt) {
       recipesRef = recipesRef.startAt(startAt);
     }
+    recipesRef = recipesRef.orderBy('created', 'desc');
     return recipesRef.get();
   }
 
