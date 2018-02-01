@@ -50,10 +50,12 @@ class DiyRecipeMixer extends DiyMixinCommon(Polymer.Element) {
       basePgPercentInput: {
         type: String,
         value: '30',
+        observer: 'onBasePgPercentInputChanged_',
       },
       baseVgPercentInput: {
         type: String,
         value: '70',
+        observer: 'onBaseVgPercentInputChanged_',
       },
       baseWaterPercentInput: {
         type: String,
@@ -86,6 +88,22 @@ class DiyRecipeMixer extends DiyMixinCommon(Polymer.Element) {
     this.$.flavorActions.set('positionTarget', event.path[0]);
     this.$.flavorActions.set('flavor', flavor.key);
     this.$.flavorActions.open();
+  }
+
+  onBasePgPercentInputChanged_(value) {
+    const number = this.stringToNumber(String(value || 0));
+    if (isNaN(number)) {
+      return;
+    }
+    this.set('baseVgPercentInput', String(100.0 - number));
+  }
+
+  onBaseVgPercentInputChanged_(value) {
+    const number = this.stringToNumber(String(value || 0));
+    if (isNaN(number)) {
+      return;
+    }
+    this.set('basePgPercentInput', String(100.0 - number));
   }
 
   ingredientsSorter_(sortForScale) {
