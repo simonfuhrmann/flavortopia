@@ -120,7 +120,13 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     this.unsubscribe_();
     this.set('loading', true);
     this.set('error', undefined);
+
+    const listenerOptions = {
+      includeQueryMetadataChanges: true,
+      includeDocumentMetadataChanges: true
+    };
     this.listener = func().onSnapshot(
+        listenerOptions,
         this.onSubscribeMultiUpdate_.bind(this),
         this.onSubscribeError_.bind(this));
   }
