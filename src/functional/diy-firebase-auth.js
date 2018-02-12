@@ -46,6 +46,10 @@ class DiyFirebaseAuth extends DiyMixinFirebase(Polymer.Element) {
     return new firebase.auth.GoogleAuthProvider();
   }
 
+  getGithubAuthProvider() {
+    return new firebase.auth.GithubAuthProvider();
+  }
+
   signOut() {
     this.auth.signOut();
   }

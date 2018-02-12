@@ -103,7 +103,6 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
 
   signinGoogle_() {
     const provider = this.$.firebaseAuth.getGoogleAuthProvider();
-    provider.addScope('profile');
     provider.addScope('email');
     this.$.firebaseAuth.signinWithProvider(provider);
   }
@@ -114,8 +113,9 @@ class DiyUserSignin extends DiyMixinRouter(DiyMixinRedux(Polymer.Element)) {
   }
 
   signinGithub_() {
-    this.$.errorDialog.openError(
-      'Not implemented', 'Github auth provider is not yet supported.');
+    const provider = this.$.firebaseAuth.getGithubAuthProvider();
+    provider.addScope('user:email');
+    this.$.firebaseAuth.signinWithProvider(provider);
   }
 
   signinTwitter_() {
