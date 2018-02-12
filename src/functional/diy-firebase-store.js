@@ -37,6 +37,7 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
 
   getRecipes(limit, startAt, user) {
     let recipesRef = this.store.collection('recipes')
+        .orderBy('created', 'desc')
         .where('isPublic', '==', true);
     if (limit) {
       recipesRef = recipesRef.limit(limit);
@@ -47,7 +48,6 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
     if (startAt) {
       recipesRef = recipesRef.startAt(startAt);
     }
-    recipesRef = recipesRef.orderBy('created', 'desc');
     return recipesRef.get();
   }
 
