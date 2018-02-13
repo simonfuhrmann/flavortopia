@@ -194,7 +194,7 @@ class DiyRecipeEditor extends
 
   onIngredientsInfoTap_() {
     const title = 'Notes on Ingredients';
-    const content = 'Flavortopia does not believe in specifying base '
+    const content = 'Shake and Vape does not believe in specifying base '
         + 'ingredients (PG, VG, nicotine, etc.) as part of your recipe. '
         + 'Instead, it can be configured when mixing a recipe. If you have a '
         + 'suggestion for a PG/VG ratio, put it in the recipe notes.';
@@ -214,7 +214,7 @@ class DiyRecipeEditor extends
     const title = 'Recipe Visibility';
     const content = 'Your recipe stored in a database powered by Firebase. '
         + 'The visibility selection will be stored as a flag as part of '
-        + 'your recipe. Flavortopia will not display unlisted recipes to '
+        + 'your recipe. Shake and Vape will not display unlisted recipes to '
         + 'other users. Note, however, that all recipes could be queried by '
         + 'proficient users. Do not submit confidential information with your '
         + 'recipes.';

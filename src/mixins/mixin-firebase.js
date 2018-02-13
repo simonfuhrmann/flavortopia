@@ -17,11 +17,11 @@ DiyMixinFirebase = (superClass) => class extends superClass {
     }
 
     // Initialize Firebase app.
-    var config = {
-      apiKey: "AIzaSyAHEzmqB5011Wy_1GL5JgNNFOKGd6jATA4",
-      authDomain: "flavortopia.firebaseapp.com",
-      databaseURL: "https://flavortopia.firebaseio.com",
-      projectId: "flavortopia",
+    const config = {
+      apiKey: "AIzaSyAGujTcfguPXVRJM0Xvvio_NwZa35Ho8B4",
+      authDomain: "shake-and-vape.firebaseapp.com",
+      databaseURL: "https://shake-and-vape.firebaseio.com",
+      projectId: "shake-and-vape",
     };
     firebase.initializeApp(config);
 
