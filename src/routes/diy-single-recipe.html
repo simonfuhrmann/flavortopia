@@ -5,6 +5,7 @@
 
 <link rel="import" href="/src/theme/diy-theme.html">
 <link rel="import" href="/src/diy-recipe.html">
+<link rel="import" href="/src/diy-recipe-comments.html">
 <link rel="import" href="/src/mixins/mixin-router.html">
 
 <dom-module id="diy-single-recipe">
@@ -35,8 +36,15 @@
 
     <!-- The recipe. -->
     <template is="dom-if" if="[[recipe]]">
-      <paper-card class="recipe-card">
+      <paper-card>
         <diy-recipe recipe="[[recipe]]"></diy-recipe>
+      </paper-card>
+    </template>
+
+    <!-- Recipe comments. -->
+    <template is="dom-if" if="[[recipe]]">
+      <paper-card>
+        <diy-recipe-comments recipe-key="[[recipe.key]]"></diy-recipe-comments>
       </paper-card>
     </template>
 

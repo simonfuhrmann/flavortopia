@@ -1,12 +1,10 @@
-# Flavortopia
+# Shake and Vape
 
-Flavortopia is a DIY e-juice mixing web application.
-"Flavortopia" is a working title, and the site may get rebranded in the future.
-A demo version of the website is available at
-https://flavortopia.firebaseapp.com.
+Shake and Vape is a DIY e-juice mixing web application.
+The website can be found at https://www.shake-and-vape.it.
 
-Note: This is not a production site. All data stored on this site can change
- or get deleted at any time.
+Beta Notice: This is not a production site. All data stored on this site can
+change or get deleted at any time.
 
 ## Development
 
