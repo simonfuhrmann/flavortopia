@@ -54,7 +54,7 @@
     </template>
 
     <!-- Card that shows when there are no recipes. -->
-    <template is="dom-if" if="[[showNoRecipes_(userRecipes.*)]]">
+    <template is="dom-if" if="[[showNoRecipes_(userRecipes)]]">
       <paper-card id="noRecipesCard">
         <span>There are no recipes. Create one!</span>
       </paper-card>

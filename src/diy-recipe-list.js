@@ -28,7 +28,7 @@ class DiyRecipeList extends Polymer.Element {
   }
 
   showNoRecipes_(userRecipes) {
-    return !this.userRecipes || this.userRecipes.length == 0;
+    return !userRecipes || userRecipes.length == 0;
   }
 
   onNewRecipeTap_() {

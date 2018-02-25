@@ -6,6 +6,11 @@ paper-spinner-lite {
   margin-right: 24px;
 }
 
+paper-card.comment-card {
+  margin-top: 16px;
+  padding: 16px;
+}
+
 #loadingErrorCard {
   padding: 24px;
   color: var(--error-text-color);

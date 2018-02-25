@@ -65,6 +65,12 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     this.firebaseSubscribeSingle_(() => recipesRef.doc(recipeKey));
   }
 
+  subscribeRecipeComments(recipeKey) {
+    const commentsRef = this.store.collection('recipes').doc(recipeKey)
+        .collection('comments');
+    this.firebaseSubscribeMulti_(() => commentsRef);
+  }
+
   loadUserInventory(uid) {
     const inventoryRef = this.store.collection('inventory');
     this.firebaseGetSingle_(() => inventoryRef.doc(uid));
@@ -155,12 +161,16 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     this.set('loading', false);
     let needsSorting = false;
 
-    // For efficiency, changes to the data array are done directly on the
-    // property, and notifySplices() is used to inform Polymer after the fact.
-    if (!this.data) {
-      this.data = [];
+    if (snapshot.docChanges.length == 0) {
+      return;
     }
 
+    // There are two options. Modify the original data and notify the splices
+    // later. This is more efficient, and dom-repeat will notice the changes,
+    // however, simple property observers and bindings to the data will not.
+    // The other option is to make a copy of the data array, modify the copy
+    // and assign later. The latter is implemented here.
+    const newData = this.data ? this.data.splice() : [];
     snapshot.docChanges.forEach(change => {
       // Ignore real-time updates that do not originate from the server.
       if (change.doc.metadata.hasPendingWrites) {
@@ -174,26 +184,26 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
       // Process the type of change.
       switch (change.type) {
         case 'added': {
-          this.data.push(docData);
+          newData.push(docData);
           needsSorting = true;
           break;
         }
 
         case 'modified': {
-          const index = this.data.findIndex(value => value.key == docData.key);
+          const index = newData.findIndex(value => value.key == docData.key);
           if (index < 0) {
-            this.data.push(docData);
+            newData.push(docData);
             needsSorting = true;
           } else {
-            this.data.splice(index, 1, docData);
+            newData.splice(index, 1, docData);
           }
           break;
         }
 
         case 'removed': {
-          const index = this.data.findIndex(value => value.key == docData.key);
+          const index = newData.findIndex(value => value.key == docData.key);
           if (index >= 0) {
-            this.data.splice(index, 1);
+            newData.splice(index, 1);
           }
           break;
         }
@@ -207,14 +217,15 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     // Sort the array if necessary.
     // TODO: Make this configurable once needed.
     if (needsSorting) {
-      this.data.sort((lhs, rhs) => rhs.created - lhs.created);
+      newData.sort((lhs, rhs) => rhs.created - lhs.created);
     }
 
     // Notify Polymer about the changes.
-    this.notifySplices('data');
+    this.set('data', newData);
   }
 
   onSubscribeError_(error) {
+    this.set('loading', false);
     this.listener = undefined;
     this.setError_(error);
   }
@@ -229,6 +240,8 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
   setError_(error) {
     if (error && error.message) {
       this.set('error', error.message);
+    } else if (error) {
+      this.set('error', error);
     } else {
       this.set('error', 'Unknown error');
     }
