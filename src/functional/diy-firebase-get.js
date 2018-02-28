@@ -162,6 +162,7 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     let needsSorting = false;
 
     if (snapshot.docChanges.length == 0) {
+      this.set('data', this.data || []);
       return;
     }
 
@@ -170,7 +171,7 @@ class DiyFirebaseGet extends DiyMixinFirebase(Polymer.Element) {
     // however, simple property observers and bindings to the data will not.
     // The other option is to make a copy of the data array, modify the copy
     // and assign later. The latter is implemented here.
-    const newData = this.data ? this.data.splice() : [];
+    const newData = this.data ? this.data.slice() : [];
     snapshot.docChanges.forEach(change => {
       // Ignore real-time updates that do not originate from the server.
       if (change.doc.metadata.hasPendingWrites) {
