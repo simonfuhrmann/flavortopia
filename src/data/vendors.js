@@ -35,6 +35,12 @@ const staticDataVendors = {
     "website": "http://www.inaweraflavours.com",
     "description": "Inawera flavours have been created from food aromas especially reconstructed for vaping."
   },
+  "la": {
+    "name": "Lorann Oils and Flavors",
+    "short": "LA",
+    "website": "http://www.lorannoils.com",
+    "description": "LorAnn is known for concentrated, professional strength flavorings and essential oils, but the product line encompasses a variety of candy making, baking supplies and flavoring options."
+  },
   "rf": {
     "name": "Real Flavors",
     "short": "RF",

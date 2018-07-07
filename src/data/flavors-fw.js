@@ -1,4 +1,12 @@
 const staticDataFlavorsFw = {
+  "fw-555-tobacco": {
+    "name": "555 Tobacco",
+    "vendor": "fw"
+  },
+  "fw-7-tobacco": {
+    "name": "7 Tobacco",
+    "vendor": "fw"
+  },
   "fw-absinthe": {
     "name": "Absinthe",
     "vendor": "fw"
@@ -39,6 +47,10 @@ const staticDataFlavorsFw = {
     "name": "Apple (Green)",
     "vendor": "fw"
   },
+  "fw-apple-green-natural": {
+    "name": "Apple (Green, Natural)",
+    "vendor": "fw"
+  },
   "fw-apple-red": {
     "name": "Apple (Red)",
     "vendor": "fw"
@@ -49,10 +61,6 @@ const staticDataFlavorsFw = {
   },
   "fw-apple-jacks-type": {
     "name": "Apple Jacks Type",
-    "vendor": "fw"
-  },
-  "fw-apple-green-natural": {
-    "name": "Apple (Green, Natural)",
     "vendor": "fw"
   },
   "fw-apricot": {
@@ -215,12 +223,12 @@ const staticDataFlavorsFw = {
     "name": "Butterscotch Ripple",
     "vendor": "fw"
   },
-  "fw-butterscotch-tobacco": {
-    "name": "Butterscotch Tobacco",
-    "vendor": "fw"
-  },
   "fw-butterscotch-natural": {
     "name": "Butterscotch (Natural)",
+    "vendor": "fw"
+  },
+  "fw-butterscotch-tobacco": {
+    "name": "Butterscotch Tobacco",
     "vendor": "fw"
   },
   "fw-cafe-coffee": {
@@ -541,14 +549,6 @@ const staticDataFlavorsFw = {
   },
   "fw-fuzzy-navel": {
     "name": "Fuzzy Navel",
-    "vendor": "fw"
-  },
-  "fw-555-tobacco": {
-    "name": "555 Tobacco",
-    "vendor": "fw"
-  },
-  "fw-7-tobacco": {
-    "name": "7 Tobacco",
     "vendor": "fw"
   },
   "fw-cool-texas-tobacco": {

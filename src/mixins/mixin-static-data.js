@@ -108,6 +108,7 @@ function prepareAllFlavors() {
       staticDataFlavorsFw,
       staticDataFlavorsInw,
       staticDataFlavorsJf,
+      staticDataFlavorsLa,
       staticDataFlavorsRf,
       staticDataFlavorsSc,
       staticDataFlavorsTfa,
@@ -128,14 +129,15 @@ function sanityCheckFlavors(allFlavors) {
   console.warn('Flavor sanity checks are enabled, this may be slow.');
 
   // Check for flavors with invalid characters in the key.
-  Object.keys(allFlavors).forEach(key => {
+  const allFlavorKeys = Object.keys(allFlavors);
+  allFlavorKeys.forEach(key => {
     if (key.match(/[^a-z0-9\-]/)) {
       console.warn('Flavor with invalid key: ' + key);
     }
   });
 
   // Check for flavors with invalid characters in the name.
-  Object.keys(allFlavors).forEach(key => {
+  allFlavorKeys.forEach(key => {
     const name = allFlavors[key].name;
     if (!name) {
       console.warn('Flavor without a name: ' + key);
@@ -147,7 +149,7 @@ function sanityCheckFlavors(allFlavors) {
   });
 
   // Check that all words in the flavor name are also in the key.
-  Object.keys(allFlavors).forEach(key => {
+  allFlavorKeys.forEach(key => {
     const name = allFlavors[key].name;
     let cleanName = name.replace(/\W/g, ' ').replace(/ +/g, ' ');
     let tokens = cleanName.split(' ')
@@ -155,10 +157,23 @@ function sanityCheckFlavors(allFlavors) {
         .map(token => token.toLowerCase());
     for (let i = 0; i < tokens.length; ++i) {
       if (!key.includes(tokens[i])) {
-        console.warn("Recipe key incomplete: " + key + '(' + name + ')');
+        console.warn('Recipe key incomplete: ' + key + ' (' + name + ')');
       }
     }
   });
+
+  // Check that flavors are sorted.
+  for (let i = 1; i < allFlavorKeys.length; ++i) {
+    const key1 = allFlavorKeys[i];
+    const key2 = allFlavorKeys[i - 1]
+    if (allFlavors[key1].vendor != allFlavors[key2].vendor) continue;
+    const name1 = allFlavors[key1].name;
+    const name2 = allFlavors[key2].name;
+    if (name1.toLowerCase() < name2.toLowerCase()) {
+      console.warn('Flavor not sorted: ' + name2 + ' (' + key2
+          + ') and ' + name1 + ' (' + key1 + ')');
+    }
+  }
 }
 
 function prepareAllVendors() {

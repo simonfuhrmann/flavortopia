@@ -19,12 +19,12 @@ const staticDataFlavorsFa = {
     "name": "Apple Pie",
     "vendor": "fa"
   },
-  "fa-armenia-apricot": {
-    "name": "Armenia (Apricot)",
-    "vendor": "fa"
-  },
   "fa-arctic-winter-menthol-artic": {
     "name": "Arctic Winter (Menthol Artic)",
+    "vendor": "fa"
+  },
+  "fa-armenia-apricot": {
+    "name": "Armenia (Apricot)",
     "vendor": "fa"
   },
   "fa-asparagus": {
@@ -455,8 +455,8 @@ const staticDataFlavorsFa = {
     "name": "Lime Tahity (Cold Pressed)",
     "vendor": "fa"
   },
-  "fa-lime-flavor-tahity-distilled": {
-    "name": "Lime Tahity (Distilled",
+  "fa-lime-tahity-distilled": {
+    "name": "Lime Tahity (Distilled)",
     "vendor": "fa"
   },
   "fa-liquid-amber": {
@@ -515,12 +515,12 @@ const staticDataFlavorsFa = {
     "name": "Mild Winter (Peppermint)",
     "vendor": "fa"
   },
-  "fa-milk-condensed": {
-    "name": "Milk (Condensed)",
-    "vendor": "fa"
-  },
   "fa-milk": {
     "name": "Milk",
+    "vendor": "fa"
+  },
+  "fa-milk-condensed": {
+    "name": "Milk (Condensed)",
     "vendor": "fa"
   },
   "fa-morning-sun": {
@@ -565,10 +565,6 @@ const staticDataFlavorsFa = {
   },
   "fa-olive-oil-soluble": {
     "name": "Olive (Oil Soluble)",
-    "vendor": "fa"
-  },
-  "fa-olive-oil-oil-soluble": {
-    "name": "Olive Oil (Oil Soluble)",
     "vendor": "fa"
   },
   "fa-onion-oil-soluble": {
