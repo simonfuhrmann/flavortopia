@@ -1,0 +1,28 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="/src/functional/diy-user-cache.html">
+<link rel="import" href="/src/mixins/mixin-common.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-recipe-comment">
+  <link rel="import" type="css" href="diy-recipe-comment.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <diy-user-cache uid="[[comment.key]]" name="{{username}}"></diy-user-cache>
+
+    <div id="header" class="layout horizontal center">
+      <b>[[username]]</b>
+      <span class="timestamp">
+        commented [[formatTimestamp(comment.created)]]
+      </span>
+      <span class="flex"></span>
+      <span>Rating: [[comment.rating]]</span>
+    </div>
+    <p>[[comment.comment]]</p>
+
+  </template>
+  <script type="text/javascript" src="diy-recipe-comment.js"></script>
+</dom-module>

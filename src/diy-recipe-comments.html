@@ -1,0 +1,46 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="/src/diy-recipe-comment.html">
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-recipe-comments">
+  <link rel="import" type="css" href="diy-recipe-comments.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <diy-firebase-get
+        id="firebaseGet"
+        data="{{comments}}"
+        loading="{{isLoading}}"
+        error="{{loadingError}}">
+    </diy-firebase-get>
+
+    <template is="dom-if" if="[[isLoading]]">
+      <div id="loadingNotice">Loading Comments...</span>
+    </template>
+
+    <template is="dom-if" if="[[loadingError]]">
+      <div id="loadingError">Error: [[loadingError]]</span>
+    </template>
+
+    <template is="dom-if" if="[[hasNoComments_(comments)]]">
+      <div id="noComments">This recipe has no comments, yet.</div>
+    </template>
+
+    <div hidden="[[!hasComments_(comments)]]">
+      <h2 class="layout horizontal end">
+        <span class="flex">[[comments.length]] comments</span>
+        <div>([[rating.average]] stars)</div>
+      </h2>
+
+      <template is="dom-repeat" items="[[comments]]">
+        <diy-recipe-comment comment="[[item]]"></diy-recipe-comment>
+      </template>
+    </div>
+
+  </template>
+  <script type="text/javascript" src="diy-recipe-comments.js"></script>
+</dom-module>

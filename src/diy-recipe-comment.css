@@ -1,0 +1,13 @@
+p {
+  margin: 0;
+}
+
+.timestamp {
+  color: var(--secondary-text-color);
+  font-size: 0.85em;
+  margin: 0 8px;
+}
+
+#header {
+  margin: 16px 0 4px 0;
+}
