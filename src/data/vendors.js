@@ -11,6 +11,12 @@ const staticDataVendors = {
     "website": "https://flavourart.com",
     "description": "FlavourArt was born in 2006 with the intention to form a small company engaged in the creation of food and vaping flavourings."
   },
+  "fe": {
+    "name": "Flavors Express",
+    "short": "FE",
+    "website": "https://ecigexpress.com",
+    "description": "An Ecig Express brand with very concentrated flavorings."
+  },
   "flv": {
     "name": "Flavorah",
     "short": "FLV",
@@ -52,5 +58,11 @@ const staticDataVendors = {
     "short": "WF",
     "website": "https://www.wonderflavours.com",
     "description": "Wonder Flavours is a Canadian company that delivers a variety of super concentrated flavours for enthusiasts."
-  }
+  },
+  "jf": {
+    "name": "Jungle Flavors",
+    "short": "JF",
+    "website": "https://www.flavorjungle.com",
+    "description": "Jungle Flavours are made in Germany and often all-natural."
+  },
 };
