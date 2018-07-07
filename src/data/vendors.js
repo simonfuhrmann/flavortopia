@@ -29,6 +29,12 @@ const staticDataVendors = {
     "website": "https://flavorwest.com",
     "description": "Flavor West is a California (USA) based company with many affordable flavorings in their assortment."
   },
+  "hs": {
+    "name": "Hangsen",
+    "short": "HS",
+    "website": "http://www.hangsen.com",
+    "description": "The Hangsen brand delivers all that is for good alternatives to smoking: Uncompromising flavor and quality."
+  },
   "inw": {
     "name": "Inawera Flavours",
     "short": "INW",

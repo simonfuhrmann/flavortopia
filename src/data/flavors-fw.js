@@ -219,12 +219,12 @@ const staticDataFlavorsFw = {
     "name": "Butterscotch",
     "vendor": "fw"
   },
-  "fw-butterscotch-ripple": {
-    "name": "Butterscotch Ripple",
-    "vendor": "fw"
-  },
   "fw-butterscotch-natural": {
     "name": "Butterscotch (Natural)",
+    "vendor": "fw"
+  },
+  "fw-butterscotch-ripple": {
+    "name": "Butterscotch Ripple",
     "vendor": "fw"
   },
   "fw-butterscotch-tobacco": {
@@ -563,14 +563,6 @@ const staticDataFlavorsFw = {
     "name": "East Coast Tobacco",
     "vendor": "fw"
   },
-  "fw-lucky-hit-tobacco": {
-    "name": "Lucky Hit Tobacco",
-    "vendor": "fw"
-  },
-  "fw-master-base-of-tobacco": {
-    "name": "Master Base of Tobacco",
-    "vendor": "fw"
-  },
   "fw-newport-beach-tobacco": {
     "name": "Newport Beach Tobacco",
     "vendor": "fw"
@@ -779,6 +771,10 @@ const staticDataFlavorsFw = {
     "name": "Liquid Caffeine",
     "vendor": "fw"
   },
+  "fw-lucky-hit-tobacco": {
+    "name": "Lucky Hit Tobacco",
+    "vendor": "fw"
+  },
   "fw-lychee": {
     "name": "Lychee",
     "vendor": "fw"
@@ -841,6 +837,10 @@ const staticDataFlavorsFw = {
   },
   "fw-martini": {
     "name": "Martini",
+    "vendor": "fw"
+  },
+  "fw-master-base-of-tobacco": {
+    "name": "Master Base of Tobacco",
     "vendor": "fw"
   },
   "fw-menthol-liquid": {

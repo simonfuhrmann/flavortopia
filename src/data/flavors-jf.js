@@ -183,4 +183,4 @@ const staticDataFlavorsJf = {
     "name": "Yellow Cake",
     "vendor": "jf"
   },
-}
+};

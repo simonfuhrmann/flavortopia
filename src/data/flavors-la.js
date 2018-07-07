@@ -359,4 +359,4 @@ const staticDataFlavorsLa = {
     "name": "Wintergreen",
     "vendor": "la"
   }
-}
+};
