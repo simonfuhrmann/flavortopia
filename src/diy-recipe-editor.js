@@ -115,8 +115,7 @@ class DiyRecipeEditor extends
     for (let i = 0; i < this.recipeIngredients.length; ++i) {
       const ingredient = this.recipeIngredients[i];
       const percent = this.stringToNumber(ingredient.percent);
-      const selected = ingredient.selected;
-      if (isNaN(percent) || !selected || !selected.flavor) {
+      if (isNaN(percent)) {
         this.set('recipeIngredients.' + i + '.error', true);
         hasErrors = true;
       }
@@ -168,8 +167,12 @@ class DiyRecipeEditor extends
   ingredientsFromProperty_() {
     if (!this.recipeIngredients) return [];
     return this.recipeIngredients.map(ingredient => {
+      // Use key of selected flavor, or search string if unselected.
+      const flavorKey = ingredient.selected
+          ? ingredient.selected.flavor.key
+          : ingredient.search,
       return {
-        flavor: ingredient.selected.flavor.key,
+        flavor: flavorKey,
         percent: this.stringToNumber(ingredient.percent),
       };
     });
