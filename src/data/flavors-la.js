@@ -335,12 +335,12 @@ const staticDataFlavorsLa = {
     "name": "Tangerine Oil (Natural)",
     "vendor": "la"
   },
-  "la-tropical-punch-passion-fruit": {
-    "name": "Tropical Punch (Passion Fruit)",
-    "vendor": "la"
-  },
   "la-toffee-natural": {
     "name": "Toffee (Natural)",
+    "vendor": "la"
+  },
+  "la-tropical-punch-passion-fruit": {
+    "name": "Tropical Punch (Passion Fruit)",
     "vendor": "la"
   },
   "la-tutti-frutti": {

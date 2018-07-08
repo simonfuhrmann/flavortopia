@@ -59,12 +59,12 @@ const staticDataFlavorsHs = {
     "name": "Green Mint",
     "vendor": "hs"
   },
-  "hs-hs-menthol-sensation": {
-    "name": "HS Menthol Sensation",
-    "vendor": "hs"
-  },
   "hs-highway": {
     "name": "Highway",
+    "vendor": "hs"
+  },
+  "hs-hs-menthol-sensation": {
+    "name": "HS Menthol Sensation",
     "vendor": "hs"
   },
   "hs-hula-hula": {
@@ -95,10 +95,6 @@ const staticDataFlavorsHs = {
     "name": "Pineapple",
     "vendor": "hs"
   },
-  "hs-ry4": {
-    "name": "RY4",
-    "vendor": "hs"
-  },
   "hs-rainbow": {
     "name": "Rainbow",
     "vendor": "hs"
@@ -113,6 +109,10 @@ const staticDataFlavorsHs = {
   },
   "hs-rhubarb-and-custard": {
     "name": "Rhubarb & Custard",
+    "vendor": "hs"
+  },
+  "hs-ry4": {
+    "name": "RY4",
     "vendor": "hs"
   },
   "hs-spearmint": {

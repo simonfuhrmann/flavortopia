@@ -171,8 +171,12 @@ const staticDataFlavorsInw = {
     "name": "Cherries",
     "vendor": "inw"
   },
+  "inw-cherry-wisnia": {
+    "name": "Cherry (Wisnia)",
+    "vendor": "inw"
+  },
   "inw-cherry-anise": {
-    "name": "Cherry - Anise",
+    "name": "Cherry Anise",
     "vendor": "inw"
   },
   "inw-cherry-cigar": {
@@ -185,10 +189,6 @@ const staticDataFlavorsInw = {
   },
   "inw-cherry-wg": {
     "name": "Cherry WG",
-    "vendor": "inw"
-  },
-  "inw-cherry-wisnia": {
-    "name": "Cherry (Wisnia)",
     "vendor": "inw"
   },
   "inw-chocolate": {

@@ -19,12 +19,12 @@ const staticDataFlavorsSc = {
     "name": "B & H",
     "vendor": "sc"
   },
-  "sc-banana-cream-pie": {
-    "name": "Banana Cream Pie",
-    "vendor": "sc"
-  },
   "sc-banana": {
     "name": "Banana",
+    "vendor": "sc"
+  },
+  "sc-banana-cream-pie": {
+    "name": "Banana Cream Pie",
     "vendor": "sc"
   },
   "sc-black-mile": {
@@ -187,12 +187,12 @@ const staticDataFlavorsSc = {
     "name": "RY-4",
     "vendor": "sc"
   },
-  "sc-seven-stars": {
-    "name": "Seven Stars",
-    "vendor": "sc"
-  },
   "sc-seven": {
     "name": "Seven",
+    "vendor": "sc"
+  },
+  "sc-seven-stars": {
+    "name": "Seven Stars",
     "vendor": "sc"
   },
   "sc-shisha": {

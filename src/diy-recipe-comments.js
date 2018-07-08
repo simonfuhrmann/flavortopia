@@ -29,17 +29,19 @@ class DiyRecipeComments extends Polymer.Element {
 
       rating: {
         type: Object,
-        value: { average: 0.0, numRatings: 0 },
+        value: () => {
+          return { average: 0.0, numRatings: 0 };
+        },
       },
     };
   }
 
   hasComments_(comments) {
-    return this.comments && this.comments.length > 0;
+    return !!this.comments && this.comments.length > 0;
   }
 
   hasNoComments_(comments) {
-    return this.comments && this.comments.length == 0;
+    return !!this.comments && this.comments.length == 0;
   }
 
   onRecipeKeyChanged_(recipeKey) {
@@ -53,6 +55,7 @@ class DiyRecipeComments extends Polymer.Element {
   onCommentsChanged_(comments) {
     if (!comments) return;
 
+    // Compute average rating from comments.
     let rating = {
       average: 0.0,
       numRatings: 0,

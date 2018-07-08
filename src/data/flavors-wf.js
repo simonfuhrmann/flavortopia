@@ -1,100 +1,4 @@
 const staticDataFlavorsWf = {
-  "wf-apple-cider": {
-    "name": "Apple Cider",
-    "vendor": "wf"
-  },
-  "wf-banana-puree": {
-    "name": "Banana Puree",
-    "vendor": "wf"
-  },
-  "wf-blueberry-smoothie": {
-    "name": "Blueberry Smoothie",
-    "vendor": "wf"
-  },
-  "wf-butter-pecan-pie": {
-    "name": "Butter Pecan Pie",
-    "vendor": "wf"
-  },
-  "wf-butterscotch-cream-pie": {
-    "name": "Butterscotch Cream Pie",
-    "vendor": "wf"
-  },
-  "wf-caramel-butter": {
-    "name": "Caramel Butter",
-    "vendor": "wf"
-  },
-  "wf-caramel-rice-crispy-treats": {
-    "name": "Caramel Rice Crispy Treats",
-    "vendor": "wf"
-  },
-  "wf-chocolate-chunks": {
-    "name": "Chocolate Chunks",
-    "vendor": "wf"
-  },
-  "wf-cinnamon-pastry": {
-    "name": "Cinnamon Pastry",
-    "vendor": "wf"
-  },
-  "wf-fresh-strawberries": {
-    "name": "Fresh Strawberries",
-    "vendor": "wf"
-  },
-  "wf-fruit-salad": {
-    "name": "Fruit Salad",
-    "vendor": "wf"
-  },
-  "wf-fruits-and-cream": {
-    "name": "Fruits & Cream",
-    "vendor": "wf"
-  },
-  "wf-green-jolly-candy": {
-    "name": "Green Jolly Candy",
-    "vendor": "wf"
-  },
-  "wf-hazelnuts-and-cream": {
-    "name": "Hazelnuts & Cream",
-    "vendor": "wf"
-  },
-  "wf-orange-juice": {
-    "name": "Orange Juice",
-    "vendor": "wf"
-  },
-  "wf-peach-pie-and-cream": {
-    "name": "Peach Pie & Cream",
-    "vendor": "wf"
-  },
-  "wf-roasted-pecans-and-cream": {
-    "name": "Roasted Pecans & Cream",
-    "vendor": "wf"
-  },
-  "wf-smooth-cappuccino-cream": {
-    "name": "Smooth Cappuccino Cream",
-    "vendor": "wf"
-  },
-  "wf-sour-blue-raspberry-candy": {
-    "name": "Sour Blue Raspberry Candy",
-    "vendor": "wf"
-  },
-  "wf-sour-watermelon-candy": {
-    "name": "Sour Watermelon Candy",
-    "vendor": "wf"
-  },
-  "wf-summertime-lemonade": {
-    "name": "Summertime Lemonade",
-    "vendor": "wf"
-  },
-  "wf-sweet-and-sour-purple-drink": {
-    "name": "Sweet and Sour Purple Drink",
-    "vendor": "wf"
-  },
-  "wf-tahitian-vanilla-cream": {
-    "name": "Tahitian Vanilla Cream",
-    "vendor": "wf"
-  },
-  "wf-vanilla-ruyan-custard": {
-    "name": "Vanilla Ruyan Custard",
-    "vendor": "wf"
-  },
   "wf-african-horned-cucumber-sc": {
     "name": "African Horned Cucumber SC",
     "vendor": "wf"
@@ -107,12 +11,24 @@ const staticDataFlavorsWf = {
     "name": "Angel Cake SC",
     "vendor": "wf"
   },
+  "wf-apple-cider": {
+    "name": "Apple Cider",
+    "vendor": "wf"
+  },
+  "wf-banana-puree": {
+    "name": "Banana Puree",
+    "vendor": "wf"
+  },
   "wf-banoffee-pie-sc": {
     "name": "Banoffee Pie SC",
     "vendor": "wf"
   },
   "wf-blackcherry-jelly-bean-sc": {
     "name": "Blackcherry Jelly Bean SC",
+    "vendor": "wf"
+  },
+  "wf-blueberry-smoothie": {
+    "name": "Blueberry Smoothie",
     "vendor": "wf"
   },
   "wf-brazilian-coffee-sc": {
@@ -123,6 +39,10 @@ const staticDataFlavorsWf = {
     "name": "Bumbleberry SC",
     "vendor": "wf"
   },
+  "wf-butter-pecan-pie": {
+    "name": "Butter Pecan Pie",
+    "vendor": "wf"
+  },
   "wf-butter-tart-sc": {
     "name": "Butter Tart SC",
     "vendor": "wf"
@@ -131,8 +51,20 @@ const staticDataFlavorsWf = {
     "name": "Buttercream Frosting SC",
     "vendor": "wf"
   },
+  "wf-butterscotch-cream-pie": {
+    "name": "Butterscotch Cream Pie",
+    "vendor": "wf"
+  },
   "wf-candy-stick-candy-sc": {
     "name": "Candy Stick Candy SC",
+    "vendor": "wf"
+  },
+  "wf-caramel-butter": {
+    "name": "Caramel Butter",
+    "vendor": "wf"
+  },
+  "wf-caramel-rice-crispy-treats": {
+    "name": "Caramel Rice Crispy Treats",
     "vendor": "wf"
   },
   "wf-cashew-sc": {
@@ -141,6 +73,14 @@ const staticDataFlavorsWf = {
   },
   "wf-champagne-soda-sc": {
     "name": "Champagne Soda SC",
+    "vendor": "wf"
+  },
+  "wf-chocolate-chunks": {
+    "name": "Chocolate Chunks",
+    "vendor": "wf"
+  },
+  "wf-cinnamon-pastry": {
+    "name": "Cinnamon Pastry",
     "vendor": "wf"
   },
   "wf-cocoa-sc": {
@@ -183,12 +123,28 @@ const staticDataFlavorsWf = {
     "name": "Fluffy White Cake SC",
     "vendor": "wf"
   },
+  "wf-fresh-strawberries": {
+    "name": "Fresh Strawberries",
+    "vendor": "wf"
+  },
   "wf-frozen-yogurt-sc": {
     "name": "Frozen Yogurt SC",
     "vendor": "wf"
   },
+  "wf-fruit-salad": {
+    "name": "Fruit Salad",
+    "vendor": "wf"
+  },
+  "wf-fruits-and-cream": {
+    "name": "Fruits & Cream",
+    "vendor": "wf"
+  },
   "wf-glazed-donut-sc": {
     "name": "Glazed Donut SC",
+    "vendor": "wf"
+  },
+  "wf-green-jolly-candy": {
+    "name": "Green Jolly Candy",
     "vendor": "wf"
   },
   "wf-grenadine-sc": {
@@ -201,6 +157,10 @@ const staticDataFlavorsWf = {
   },
   "wf-gushy-fruit-candy-sc": {
     "name": "Gushy Fruit Candy SC",
+    "vendor": "wf"
+  },
+  "wf-hazelnuts-and-cream": {
+    "name": "Hazelnuts & Cream",
     "vendor": "wf"
   },
   "wf-hollandaise-cream-sc": {
@@ -243,8 +203,16 @@ const staticDataFlavorsWf = {
     "name": "Oats & Cream Cookie SC",
     "vendor": "wf"
   },
+  "wf-orange-juice": {
+    "name": "Orange Juice",
+    "vendor": "wf"
+  },
   "wf-peach-gummy-candy-sc": {
     "name": "Peach Gummy Candy SC",
+    "vendor": "wf"
+  },
+  "wf-peach-pie-and-cream": {
+    "name": "Peach Pie & Cream",
     "vendor": "wf"
   },
   "wf-peanut-brittle-sc": {
@@ -283,6 +251,10 @@ const staticDataFlavorsWf = {
     "name": "Ripe Pear SC",
     "vendor": "wf"
   },
+  "wf-roasted-pecans-and-cream": {
+    "name": "Roasted Pecans & Cream",
+    "vendor": "wf"
+  },
   "wf-rum-baba-sc": {
     "name": "Rum Baba SC",
     "vendor": "wf"
@@ -307,12 +279,24 @@ const staticDataFlavorsWf = {
     "name": "Shortbread Cookies SC",
     "vendor": "wf"
   },
+  "wf-smooth-cappuccino-cream": {
+    "name": "Smooth Cappuccino Cream",
+    "vendor": "wf"
+  },
   "wf-sour-ball-candy-sc": {
     "name": "Sour Ball Candy SC",
     "vendor": "wf"
   },
+  "wf-sour-blue-raspberry-candy": {
+    "name": "Sour Blue Raspberry Candy",
+    "vendor": "wf"
+  },
   "wf-sour-gummy-candy-sc": {
     "name": "Sour Gummy Candy SC",
+    "vendor": "wf"
+  },
+  "wf-sour-watermelon-candy": {
+    "name": "Sour Watermelon Candy",
     "vendor": "wf"
   },
   "wf-soursop-sc": {
@@ -331,8 +315,20 @@ const staticDataFlavorsWf = {
     "name": "Sugar Cone SC",
     "vendor": "wf"
   },
+  "wf-summertime-lemonade": {
+    "name": "Summertime Lemonade",
+    "vendor": "wf"
+  },
+  "wf-sweet-and-sour-purple-drink": {
+    "name": "Sweet and Sour Purple Drink",
+    "vendor": "wf"
+  },
   "wf-sweetener-sc": {
     "name": "Sweetener SC",
+    "vendor": "wf"
+  },
+  "wf-tahitian-vanilla-cream": {
+    "name": "Tahitian Vanilla Cream",
     "vendor": "wf"
   },
   "wf-tangerine-sc": {
@@ -347,6 +343,10 @@ const staticDataFlavorsWf = {
     "name": "Vanilla Cream Extra SC",
     "vendor": "wf"
   },
+  "wf-vanilla-ruyan-custard": {
+    "name": "Vanilla Ruyan Custard",
+    "vendor": "wf"
+  },
   "wf-walnut-sc": {
     "name": "Walnut SC",
     "vendor": "wf"
@@ -354,5 +354,5 @@ const staticDataFlavorsWf = {
   "wf-white-fudge-sc": {
     "name": "White Fudge SC",
     "vendor": "wf"
-  },
+  }
 };

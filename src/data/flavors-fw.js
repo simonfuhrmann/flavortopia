@@ -407,6 +407,10 @@ const staticDataFlavorsFw = {
     "name": "Cookies and Cream",
     "vendor": "fw"
   },
+  "fw-cool-texas-tobacco": {
+    "name": "Cool Texas Tobacco",
+    "vendor": "fw"
+  },
   "fw-cotton-candy": {
     "name": "Cotton Candy",
     "vendor": "fw"
@@ -463,6 +467,10 @@ const staticDataFlavorsFw = {
     "name": "Dark Chocolate",
     "vendor": "fw"
   },
+  "fw-desert-llama-tobacco": {
+    "name": "Desert Llama Tobacco",
+    "vendor": "fw"
+  },
   "fw-double-dutch-chocolate": {
     "name": "Double Dutch Chocolate",
     "vendor": "fw"
@@ -489,6 +497,10 @@ const staticDataFlavorsFw = {
   },
   "fw-e-caffeine": {
     "name": "E-Caffeine",
+    "vendor": "fw"
+  },
+  "fw-east-coast-tobacco": {
+    "name": "East Coast Tobacco",
     "vendor": "fw"
   },
   "fw-ecto-cooler-type": {
@@ -549,38 +561,6 @@ const staticDataFlavorsFw = {
   },
   "fw-fuzzy-navel": {
     "name": "Fuzzy Navel",
-    "vendor": "fw"
-  },
-  "fw-cool-texas-tobacco": {
-    "name": "Cool Texas Tobacco",
-    "vendor": "fw"
-  },
-  "fw-desert-llama-tobacco": {
-    "name": "Desert Llama Tobacco",
-    "vendor": "fw"
-  },
-  "fw-east-coast-tobacco": {
-    "name": "East Coast Tobacco",
-    "vendor": "fw"
-  },
-  "fw-newport-beach-tobacco": {
-    "name": "Newport Beach Tobacco",
-    "vendor": "fw"
-  },
-  "fw-re4nu-tobacco": {
-    "name": "Re(4)nu Tobacco",
-    "vendor": "fw"
-  },
-  "fw-salem-oregon-tobacco": {
-    "name": "Salem Oregon Tobacco",
-    "vendor": "fw"
-  },
-  "fw-the-red-cowboy": {
-    "name": "The Red Cowboy",
-    "vendor": "fw"
-  },
-  "fw-twisted-up-tobacco": {
-    "name": "Twisted Up Tobacco",
     "vendor": "fw"
   },
   "fw-ginger": {
@@ -875,6 +855,10 @@ const staticDataFlavorsFw = {
     "name": "Mystery Flavor",
     "vendor": "fw"
   },
+  "fw-newport-beach-tobacco": {
+    "name": "Newport Beach Tobacco",
+    "vendor": "fw"
+  },
   "fw-nutella-type": {
     "name": "Nutella Type",
     "vendor": "fw"
@@ -943,12 +927,12 @@ const staticDataFlavorsFw = {
     "name": "Pineapple",
     "vendor": "fw"
   },
-  "fw-pineapple-peach": {
-    "name": "Pineapple Peach",
-    "vendor": "fw"
-  },
   "fw-pineapple-natural": {
     "name": "Pineapple (Natural)",
+    "vendor": "fw"
+  },
+  "fw-pineapple-peach": {
+    "name": "Pineapple Peach",
     "vendor": "fw"
   },
   "fw-pink-champagne": {
@@ -1011,6 +995,10 @@ const staticDataFlavorsFw = {
     "name": "Razzleberry",
     "vendor": "fw"
   },
+  "fw-re4nu-tobacco": {
+    "name": "Re(4)nu Tobacco",
+    "vendor": "fw"
+  },
   "fw-red-bowl": {
     "name": "Red Bowl",
     "vendor": "fw"
@@ -1071,6 +1059,10 @@ const staticDataFlavorsFw = {
     "name": "S'mores",
     "vendor": "fw"
   },
+  "fw-salem-oregon-tobacco": {
+    "name": "Salem Oregon Tobacco",
+    "vendor": "fw"
+  },
   "fw-salt-water-taffy": {
     "name": "Salt Water Taffy",
     "vendor": "fw"
@@ -1123,6 +1115,10 @@ const staticDataFlavorsFw = {
     "name": "Strawberry",
     "vendor": "fw"
   },
+  "fw-strawberry-natural": {
+    "name": "Strawberry (Natural)",
+    "vendor": "fw"
+  },
   "fw-strawberry-banana": {
     "name": "Strawberry Banana",
     "vendor": "fw"
@@ -1141,10 +1137,6 @@ const staticDataFlavorsFw = {
   },
   "fw-strawberry-shortcake": {
     "name": "Strawberry Shortcake",
-    "vendor": "fw"
-  },
-  "fw-strawberry-natural": {
-    "name": "Strawberry (Natural)",
     "vendor": "fw"
   },
   "fw-sugar-cookie": {
@@ -1193,6 +1185,10 @@ const staticDataFlavorsFw = {
   },
   "fw-tequila": {
     "name": "Tequila",
+    "vendor": "fw"
+  },
+  "fw-the-red-cowboy": {
+    "name": "The Red Cowboy",
     "vendor": "fw"
   },
   "fw-tidewater-tobacco": {
@@ -1245,6 +1241,10 @@ const staticDataFlavorsFw = {
   },
   "fw-tutti-fruitti": {
     "name": "Tutti Fruitti",
+    "vendor": "fw"
+  },
+  "fw-twisted-up-tobacco": {
+    "name": "Twisted Up Tobacco",
     "vendor": "fw"
   },
   "fw-unicorn-vomit": {
@@ -1354,5 +1354,5 @@ const staticDataFlavorsFw = {
   "fw-yumberry": {
     "name": "Yumberry",
     "vendor": "fw"
-  },
+  }
 };
