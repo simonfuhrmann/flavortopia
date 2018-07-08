@@ -110,6 +110,7 @@ function prepareAllFlavors() {
       staticDataFlavorsInw,
       staticDataFlavorsJf,
       staticDataFlavorsLa,
+      staticDataFlavorsMisc,
       staticDataFlavorsRf,
       staticDataFlavorsSc,
       staticDataFlavorsTfa,
@@ -121,7 +122,7 @@ function prepareAllFlavors() {
   });
 
   // Sanity checks. This should be COMMENTED in a production release.
-  sanityCheckFlavors(allFlavors);
+  //sanityCheckFlavors(allFlavors);
 
   return allFlavors;
 }

@@ -47,6 +47,12 @@ const staticDataVendors = {
     "website": "http://www.lorannoils.com",
     "description": "LorAnn is known for concentrated, professional strength flavorings and essential oils, but the product line encompasses a variety of candy making, baking supplies and flavoring options."
   },
+  "misc": {
+    "name": "Miscellaneous flavors",
+    "short": "***",
+    "website": "http://www.google.com",
+    "description": "Other, miscellaneous flavors that do not have a brand attached."
+  },
   "rf": {
     "name": "Real Flavors",
     "short": "RF",
