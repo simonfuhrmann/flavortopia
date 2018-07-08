@@ -11,12 +11,20 @@ const staticDataFlavorsLa = {
     "name": "Amaretto",
     "vendor": "la"
   },
+  "la-amaretto-nutty": {
+    "name": "Amaretto (Nutty)",
+    "vendor": "la"
+  },
   "la-anise-oil-natural": {
     "name": "Anise Oil (Natural)",
     "vendor": "la"
   },
   "la-apple": {
     "name": "Apple",
+    "vendor": "la"
+  },
+  "la-apple-pie": {
+    "name": "Apple Pie",
     "vendor": "la"
   },
   "la-apricot": {
@@ -35,6 +43,10 @@ const staticDataFlavorsLa = {
     "name": "Bavarian Cream (Vanilla)",
     "vendor": "la"
   },
+  "la-bergamot-oil-natural": {
+    "name": "Bergamot Oil (Natural)",
+    "vendor": "la"
+  },
   "la-black-cherry": {
     "name": "Black Cherry",
     "vendor": "la"
@@ -45,6 +57,10 @@ const staticDataFlavorsLa = {
   },
   "la-blackberry": {
     "name": "Blackberry",
+    "vendor": "la"
+  },
+  "la-blood-orange-oil-natural": {
+    "name": "Blood Orange Oil (Natural)",
     "vendor": "la"
   },
   "la-blueberry": {
@@ -87,8 +103,20 @@ const staticDataFlavorsLa = {
     "name": "Cake Batter (White)",
     "vendor": "la"
   },
+  "la-canadian-maple": {
+    "name": "Canadian Maple",
+    "vendor": "la"
+  },
+  "la-cappuccino": {
+    "name": "Cappuccino",
+    "vendor": "la"
+  },
   "la-caramel": {
     "name": "Caramel",
+    "vendor": "la"
+  },
+  "la-chai-tea-natural": {
+    "name": "Chai Tea (Natural)",
     "vendor": "la"
   },
   "la-cheesecake": {
@@ -123,6 +151,10 @@ const staticDataFlavorsLa = {
     "name": "Cinnamon Roll",
     "vendor": "la"
   },
+  "la-citrus-blossom-natural": {
+    "name": "Citrus Blossom (Natural)",
+    "vendor": "la"
+  },
   "la-clove-oil-natural": {
     "name": "Clove Oil (Natural)",
     "vendor": "la"
@@ -143,6 +175,10 @@ const staticDataFlavorsLa = {
     "name": "Cookies & Cream",
     "vendor": "la"
   },
+  "la-cool-creme-de-menthe-natural": {
+    "name": "Cool Creme de Menthe (Natural)",
+    "vendor": "la"
+  },
   "la-cotton-candy": {
     "name": "Cotton Candy",
     "vendor": "la"
@@ -159,12 +195,24 @@ const staticDataFlavorsLa = {
     "name": "Cranberry (Natural)",
     "vendor": "la"
   },
+  "la-cream-cheese-icing": {
+    "name": "Cream Cheese Icing",
+    "vendor": "la"
+  },
   "la-creamy-caramel-natural": {
     "name": "Creamy Caramel (Natural)",
     "vendor": "la"
   },
+  "la-creamy-hazelnut": {
+    "name": "Creamy Hazelnut",
+    "vendor": "la"
+  },
   "la-creme-de-menthe": {
     "name": "Creme De Menthe",
+    "vendor": "la"
+  },
+  "la-cucumber-serrano": {
+    "name": "Cucumber Serrano",
     "vendor": "la"
   },
   "la-eggnog": {
@@ -175,24 +223,56 @@ const staticDataFlavorsLa = {
     "name": "English Toffee",
     "vendor": "la"
   },
+  "la-eucalyptus-oil-natural": {
+    "name": "Eucalyptus Oil (Natural)",
+    "vendor": "la"
+  },
   "la-fruit-punch-natural": {
     "name": "Fruit Punch (Natural)",
+    "vendor": "la"
+  },
+  "la-ginger-oil-natural": {
+    "name": "Ginger Oil (Natural)",
     "vendor": "la"
   },
   "la-grape": {
     "name": "Grape",
     "vendor": "la"
   },
+  "la-grapefruit-oil-natural": {
+    "name": "Grapefruit Oil (Natural)",
+    "vendor": "la"
+  },
   "la-green-apple": {
     "name": "Green Apple",
+    "vendor": "la"
+  },
+  "la-horchata": {
+    "name": "Horchata",
     "vendor": "la"
   },
   "la-horehound": {
     "name": "Horehound",
     "vendor": "la"
   },
+  "la-hot-chili-natural": {
+    "name": "Hot Chili (Natural)",
+    "vendor": "la"
+  },
+  "la-irish-cream": {
+    "name": "Irish Cream",
+    "vendor": "la"
+  },
+  "la-jalapeno": {
+    "name": "Jalapeno",
+    "vendor": "la"
+  },
   "la-key-lime-oil-natural": {
     "name": "Key Lime Oil (Natural)",
+    "vendor": "la"
+  },
+  "la-lavender-oil-natural": {
+    "name": "Lavender Oil (Natural)",
     "vendor": "la"
   },
   "la-lemon-oil-natural": {
@@ -231,8 +311,20 @@ const staticDataFlavorsLa = {
     "name": "Melon",
     "vendor": "la"
   },
+  "la-menthol-eucalyptus-natural": {
+    "name": "Menthol Eucalyptus (Natural)",
+    "vendor": "la"
+  },
   "la-mint-chocolate-chip": {
     "name": "Mint Chocolate Chip",
+    "vendor": "la"
+  },
+  "la-nutmeg-oil-natural": {
+    "name": "Nutmeg Oil (Natural)",
+    "vendor": "la"
+  },
+  "la-orange-brandy": {
+    "name": "Orange Brandy",
     "vendor": "la"
   },
   "la-orange-cream": {
@@ -241,6 +333,10 @@ const staticDataFlavorsLa = {
   },
   "la-orange-oil-natural": {
     "name": "Orange Oil (Natural)",
+    "vendor": "la"
+  },
+  "la-origanum-oil-natural": {
+    "name": "Origanum Oil (Natural)",
     "vendor": "la"
   },
   "la-peach": {
@@ -287,6 +383,10 @@ const staticDataFlavorsLa = {
     "name": "Pomegranate (Natural)",
     "vendor": "la"
   },
+  "la-praline": {
+    "name": "Praline",
+    "vendor": "la"
+  },
   "la-pralines-and-cream": {
     "name": "Pralines and Cream",
     "vendor": "la"
@@ -305,6 +405,18 @@ const staticDataFlavorsLa = {
   },
   "la-root-beer": {
     "name": "Root Beer",
+    "vendor": "la"
+  },
+  "la-rosemary-oil-natural": {
+    "name": "Rosemary Oil (Natural)",
+    "vendor": "la"
+  },
+  "la-royal-raspberry": {
+    "name": "Royal Raspberry",
+    "vendor": "la"
+  },
+  "la-salt-water-taffy": {
+    "name": "Salt Water Taffy",
     "vendor": "la"
   },
   "la-sassafras": {
@@ -327,12 +439,24 @@ const staticDataFlavorsLa = {
     "name": "Strawberry (Natural)",
     "vendor": "la"
   },
+  "la-strawberry-banana": {
+    "name": "Strawberry Banana",
+    "vendor": "la"
+  },
   "la-strawberry-kiwi": {
     "name": "Strawberry Kiwi",
     "vendor": "la"
   },
   "la-tangerine-oil-natural": {
     "name": "Tangerine Oil (Natural)",
+    "vendor": "la"
+  },
+  "la-teaberry": {
+    "name": "Teaberry",
+    "vendor": "la"
+  },
+  "la-thyme-oil-natural": {
+    "name": "Thyme Oil (Natural)",
     "vendor": "la"
   },
   "la-toffee-natural": {
@@ -347,8 +471,16 @@ const staticDataFlavorsLa = {
     "name": "Tutti Frutti",
     "vendor": "la"
   },
+  "la-vanilla": {
+    "name": "Vanilla",
+    "vendor": "la"
+  },
   "la-vanilla-butternut": {
     "name": "Vanilla Butternut",
+    "vendor": "la"
+  },
+  "la-washington-cherry": {
+    "name": "Washington Cherry",
     "vendor": "la"
   },
   "la-watermelon": {
@@ -357,6 +489,10 @@ const staticDataFlavorsLa = {
   },
   "la-wintergreen": {
     "name": "Wintergreen",
+    "vendor": "la"
+  },
+  "la-wintergreen-natural": {
+    "name": "Wintergreen (Natural)",
     "vendor": "la"
   }
 };

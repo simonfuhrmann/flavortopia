@@ -158,7 +158,7 @@
       </template>
     </div>
 
-    <!-- The recipe mixer has expensive UI, use dom-if for efficiency. -->
+    <!-- The recipe mixer has expensive UI, use dom-if for performance. -->
     <template is="dom-if" if="[[showRecipeMixer]]" restamp>
       <diy-recipe-mixer ingredients="[[ingredients]]"></diy-recipe-mixer>
     </template>

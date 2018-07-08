@@ -105,8 +105,6 @@ diy-recipe-mixer {
 
 #ingredients {
   margin: 8px 0;
-  padding: 8px;
-  border: 1px solid var(--secondary-background-color);
   background-color: white;
 }
 

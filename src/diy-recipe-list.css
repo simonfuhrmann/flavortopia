@@ -2,14 +2,18 @@
   @apply --layout-vertical;
 }
 
-paper-card {
-  margin-top: 16px;
+diy-recipe {
+  margin-bottom: 16px;
+  background-color: white;
+  @apply --shadow-elevation-2dp;
 }
 
 #loadingRecipesCard,
 #loadingErrorCard,
 #noRecipesCard {
   padding: 24px;
+  background-color: white;
+  @apply --shadow-elevation-2dp;
   @apply --layout-horizontal;
   @apply --layout-center-justified;
 }
@@ -24,7 +28,7 @@ paper-card {
 }
 
 #listHeader h1 {
-  margin: 0;
+  margin: 0 0 16px 0;
 }
 
 #listHeader paper-button {
