@@ -5,6 +5,12 @@ const staticDataVendors = {
     "website": "http://www.capellaflavors.com",
     "description": "Capella Flavors is a USA based company with over 100 unique flavors in their repertoire."
   },
+  "df": {
+    "name": "Delosi Flavors",
+    "short": "DF",
+    "website": "https://delosilabs.com/",
+    "description": "Delosi Labs was founded on the principle that ALL users should expect the highest level of performance, taste and satisfaction in the product they are using."
+  },
   "fa": {
     "name": "FlavourArt",
     "short": "FA",

@@ -170,7 +170,7 @@ class DiyRecipeEditor extends
       // Use key of selected flavor, or search string if unselected.
       const flavorKey = ingredient.selected
           ? ingredient.selected.flavor.key
-          : ingredient.search,
+          : ingredient.search;
       return {
         flavor: flavorKey,
         percent: this.stringToNumber(ingredient.percent),
