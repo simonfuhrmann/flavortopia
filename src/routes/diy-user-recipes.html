@@ -1,6 +1,10 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
 
+<link rel="import" href="/src/common/diy-live-search.html">
 <link rel="import" href="/src/mixins/mixin-redux.html">
 <link rel="import" href="/src/theme/diy-theme.html">
 <link rel="import" href="/src/diy-recipe-editor.html">
@@ -12,12 +16,24 @@
     <style include="iron-flex iron-flex-alignment"></style>
     <style include="diy-theme"></style>
 
+    <!-- Recipe list header with create button. -->
+    <div id="listHeader" class="layout horizontal">
+      <h1 class="flex">Your Recipes</h1>
+      <paper-button raised on-tap="onCreateRecipe_">
+        <iron-icon icon="icons:add"></iron-icon>
+        <span>New Recipe</span>
+      </paper-button>
+    </div>
+
+    <!-- Recipe filter. -->
+    <diy-live-search search="{{recipeFilter}}"></diy-live-search>
+
     <!-- Recipe list. -->
     <diy-recipe-list
         id="recipeList"
         user-id="[[userId]]"
-        on-edit-recipe="onEditRecipe_"
-        on-create-recipe="onCreateRecipe_">
+        filter="[[recipeFilter]]"
+        on-edit-recipe="onEditRecipe_">
     </diy-recipe-list>
 
     <!-- Recipe editor. -->

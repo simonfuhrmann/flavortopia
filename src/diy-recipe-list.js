@@ -13,10 +13,18 @@ class DiyRecipeList extends Polymer.Element {
         type: Boolean,
         value: false,
       },
+      filter: String,
       loadingError: String,
-      userRecipes: Array,
       deleteRecipe: Object,
+      userRecipes: Array,
+      filteredRecipes: Array,
     };
+  }
+
+  static get observers() {
+    return [
+      'applyFilter_(filter, userRecipes.*)',
+    ];
   }
 
   onUserIdChanged_(userId) {
@@ -27,12 +35,20 @@ class DiyRecipeList extends Polymer.Element {
     this.$.firebaseGet.subscribeUserRecipes(userId);
   }
 
-  showNoRecipes_(userRecipes) {
-    return !userRecipes || userRecipes.length == 0;
+  applyFilter_(filter) {
+    if (!filter || filter.length < 3) {
+      this.set('filteredRecipes', this.userRecipes);
+      return;
+    }
+
+    const filterLc = filter.toLowerCase();
+    this.set('filteredRecipes', this.userRecipes.filter(recipe => {
+      return recipe.name.toLowerCase().includes(filterLc);
+    }));
   }
 
-  onNewRecipeTap_() {
-    this.dispatchEvent(new CustomEvent('create-recipe'));
+  showNoRecipes_(userRecipes) {
+    return !userRecipes || userRecipes.length == 0;
   }
 
   onEditRecipe_(event) {

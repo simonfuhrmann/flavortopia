@@ -10,6 +10,7 @@ class DiyUserRecipes extends DiyMixinRedux(Polymer.Element) {
         statePath: 'user.auth.firebaseUser.uid',
         observer: 'onUserIdChanged_',
       },
+      recipeFilter: String,
     };
   }
 

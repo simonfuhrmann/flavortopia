@@ -2,6 +2,22 @@
   @apply --layout-vertical;
 }
 
+diy-live-search {
+  margin: 16px 0;
+}
+
+#listHeader h1 {
+  margin: 0;
+}
+
+#listHeader paper-button {
+  margin: 0;
+  padding: 8px;
+  text-transform: none;
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+}
+
 #editRecipeCard {
   padding: 16px;
 }
