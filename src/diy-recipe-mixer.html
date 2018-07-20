@@ -18,67 +18,58 @@
         label="Volume (ml) to mix">
     </diy-input>
 
-    <div id="tableWrapper">
-      <table>
-        <template
-            is="dom-repeat"
-            items="[[ingredients]]"
-            sort="[[ingredientsSorter_(sortForScale)]]">
-          <tr>
-            <td class="volume">
-              <b>[[mlForIngredient_(item.percent, volumeMl)]] ml</b>
-            </td>
-            <td class="percent">[[formatFixed(item.percent)]]%</td>
-            <td class="vendor" on-tap="onVendorTap_">
-              <span>[[item.vendor.short]]</span>
-            </td>
-            <td class="flavor">[[item.flavor.name]]</td>
-            <td class="actions">
-              <diy-flavor-action
-                  flavor="[[item.flavor.key]]"
-                  role="button"
-                  on-tap="onActionTap_">
-              </diy-flavor-action>
-            </td>
-          </tr>
-        </template>
+    <table>
+      <template
+          is="dom-repeat"
+          items="[[ingredients]]"
+          sort="[[ingredientsSorter_(sortForScale)]]">
+        <tr>
+          <td class="volume">
+            <b>[[mlForIngredient_(item.percent, volumeMl)]] ml</b>
+          </td>
+          <td class="percent">[[formatFixed(item.percent)]]%</td>
+          <td class="vendor" on-tap="onVendorTap_">
+            <span>[[item.vendor.short]]</span>
+          </td>
+          <td class="flavor">[[item.flavor.name]]</td>
+        </tr>
+      </template>
 
-        <!-- Simple base liquid. -->
-        <template is="dom-if" if="[[!customizeBase]]" restamp>
-          <tr class="separator-row">
-            <td class="volume"><b>[[formatFixed(simpleBaseMl)]] ml</b></td>
-            <td class="percent">[[formatFixed(simpleBasePercent)]]%</td>
-            <td colspan="3">Base Liquid</td>
-          </tr>
-        </template>
+      <!-- Simple base liquid. -->
+      <template is="dom-if" if="[[!customizeBase]]" restamp>
+        <tr class="separator-row">
+          <td class="volume"><b>[[formatFixed(simpleBaseMl)]] ml</b></td>
+          <td class="percent">[[formatFixed(simpleBasePercent)]]%</td>
+          <td colspan="2">Base Liquid</td>
+        </tr>
+      </template>
 
-        <!-- Custom base liquid. -->
-        <template is="dom-if" if="[[customizeBase]]" restamp>
-          <tr class="separator-row">
-            <td class="volume">
-              <b>[[formatFixed(customBaseNicotineMl)]] ml</b>
-            </td>
-            <td class="percent">[[formatFixed(customBaseNicotinePercent)]]%</td>
-            <td colspan="3">Nicotine Base ([[customBaseNicotineMg]] mg)</td>
-          </tr>
-          <tr>
-            <td class="volume"><b>[[formatFixed(customBaseWaterMl)]] ml</b></td>
-            <td class="percent">[[formatFixed(customBaseWaterPercent)]]%</td>
-            <td colspan="3">Water (dilution)</td>
-          </tr>
-          <tr>
-            <td class="volume"><b>[[formatFixed(customBasePgMl)]] ml</b></td>
-            <td class="percent">[[formatFixed(customBasePgPercent)]]%</td>
-            <td colspan="3">PG (Propylene Glycol)</td>
-          </tr>
-          <tr>
-            <td class="volume"><b>[[formatFixed(customBaseVgMl)]] ml</b></td>
-            <td class="percent">[[formatFixed(customBaseVgPercent)]]%</td>
-            <td colspan="3">VG (Vegetable Glycerin)</td>
-          </tr>
-        </template>
-      </table>
-    </div>
+      <!-- Custom base liquid. -->
+      <template is="dom-if" if="[[customizeBase]]" restamp>
+        <tr class="separator-row">
+          <td class="volume">
+            <b>[[formatFixed(customBaseNicotineMl)]] ml</b>
+          </td>
+          <td class="percent">[[formatFixed(customBaseNicotinePercent)]]%</td>
+          <td colspan="2">Nicotine Base ([[customBaseNicotineMg]] mg)</td>
+        </tr>
+        <tr>
+          <td class="volume"><b>[[formatFixed(customBaseWaterMl)]] ml</b></td>
+          <td class="percent">[[formatFixed(customBaseWaterPercent)]]%</td>
+          <td colspan="2">Water (dilution)</td>
+        </tr>
+        <tr>
+          <td class="volume"><b>[[formatFixed(customBasePgMl)]] ml</b></td>
+          <td class="percent">[[formatFixed(customBasePgPercent)]]%</td>
+          <td colspan="2">PG (Propylene Glycol)</td>
+        </tr>
+        <tr>
+          <td class="volume"><b>[[formatFixed(customBaseVgMl)]] ml</b></td>
+          <td class="percent">[[formatFixed(customBaseVgPercent)]]%</td>
+          <td colspan="2">VG (Vegetable Glycerin)</td>
+        </tr>
+      </template>
+    </table>
 
     <div class="layout vertical">
       <paper-checkbox checked="{{sortForScale}}">

@@ -82,14 +82,6 @@ class DiyRecipeMixer extends DiyMixinCommon(Polymer.Element) {
     window.dispatchEvent(new CustomEvent('vendor-popup', { detail }));
   }
 
-  onActionTap_(event) {
-    const flavor = event.model.item.flavor;
-    if (!flavor || !flavor.key) return;
-    // Open the flavor action menu (hosted in <diy-app>).
-    const detail = { target: event.path[0], flavorKey: flavor.key };
-    window.dispatchEvent(new CustomEvent('flavor-actions', { detail }));
-  }
-
   onBasePgPercentInputChanged_(value) {
     const number = this.stringToNumber(String(value || 0));
     if (isNaN(number)) {

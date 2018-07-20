@@ -10,6 +10,7 @@ diy-input {
 }
 
 table {
+  margin: 8px 0;
   width: 100%;
   border-collapse: collapse;
 }
@@ -53,13 +54,6 @@ table td.flavor {
 
 table td.actions {
   width: 1px;
-}
-
-#tableWrapper {
-  margin: 8px 0;
-  padding: 4px 8px;
-  border: 1px solid var(--secondary-background-color);
-  background-color: white;
 }
 
 #backButton {
