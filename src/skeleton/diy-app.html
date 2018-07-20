@@ -9,6 +9,8 @@
 <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
+<link rel="import" href="/src/diy-flavor-actions.html">
+<link rel="import" href="/src/diy-vendor-popup.html">
 <link rel="import" href="/src/functional/diy-auth-state.html">
 <link rel="import" href="/src/mixins/mixin-router.html">
 <link rel="import" href="/src/skeleton/diy-content.html">
@@ -48,8 +50,12 @@
           <diy-content></diy-content>
         </main>
       </app-drawer-layout>
-
     </app-header-layout>
+
+    <!-- Popup with flavor actions (inventory, whishlist). -->
+    <diy-flavor-actions id="flavorActions"></diy-flavor-actions>
+    <!-- Popup with vendor information. -->
+    <diy-vendor-popup id="vendorPopup"></diy-vendor-popup>
 
   </template>
   <script type="text/javascript" src="diy-app.js"></script>

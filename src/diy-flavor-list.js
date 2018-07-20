@@ -115,17 +115,17 @@ class DiyFlavorList extends DiyMixinStaticData(Polymer.Element) {
   }
 
   onVendorTap_() {
-    this.$.vendorPopup.set('positionTarget', this.$.heading);
-    this.$.vendorPopup.set('key', this.vendorKey);
-    this.$.vendorPopup.open();
+    // Open the vendor popup (hosted in <diy-app>)
+    const detail = { target: this.$.heading, vendorKey: this.vendorKey };
+    window.dispatchEvent(new CustomEvent('vendor-popup', { detail }));
   }
 
   onActionTap_(event) {
     const flavor = event.model.flavor;
     if (!flavor || !flavor.key) return;
-    this.$.flavorActions.set('positionTarget', event.path[0]);
-    this.$.flavorActions.set('flavor', flavor.key);
-    this.$.flavorActions.open();
+    // Open the flavor action menu (hosted in <diy-app>).
+    const detail = { target: event.path[0], flavorKey: flavor.key };
+    window.dispatchEvent(new CustomEvent('flavor-actions', { detail }));
   }
 }
 

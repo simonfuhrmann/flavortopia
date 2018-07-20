@@ -74,17 +74,17 @@ class DiyRecipe extends DiyMixinCommon(DiyMixinStaticData(Polymer.Element)) {
 
   onVendorTap_(event) {
     const vendor = event.model.item.vendor;
-    this.$.vendorPopup.set('positionTarget', event.path[0]);
-    this.$.vendorPopup.set('key', vendor.key);
-    this.$.vendorPopup.open();
+    // Open the vendor popup (hosted in <diy-app>)
+    const detail = { target: event.path[0], vendorKey: vendor.key };
+    window.dispatchEvent(new CustomEvent('vendor-popup', { detail }));
   }
 
   onActionTap_(event) {
     const flavor = event.model.item.flavor;
     if (!flavor || !flavor.key) return;
-    this.$.flavorActions.set('positionTarget', event.path[0]);
-    this.$.flavorActions.set('flavor', flavor.key);
-    this.$.flavorActions.open();
+    // Open the flavor action menu (hosted in <diy-app>).
+    const detail = { target: event.path[0], flavorKey: flavor.key };
+    window.dispatchEvent(new CustomEvent('flavor-actions', { detail }));
   }
 
   onToggleMixer_() {

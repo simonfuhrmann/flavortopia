@@ -5,7 +5,7 @@ class DiyFlavorActions extends DiyMixinRedux(Polymer.Element) {
 
   static get properties() {
     return {
-      flavor: {
+      flavorKey: {
         type: String,
         value: '',
       },
@@ -33,7 +33,7 @@ class DiyFlavorActions extends DiyMixinRedux(Polymer.Element) {
 
   static get observers() {
     return [
-      'updateActions_(flavor, inventory)',
+      'updateActions_(flavorKey, inventory)',
     ];
   }
 
@@ -45,9 +45,9 @@ class DiyFlavorActions extends DiyMixinRedux(Polymer.Element) {
     this.$.dropdown.close();
   }
 
-  updateActions_(flavor, inventory) {
-    if (!flavor || !inventory) return;
-    const entry = inventory[flavor];
+  updateActions_(flavorKey, inventory) {
+    if (!flavorKey || !inventory) return;
+    const entry = inventory[flavorKey];
     this.setProperties({
       'inNowhere': entry === undefined,
       'inInventory': entry === true,
@@ -61,25 +61,25 @@ class DiyFlavorActions extends DiyMixinRedux(Polymer.Element) {
 
   addToInventory_() {
     const inventory = Object.assign({}, this.inventory);
-    inventory[this.flavor] = true;
+    inventory[this.flavorKey] = true;
     this.persistInventory_(inventory);
   }
 
   addToWishlist_() {
     const inventory = Object.assign({}, this.inventory);
-    inventory[this.flavor] = false;
+    inventory[this.flavorKey] = false;
     this.persistInventory_(inventory);
   }
 
   removeFromInventory_() {
     const inventory = Object.assign({}, this.inventory);
-    delete inventory[this.flavor];
+    delete inventory[this.flavorKey];
     this.persistInventory_(inventory);
   }
 
   removeFromWishlist_() {
     const inventory = Object.assign({}, this.inventory);
-    delete inventory[this.flavor];
+    delete inventory[this.flavorKey];
     this.persistInventory_(inventory);
   }
 

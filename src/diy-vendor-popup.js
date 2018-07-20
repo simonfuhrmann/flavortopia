@@ -5,7 +5,7 @@ class DiyVendorPopup extends DiyMixinStaticData(Polymer.Element) {
 
   static get properties() {
     return {
-      key: {
+      vendorKey: {
         type: String,
         observer: 'onKeyChanged_',
       },
@@ -25,14 +25,14 @@ class DiyVendorPopup extends DiyMixinStaticData(Polymer.Element) {
     this.$.dropdown.close();
   }
 
-  onKeyChanged_(key) {
-    const vendorData = this.allVendors[key];
+  onKeyChanged_(vendorKey) {
+    const vendorData = this.allVendors[vendorKey];
     if (!vendorData) {
       this.setProperties({
-        vendorShort: key,
+        vendorShort: vendorKey,
         vendorName: 'Unknown Vendor',
         vendorWebsite: undefined,
-        vendorDescription: 'A vendor called "' + key + '" was not found.',
+        vendorDescription: 'A vendor called "' + vendorKey + '" was not found.',
       });
       return;
     }
