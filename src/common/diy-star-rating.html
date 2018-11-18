@@ -1,0 +1,31 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/iron-icons/social-icons.html">
+
+<link rel="import" href="/src/theme/diy-theme.html">
+
+<dom-module id="diy-star-rating">
+  <link rel="import" type="css" href="diy-star-rating.css">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="diy-theme"></style>
+
+    <div
+        id="stars"
+        class="layout horizontal center"
+        on-mouseover="starMouseOver_"
+        on-mouseout="starMouseOut_"
+        on-click="starClick_">
+      <iron-icon id="star1" icon="[[starIcon_(rating, 1)]]"></iron-icon>
+      <iron-icon id="star2" icon="[[starIcon_(rating, 2)]]"></iron-icon>
+      <iron-icon id="star3" icon="[[starIcon_(rating, 3)]]"></iron-icon>
+      <iron-icon id="star4" icon="[[starIcon_(rating, 4)]]"></iron-icon>
+      <iron-icon id="star5" icon="[[starIcon_(rating, 5)]]"></iron-icon>
+      <div id="details" hidden="[[!detailed]]">([[numRatings]])<div>
+    </div>
+
+  </template>
+  <script type="text/javascript" src="diy-star-rating.js"></script>
+</dom-module>

@@ -1,6 +1,9 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
 
+<link rel="import" href="/src/common/diy-star-rating.html">
 <link rel="import" href="/src/functional/diy-user-cache.html">
 <link rel="import" href="/src/mixins/mixin-common.html">
 <link rel="import" href="/src/theme/diy-theme.html">
@@ -13,15 +16,17 @@
 
     <diy-user-cache uid="[[comment.key]]" name="{{username}}"></diy-user-cache>
 
-    <div id="header" class="layout horizontal center">
-      <b>[[username]]</b>
-      <span class="timestamp">
-        commented [[formatTimestamp(comment.created)]]
-      </span>
-      <span class="flex"></span>
-      <span>Rating: [[comment.rating]]</span>
+    <diy-star-rating
+        hidden="[[!comment.rating]]"
+        rating="[[comment.rating]]">
+    </diy-star-rating>
+
+    <p id="comment">[[comment.comment]]</p>
+
+    <div id="details">
+      Review by <b>[[username]]</b>, posted [[formatTimestamp(comment.created)]]
     </div>
-    <p>[[comment.comment]]</p>
+
 
   </template>
   <script type="text/javascript" src="diy-recipe-comment.js"></script>

@@ -62,7 +62,7 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
   }
 
   setRecipe(recipe) {
-    // Add a timestamp field to the recipe.
+    // Make copy to add timestamp and remove recipe key.
     const recipeCopy = Object.assign({}, recipe);
 
     // If the recipe contains a 'key', delete the key from the recipe and
@@ -82,6 +82,29 @@ class DiyFirebaseStore extends DiyMixinFirebase(Polymer.Element) {
   deleteRecipe(recipeKey) {
     const recipesRef = this.store.collection('recipes').doc(recipeKey);
     return recipesRef.delete();
+  }
+
+  setComment(uid, recipeKey, comment) {
+    // Make a copy to add timestamp and remove comment key.
+    const commentCopy = Object.assign({}, comment);
+
+    // See comment for setRecipe.
+    const commentRef =
+        this.store.collection('recipes').doc(recipeKey).collection('comments');
+    if (commentCopy.key) {
+      const commentKey = commentCopy.key;
+      delete commentCopy.key;
+      return commentRef.doc(uid).set(commentCopy);
+    } else {
+      commentCopy.created = firebase.firestore.FieldValue.serverTimestamp();
+      return commentRef.doc(uid).set(commentCopy);
+    }
+  }
+
+  deleteComment(uid, recipeKey) {
+    const commentRef = this.store.collection('recipes').doc(recipeKey)
+        .collection('comments').doc(uid);
+    return commentRef.delete();
   }
 }
 

@@ -89,8 +89,6 @@ paper-dialog {
 }
 
 #addIngredientButton {
-  background-color: var(--info-background-color);
-  color: var(--info-foreground-color);
   padding: 4px 16px;
   margin: 8px 4px;
 }
@@ -100,8 +98,6 @@ paper-dialog {
 }
 
 #saveRecipeButton {
-  background-color: var(--info-background-color);
-  color: var(--info-foreground-color);
   margin-left: 16px;
 }
 

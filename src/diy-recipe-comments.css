@@ -2,9 +2,43 @@ h2 {
   margin-top: 0;
 }
 
+paper-button {
+  margin: 0;
+}
+
+diy-recipe-comment {
+  background-color: var(--secondary-background-color);
+  padding: 8px;
+  display: block;
+}
+
 #loadingNotice,
 #loadingError,
 #noComments {
   text-align: center;
   padding: 16px;
+}
+
+#hr {
+  height: 2px;
+  background-color: var(--separator-color);
+  margin-top: 16px;
+}
+
+#userRating {
+  margin-left: 8px;
+}
+
+.button-box {
+  margin-top: 8px;
+  @apply --layout-horizontal;
+  @apply --layout-end-justified;
+}
+
+.button-box > *:not(:last-child) {
+  margin-right: 16px;
+}
+
+[hidden] {
+  display: none !important;
 }

@@ -50,6 +50,12 @@
   };
 }
 
+/* Button styles. */
+paper-button[primary] {
+  background-color: var(--info-background-color);
+  color: var(--info-foreground-color);
+}
+
 /* Dialog styles. */
 
 paper-dialog h2 {

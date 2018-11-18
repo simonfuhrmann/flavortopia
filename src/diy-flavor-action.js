@@ -14,6 +14,7 @@ class DiyFlavorAction extends DiyMixinRedux(Polymer.Element) {
         type: String,
         statePath: 'user.auth.firebaseUser.uid',
       },
+
       inventory: {
         type: Object,
         statePath: 'inventory',

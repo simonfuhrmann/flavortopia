@@ -1,9 +1,12 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="/src/diy-recipe-comment.html">
+<link rel="import" href="/src/common/diy-star-rating.html">
 <link rel="import" href="/src/theme/diy-theme.html">
+<link rel="import" href="/src/mixins/mixin-redux.html">
 
 <dom-module id="diy-recipe-comments">
   <link rel="import" type="css" href="diy-recipe-comments.css">
@@ -18,6 +21,8 @@
         error="{{loadingError}}">
     </diy-firebase-get>
 
+    <diy-firebase-store id="firebaseStore"></diy-firebase-store>
+
     <template is="dom-if" if="[[isLoading]]">
       <div id="loadingNotice">Loading Comments...</span>
     </template>
@@ -26,19 +31,62 @@
       <div id="loadingError">Error: [[loadingError]]</span>
     </template>
 
+    <!-- Message if there are no comments. -->
     <template is="dom-if" if="[[hasNoComments_(comments)]]">
       <div id="noComments">This recipe has no comments, yet.</div>
     </template>
 
+    <!-- List of comments. -->
     <div hidden="[[!hasComments_(comments)]]">
       <h2 class="layout horizontal end">
         <span class="flex">[[comments.length]] comments</span>
-        <div>([[rating.average]] stars)</div>
+        <diy-star-rating
+            detailed
+            num-ratings="[[rating.numRatings]]"
+            rating="[[rating.average]]">
+        </diy-star-rating>
       </h2>
 
       <template is="dom-repeat" items="[[comments]]">
         <diy-recipe-comment comment="[[item]]"></diy-recipe-comment>
       </template>
+    </div>
+
+    <!-- Create or edit a comment if user is signed in. -->
+    <div hidden="[[!userId]]">
+      <!--
+      <div id="writeButtonBox" class="button-box">
+        <paper-button raised primary on-click="onWriteCommentClick_">
+          <span hidden="[[userCommented]]">Write comment</span>
+          <span hidden="[[!userCommented]]">Update comment</span>
+        </paper-button>
+      </div>
+      -->
+
+      <div id="writeCommentBox" hidden>
+        <div id="hr"></div>
+        <div class="layout horizontal center">
+          <h3 class="flex">Write a comment</h3>
+          <div>Your rating:</div>
+          <diy-star-rating id="userRating" editable></diy-star-rating>
+        </div>
+
+        <diy-textarea id="textarea" placeholder="Say something nice...">
+        </diy-textarea>
+
+        <div class="button-box">
+          <paper-button on-click="onCancelClick_">Cancel</paper-button>
+          <div class="flex"></div>
+          <paper-button on-click="onDeleteClick_">Delete</paper-button>
+          <paper-button
+              id="postButton"
+              raised primary
+              on-click="onPostClick_">
+            <span hidden="[[userCommented]]">Post</span>
+            <span hidden="[[!userCommented]]">Update</span>
+          </paper-button>
+        </div>
+      </div>
     </div>
 
   </template>

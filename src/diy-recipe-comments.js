@@ -1,4 +1,4 @@
-class DiyRecipeComments extends Polymer.Element {
+class DiyRecipeComments extends DiyMixinRedux(Polymer.Element) {
   static get is() {
     return 'diy-recipe-comments';
   }
@@ -33,6 +33,16 @@ class DiyRecipeComments extends Polymer.Element {
           return { average: 0.0, numRatings: 0 };
         },
       },
+
+      userId: {
+        type: String,
+        statePath: 'user.auth.firebaseUser.uid',
+      },
+
+      userCommented: {
+        type: Boolean,
+        computed: 'computeUserCommented_(userId, comments)',
+      },
     };
   }
 
@@ -42,6 +52,11 @@ class DiyRecipeComments extends Polymer.Element {
 
   hasNoComments_(comments) {
     return !!this.comments && this.comments.length == 0;
+  }
+
+  computeUserCommented_(userId, comments) {
+    if (!userId || !comments) return false;
+    return !!comments.find(comment => comment.key === userId);
   }
 
   onRecipeKeyChanged_(recipeKey) {
@@ -70,6 +85,39 @@ class DiyRecipeComments extends Polymer.Element {
       rating.average = rating.average / rating.numRatings;
     }
     this.set('rating', rating);
+  }
+
+  onWriteCommentClick_() {
+    this.$.writeButtonBox.setAttribute('hidden', true);
+    this.$.writeCommentBox.removeAttribute('hidden');
+
+    // If the user previously wrote a comment, initialize with that.
+    const comment = this.comments.find(comment => comment.key === this.userId);
+    if (comment) {
+      this.$.textarea.set('value', comment.comment);
+      this.$.userRating.set('rating', comment.rating);
+    }
+  }
+
+  onCancelClick_() {
+    this.$.writeButtonBox.removeAttribute('hidden');
+    this.$.writeCommentBox.setAttribute('hidden', true);
+  }
+
+  onDeleteClick_() {
+    this.$.firebaseStore.deleteComment(this.userId, this.recipeKey)
+        .then(data => this.onCancelClick_())
+        .catch(error => console.error(error));
+  }
+
+  onPostClick_() {
+    const comment = {
+      rating: this.$.userRating.rating,
+      comment: this.$.textarea.value,
+    };
+    this.$.firebaseStore.setComment(this.userId, this.recipeKey, comment)
+        .then(data => this.onCancelClick_())
+        .catch(error => console.error(error));
   }
 }
 

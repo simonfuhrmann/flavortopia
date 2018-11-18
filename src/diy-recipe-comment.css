@@ -1,13 +1,8 @@
-p {
-  margin: 0;
+#comment {
+  margin: 8px 0;
 }
 
-.timestamp {
+#details {
   color: var(--secondary-text-color);
-  font-size: 0.85em;
-  margin: 0 8px;
-}
-
-#header {
-  margin: 16px 0 4px 0;
+  font-size: 0.9em;
 }
