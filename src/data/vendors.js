@@ -77,6 +77,12 @@ const staticDataVendors = {
     "website": "https://shop.perfumersapprentice.com",
     "description": "The Flavor Apprentice was founded in 2009 by The Perfumer's Apprentice staff to create a clear separation between their food flavors and perfume fragrances."
   },
+  "vt": {
+    "name": "Vape Train Australia",
+    "short": "VT",
+    "website": "https://www.vapetrain.com.au",
+    "description": "Vape Train is an online retailer of ready to vape e-liquids, DIY flavour concentrates and equipment used in the vaping community in Australia."
+  },
   "wf": {
     "name": "Wonder Flavors",
     "short": "WF",

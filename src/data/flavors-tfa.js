@@ -17,7 +17,7 @@ const staticDataFlavorsTfa = {
     "vendor": "tfa"
   },
   "tfa-acetyl-pyrazine-5-pg": {
-    "name": "Acetyl Pyrazine (5 PG)",
+    "name": "Acetyl Pyrazine (5% PG)",
     "vendor": "tfa"
   },
   "tfa-almond": {
@@ -793,7 +793,7 @@ const staticDataFlavorsTfa = {
     "vendor": "tfa"
   },
   "tfa-koolada-10-pg": {
-    "name": "Koolada 10 PG",
+    "name": "Koolada 10% PG",
     "vendor": "tfa"
   },
   "tfa-lemon-water-soluble": {

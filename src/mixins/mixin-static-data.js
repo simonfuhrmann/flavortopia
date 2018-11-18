@@ -1,7 +1,16 @@
 const staticData = {
   flavors: prepareAllFlavors(),
   vendors: prepareAllVendors(),
+  flavorArray: [],
+  flavorKeys: [],
+  vendorArray: [],
+  vendorKeys: [],
 };
+
+staticData.flavorsArray = Object.values(staticData.flavors);
+staticData.flavorKeys = Object.keys(staticData.flavors);
+staticData.vendorsArray = Object.values(staticData.vendors);
+staticData.vendorKeys = Object.keys(staticData.vendors);
 
 DiyMixinStaticData = (superClass) => class extends superClass {
   static get properties() {
@@ -20,31 +29,23 @@ DiyMixinStaticData = (superClass) => class extends superClass {
       allFlavorsArray: {
         type: Array,
         readOnly: true,
-        value: function() {
-          return Object.values(staticData.flavors);
-        },
+        value: staticData.flavorsArray,
       },
       allVendorsArray: {
         type: Array,
         readOnly: true,
-        value: function() {
-          return Object.values(staticData.vendors);
-        },
+        value: staticData.vendorsArray,
       },
 
       allFlavorKeys: {
         type: Array,
         readOnly: true,
-        value: function() {
-          return Object.keys(staticData.flavors);
-        },
+        value: staticData.flavorKeys,
       },
       allVendorKeys: {
         type: Array,
         readOnly: true,
-        value: function() {
-          return Object.keys(staticData.vendors);
-        },
+        value: staticData.vendorKeys,
       },
     };
   }
@@ -115,6 +116,7 @@ function prepareAllFlavors() {
       staticDataFlavorsRf,
       staticDataFlavorsSc,
       staticDataFlavorsTfa,
+      staticDataFlavorsVt,
       staticDataFlavorsWf);
 
   // De-normalize the flavor key.
@@ -146,7 +148,7 @@ function sanityCheckFlavors(allFlavors) {
       console.warn('Flavor without a name: ' + key);
       return;
     }
-    if (name.match(/[^a-zA-Z0-9\-'&!(),./ ]/)) {
+    if (name.match(/[^a-zA-Z0-9\-%'&!(),./ ]/)) {
       console.warn('Flavor with invalid name: ' + name + ', key: ' + key);
     }
   });
